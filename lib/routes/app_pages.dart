@@ -1,13 +1,19 @@
 import 'package:get/get.dart';
+import 'package:graduationproject/models/signIn/view/signIn.dart';
 
-import '../models/Intro/intro.dart';
-
+import '../models/Intro/view/intro.dart';
+part   'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  // static final routes = [
-  //   GetPage(
-  // name:Intro ,
-  //     page: () => IntroPageView (),
-  //   ),];
+  static final routes = [
+    GetPage(
+  name:_Paths.Intro ,
+      page: () => IntroPageView(),
+    ),
+      GetPage(
+  name:_Paths.SignIn ,
+      page: () =>SignIn(),
+    ),
+    ];
 }

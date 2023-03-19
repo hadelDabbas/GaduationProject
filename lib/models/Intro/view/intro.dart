@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/models/Intro/intro-controller.dart';
+import 'package:graduationproject/models/Intro/controller/intro-controller.dart';
 import 'package:graduationproject/models/timer/controller/timer_controller.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
