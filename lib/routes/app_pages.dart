@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:graduationproject/models/MenuGame/Menu_game.dart';
 import 'package:graduationproject/models/signIn/view/signIn.dart';
 
 import '../models/Intro/view/intro.dart';
@@ -14,6 +15,10 @@ class AppPages {
       GetPage(
   name:_Paths.SignIn ,
       page: () =>SignIn(),
+    ),
+          GetPage(
+  name:_Paths.MenuGame ,
+      page: () =>MenuGamePageView(),
     ),
     ];
 }

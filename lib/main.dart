@@ -2,6 +2,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/models/Intro/view/intro.dart';
+import 'package:graduationproject/models/MenuGame/Menu_game.dart';
 
 
 void main() {
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       getPages: [
-         GetPage(name: '/intro', page: () =>IntroPageView() )
-       
+       GetPage(name: '/intro', page: () =>IntroPageView() )
+      
       ],
     );
     
