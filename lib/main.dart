@@ -4,31 +4,24 @@ import 'package:get/get.dart';
 import 'package:graduationproject/models/Intro/view/intro.dart';
 import 'package:graduationproject/models/MenuGame/Menu_game.dart';
 import 'package:graduationproject/models/signin_view.dart/view/signin.dart';
-
+import 'package:graduationproject/models/Intro/view/splash-screen.dart';
 
 void main() {
-  
-  runApp(const MyApp( )); 
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-   return GetMaterialApp.router(
-    debugShowCheckedModeBanner: false,
+    return GetMaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-    
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      getPages: [
-       GetPage(name: '/intro', page: () =>SignInViewPage() )
-      
-      ],
+      getPages: [GetPage(name: '/splash', page: () => SplashScreen())],
     );
-    
   }
 }
