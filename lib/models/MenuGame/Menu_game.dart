@@ -16,39 +16,38 @@ class MenuGamePageView extends GetResponsiveView {
   Widget builder() {
      final random = Random();
      final random1=Random();
-    return Scaffold(
-      body: Container(
-        child:SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(children: [
-                    InkWell(
-                      onTap: () => Get.back(),
-                      child: Icon(Icons.arrow_back_ios,
-                                   size: 20, 
-                                 color: Colors.grey
-                                  ),
-                    ),
-              SizedBox(width: 8,),
-              Text('Menu Test',style: TextStyle(fontWeight: FontWeight.bold,
-              fontSize: 25),)
-              ],),
-                  SizedBox(height: 15,),
-             cardshape(random, 'Word Test', '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
-                                            'assets/images/4.png'    , Splashscrren()      ),
-             cardshape(random, 'Math Test',' In This Test You Need To Be Speed This Test Increse Information ',
-             'assets/images/cubes.png',DefineMath ()),
-             cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-             'assets/images/foucs.png',FoucsGameView() ),
-                cardshape(random, 'Letter Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-             'assets/images/letter.png',splashscreenLetter() ),
-            ],
+    return SizedBox(
+      height: screen.height,
+      child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(children: [
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: Icon(Icons.arrow_back_ios,
+                                     size: 20, 
+                                   color: Colors.grey
+                                    ),
+                      ),
+                SizedBox(width: 8,),
+                Text('Menu Test',style: TextStyle(fontWeight: FontWeight.bold,
+                fontSize: 25),)
+                ],),
+                    SizedBox(height: 15,),
+               cardshape(random, 'Word Test', '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
+                                              'assets/images/4.png'    , Splashscrren()      ),
+               cardshape(random, 'Math Test',' In This Test You Need To Be Speed This Test Increse Information ',
+               'assets/images/cubes.png',DefineMath ()),
+               cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+               'assets/images/foucs.png',FoucsGameView() ),
+                  cardshape(random, 'Letter Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+               'assets/images/letter.png',splashscreenLetter() ),
+              ],
+            ),
           ),
-        ),
-      
-      )
+    )
     
-      );
+      ;
     
 
   }

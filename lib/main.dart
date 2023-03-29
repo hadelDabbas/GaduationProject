@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/models/Intro/view/intro.dart';
 import 'package:graduationproject/models/MenuGame/Menu_game.dart';
+import 'package:graduationproject/models/menu/view/HomePage.dart';
 import 'package:graduationproject/models/signin_view.dart/view/signin.dart';
+
+import 'routes/app_pages.dart';
 
 
 void main() {
@@ -24,10 +27,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      getPages: [
-       GetPage(name: '/intro', page: () =>SignInViewPage() )
-      
-      ],
+    
+     defaultTransition: Transition.cupertino,
+      getPages: AppPages.routes,
     );
     
   }

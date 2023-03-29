@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/models/Intro/controller/intro-controller.dart';
 import 'package:graduationproject/models/timer/controller/timer_controller.dart';
+import '../../../routes/app_pages.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
 import 'intro-page3.dart';
@@ -33,8 +34,9 @@ bool onlastpage= false;
          children: [
           GestureDetector(
             onTap: (){
+              Get.rootDelegate.toNamed(Routes.FlipCart);
              // controllers.jumpToPage(1);
-              controllers.previousPage(duration: Duration(microseconds: 500), curve: Curves.ease);
+           //   controllers.previousPage(duration: Duration(microseconds: 500), curve: Curves.ease);
             },
             child:  Padding(
               padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
