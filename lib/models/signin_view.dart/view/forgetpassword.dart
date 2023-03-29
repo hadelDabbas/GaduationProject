@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/models/signIn/controller/controller.dart';
+
+import '../controller/signin_controller.dart';
 //import 'package:getwidget/getwidget.dart';
 
-class ForgetViewPage extends GetResponsiveView<SignInController>{
-  SignInController controller=Get.put(SignInController());
+class ForgetViewPage extends GetResponsiveView<SignIncontroller>{
+ SignIncontroller controller=Get.put(SignIncontroller());
    @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -44,7 +45,7 @@ class ForgetViewPage extends GetResponsiveView<SignInController>{
                                              borderRadius: BorderRadius.circular(15),
                                            ),
                                            focusedBorder: OutlineInputBorder(
-                                             borderSide: const BorderSide(width: 3, color: Colors.red),
+                                             borderSide: const BorderSide(width: 3, color: Colors.grey),
                                              borderRadius: BorderRadius.circular(15),
                                            )),
                                      ),
@@ -62,7 +63,7 @@ class ForgetViewPage extends GetResponsiveView<SignInController>{
                                              borderRadius: BorderRadius.circular(15),
                                            ),
                                            focusedBorder: OutlineInputBorder(
-                                             borderSide: const BorderSide(width: 3, color: Colors.red),
+                                             borderSide: const BorderSide(width: 3, color: Colors.grey),
                                              borderRadius: BorderRadius.circular(15),
                                            )),
                                      ),

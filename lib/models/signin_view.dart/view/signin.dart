@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/models/signIn/controller/controller.dart';
+import 'package:graduationproject/models/siginup/view/signup1.dart';
 import 'package:graduationproject/models/signin_view.dart/view/forgetpassword.dart';
+
+import '../../siginup/controller/signup.dart';
+import '../controller/signin_controller.dart';
 //import 'package:getwidget/getwidget.dart';
 
-class SignInViewPage extends GetResponsiveView<SignInController>{
-  SignInController controller=Get.put(SignInController());
+class SignInViewPage extends GetResponsiveView<SignIncontroller>{
+ SignIncontroller controller=Get.put(SignIncontroller());
    @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -88,7 +91,9 @@ class SignInViewPage extends GetResponsiveView<SignInController>{
                  Padding(
              padding: const EdgeInsets.all(8.0),
              child:  ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(signupage());
+                },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
