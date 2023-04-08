@@ -15,40 +15,40 @@ class MenuGamePageView extends GetResponsiveView {
 @override
   Widget builder() {
      final random = Random();
-     final random1=Random();
-    return Scaffold(
-      body: Container(
-        child:SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(children: [
-                    InkWell(
-                      onTap: () => Get.back(),
-                      child: Icon(Icons.arrow_back_ios,
-                                   size: 20, 
-                                 color: Colors.grey
-                                  ),
-                    ),
-              SizedBox(width: 8,),
-              Text('Menu Test',style: TextStyle(fontWeight: FontWeight.bold,
-              fontSize: 25),)
-              ],),
-                  SizedBox(height: 15,),
-             cardshape(random, 'Word Test', '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
-                                            'assets/images/4.png'    , Splashscrren()      ),
-             cardshape(random, 'Math Test',' In This Test You Need To Be Speed This Test Increse Information ',
-             'assets/images/cubes.png',DefineMath ()),
-             cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-             'assets/images/foucs.png',FoucsGameView() ),
-                cardshape(random, 'Letter Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-             'assets/images/letter.png',splashscreenLetter() ),
-            ],
+    // final random1=Random();
+    return SizedBox(
+      height: screen.height,
+      child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(children: [
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: Icon(Icons.arrow_back_ios,
+                                     size: 20, 
+                                   color: Colors.grey
+                                    ),
+                      ),
+                SizedBox(width: 8,),
+                Text('Menu Test',style: TextStyle(fontWeight: FontWeight.bold,
+                fontSize: 25),)
+                ],),
+                    SizedBox(height: 15,),
+                                    cardshape(random, 'Letter Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+               'assets/images/letter.png',splashscreenLetter() ),
+               cardshape(random, 'Word Test', '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
+                                              'assets/images/4.png'    , Splashscrren()      ),
+               cardshape(random, 'Math Test',' In This Test You Need To Be Speed This Test Increse Information ',
+               'assets/images/cubes.png',DefineMath ()),
+               cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+               'assets/images/15.png',FoucsGameView() ),
+  
+              ],
+            ),
           ),
-        ),
-      
-      )
+    )
     
-      );
+      ;
     
 
   }
@@ -56,8 +56,8 @@ class MenuGamePageView extends GetResponsiveView {
    return Container(  width:screen.width /8,
   
      child: Card(
-     color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-              random.nextInt(256), random.nextInt(256)),
+     color: Color.fromARGB(random.nextInt(10), random.nextInt(10),
+              random.nextInt(10), random.nextInt(10)),
     child:Column(
       children: [
                SizedBox(  width: 5,
@@ -84,9 +84,8 @@ class MenuGamePageView extends GetResponsiveView {
           Row(children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                      backgroundImage: AssetImage(url),
-                       ),
+              child: Container(height: 40,width: 40,
+                child: Image.asset(url)),
             ) ,
               Padding(
             padding: const EdgeInsets.all(8.0),

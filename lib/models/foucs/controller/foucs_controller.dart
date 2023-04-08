@@ -2,7 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 
 class FoucsController extends GetxController with GetSingleTickerProviderStateMixin{
-  late AnimationController animationController;
+   late AnimationController animationController;
   var isAnimating=false.obs;
   var result=0.obs;
    @override

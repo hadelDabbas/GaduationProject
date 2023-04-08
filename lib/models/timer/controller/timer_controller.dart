@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class TimerController extends GetxController {
- Timer?_timer;
+ Timer ?_timer;
  var answer = 0.obs;
  var answer2 = 0.obs;
  var answer3 = 0.obs;
