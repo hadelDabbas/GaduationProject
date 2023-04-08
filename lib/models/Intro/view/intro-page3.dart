@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../signin.dart/view/signin.dart';
+import '../../signup/view/signup1.dart';
+
 
 
 class Intro3 extends StatelessWidget { 
@@ -32,10 +35,10 @@ class Intro3 extends StatelessWidget {
                     fixedSize:
                         MaterialStateProperty.all(const Size.fromWidth(300))),
                 onPressed: () {
-                 // Get.to(SignIn());
+                  Get.to(SignInViewPage ());
                  },
                 child: Text(
-                  "Login".tr,
+                  "Sign In".tr,
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -52,6 +55,7 @@ class Intro3 extends StatelessWidget {
                         MaterialStateProperty.all(const Size.fromWidth(300),
                         )),
                 onPressed: () {
+                  Get.to(signupage ());
                  },
                 child: Text(
                   "Sign Up".tr,

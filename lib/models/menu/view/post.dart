@@ -5,27 +5,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/models/MenuGame/Menu_game.dart';
 import 'package:graduationproject/models/foucs/view/foucs1.dart';
+import 'package:graduationproject/models/icons/Icon.dart';
 import 'package:graduationproject/models/letter_game/view/letter1.dart';
 import 'package:graduationproject/models/menu/controller/menu.dart';
 
-class postPage extends GetResponsiveView<MenuController>{
-  MenuController controller =Get.put(MenuController());
+class postPage extends GetResponsiveView <HomeController>{
+
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: SingleChildScrollView(
-        child: Column(children: [
-         post(),
-        
-        ],)),
-    );}}
-    Widget post(){
+    
+    return Container( height: 600,
+    color: Color.fromARGB(255, 236, 234, 234),
+    child:SingleChildScrollView(
+      child: Column(children: [
+        post(' Hamza Hamza','Forest Is The tallest in the world   8848 mater',
+      'assets/images/gabal.png',"History",controller),
+      post('Aya Hamm','How Number Square IN This Photo? ','assets/images/19.png','Global',controller),
+        post('Aya Hamm','How Number Square IN This Photo? ','assets/images/19.png','Global',controller)
+      ],),
+    ),);
+    }}
+  Widget post(String title ,String txt,String url, String post,HomeController controller){
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
     child: Center(
-      child: Container(width: 450 , height: 300,
+      child: Container(width: 500 , height: 280,
         decoration: BoxDecoration(
             border: Border.all(
               color: Colors.grey,
@@ -34,23 +40,69 @@ class postPage extends GetResponsiveView<MenuController>{
           color: Colors.white,
           borderRadius: BorderRadius.circular(15)),
           child: Column(children: [
-            Padding(
+          Row(children: [
+            Icon(Icons.person,color: Colors.blueGrey,),
+               Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(alignment: Alignment.topLeft,
-                child: Text('History',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: Colors.indigo),)),
+                child: Text(title,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,
+                color: Colors.blueGrey),)),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Forest Is The tallest in the world   8848 mater',style: TextStyle(fontSize: 18),),
-            ),
+         Text("("+post+")",style: TextStyle(color: Colors.grey,)),
+          ],),
+          
             ClipRRect(
       borderRadius: BorderRadius.circular(20), // Image border
-      child: Container(width: 400,height: 200,
+      child: Container(width: 400,height: 150,
       child: SizedBox.fromSize( 
         size: Size.fromRadius(48), // Image radius
-        child: Image.asset('assets/images/gabal.png' , fit: BoxFit.cover),
+        child: Image.asset( url, fit: BoxFit.cover),
       ),
       ),
+    ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(txt,style: TextStyle(fontSize: 16),),
+            ),
+
+         SizedBox(height:5,),
+    Align(alignment: Alignment.bottomRight,
+    
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          SizedBox(width:350,),
+       ElevatedButton(
+  onPressed: () {},
+  child: Icon(AppIconn.chat,size: 14,),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Color.fromARGB(255, 248, 150, 153),
+    shape: CircleBorder(),
+   
+  ),
+),
+        
+         ElevatedButton(
+  onPressed: () {
+    if(controller.click==false){
+      controller.click.value=true;
+    }else{
+      controller.click.value=false;
+    }
+  },
+  child: 
+        Obx(() =>   Icon(AppIconn.favorite,size: 14,
+   color: controller.click.value==true?Colors.red:Colors.white,
+  ),),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Color.fromARGB(255, 248, 150, 153),
+    shape: CircleBorder(),
+   
+  ),
+)
+        // Icon(Icons.add_alert),
+      ],),
     )
           ],),
         ),
