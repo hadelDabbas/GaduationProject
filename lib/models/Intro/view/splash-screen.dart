@@ -74,45 +74,6 @@ class SplashScreen extends StatelessWidget {
               ))
         ],
       ),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //    children: [
-      //      Image.asset(
-      //        'assets/images/3.png',
-      //        height: 130,
-      //      ),
-      //      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      //       Text(
-      //         'Info',
-      //        style: TextStyle(
-      //           fontSize: 40,
-      //            fontWeight: FontWeight.w700,
-      //           color: Color.fromRGBO(51, 0, 255, 0.812)),
-      //      ),
-      //       Text(
-      //         'City',
-      //         style: TextStyle(
-      //             fontSize: 40,
-      //            fontWeight: FontWeight.w700,
-      //            color: Color.fromRGBO(255, 0, 0, 0.59)),
-      //      )
-      //    ]),
-      //   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      //    Text('Information',
-      //        style: TextStyle(
-      //            fontSize: 15,
-      //            fontWeight: FontWeight.w700,
-      //            color: Color.fromRGBO(51, 0, 255, 0.812))),
-      //     Text('Socity',
-      //            style: TextStyle(
-      //                fontSize: 15,
-      //               fontWeight: FontWeight.w700,
-      //               color: Color.fromRGBO(255, 0, 0, 0.59)))
-      //     ])
-      //    ],
-      //  ),
-      //  ),
     );
   }
 }
