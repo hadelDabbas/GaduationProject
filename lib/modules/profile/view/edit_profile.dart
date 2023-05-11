@@ -1,0 +1,296 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:graduationproject/modules/menu/view/HomePage.dart';
+import 'package:graduationproject/modules/profile/controller/profile_controller.dart';
+
+class EditProfileview extends GetResponsiveView<ProfileController>{
+ProfileController controller=Get.put(ProfileController());
+   final _formfield = GlobalKey<FormState>();
+  final emailcontroller = TextEditingController();
+  final passcontroller = TextEditingController();
+  
+   @override
+  Widget build(BuildContext context) {
+ 
+ return Scaffold(
+        body: SingleChildScrollView(
+          
+      child: Form(
+        key: _formfield,
+        child: Column(children: [
+          Row(children: [
+               InkWell(
+                      onTap: () => Get.back(),
+                      child: Align(alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.arrow_back_ios,
+                                       size: 20, 
+                                     color: Colors.grey
+                                      ),
+                        ),
+                      ),
+                    ),
+         
+          Align(
+            alignment: Alignment.centerLeft,
+            child:            Text('Edit Profile ',
+                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,decoration: TextDecoration.none,
+                               color:Color.fromARGB(255, 246, 123, 127),fontFamily: "Pacifico")),
+          ),
+          ],),
+        
+          SizedBox(
+            width: 10,
+            height: 30,
+          ),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+              child: Text(
+                'Edit Your Account',
+                textAlign: TextAlign.left,
+                style: TextStyle(color: Colors.grey[400],fontWeight: FontWeight.bold),
+              )),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
+                    labelText: 'Enter Your New Name',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                validator: (value) {
+                  if (value!.isEmpty||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct Name";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
+                    labelText: 'Enter New UserName', labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                       validator: (value) {
+                  if (value!.isEmpty ||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct UserName";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.numbers,color: Colors.blueGrey,),
+                    labelText: 'Enter Your New Age',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                 
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                       validator: (value) {
+                  if (value!.isEmpty 
+                     || !RegExp(r'^[1-9]{1}+$').hasMatch(value)) {
+                    return "Enter Correct Age";
+                  } else {
+                    return null;
+                  }
+                },
+
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                controller: emailcontroller,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email,color: Colors.blueGrey,),
+                    labelText: 'Enter New Email',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                   
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                validator: (value) {
+                  bool emailvalue = RegExp(
+                          r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value!);
+                  if (value.isEmpty) {
+                    return " Enter Email";
+                  } else if (!emailvalue) {
+                    return " Enter Correct Email";
+                  }
+                },
+              ),
+            ),
+          ),
+        Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: 450,
+                  child: Obx(() => TextFormField(
+                    controller:passcontroller,
+                    obscureText: controller.passtoggle.value,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock,color: Colors.blueGrey,),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                         
+                         controller.passtoggle .value=! controller.passtoggle.value;
+                            
+                          },
+                          child:  Icon(
+                        controller.passtoggle .value   ? Icons.visibility : Icons.visibility_off,color: Color.fromARGB(255, 246, 123, 127),),
+                            ),
+                        labelText: 'Enter New Password',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                        
+                     
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(width: 3, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Password";
+                      } else if (passcontroller.text.length < 6) {
+                        return "Password Length Should Be More Than 6 Charachters";
+                      }
+                    },
+                  ),
+                ),
+      ) ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.cast_for_education,color: Colors.blueGrey,),
+                    labelText: 'Enter New Education',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                  
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                       validator: (value) {
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct Education";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.location_city,color: Colors.blueGrey,),
+                    labelText: 'Enter New Adress',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                  
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                       validator: (value) {
+                  if (value!.isEmpty 
+                   ||   !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct Adress";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 450,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.money,color: Colors.blueGrey,),
+                    labelText: 'Enter New PayBal',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                   
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(width: 3, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15),
+                    )),
+                       validator: (value) {
+                  if (value!.isEmpty 
+                 ||     !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]").hasMatch(value)) {
+                    return "Enter Correct Paybal";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formfield.currentState!.validate()) {
+                  print("Data Added Successfully");
+                  emailcontroller.clear();
+                  passcontroller.clear();
+                  Get.to(HomePage());
+                }
+              },
+              style: ElevatedButton.styleFrom(shadowColor: Colors.blueGrey,
+              backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
+                      ,
+              child: const Text(
+                'Update Profile',
+                style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 246, 123, 127),fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ]),
+      ),
+    ));
+
+  }
+}

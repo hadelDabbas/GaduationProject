@@ -1,14 +1,26 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/models/Intro/view/intro.dart';
-import 'package:graduationproject/models/MenuGame/Menu_game.dart';
-import 'package:graduationproject/models/menu/view/HomePage.dart';
+import 'package:graduationproject/modules/Intro/view/intro.dart';
+import 'package:graduationproject/modules/MenuGame/Menu_game.dart';
+import 'package:graduationproject/modules/groups/view/add_group.dart';
+import 'package:graduationproject/modules/groups/view/group.dart';
+import 'package:graduationproject/modules/groups/view/show_group.dart';
+import 'package:graduationproject/modules/letter_game/view/letter1.dart';
+import 'package:graduationproject/modules/letter_game/view/letter22.dart';
+import 'package:graduationproject/modules/libraryy/view/library.dart';
+import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
 
-import 'package:graduationproject/models/Intro/view/splash-screen.dart';
-import 'package:graduationproject/models/signin.dart/view/signin.dart';
+import 'package:graduationproject/modules/Intro/view/splash-screen.dart';
+import 'package:graduationproject/modules/profile/view/edit_profile.dart';
+import 'package:graduationproject/modules/profile/view/profile.dart';
+import 'package:graduationproject/modules/settings/view/settings.dart';
+import 'package:graduationproject/modules/signin.dart/view/signin.dart';
+import 'package:graduationproject/modules/signup/view/signup1.dart';
+import 'package:graduationproject/modules/word_game/view/form_word2.dart';
 
+import 'modules/comment/view/comment.dart';
 import 'routes/app_pages.dart';
 
 void main() {
@@ -29,7 +41,8 @@ class MyApp extends StatelessWidget {
       ),
     
      defaultTransition: Transition.cupertino,
-     getPages:[GetPage(name: '/splash', page:() =>SplashScreen(),),
+     getPages:[
+      GetPage(name: '/splash', page:() =>HomePage()),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]
