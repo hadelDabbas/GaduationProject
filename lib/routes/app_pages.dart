@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/signup/view/signup1.dart';
 
 import '../modules/Intro/view/intro.dart';
 import '../modules/MenuGame/Menu_game.dart';
@@ -24,6 +25,10 @@ class AppPages {
           GetPage(
   name:_Paths.MenuGame ,
       page: () =>MenuGamePageView(),
+    ),
+           GetPage(
+  name:_Paths.signup ,
+      page: () =>signupage(),
     ),
   //             GetPage(
   // name:_Paths.FlipCart ,

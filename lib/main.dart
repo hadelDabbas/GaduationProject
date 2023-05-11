@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/Intro/view/intro.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+      Get.put(Dio());
     return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
     
      defaultTransition: Transition.cupertino,
      getPages:[
-      GetPage(name: '/splash', page:() =>HomePage()),
+      GetPage(name: '/splash', page:() =>SignInViewPage()),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]

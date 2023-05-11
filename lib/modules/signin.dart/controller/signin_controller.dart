@@ -11,30 +11,33 @@ import '../data/signin_repository.dart';
 //    final repo = PasswordRepository();
 var passtoggle = true.obs;
   RxBool hidePassword = true.obs;
-  final authService = Get.find<AuthService>();
-  final stroge = Get.find<StorageService>();
-  final siginrepos=SiginRepository();
+  final userRepo= SiginRepository();
+  // final authService = Get.find<AuthService>();
+  // final stroge = Get.find<StorageService>();
+  // final siginrepos=SiginRepository();
     var email=''.obs;
     var password=''.obs;
-//     Future SignIn()async{
-//      var data=siginrepos.SignInUser(email.value, password.value);
-//      if (data==true){
-//       logIn();
-//       Get.to(HomePage());
-//      }else{
-//       Get.to(signupage());
-//      }
-//     }
+    Future SignIn()async{
+     var data=userRepo.SignInUser(email.value, password.value);
+     if (data!=null){
+    //  logIn();
+    print('Errortrrrrrr');
+      Get.to(HomePage());
+     }else{
+      Get.to(signupage());
+     print('Error');
+     }
+    }
 //  Future<void> logIn() async {
-//     await authService.logIn(email.value, password.value);
+  
 //     if (!stroge.containsKey('type')) {
 //       return;
 //     }
-    // if (authService.getTypeEnum() == Auth.comapny) {
-    //   Get.to(signupage());
-    // } else {
-    //   Get.to(HomePage());
-    // }
- // }
+//     if (authService.getTypeEnum() == Auth.comapny) {
+//       Get.to(signupage());
+//     } else {
+//       Get.to(HomePage());
+//     }
+//  }
 
  }

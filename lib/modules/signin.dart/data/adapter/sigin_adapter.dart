@@ -1,6 +1,8 @@
 
+import 'package:graduationproject/app/model/user.dart';
+
 abstract class ISigninRepository {
-    Future<bool> SignInUser(String email, String Password);
+    Future<User?> SignInUser(String email, String Password);
     
 
  }

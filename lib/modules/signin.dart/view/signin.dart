@@ -74,6 +74,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                       return " Enter Correct Email";
                     }
                   },
+                  onChanged: (Value){
+                    controller.email.value=Value;
+                  },
                 ),
               ),
             ),
@@ -113,6 +116,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                         return "Password Length Should Be More Than 6 Charachters";
                       }
                     },
+                    onChanged: (value) {
+                      controller.password.value=value;
+                    },
                   ),
                 ),
       ) ),
@@ -129,11 +135,12 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                child:  ElevatedButton(
                   onPressed: () {
                      if (_formfield.currentState!.validate()) {
-                  print("Data Added Successfully");
-                  emailcontroller.clear();
-                  passcontroller.clear();
-                  Get.to(HomePage());}
-                  },
+                        controller.SignIn();
+                  // print("Data Added Successfully");
+                  // emailcontroller.clear();
+                  // passcontroller.clear();
+                  // Get.to(HomePage());}
+                     }   },
                   style: ElevatedButton.styleFrom(
                      
                       shape: RoundedRectangleBorder(
@@ -151,6 +158,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                padding: const EdgeInsets.all(8.0),
                child:  ElevatedButton(
                   onPressed: () {
+                  
                    // Get.to(signupage());
                   },
                   style: ElevatedButton.styleFrom(
