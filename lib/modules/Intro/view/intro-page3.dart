@@ -55,7 +55,7 @@ class Intro3 extends StatelessWidget {
                         MaterialStateProperty.all(const Size.fromWidth(300),
                         )),
                 onPressed: () {
-                  Get.to(signupage ());
+                //  Get.to(signupage ());
                  },
                 child: Text(
                   "Sign Up".tr,

@@ -1,7 +1,6 @@
 import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:graduationproject/models/Intro/view/intro-page1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

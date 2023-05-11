@@ -11,9 +11,9 @@ class SignUpController extends GetxController{
   var passtoggle = true.obs;
   RxBool hidePassword = true.obs;
    final stringPickImage = ''.obs;
-    // final userRpo = UserRepository();
-     // final userForm = GlobalKey<FormState>();
-   //   final user=User().obs;
+  //  final userRpo = UserRepository();
+     //final userForm = GlobalKey<FormState>();
+     final user=User().obs;
     @override
   void onInit() {
     super.onInit();}
@@ -32,6 +32,9 @@ class SignUpController extends GetxController{
   //   if (data) {
   //   //  await auth.logIn(user.value.email!, user.value.password!);
   //     Get.to(HomePage());
+  //     print('trueeee');
+  //   } else{
+  //     print('false');
   //   }
   // }
 }

@@ -151,7 +151,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                padding: const EdgeInsets.all(8.0),
                child:  ElevatedButton(
                   onPressed: () {
-                    Get.to(signupage());
+                   // Get.to(signupage());
                   },
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
