@@ -21,6 +21,7 @@ import 'package:graduationproject/modules/signin.dart/view/signin.dart';
 import 'package:graduationproject/modules/signup/view/signup1.dart';
 import 'package:graduationproject/modules/word_game/view/form_word2.dart';
 
+import 'modules/MenuGame/view/splash_game.dart';
 import 'modules/comment/view/comment.dart';
 import 'modules/password/view/password.dart';
 import 'routes/app_pages.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
     
      defaultTransition: Transition.cupertino,
      getPages:[
-      GetPage(name: '/splash', page:() =>SignInViewPage()),
+      GetPage(name: '/splash', page:() =>SplashGame()),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]

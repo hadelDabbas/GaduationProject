@@ -1,27 +1,104 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/modules/Intro/view/intro-page1.dart';
 import 'package:graduationproject/modules/MenuGame/controller/splash_game.dart';
 
-class SplashGame extends GetResponsiveView{
+import '../Menu_game.dart';
+
+class SplashGame extends GetResponsiveView<MenuGameController>{
+ final controller=Get.put(MenuGameController());
 
   @override
   Widget build(BuildContext context) {
     return Container( height: 600,
-    color: Color.fromARGB(255, 236, 234, 234),
+    color: Colors.white,
     child:SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-        Center(child: Text('Game Testing',style: TextStyle(fontSize: 20),),  
+      
+           SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(child: 
+           Text('Game Testing',
+                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none,
+                     color: Colors.blueGrey,fontFamily: "Pacifico")), 
+          ),
         ),
-        SizedBox(height: 20,),
-        Center(child: ScaleTransition(
-          scale: controller.animation,
-          child: SizedBox(
-            height: 200,
-            width: 200,
-            child: Image.asset('assets/images/20.png')),
-        ),),
+         SizedBox(height: 20,),
+         Center(
+           child: Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Text('Get Ready To Start Adventures',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.none,
+                         color: Colors.black54,)),
+           ),
+         ), 
+          
+             Center(
+             child: Text('with many of fantictic game',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.none,
+                         color: Colors.black54,)),
+                   ),
+          
+   SizedBox(height: 90,),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Center(
+           child: GestureDetector(
+           onTap: () {
+             controller.ancontroller.repeat();
+           },
+           child: GFAnimation(
+             scaleAnimation:  controller. animation,
+             controller: controller.ancontroller,
+             type: GFAnimationType.scaleTransition,
+             child: Image.asset(
+               'assets/images/circ.png',
+               width: 200,
+               height: 150,
+             ),
+           ),
+         ),
+         ),
+       ),
+    SizedBox(height: 120,),
+        // Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Align(
+        //     alignment: Alignment.bottomRight,
+          
+        //       child: Material(
+        //         child: IconButton(
+        //           style: IconButton.styleFrom(
+        //             padding: EdgeInsets.symmetric(vertical: 29, horizontal: 30)
+        //           ),
+        //           color:Color.fromARGB(255, 248, 150, 153) ,
+        //           onPressed: (){
+        //           Get.to(MenuGamePageView ());
+        //          }, icon: Icon(Icons.arrow_circle_right,size: 40,)),
+        //       ),
+        //     ),
+        // ),
+       
+
+  Center(
+    child: GFButton(
+      onPressed: (){
+        Get.to(MenuGamePageView());
+      },
+      color:Color.fromARGB(255, 248, 150, 153) ,
+      text: "Game Page",
+      icon: Icon(Icons.arrow_circle_right,color: Colors.blueGrey,),
+      shape: GFButtonShape.pills,
+    ),
+  ),
+
       ],),
     ),);
     }}

@@ -11,7 +11,8 @@ import '../word_game/view/define_word.dart';
 
 
 
-class MenuGamePageView extends GetResponsiveView {
+class MenuGamePageView extends GetResponsiveView <MenuController>{
+  MenuController controller=Get.put(MenuController());
 @override
   Widget builder() {
      final random = Random();
@@ -22,16 +23,18 @@ class MenuGamePageView extends GetResponsiveView {
             child: Column(
               children: [
                 Row(children: [
-                      InkWell(
-                        onTap: () => Get.back(),
-                        child: Icon(Icons.arrow_back_ios,
-                                     size: 20, 
-                                   color: Colors.grey
-                                    ),
+                      Material(
+                        child: InkWell(
+                          onTap: () => Get.back(),
+                          child: Icon(Icons.arrow_back_ios,
+                                       size: 20, 
+                                     color: Colors.grey
+                                      ),
+                        ),
                       ),
                 SizedBox(width: 8,),
                Text('Menu Game',
-                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,
+                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,decoration: TextDecoration.none,
                      color: Colors.blueGrey,fontFamily: "Pacifico")),
                 ],),
                     SizedBox(height: 15,),
@@ -71,63 +74,65 @@ class MenuGamePageView extends GetResponsiveView {
 
  }
   Widget cardshape (Random random,String nameplay,String discribtion,String url,Widget n){
-    return InkWell(
-      child: Container( width: 800,
-      height: screen.height/2.5,
-        child: Card(
-            margin: EdgeInsets.all(10),
-        color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
-                  random.nextInt(256), random.nextInt(256)),
-       shadowColor: Colors.blueGrey,
-        elevation: 30,
-        child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(children: [
+    return Material(
+      child: InkWell(
+        child: Container( width: 800,
+        height: screen.height/2.5,
+          child: Card(
+              margin: EdgeInsets.all(10),
+          color: Color.fromARGB(random.nextInt(256), random.nextInt(256),
+                    random.nextInt(256), random.nextInt(256)),
+         shadowColor: Colors.blueGrey,
+          elevation: 30,
+          child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(height: 40,width: 40,
+                  child: Image.asset(url)),
+              ) ,
+                Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(nameplay,style: TextStyle(fontWeight: FontWeight.bold
+              ,fontSize: 20),),
+            ),
+            ],),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(height: 40,width: 40,
-                child: Image.asset(url)),
-            ) ,
-              Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(nameplay,style: TextStyle(fontWeight: FontWeight.bold
-            ,fontSize: 20),),
-          ),
-          ],),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Benfit From Used This Test :',style:
-             TextStyle(color: Color.fromARGB(255, 230, 219, 219),
-              fontSize: 18,fontWeight: FontWeight.bold),),
-          ),
-          Flexible(
-               child: new Text(discribtion,style: TextStyle(fontSize: 18))),
+              child: Text('Benfit From Used This Test :',style:
+               TextStyle(color: Color.fromARGB(255, 230, 219, 219),
+                fontSize: 18,fontWeight: FontWeight.bold),),
+            ),
+            Flexible(
+                 child: new Text(discribtion,style: TextStyle(fontSize: 18))),
+                    Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Number Of Level is : 3',style:
+               TextStyle(color: Color.fromARGB(255, 230, 219, 219),
+                fontSize: 18,fontWeight: FontWeight.bold),),
+            ),
+            Row(
+              children: [
                   Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Number Of Level is : 3',style:
-             TextStyle(color: Color.fromARGB(255, 230, 219, 219),
-              fontSize: 18,fontWeight: FontWeight.bold),),
+              padding: const EdgeInsets.all(8.0),
+              child: Text('mixmium : 300',style: TextStyle(fontSize: 16),),
+            ),
+                  Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('minumm is : 0',style: TextStyle(fontSize: 16),),
+            ),
+              ],
+            ),
+        
+          ])
+            
           ),
-          Row(
-            children: [
-                Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('mixmium : 300',style: TextStyle(fontSize: 16),),
-          ),
-                Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('minumm is : 0',style: TextStyle(fontSize: 16),),
-          ),
-            ],
-          ),
-      
-        ])
-          
         ),
+        onTap: () {
+          Get.to(n);
+        },
       ),
-      onTap: () {
-        Get.to(n);
-      },
     );
   }
 }
