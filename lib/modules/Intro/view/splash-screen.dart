@@ -39,7 +39,7 @@ class SplashScreen extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.w700,
-                              color: Color.fromARGB(255, 107, 176, 181)),
+                              color: Colors.blueGrey),
                         ),
                         Text(
                           'City',

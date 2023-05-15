@@ -1,9 +1,8 @@
-// import 'package:graduationproject/app/model/user.dart';
+import 'package:graduationproject/app/model/user.dart';
 
-// abstract class IPasswordRepository {
-//   Future<List<User>> getdata();
-//     Future<bool> resetPassuser(int idInuser, String newPassword);
-//       Future<bool> getEmail(String email);
+abstract class IPasswordRepository {
+    Future<bool> resetPassuser(String email, String newPassword);
+   
 
 
-// }
+}

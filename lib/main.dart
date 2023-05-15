@@ -22,6 +22,7 @@ import 'package:graduationproject/modules/signup/view/signup1.dart';
 import 'package:graduationproject/modules/word_game/view/form_word2.dart';
 
 import 'modules/comment/view/comment.dart';
+import 'modules/password/view/password.dart';
 import 'routes/app_pages.dart';
 
 void main() {

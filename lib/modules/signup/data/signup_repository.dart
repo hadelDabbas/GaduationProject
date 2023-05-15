@@ -10,7 +10,7 @@ import 'adapter/signup_adapter.dart';
 
 
 
-class UserRepository extends IUserRepository {
+class SingUpRepository extends ISingUpRepository {
   final _dio = Get.find<Dio>();
   @override
   Future<bool> regierterPerson(User object) async {

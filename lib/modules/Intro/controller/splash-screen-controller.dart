@@ -11,7 +11,7 @@ class SplashScreenController extends GetxController {
   Future StartAnimation() async {
     await Future.delayed(const Duration(seconds: 2));
     animate.value = true;
-    await Future.delayed(const Duration(seconds: 6));
+    await Future.delayed(const Duration(seconds: 4));
     Get.to(IntroPageView ());
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
 import 'package:graduationproject/modules/signup/view/signup1.dart';
 
 import '../../../api/storage/storge_service.dart';
 import '../../genereted/sheard/auth_service.dart';
+import '../../password/controller/password_controller.dart';
 import '../data/signin_repository.dart';
 
  class SignIncontroller extends GetxController{
@@ -22,6 +24,7 @@ var passtoggle = true.obs;
      if (data!=null){
     //  logIn();
     print('Errortrrrrrr');
+    Get.to(passwordController(), arguments: [email.value]);
       Get.to(HomePage());
      }else{
       Get.to(signupage());

@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/modules/password/controller/password_controller.dart';
 import 'package:graduationproject/modules/signin.dart/view/signin.dart';
+
+import '../../signin.dart/controller/signin_controller.dart';
+import '../controller/password_controller.dart';
+
 //import 'package:getwidget/getwidget.dart';
 
-class ForgetViewPage extends GetResponsiveView< passwordController>{
-  passwordController controller=Get.put( passwordController());
+class ForgetViewPage extends GetResponsiveView<passwordController>{
+  passwordController controller=Get.put(passwordController());
     final _formfield = GlobalKey<FormState>();
     final passcontroller = TextEditingController();
   final emailcontroller = TextEditingController();
@@ -31,8 +34,8 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                       ),
           SizedBox(height: 30,),
          Center(child: Text('Forget Password',style: TextStyle(
-          color:Colors.blue,
-          fontWeight: FontWeight.bold,fontSize: 35),),),
+          color:Colors.blueGrey,
+          fontWeight: FontWeight.bold,fontSize: 35,fontFamily: "Pacifico"),),),
          SizedBox(height: 10,),
          Padding(
            padding: const EdgeInsets.all(8.0),
@@ -47,7 +50,7 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                     controller:passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 246, 123, 127),),
                         suffixIcon: InkWell(
                           onTap: () {
                          
@@ -60,7 +63,7 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.blue),
+                              const BorderSide(width: 3, color: Colors.blueGrey),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -74,6 +77,10 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                       } else if (passcontroller.text.length < 6) {
                         return "Password Length Should Be More Than 6 Charachters";
                       }
+                    
+                    },
+                    onChanged: (value){
+              controller.newPassword.value=value;
                     },
                   ),
                 ),
@@ -86,7 +93,7 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                     controller:Confirmpasscontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 246, 123, 127),),
                         suffixIcon: InkWell(
                           onTap: () {
                          
@@ -99,7 +106,7 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                         labelText: 'Confirm Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.blue),
+                              const BorderSide(width: 3, color: Colors.blueGrey),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -114,6 +121,9 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
                         return "Password Length Should Be More Than 6 Charachters";
                       }
                     },
+                    onChanged: (value){
+                      controller.confirmpassword.value=value;
+                    },
                   ),
                 ),
                ),),
@@ -124,9 +134,11 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
              if(Confirmpasscontroller.text==passcontroller.text){
                 if (_formfield.currentState!.validate()) {
                     print("Data Added Successfully");
-                  Confirmpasscontroller.clear();
-                    passcontroller.clear();
-                    Get.to(SignInViewPage());}
+                    controller.Confirmpass();
+                  // Confirmpasscontroller.clear();
+                  //   passcontroller.clear();
+                  //   Get.to(SignInViewPage());
+                    }
              }else
                   diolg('Confirm from fields');
                       
@@ -154,7 +166,7 @@ class ForgetViewPage extends GetResponsiveView< passwordController>{
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 240, 230, 230),
-          border: Border.all(color: Colors.blue, width: 1),
+          border: Border.all(color: Colors.blueGrey, width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         width: 200,

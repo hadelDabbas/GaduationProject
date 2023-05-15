@@ -2,38 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
-
+import 'package:intl/intl.dart';
 
 import '../controller/signup.dart';
 
-class signupage  extends GetResponsiveView<SignUpController>{
-SignUpController controller=Get.put(SignUpController());
-   final _formfield = GlobalKey<FormState>();
+class signupage extends GetResponsiveView<SignUpController> {
+  SignUpController controller = Get.put(SignUpController());
+  final _formfield = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passcontroller = TextEditingController();
- 
-  
-   @override
+
+  @override
   Widget build(BuildContext context) {
- 
- return Scaffold(
+    return Scaffold(
         body: SingleChildScrollView(
-          
       child: Form(
         key: _formfield,
         child: Column(children: [
-           InkWell(
-                      onTap: () => Get.back(),
-                      child: Align(alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back_ios,
-                                       size: 20, 
-                                     color: Colors.grey
-                                      ),
-                        ),
-                      ),
-                    ),
+          InkWell(
+            onTap: () => Get.back(),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+              ),
+            ),
+          ),
           SizedBox(
             width: 10,
             height: 25,
@@ -45,7 +40,7 @@ SignUpController controller=Get.put(SignUpController());
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Colors.blue),
+                  color: Colors.blueGrey,fontFamily: "Pacifico"),
             ),
           ),
           SizedBox(
@@ -65,12 +60,11 @@ SignUpController controller=Get.put(SignUpController());
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline),
+                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter YourName',
-                    
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -78,11 +72,12 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                         controller.user.value.Name = value;
-                    },
+                onChanged: (value) {
+                  controller.user.value.Name = value;
+                },
                 validator: (value) {
-                  if (value!.isEmpty||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                     return "Enter Correct Name";
                   } else {
                     return null;
@@ -97,11 +92,11 @@ SignUpController controller=Get.put(SignUpController());
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline),
+                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter UserName',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -109,11 +104,12 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                      controller.user.value.UserName = value;
-                    },
-                       validator: (value) {
-                  if (value!.isEmpty ||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                onChanged: (value) {
+                  controller.user.value.UserName = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                     return "Enter Correct UserName";
                   } else {
                     return null;
@@ -122,43 +118,41 @@ SignUpController controller=Get.put(SignUpController());
               ),
             ),
           ),
-        //  Column(children: [
-        //   Obx(() => Text("${controller.selectedTime.value.hour}:${controller.selectedTime.value.}"))
-        //  ],),
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Container(
-          //     width: 450,
-          //     child: TextFormField(
-          //       decoration: InputDecoration(
-          //           prefixIcon: Icon(Icons.numbers),
-          //           labelText: 'Enter Your Age',
-          //           enabledBorder: OutlineInputBorder(
-          //             borderSide:
-          //                 const BorderSide(width: 3, color: Colors.blue),borderRadius: BorderRadius.circular(15),
-          //           ),
-          //           focusedBorder: OutlineInputBorder(
-          //             borderSide:
-          //                 const BorderSide(width: 3, color: Colors.grey),
-          //             borderRadius: BorderRadius.circular(15),
-          //           )),
-          //           onChanged: (value) {
-                    
-
-          //             controller.user.value.Age =  int.parse(value) as DateTime?;
-          //           },
-          //              validator: (value) {
-          //         if (value!.isEmpty 
-          //            || !RegExp(r'^[1-9]{1}+$').hasMatch(value)) {
-          //           return "Enter Correct Age";
-          //         } else {
-          //           return null;
-          //         }
-          //       },
-
-          //     ),
-          //   ),
-          // ),
+          Container(
+            width: 450,
+            height: 55,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.blueGrey,
+                  width: 2.6,
+                ),
+                borderRadius: BorderRadius.circular(18)),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 3,
+                ),
+                InkWell(
+                    onTap: () {
+                      controller.chooseDate();
+                
+                    },
+                    child: Icon(
+                      Icons.date_range,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    )),
+                SizedBox(
+                  width: 2,
+                ),
+                Obx(() => Text(
+                      DateFormat("dd.MM.yyyy")
+                          .format(controller.selectedDate.value)
+                          .toString(),
+                      style: TextStyle(fontSize: 18,color: Colors.black54),
+                    )),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -166,11 +160,11 @@ SignUpController controller=Get.put(SignUpController());
               child: TextFormField(
                 controller: emailcontroller,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: Icon(Icons.email,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter Email',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -178,9 +172,9 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                      controller.user.value.Email = value;
-                    },
+                onChanged: (value) {
+                  controller.user.value.Email = value;
+                },
                 validator: (value) {
                   bool emailvalue = RegExp(
                           r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -194,28 +188,29 @@ SignUpController controller=Get.put(SignUpController());
               ),
             ),
           ),
-        Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 450,
-                  child: Obx(() => TextFormField(
-                    controller:passcontroller,
+          Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 450,
+                child: Obx(
+                  () => TextFormField(
+                    controller: passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 246, 123, 127),),
                         suffixIcon: InkWell(
                           onTap: () {
-                         
-                         controller.passtoggle .value=! controller.passtoggle.value;
-                            
+                            controller.passtoggle.value =
+                                !controller.passtoggle.value;
                           },
-                          child:  Icon(
-                        controller.passtoggle .value   ? Icons.visibility : Icons.visibility_off),
-                            ),
+                          child: Icon(controller.passtoggle.value
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.blue),
+                              const BorderSide(width: 3, color: Colors.blueGrey),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -223,9 +218,9 @@ SignUpController controller=Get.put(SignUpController());
                               const BorderSide(width: 3, color: Colors.grey),
                           borderRadius: BorderRadius.circular(15),
                         )),
-                        onChanged: (value) {
-                          controller.user.value.Password = value;
-                        },
+                    onChanged: (value) {
+                      controller.user.value.Password = value;
+                    },
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Enter Password";
@@ -235,18 +230,18 @@ SignUpController controller=Get.put(SignUpController());
                     },
                   ),
                 ),
-      ) ),
+              )),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.cast_for_education),
+                    prefixIcon: Icon(Icons.cast_for_education,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter Education',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -254,10 +249,10 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                      controller.user.value.Study = value;
-                    },
-                       validator: (value) {
+                onChanged: (value) {
+                  controller.user.value.Study = value;
+                },
+                validator: (value) {
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                     return "Enter Correct Education";
@@ -274,11 +269,11 @@ SignUpController controller=Get.put(SignUpController());
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.location_city),
+                    prefixIcon: Icon(Icons.location_city,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter Adress',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -286,12 +281,12 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                      controller.user.value.Address = value;
-                    },
-                       validator: (value) {
-                  if (value!.isEmpty 
-                   ||   !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                onChanged: (value) {
+                  controller.user.value.Address = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                     return "Enter Correct Adress";
                   } else {
                     return null;
@@ -306,11 +301,11 @@ SignUpController controller=Get.put(SignUpController());
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.money),
+                    prefixIcon: Icon(Icons.money,color: Color.fromARGB(255, 246, 123, 127),),
                     labelText: 'Enter PayBal',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blue),
+                          const BorderSide(width: 3, color: Colors.blueGrey),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -318,12 +313,13 @@ SignUpController controller=Get.put(SignUpController());
                           const BorderSide(width: 3, color: Colors.grey),
                       borderRadius: BorderRadius.circular(15),
                     )),
-                    onChanged: (value) {
-                      controller.user.value.Paypal = value;
-                    },
-                       validator: (value) {
-                  if (value!.isEmpty 
-                 ||     !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]").hasMatch(value)) {
+                onChanged: (value) {
+                  controller.user.value.Paypal = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty ||
+                      !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                          .hasMatch(value)) {
                     return "Enter Correct Paybal";
                   } else {
                     return null;
@@ -338,18 +334,18 @@ SignUpController controller=Get.put(SignUpController());
               onPressed: () {
                 if (_formfield.currentState!.validate()) {
                   print("Data Added Successfully");
+                  controller.user.value.Age=controller.selectedDate.value;
                   controller.signUpUser();
-                  emailcontroller.clear();
-                  passcontroller.clear();
-                  Get.to(HomePage());
+                  // emailcontroller.clear();
+                  // passcontroller.clear();
+                  // Get.to(HomePage());
                 }
               },
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
-                      ,
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 50)),
               child: const Text(
                 'Confirm',
                 style: TextStyle(fontSize: 20, color: Colors.white),
@@ -359,6 +355,5 @@ SignUpController controller=Get.put(SignUpController());
         ]),
       ),
     ));
-
   }
 }

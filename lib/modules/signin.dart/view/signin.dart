@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
+import '../../password/view/password.dart';
 import '../../signup/view/signup1.dart';
 import '../controller/signin_controller.dart';
 import 'forgetpassword.dart';
@@ -38,7 +39,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                       ),
           SizedBox(height: 15,),
            Center(child: Text('Welcome',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40,
-           color: Colors.blue),),),
+           color: Colors.blueGrey,fontFamily: "Pacifico"),),),
            SizedBox(height: 10,),
            Padding(
              padding: const EdgeInsets.all(8.0),
@@ -52,11 +53,11 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                 child: TextFormField(
                   controller: emailcontroller,
                   decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email,color:Color.fromARGB(255, 246, 123, 127),),
                       labelText: 'Enter Email',
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 3, color: Colors.blue),
+                            const BorderSide(width: 3, color: Colors.blueGrey),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -88,7 +89,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                     controller:passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 246, 123, 127),),
                         suffixIcon: InkWell(
                           onTap: () {
                          
@@ -101,7 +102,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.blue),
+                              const BorderSide(width: 3, color: Colors.blueGrey),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(

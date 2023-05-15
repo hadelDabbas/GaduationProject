@@ -24,7 +24,7 @@ class IntroPageView extends GetResponsiveView< IntroController> {
          child: Center(
            child: Text(' Welcome ',
                         style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold,
-                         color:Color.fromARGB(255, 107, 176, 181),fontFamily: "Pacifico")),
+                         color:Colors.blueGrey,fontFamily: "Pacifico")),
          ),
        ),
        Padding(
