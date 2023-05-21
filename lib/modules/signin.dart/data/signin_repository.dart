@@ -12,10 +12,10 @@ class SiginRepository implements ISigninRepository {
     var result =
         await _dio.get('https://localhost:7252/api/User/SignIn'
         ,  queryParameters: {"email": email, "password": Password});
-        if(result==200){
+        if(result.statusCode==200){
            print(result);
      var data =
-              User.fromJson(result.data['data'] as Map<String, dynamic>);
+              User.fromJson(result.data as Map<String, dynamic>);
     return data;
         }
     return null;

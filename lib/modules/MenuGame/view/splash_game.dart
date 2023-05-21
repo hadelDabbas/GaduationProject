@@ -68,25 +68,6 @@ class SplashGame extends GetResponsiveView<MenuGameController>{
          ),
        ),
     SizedBox(height: 120,),
-        // Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Align(
-        //     alignment: Alignment.bottomRight,
-          
-        //       child: Material(
-        //         child: IconButton(
-        //           style: IconButton.styleFrom(
-        //             padding: EdgeInsets.symmetric(vertical: 29, horizontal: 30)
-        //           ),
-        //           color:Color.fromARGB(255, 248, 150, 153) ,
-        //           onPressed: (){
-        //           Get.to(MenuGamePageView ());
-        //          }, icon: Icon(Icons.arrow_circle_right,size: 40,)),
-        //       ),
-        //     ),
-        // ),
-       
-
   Center(
     child: GFButton(
       onPressed: (){

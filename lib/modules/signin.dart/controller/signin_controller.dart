@@ -19,14 +19,18 @@ var passtoggle = true.obs;
   // final siginrepos=SiginRepository();
     var email=''.obs;
     var password=''.obs;
-    Future SignIn()async{
-     var data=userRepo.SignInUser(email.value, password.value);
+    Future <void> SignIn() async {
+     var data=   await userRepo.SignInUser(email.value, password.value);
+     print('password');
      if (data!=null){
-    //  logIn();
+    
     print('Errortrrrrrr');
-    Get.to(passwordController(), arguments: [email.value]);
+  
       Get.to(HomePage());
+      // Get.to(passwordCon
+      //troller(), arguments: [email.value]);
      }else{
+      // Get.to(passwordController(), arguments: [email.value]);
       Get.to(signupage());
      print('Error');
      }

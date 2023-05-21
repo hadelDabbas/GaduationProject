@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     
      defaultTransition: Transition.cupertino,
      getPages:[
-      GetPage(name: '/splash', page:() =>SplashGame()),
+      GetPage(name: '/splash', page:() => SignInViewPage() ),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]

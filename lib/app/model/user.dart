@@ -32,7 +32,7 @@ class  User{
    Id = json['id'];
    Study=json['study'];
    Name = json['name'];
-   Age=json['age'];
+   //Age=json['age'];
  Phone = json['phone'];
    Email = json['email'];
   Address = json['address'];
