@@ -37,8 +37,8 @@ class  User{
    Email = json['email'];
   Address = json['address'];
    Password = json['password'];
-   Paypal = json[' Paypal'];
-   UserName= json['UserName'];
+   Paypal = json[' paypal'];
+   UserName= json['userName'];
    Image = json['image'] == null
         ? null
         : Uint8List.fromList(List<int>.from(json['image']!));
@@ -49,12 +49,12 @@ class  User{
     json['study']=Study;
     json['age']=Age==null?null:Age!;
     json['name'] = Name;
-    json['phone'] = Phone==null?null:Phone;
+    json['phone'] = Phone==null?null:Phone!;
     json['email'] = Email;
     json['address'] = Address;
     json['password'] = Password;
-    json['UserName'] = UserName;
-    json['Paypal'] = Paypal;
+    json['userName'] = UserName;
+    json['paypal'] = Paypal==null?null:Paypal!;
     json['image'] = Image == null ? null : Uint8List.fromList(Image!);
     return json;
   }

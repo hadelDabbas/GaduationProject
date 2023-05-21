@@ -137,10 +137,6 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                   onPressed: () {
                      if (_formfield.currentState!.validate()) {
                         controller.SignIn();
-                  // print("Data Added Successfully");
-                  // emailcontroller.clear();
-                  // passcontroller.clear();
-                  // Get.to(HomePage());}
                      }   },
                   style: ElevatedButton.styleFrom(
                      

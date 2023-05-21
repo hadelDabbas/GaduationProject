@@ -23,8 +23,24 @@ class SignUpController extends GetxController {
     user.value.Phone="56774765476";
     var data = await userRpo.regierterPerson(user.value);
     if (data) {
+      Get.snackbar(
+             'Succeful',
+               "Welcom"+user.value.Name.toString(),
+             //  icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 209, 143, 143),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.blueGrey,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
       Get.to(HomePage());
       print('trueeee');
+
     } else {
       print('false');
     }

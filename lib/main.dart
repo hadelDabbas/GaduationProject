@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       Get.put(Dio());
-         Get.put(StorageService());
+    var storgae=     Get.put(StorageService());
+    storgae.init();
            Get.put(AuthService());
          
     return GetMaterialApp.router(
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
     
      defaultTransition: Transition.cupertino,
      getPages:[
-      GetPage(name: '/splash', page:() =>signupage() ),
+      GetPage(name: '/splash', page:() =>SignInViewPage() ),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]

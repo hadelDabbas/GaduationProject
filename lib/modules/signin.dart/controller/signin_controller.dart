@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
@@ -12,39 +13,37 @@ import '../../sheard/auth_service.dart';
 import '../data/signin_repository.dart';
 const  String KeyData="AuthData";
  class SignIncontroller extends GetxController{
-//    final repo = PasswordRepository();
 var passtoggle = true.obs;
   RxBool hidePassword = true.obs;
   final userRepo= SiginRepository();
-  // final authService = Get.find<AuthService>();
  final stroge = Get.find<StorageService>();
-  // final siginrepos=SiginRepository();
     var email=''.obs;
     var password=''.obs;
     Future <void> SignIn() async {
      var data=   await userRepo.SignInUser(email.value, password.value);
           if (data!=null){
-     stroge.saveData(KeyData, jsonEncode(data.toJson()));
-  
+     stroge.saveData(KeyData, (data.toJson()).toString());
+       Get.snackbar(
+             'Welcom',
+               "Hope To Enjoi with us",
+             //  icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 209, 143, 143),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.white,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
       Get.to(HomePage());
-      // Get.to(passwordCon
-      //troller(), arguments: [email.value]);
      }else{
-      // Get.to(passwordController(), arguments: [email.value]);
+      
       Get.to(signupage());
      print('Error');
      }
     }
-//  Future<void> logIn() async {
-  
-//     if (!stroge.containsKey('type')) {
-//       return;
-//     }
-//     if (authService.getTypeEnum() == Auth.comapny) {
-//       Get.to(signupage());
-//     } else {
-//       Get.to(HomePage());
-//     }
-//  }
 
  }
