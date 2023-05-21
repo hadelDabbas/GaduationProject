@@ -5,7 +5,6 @@ import 'package:graduationproject/modules/menu/view/HomePage.dart';
 import '../../password/view/password.dart';
 import '../../signup/view/signup1.dart';
 import '../controller/signin_controller.dart';
-import 'forgetpassword.dart';
 //import 'package:getwidget/getwidget.dart';
 
 class SignInViewPage extends GetResponsiveView<SignIncontroller>{

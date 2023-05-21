@@ -3,6 +3,8 @@ import 'dart:html';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/animation/gf_animation.dart';
+import 'package:getwidget/types/gf_animation_type.dart';
 import 'package:graduationproject/modules/MenuGame/Menu_game.dart';
 import 'package:graduationproject/modules/foucs/view/foucs1.dart';
 import 'package:graduationproject/modules/icons/Icon.dart';
@@ -10,18 +12,20 @@ import 'package:graduationproject/modules/letter_game/view/letter1.dart';
 import 'package:graduationproject/modules/menu/controller/menu.dart';
 
 import '../../comment/view/comment.dart';
+import 'content_show.dart';
 
 class postPage extends GetResponsiveView <HomeController>{
-
+static const listcontent = ['History', 'Global', 'Math', 'Sport'];
 
 
   @override
   Widget build(BuildContext context) {
     
     return Container( height: 600,
-    color: Color.fromARGB(255, 236, 234, 234),
+    color: Colors.white,
     child:SingleChildScrollView(
       child: Column(children: [
+     contentPage(),
         post(' Hamza Hamza','Forest Is The tallest in the world   8848 mater',
       'assets/images/gabal.png',"History",controller),
       post('Aya Hamm','How Number Square IN This Photo? ','assets/images/19.png','Global',controller),
@@ -113,5 +117,8 @@ class postPage extends GetResponsiveView <HomeController>{
     ),
   );
  }
+ 
+
+
     }
  

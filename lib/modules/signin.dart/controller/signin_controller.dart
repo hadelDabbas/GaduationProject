@@ -28,7 +28,7 @@ var passtoggle = true.obs;
                "Hope To Enjoi with us",
              //  icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Color.fromARGB(255, 209, 143, 143),
+               backgroundColor: Color.fromARGB(255, 246, 123, 127),
                borderRadius: 20,
                margin: EdgeInsets.all(15),
                colorText: Colors.white,
@@ -40,8 +40,22 @@ var passtoggle = true.obs;
                );
       Get.to(HomePage());
      }else{
-      
-      Get.to(signupage());
+          Get.snackbar(
+             'Error',
+               "sorry sure from Email or Password",
+             //  icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 246, 123, 127),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.white,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
+     // Get.to(signupage());
      print('Error');
      }
     }
