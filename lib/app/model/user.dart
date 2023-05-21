@@ -4,7 +4,7 @@ import 'dart:typed_data';
 class  User{
   int? Id;
   String? Name;
-  DateTime? Age;
+  String? Age;
   String ?UserName;
   String? Email;
   String? Address;
@@ -32,7 +32,7 @@ class  User{
    Id = json['id'];
    Study=json['study'];
    Name = json['name'];
-   //Age=json['age'];
+   Age=json['age'];
  Phone = json['phone'];
    Email = json['email'];
   Address = json['address'];
@@ -46,11 +46,10 @@ class  User{
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['id'] =Id;
     json['study']=Study;
-    json['age']=Age;
+    json['age']=Age==null?null:Age!;
     json['name'] = Name;
-    json['phone'] = Phone;
+    json['phone'] = Phone==null?null:Phone;
     json['email'] = Email;
     json['address'] = Address;
     json['password'] = Password;

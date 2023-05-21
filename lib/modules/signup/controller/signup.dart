@@ -20,8 +20,9 @@ class SignUpController extends GetxController {
     super.onInit();
   }
   Future<void> signUpUser() async {
+    user.value.Phone="56774765476";
     var data = await userRpo.regierterPerson(user.value);
-    if (data!=null) {
+    if (data) {
       Get.to(HomePage());
       print('trueeee');
     } else {

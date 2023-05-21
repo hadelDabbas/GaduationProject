@@ -334,7 +334,7 @@ class signupage extends GetResponsiveView<SignUpController> {
               onPressed: () {
                 if (_formfield.currentState!.validate()) {
                   print("Data Added Successfully");
-                  controller.user.value.Age=controller.selectedDate.value;
+                  controller.user.value.Age=controller.selectedDate.value.toString();
                   controller.signUpUser();
                   // emailcontroller.clear();
                   // passcontroller.clear();

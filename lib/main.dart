@@ -2,6 +2,7 @@ import 'dart:html';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/api/storage/storge_service.dart';
 import 'package:graduationproject/modules/Intro/view/intro.dart';
 import 'package:graduationproject/modules/MenuGame/Menu_game.dart';
 import 'package:graduationproject/modules/groups/view/add_group.dart';
@@ -24,6 +25,7 @@ import 'package:graduationproject/modules/word_game/view/form_word2.dart';
 import 'modules/MenuGame/view/splash_game.dart';
 import 'modules/comment/view/comment.dart';
 import 'modules/password/view/password.dart';
+import 'modules/sheard/auth_service.dart';
 import 'routes/app_pages.dart';
 
 void main() {
@@ -36,6 +38,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       Get.put(Dio());
+         Get.put(StorageService());
+           Get.put(AuthService());
+         
     return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       
@@ -46,7 +51,7 @@ class MyApp extends StatelessWidget {
     
      defaultTransition: Transition.cupertino,
      getPages:[
-      GetPage(name: '/splash', page:() => SignInViewPage() ),
+      GetPage(name: '/splash', page:() =>signupage() ),
      GetPage(name: '/sigin', page:() => SignInViewPage())
       
      ]
