@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 
+import '../../../Utile/utilExpation.dart';
 import 'adapter/sigin_adapter.dart';
 
 class SiginRepository implements ISigninRepository {
@@ -12,12 +13,15 @@ class SiginRepository implements ISigninRepository {
     var result =
         await _dio.get('https://localhost:7252/api/User/SignIn'
         ,  queryParameters: {"email": email, "password": Password});
-        if(result.statusCode==200){
-           print(result);
-     var data =
+              if (ExpastionStatus(result.statusCode!)) {
+         var data =
               User.fromJson(result.data as Map<String, dynamic>);
     return data;
-        }
-    return null;
-  }
+    }
+    else{
+      return null;
+    }
+    } 
+   
+  
 }

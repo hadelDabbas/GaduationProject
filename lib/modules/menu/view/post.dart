@@ -38,7 +38,9 @@ static const listcontent = ['History', 'Global', 'Math', 'Sport'];
     padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
     child: Center(
       child: Container(width: 500 , height: 280,
+      
         decoration: BoxDecoration(
+          
             border: Border.all(
               color: Colors.grey,
         width: 1.3,

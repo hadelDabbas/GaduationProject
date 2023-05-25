@@ -15,6 +15,23 @@ class SignUpController extends GetxController {
   final userRpo = SingUpRepository();
   final user = User().obs;
   var selectedDate = DateTime.now().obs;
+   final ImagePicker imagepicker=ImagePicker();
+   PickedFile ?imagefile;
+   
+   Future takePhoto ( ImageSource source) async{
+    final PiickedFile=await imagepicker.getImage(source: source);
+   imagefile=PiickedFile;
+   }
+
+    Future pickImageFun() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      stringPickImage.value = Utility.base64String(await image.readAsBytes());
+    } catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
   @override
   void onInit() {
     super.onInit();

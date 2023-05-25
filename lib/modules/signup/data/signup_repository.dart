@@ -22,4 +22,5 @@ class SingUpRepository extends ISingUpRepository {
     } else
       print(data.statusMessage);
     return false;
-  }}
+  }
+  }

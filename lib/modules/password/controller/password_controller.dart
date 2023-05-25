@@ -13,9 +13,24 @@ class passwordController extends GetxController{
   final pass=PasswordRepository();
   var email=''.obs;
    Future Confirmpass()async{
-     var data=pass.resetPassuser(email.value, newPassword.value);
-     if(data==true){
+     var data=  await pass.resetPassuser(email.value, newPassword.value);
+     if(data){
       print(true);
+            Get.snackbar(
+              'Good',
+               "Add New Password Succfuly",
+               icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 246, 123, 127),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.white,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
       Get.to(HomePage());
      }else{
       Get.snackbar(
@@ -23,7 +38,7 @@ class passwordController extends GetxController{
                "Sure From Email Or Passwoprd",
                icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Colors.green,
+               backgroundColor:Color.fromARGB(255, 246, 123, 127),
                borderRadius: 20,
                margin: EdgeInsets.all(15),
                colorText: Colors.white,

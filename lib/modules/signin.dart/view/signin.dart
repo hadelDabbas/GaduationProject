@@ -49,34 +49,36 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: 450,
-                child: TextFormField(
-                  controller: emailcontroller,
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email,color:Color.fromARGB(255, 246, 123, 127),),
-                      labelText: 'Enter Email',
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.blueGrey),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
-                        borderRadius: BorderRadius.circular(15),
-                      )),
-                  validator: (value) {
-                    bool emailvalue = RegExp(
-                            r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(value!);
-                    if (value.isEmpty) {
-                      return " Enter Email";
-                    } else if (!emailvalue) {
-                      return " Enter Correct Email";
-                    }
-                  },
-                  onChanged: (Value){
-                    controller.email.value=Value;
-                  },
+                child: Material(
+                  child: TextFormField(
+                    controller: emailcontroller,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.email,color:Color.fromARGB(255, 246, 123, 127),),
+                        labelText: 'Enter Email',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(width: 3, color: Colors.blueGrey),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(width: 3, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                    validator: (value) {
+                      bool emailvalue = RegExp(
+                              r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value!);
+                      if (value.isEmpty) {
+                        return " Enter Email";
+                      } else if (!emailvalue) {
+                        return " Enter Correct Email";
+                      }
+                    },
+                    onChanged: (Value){
+                      controller.email.value=Value;
+                    },
+                  ),
                 ),
               ),
             ),

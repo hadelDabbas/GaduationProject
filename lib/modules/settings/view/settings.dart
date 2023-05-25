@@ -88,29 +88,30 @@ class SettingPageView extends GetResponsiveView {
                     Material(
                     child: InkWell(
                       onTap: () {
-                          Get.dialog(
-                      Align(alignment: Alignment.center,
-                      child: Container(
-                        width: 320,height: 310,  decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                     border: Border.all(color: Colors.blueAccent)
-                    ),
-                        child:
-                      SingleChildScrollView(
-                        child: Column(children: [
-                           SizedBox(height: 10,),
-                          Align(alignment: Alignment.topLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("All Content : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
-                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                            )),
-                           Container(child: Contentpage(),)
-                        ],),
-                      )
-                      ,),)
-                    );
+                        Get.to(Contentpage());
+                    //       Get.dialog(
+                    //   Align(alignment: Alignment.center,
+                    //   child: Container(
+                    //     width: 320,height: 310,  decoration: BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.circular(10),
+                    //  border: Border.all(color: Colors.blueAccent)
+                    // ),
+                    //     child:
+                    //   SingleChildScrollView(
+                    //     child: Column(children: [
+                    //        SizedBox(height: 10,),
+                    //       Align(alignment: Alignment.topLeft,
+                    //         child: Padding(
+                    //           padding: const EdgeInsets.all(8.0),
+                    //           child: Text("All Content : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
+                    //           fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
+                    //         )),
+                    //        Container(child: Contentpage(),)
+                    //     ],),
+                    //   )
+                    //   ,),)
+                    // );
                       },
                       child: CardSetting("Content", Icons.edit_calendar),
                     ),
