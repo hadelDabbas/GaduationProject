@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +36,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                     child: Text(
                       "  All Content  ",
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
                           color: Colors.blueGrey,
@@ -47,7 +49,9 @@ class Contentpage extends GetResponsiveView<ContentController> {
             height: 10,
           ),
           Column(
-            children: [
+            children:
+           // controller.contents.map((element) => CardContent(element.content.toString(), context)).toList()
+             [
               CardContent('History', context),
               CardContent('Comidi', context),
               CardContent('Culthre', context),
@@ -102,6 +106,29 @@ class Contentpage extends GetResponsiveView<ContentController> {
                         color: Color.fromARGB(255, 246, 123, 127),
                         fontWeight: FontWeight.bold),
                   ),
+                  onChanged: (value) {
+                    if(!controller.contents.contains(value)){
+                      controller.addcontent.value.typeName=value;
+                   
+                    }
+                    else{
+                              Get.snackbar(
+             ' Error',
+               " Add New content ",
+             //  icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 209, 143, 143),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.white,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
+                    }
+                  },
                 ),
               ),
             ),
@@ -115,6 +142,26 @@ class Contentpage extends GetResponsiveView<ContentController> {
                 child: ElevatedButton(
                   onPressed: () {
                     controller.show.value = true;
+                      if(!controller.contents.contains(controller.addcontent.value)){
+                           controller. addcontentelement(controller.addcontent.value);
+                    }
+                    else{
+                              Get.snackbar(
+             ' Error',
+               " Add New content ",
+             //  icon: Icon(Icons.person, color: Colors.white),
+               snackPosition: SnackPosition.BOTTOM,
+               backgroundColor: Color.fromARGB(255, 209, 143, 143),
+               borderRadius: 20,
+               margin: EdgeInsets.all(15),
+               colorText: Colors.white,
+               duration: Duration(seconds: 4),
+               isDismissible: true,
+              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+               forwardAnimationCurve: Curves.easeOutBack,
+
+               );
+                    }
                   },
                   child: Text(
                     'Save',
@@ -135,7 +182,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                       
                       )));
                 },
-                text: "Add Post",
+                text: "Add Content",
                 textStyle: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -216,7 +263,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                 child: Text(
                   name,
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.bold,
                       color: Colors.black54),
@@ -229,10 +276,12 @@ class Contentpage extends GetResponsiveView<ContentController> {
                   alignment: Alignment.bottomRight,
                   child: Material(
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                 //        controller.delcontentelement(content)   ;
+                          },
                           icon: Icon(
                             Icons.delete,
-                            color: Colors.red,
+                            color: Color.fromARGB(255, 245, 74, 62),
                           ))))
             ],
           ),

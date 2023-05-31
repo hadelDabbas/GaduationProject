@@ -38,17 +38,18 @@ class SignUpController extends GetxController {
   }
   Future<void> signUpUser() async {
     user.value.Phone="56774765476";
+     user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
     var data = await userRpo.regierterPerson(user.value);
     if (data) {
       Get.snackbar(
              'Succeful',
-               "Welcom"+user.value.Name.toString(),
+               "Welcom  "+user.value.Name.toString(),
              //  icon: Icon(Icons.person, color: Colors.white),
                snackPosition: SnackPosition.BOTTOM,
                backgroundColor: Color.fromARGB(255, 209, 143, 143),
                borderRadius: 20,
                margin: EdgeInsets.all(15),
-               colorText: Colors.blueGrey,
+               colorText: Colors.white,
                duration: Duration(seconds: 4),
                isDismissible: true,
               //  dismissDirection: SnackDismissDirection.HORIZONTAL,
@@ -67,7 +68,7 @@ class SignUpController extends GetxController {
                backgroundColor: Color.fromARGB(255, 209, 143, 143),
                borderRadius: 20,
                margin: EdgeInsets.all(15),
-               colorText: Colors.blueGrey,
+               colorText: Colors.white,
                duration: Duration(seconds: 4),
                isDismissible: true,
               //  dismissDirection: SnackDismissDirection.HORIZONTAL,
@@ -82,7 +83,7 @@ class SignUpController extends GetxController {
     DateTime? PickedDate = await showDatePicker(
         context: Get.context!,
         initialDate: selectedDate.value,
-        firstDate: DateTime(2005),
+        firstDate: DateTime(1950),
         lastDate: DateTime(2026),
       //  initialEntryMode: DatePickerEntryMode.input,
      //   initialDatePickerMode: DatePickerMode.year,

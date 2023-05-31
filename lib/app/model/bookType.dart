@@ -1,25 +1,22 @@
 
 import 'dart:typed_data';
 
-class  Content{
+class  BookType{
   int? Id;
-  String? typeName;
-  int?IdUser;
-Content( {
+  String?  bookType;
+BookType( {
     this.Id,
-    this.typeName,
-    this.IdUser,
+    this. bookType,
   });
 
-Content.fromJson(Map<String, dynamic> json) {
+ BookType.fromJson(Map<String, dynamic> json) {
    Id = json['id'];
-   typeName=json['typeName'];
-
+   bookType=json['bookType'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['typeName']=typeName;
+    json['bookType']=bookType;
     return json;
   }
 }

@@ -64,6 +64,7 @@ class ProfileController extends GetxController{
 
     }
     Future <void>UpduteUserInfo()async{
+    UpdateUser.value.Image = Utility.dataFromBase64String(stringPickImage.value);
       var res=await profileRepo.UpdateProfile(UpdateUser.value, iduser.value);
       if(res){
         print('update user');

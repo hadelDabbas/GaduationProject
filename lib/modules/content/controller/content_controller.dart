@@ -13,7 +13,7 @@ class ContentController extends GetxController{
   final addcontent = Content().obs;
   Future <void> getAllContent() async{
     var data = await contRepo.GetContent();
-    contents.assignAll(data);
+    contents.assignAll(data );
 
   }
    Future<void> delcontentelement(Content content) async {

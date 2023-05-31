@@ -8,6 +8,7 @@ import '../controller/signin_controller.dart';
 //import 'package:getwidget/getwidget.dart';
 
 class SignInViewPage extends GetResponsiveView<SignIncontroller>{
+      
  SignIncontroller controller=Get.put(SignIncontroller());
     final _formfield = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
@@ -138,6 +139,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                   onPressed: () {
                      if (_formfield.currentState!.validate()) {
                         controller.SignIn();
+                        
                      }   },
                   style: ElevatedButton.styleFrom(
                      

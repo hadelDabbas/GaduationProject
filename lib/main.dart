@@ -52,13 +52,7 @@ class MyApp extends StatelessWidget {
       ),
     
      defaultTransition: Transition.cupertino,
-     getPages:[
-      GetPage(name: '/splash', page:() => signupage()),
-     GetPage(name: '/sigin', page:() => SignInViewPage())
-      
-     ]
-     
-   
+     getPages:AppPages.routes,
     );
   }
 }

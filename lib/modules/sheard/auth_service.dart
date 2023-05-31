@@ -10,6 +10,7 @@ const  String KeyData="AuthData";
 class AuthService{
     final _dio = Get.find<Dio>();
   final stroge = Get.find<StorageService>();
+    bool isAuth() => stroge.containsKey(KeyData);
   User? getDataFromStorage() {
     if (stroge.containsKey(KeyData)) {
       var data = jsonDecode(stroge.getData(KeyData)!) as dynamic;

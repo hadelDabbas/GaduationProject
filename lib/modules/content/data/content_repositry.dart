@@ -14,7 +14,7 @@ class ContentRepository implements IContentRepository {
     print(result);
     var list = <Content>[];
     for (var item in result.data) {
-      list.add(Content.fromJson(item));
+      list.add( Content.fromJson(item));
     }
     return list;
   }

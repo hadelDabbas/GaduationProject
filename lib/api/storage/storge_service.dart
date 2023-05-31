@@ -1,6 +1,14 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:graduationproject/app/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
+   final _dio = Get.find<Dio>();
+static const  String KeyData="AuthData";
+
   SharedPreferences? _sharedPreference;
 
   Future<SharedPreferences?> init() async {

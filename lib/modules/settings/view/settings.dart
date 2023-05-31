@@ -5,7 +5,9 @@ import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/groups/view/add_group.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 
+import '../../AddBook/view/addbook.dart';
 import '../../Addpost/view/addpost.dart';
+import '../../give permission/view/give permission.dart';
 
 class SettingPageView extends GetResponsiveView {
   @override
@@ -88,30 +90,9 @@ class SettingPageView extends GetResponsiveView {
                     Material(
                     child: InkWell(
                       onTap: () {
-                        Get.to(Contentpage());
-                    //       Get.dialog(
-                    //   Align(alignment: Alignment.center,
-                    //   child: Container(
-                    //     width: 320,height: 310,  decoration: BoxDecoration(
-                    //       color: Colors.white,
-                    //       borderRadius: BorderRadius.circular(10),
-                    //  border: Border.all(color: Colors.blueAccent)
-                    // ),
-                    //     child:
-                    //   SingleChildScrollView(
-                    //     child: Column(children: [
-                    //        SizedBox(height: 10,),
-                    //       Align(alignment: Alignment.topLeft,
-                    //         child: Padding(
-                    //           padding: const EdgeInsets.all(8.0),
-                    //           child: Text("All Content : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
-                    //           fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                    //         )),
-                    //        Container(child: Contentpage(),)
-                    //     ],),
-                    //   )
-                    //   ,),)
-                    // );
+                      
+                    Get.to(Contentpage());
+
                       },
                       child: CardSetting("Content", Icons.edit_calendar),
                     ),
@@ -124,11 +105,82 @@ class SettingPageView extends GetResponsiveView {
                       child: CardSetting("Library", Icons.library_books),
                     ),
                   ),
+                        Material(
+                    child: InkWell(
+                      onTap: () {
+                             Get.dialog(
+                      Align(alignment: Alignment.center,
+                      child: Container(
+                        width:400,height:400 ,  decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                     border: Border.all(color: Colors.blueAccent)
+                    ),
+                        child:
+                      SingleChildScrollView(
+                        child: Column(children: [
+                           SizedBox(height: 10,),
+                          Align(alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Give permission ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
+                            )),
+                           Container(child:Givepermission() ,),
+                           
+                        ],),
+                      )
+                      ,),)
+                    );
+                      },
+                      child: CardSetting("permission", Icons.workspace_premium_sharp),
+                    ),
+                  ),
+                     Material(
+                    child: InkWell(
+                      onTap: () {
+                             Get.dialog(
+                      Align(alignment: Alignment.center,
+                      child: Container(
+                        width:450,height:500 ,  decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                     border: Border.all(color: Colors.blueAccent)
+                    ),
+                        child:
+                      SingleChildScrollView(
+                        child: Column(children: [
+                           SizedBox(height: 10,),
+                          Align(alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Add Book  ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
+                            )),
+                           Container(child:Addbookpage(),),
+                           
+                        ],),
+                      )
+                      ,),)
+                    );
+                      },
+                      child: CardSetting("Book", Icons.bookmark_add),
+                    ),
+                  ),
+                  //  userUsed ().theUser.Password!='1234567890'?Wrap(
+                  //   children: [
+                  //     CardSetting("Quiz", Icons.check_box),
+                  // CardSetting("Language", Icons.language),
+                  // CardSetting("Help", Icons.question_mark),
+                  // CardSetting("Logout", Icons.exit_to_app),
+                  //   ],
+                  //  ):Container(
+                  //   width: 200,
+                  //   height: 222,
+                  //   color: Colors.red,
+                  //  ),
                  
-                  CardSetting("Quiz", Icons.check_box),
-                  CardSetting("Language", Icons.language),
-                  CardSetting("Help", Icons.question_mark),
-                  CardSetting("Logout", Icons.exit_to_app),
+                  
                   Container(
                     width: 100,
                     height: 100,
