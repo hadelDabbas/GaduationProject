@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       
-      title: 'Flutter Demo',
+      title: 'Flutter Project',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
