@@ -6,13 +6,14 @@ import 'package:graduationproject/modules/signin.dart/view/signin.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controller/intro-controller.dart';
+import '../controller/splash-screen-controller.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
 import 'intro-page3.dart';
 
 
-class Intro2 extends GetResponsiveView< IntroController> { 
-  IntroController controller=Get.put(IntroController());
+class Intro2 extends GetResponsiveView<SplashScreenController> { 
+SplashScreenController controller=Get.put(SplashScreenController());
 //PageController controllers= PageController();
   @override
   Widget build(BuildContext Context) {

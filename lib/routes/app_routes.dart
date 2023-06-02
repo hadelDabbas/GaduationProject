@@ -9,6 +9,8 @@ abstract class Routes {
       static const  MenuGame = _Paths. MenuGame;
             static const  FlipCart = _Paths. FlipCart;
            static const signup= _Paths. signup; 
+           static const library= _Paths.library;
+                  static const profile= _Paths.profile;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
     static const   MenuGame = '/menugame';
         static const   FlipCart = '/flip';
            static const   signup = '/signup';
+             static const library = '/library';   
+              static const profile = '/profile';     
 }

@@ -1,0 +1,476 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getwidget/colors/gf_color.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../controller/library_controller.dart';
+
+class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
+  LibraryContrller controller = Get.put(LibraryContrller());
+  List<String> namelibrary = [
+    ' Al Tourath',
+    ' Al Arabi',
+    ' Al Quraa',
+    ' Al Hadara'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    " Librarays  ",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Pacifico",
+                        color: Colors.blueGrey,
+                        decoration: TextDecoration.none),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 100,
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: 90,
+                  height: 90,
+                  child: Image.asset("assets/images/doda.png"),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: 90,
+                  height: 90,
+                  child: Image.asset("assets/images/book3.png"),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 22,
+          ),
+      
+          Wrap(
+            children:
+                namelibrary.map((e) => shapelibrarycard(context, e)).toList(),
+          ),
+          ////////Add New Library
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                          alignment: Alignment.bottomRight,
+                          child:
+                   Material(
+                     child: Tooltip(
+                      message: 'Add New Library',
+                       child: GFIconButton(
+                        color:Colors.blueGrey ,
+                         onPressed: (){
+                          Get.dialog(
+                             Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                               decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color: Colors.blueAccent)),
+                            width: 400,
+                            height: 250,
+                            child: Column(children: [
+                               Text(
+                    " Add New Librarays  ",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Pacifico",
+                        color: Colors.blueGrey,
+                        decoration: TextDecoration.none),
+                  ),
+                     Material(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    width: 350,
+                                                    height: 60,
+                                                    child: TextFormField(
+                                                      decoration:
+                                                          InputDecoration(
+                                                            icon: Icon(Icons.library_books,color: Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127), ),
+                                                        labelText:
+                                                            'Add Library Name',
+                                                        labelStyle: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      onChanged: (value) {},
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Material(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    width: 350,
+                                                    height: 60,
+                                                    child: TextFormField(
+                                                      decoration:
+                                                          InputDecoration(
+                                                              icon: Icon(Icons.location_on,color: Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127), ),
+                                                        labelText:
+                                                            'Add Library Postion',
+                                                        labelStyle: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      onChanged: (value) {},
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                      Center(
+                                        child: GFButton(
+                                          onPressed: (){},
+                                          text: "Added",
+                                          color: Colors.blueGrey,
+                                          shape: GFButtonShape.pills,
+                                        ),
+                                      ),          
+
+                            ])
+                            ,
+                          )
+                          ));
+                         },
+                         icon: Icon(Icons.add),
+                         shape: GFIconButtonShape.pills,
+                                         ),
+                     ),
+                   ),
+
+                        
+                        ),
+              ),
+        ],
+      ),
+    );
+  }
+
+  Widget shapelibrarycard(BuildContext context, String name) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+      child: Material(
+        child: InkWell(
+          onTap: () {},
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40.0),
+                border: Border.all(color: Colors.blueGrey)),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40.0)),
+                elevation: 10.0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  height: MediaQuery.of(context).size.height / 6,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            name,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width / 2.5),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+ /////// /////////////////////////////////////// ////update library
+                              IconButton(
+                                  onPressed: () {
+                                    Get.dialog(
+                                      Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        width: 400,
+                                        height: 300,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color: Colors.blueAccent)),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Align(
+                                                  alignment: Alignment.center,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      "Update Library ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              "Pacifico",
+                                                          color:
+                                                              Colors.blueGrey,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
+                                                    ),
+                                                  )),
+                                              Material(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    width: 350,
+                                                    height: 40,
+                                                    child: TextFormField(
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'Update Library Name',
+                                                        labelStyle: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      onChanged: (value) {},
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Material(
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    width: 350,
+                                                    height: 60,
+                                                    child: TextFormField(
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText:
+                                                            'Update Library Postion',
+                                                        labelStyle: TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    123,
+                                                                    127),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      onChanged: (value) {},
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    width: 90,
+                                                    child:
+                                                     Image.asset('assets/images/book2.png'),
+                                                  ),
+                                                 SizedBox(width: 80,),
+                                                  GFButton(
+                                                    shape: GFButtonShape.pills,
+                                                    color: Colors.blueGrey,
+                                                    onPressed: () {
+                                                      Get.snackbar(
+                                                        ' Ok ',
+                                                        "Saved Data ",
+                                                        //  icon: Icon(Icons.person, color: Colors.white),
+                                                        snackPosition:
+                                                            SnackPosition
+                                                                .BOTTOM,
+                                                        backgroundColor:
+                                                            Color.fromARGB(255,
+                                                                209, 143, 143),
+                                                        borderRadius: 20,
+                                                        margin:
+                                                            EdgeInsets.all(15),
+                                                        colorText: Colors.white,
+                                                        duration: Duration(
+                                                            seconds: 4),
+                                                        isDismissible: true,
+                                                        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                                        forwardAnimationCurve:
+                                                            Curves.easeOutBack,
+                                                      );
+                                                    },
+                                                    text: "Save",
+                                                    textStyle: TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white),
+                                               
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ));
+                                  },
+                                  icon: Icon(
+                                    Icons.edit,
+                                    color: Color.fromARGB(255, 245, 146, 149),
+                                  )),
+                                  ////////////////////////////////////////delete library
+                              IconButton(
+                                  onPressed: () {
+                          Get.dialog(Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        width: 200,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color: Colors.blueAccent)),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                   children: [
+                    Text(
+                                                      "Are Sure To Remove?",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              "Pacifico",
+                                                          color:
+                                                              Colors.blueGrey,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
+                                                    ),
+                                                   Padding(
+                                                     padding: const EdgeInsets.all(8.0),
+                                                     child: Center(
+                                                       child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                      TextButton(onPressed: (){}, child: Text('yse',style: TextStyle(
+                                                        color: Color.fromARGB(255, 245, 146, 149)
+                                                      ),)),
+                                                      TextButton(onPressed: (){}, child: Text('No',style: TextStyle(
+                                                        color: Color.fromARGB(255, 245, 146, 149)
+                                                      ),)),
+                                                        ],),
+                                                     ),
+                                                   )
+                                                     
+                   ],
+                                          )))));
+             
+             
+                                  },
+                                  icon: Icon(
+                                    Icons.delete,
+                                    color: Color.fromARGB(255, 245, 146, 149),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.add_location_sharp,
+                            color: Color.fromARGB(255, 245, 146, 149),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Aleppo , Souck Al Madenia  ",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                      ],
+                    )
+                  ]),
+                )),
+          ),
+        ),
+      ),
+    );
+  }
+}
