@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
-import 'package:graduationproject/modules/menu/view/HomePage.dart';
+import 'package:graduationproject/modules/sheard/auth_service.dart';
+import 'package:graduationproject/routes/app_pages.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../genereted/sheard/util.dart';
@@ -13,17 +13,18 @@ class SignUpController extends GetxController {
   RxBool hidePassword = true.obs;
   final stringPickImage = ''.obs;
   final userRpo = SingUpRepository();
+  final auth = Get.find<AuthService>();
   final user = User().obs;
   var selectedDate = DateTime.now().obs;
-   final ImagePicker imagepicker=ImagePicker();
-   PickedFile ?imagefile;
-   
-   Future takePhoto ( ImageSource source) async{
-    final PiickedFile=await imagepicker.getImage(source: source);
-   imagefile=PiickedFile;
-   }
+  final ImagePicker imagepicker = ImagePicker();
+  PickedFile? imagefile;
 
-    Future pickImageFun() async {
+  Future takePhoto(ImageSource source) async {
+    final PiickedFile = await imagepicker.getImage(source: source);
+    imagefile = PiickedFile;
+  }
+
+  Future pickImageFun() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
@@ -32,51 +33,12 @@ class SignUpController extends GetxController {
       print('Failed to pick image: $e');
     }
   }
-  @override
-  void onInit() {
-    super.onInit();
-  }
+
   Future<void> signUpUser() async {
-    user.value.Phone="56774765476";
-     user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    var data = await userRpo.regierterPerson(user.value);
-    if (data) {
-      Get.snackbar(
-             'Succeful',
-               "Welcom  "+user.value.Name.toString(),
-             //  icon: Icon(Icons.person, color: Colors.white),
-               snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Color.fromARGB(255, 209, 143, 143),
-               borderRadius: 20,
-               margin: EdgeInsets.all(15),
-               colorText: Colors.white,
-               duration: Duration(seconds: 4),
-               isDismissible: true,
-              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-               forwardAnimationCurve: Curves.easeOutBack,
-
-               );
-      Get.to(HomePage());
-      print('trueeee');
-
-    } else {
-          Get.snackbar(
-             'Error ',
-               "Sure From Field "+user.value.Name.toString(),
-             //  icon: Icon(Icons.person, color: Colors.white),
-               snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Color.fromARGB(255, 209, 143, 143),
-               borderRadius: 20,
-               margin: EdgeInsets.all(15),
-               colorText: Colors.white,
-               duration: Duration(seconds: 4),
-               isDismissible: true,
-              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-               forwardAnimationCurve: Curves.easeOutBack,
-
-               );
-      print('false');
-    }
+    user.value.Phone = "56774765476";
+    user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    await auth.signUp(user.value);
+    Get.rootDelegate.toNamed(Routes.home);
   }
 
   chooseDate() async {
@@ -85,8 +47,8 @@ class SignUpController extends GetxController {
         initialDate: selectedDate.value,
         firstDate: DateTime(1950),
         lastDate: DateTime(2026),
-      //  initialEntryMode: DatePickerEntryMode.input,
-     //   initialDatePickerMode: DatePickerMode.year,
+        //  initialEntryMode: DatePickerEntryMode.input,
+        //   initialDatePickerMode: DatePickerMode.year,
         helpText: 'select DOB',
         cancelText: 'close',
         confirmText: 'confirm',
@@ -94,17 +56,17 @@ class SignUpController extends GetxController {
         errorInvalidText: 'Enter valid date range ',
         fieldLabelText: 'DOB',
         fieldHintText: 'Month/Date/Year',
-      selectableDayPredicate: disableDate
-        );
-       if(PickedDate!=null && PickedDate!=selectedDate.value){
-        selectedDate.value=PickedDate;
-       }
+        selectableDayPredicate: disableDate);
+    if (PickedDate != null && PickedDate != selectedDate.value) {
+      selectedDate.value = PickedDate;
+    }
   }
-  bool disableDate(DateTime day){
-    if((day.isAfter(DateTime.now().subtract(Duration(days: 1)))&&day.isBefore(DateTime.now().add(Duration(days: 5)))))
-       {
-        return true;
-       }
-       return false;
+
+  bool disableDate(DateTime day) {
+    if ((day.isAfter(DateTime.now().subtract(const Duration(days: 1))) &&
+        day.isBefore(DateTime.now().add(const Duration(days: 5))))) {
+      return true;
+    }
+    return false;
   }
 }

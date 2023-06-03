@@ -343,6 +343,7 @@ class signupage extends GetResponsiveView<SignUpController> {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
+                
                 if (_formfield.currentState!.validate()) {
                   print("Data Added Successfully");
                   controller.user.value.Age=controller.selectedDate.value.toString();

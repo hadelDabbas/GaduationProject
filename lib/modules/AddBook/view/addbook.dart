@@ -130,7 +130,7 @@ class Addbookpage extends GetResponsiveView < AddBookController>{
                             controller.stringPickImage.value, 200, 200)
                         : image == null
                             ? Image.asset(
-                                'assets/images/d.png',
+                                'assets/images/book3.png',
                                 width: 200,
                                 height: 200,
                                 fit: BoxFit.fill,

@@ -1,91 +1,81 @@
-import 'dart:html';
-import 'dart:ui';
-
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/postdto.dart';
 
-import '../../../api/storage/storge_service.dart';
 import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
-import '../../../app/model/postdto.dart';
 import '../../../app/model/user.dart';
 import '../../../app/model/userPost.dart';
 import '../../sheard/auth_service.dart';
 import '../data/home_repositry.dart';
 
-class HomeController extends GetxController with GetSingleTickerProviderStateMixin{
- var page=2.obs;
-var click=false.obs;
-static const  String KeyData="AuthData";
+class HomeController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  var page = 2.obs;
+  var click = false.obs;
+  static const String KeyData = "AuthData";
 //  late Animation<Offset> offsetAnimation;
 //  late AnimationController ancontroller;
- late Animation<double> animation;
- final onepostDto=PostDto();
- final Contents=<Content>[].obs;
- final postDto=<PostDto>[].obs;
- final listcomment=<Comments>[].obs;
- final idcontent=0;
- final homeRepo=HomeRepository();
+  late Animation<double> animation;
+  final onepostDto = PostDto();
+  final Contents = <Content>[].obs;
+  final postDto = <PostDto>[].obs;
+  final listcomment = <Comments>[].obs;
+  final idcontent = 0;
+  final homeRepo = HomeRepository();
   final auth = Get.find<AuthService>();
- final user=User().obs;
- final Iduser=0;
- final IdPost=0;
- final addcomment=Comments().obs;
- final userpost=UserPost().obs;
+  final user = User().obs;
+  final Iduser = 0;
+  final IdPost = 0;
+  final addcomment = Comments().obs;
+  final userpost = UserPost().obs;
 //  @override
 // dispose() {
 //  ancontroller.dispose(); // you need this
 //   super.dispose();
 // }
- @override
+  @override
   Future<void> onInit() async {
     super.onInit();
-   await GetUser();
-    //    ancontroller =
-    //     AnimationController(duration: const Duration(seconds: 6), vsync: this);
-    // animation = new CurvedAnimation(parent: ancontroller, curve: Curves.slowMiddle);
-    // ancontroller.repeat();
-    // offsetAnimation = Tween<Offset>(
-    //   begin: Offset(-1, 0),
-    //   end: const Offset(2, 0),
-    // ).animate(CurvedAnimation(
-    //   parent:ancontroller,
-    //   curve: Curves.slowMiddle,
-    // ));
-    }
-Future <void>GetUser()async{
-  user.value= auth.getDataFromStorage() as User;
-//  print(user.value.Email);
-} 
- Future <void > GetAllContent()async{
-  var data= await homeRepo.GetAlltype();
-Contents.assignAll(data  );
- }    
-Future <void > GetAllPosts()async{
-  var data= await homeRepo.GetAllPost();
-postDto.assignAll(data  );
-
- }
-  Future <void > GetpostByType()async{
-  var data= await homeRepo.GetByContent(idcontent );
-postDto.assignAll(data  );
- }   
- Future <void> AddComment()async{
-  var data= await homeRepo.AddComment(addcomment.value, Iduser);
-  if(data){
-    print('True');
-  }else{
-    print('false');
+    await GetUser();
+    await GetAllPosts();
   }
- }
-   Future <void > GetComments()async{
-  var data= await homeRepo.GetComment(IdPost );
-listcomment.assignAll(data  );
- }   
-  Future <void > GetInterActionUser()async{
-  var data= await homeRepo.InteractionUser(userpost.value,Iduser);
 
- }   
+  Future<void> GetUser() async {
+    user.value = auth.getDataFromStorage() as User;
+//  print(user.value.Email);
+  }
+
+  Future<void> GetAllContent() async {
+    var data = await homeRepo.GetAlltype();
+    Contents.assignAll(data);
+  }
+
+  Future<void> GetAllPosts() async {
+    var data = await homeRepo.GetAllPost();
+    postDto.assignAll(data);
+  }
+
+  Future<void> GetpostByType() async {
+    var data = await homeRepo.GetByContent(idcontent);
+    postDto.assignAll(data);
+  }
+
+  Future<void> AddComment() async {
+    var data = await homeRepo.AddComment(addcomment.value, Iduser);
+    if (data) {
+      print('True');
+    } else {
+      print('false');
+    }
+  }
+
+  Future<void> GetComments() async {
+    var data = await homeRepo.GetComment(IdPost);
+    listcomment.assignAll(data);
+  }
+
+  Future<void> GetInterActionUser() async {
+    var data = await homeRepo.InteractionUser(userpost.value, Iduser);
+  }
 }
-

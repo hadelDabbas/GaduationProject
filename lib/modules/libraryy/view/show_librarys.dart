@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/modules/libraryy/view/library.dart';
 
 import '../controller/library_controller.dart';
 
@@ -21,6 +22,20 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
         children: [
           Row(
             children: [
+              Material(
+                child: InkWell(
+                          onTap: () => Get.back(),
+                          child: Align(alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(Icons.arrow_back_ios,
+                                           size: 20, 
+                                         color: Colors.grey
+                                          ),
+                            ),
+                          ),
+                        ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -198,7 +213,9 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
       child: Material(
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Get.to(Librarypage());
+          },
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40.0),

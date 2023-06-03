@@ -1,70 +1,25 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
-import 'package:graduationproject/modules/menu/view/HomePage.dart';
-import 'package:graduationproject/modules/signup/view/signup1.dart';
+import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../../api/storage/storge_service.dart';
-import '../../../routes/app_pages.dart';
-import '../../password/controller/password_controller.dart';
 import '../../sheard/auth_service.dart';
 import '../data/signin_repository.dart';
-const  String KeyData="AuthData";
- class SignIncontroller extends GetxController{
-var passtoggle = true.obs;
-final userSingn =User().obs;
+
+const String KeyData = "AuthData";
+
+class SignIncontroller extends GetxController {
+  var passtoggle = true.obs;
+  final userSingn = User().obs;
   RxBool hidePassword = true.obs;
-  final userRepo= SiginRepository();
- final stroge = Get.find<StorageService>();
-    var email=''.obs;
+  final userRepo = SiginRepository();
+  final stroge = Get.find<StorageService>();
+  final auth = Get.find<AuthService>();
+  var email = ''.obs;
   //  var useruses=userUsed().obs;
-    var password=''.obs;
-    Future <void> SignIn() async {
-     var data=   await userRepo.SignInUser(email.value, password.value);
-          if (data!=null){
-      //    userUsed().theUser=data;
-     stroge.saveData(KeyData, data.toJson());
-     
-      //  Get.snackbar(
-
-      //        'Welcom',
-      //          "Hope To Enjoi with us",
-      //        //  icon: Icon(Icons.person, color: Colors.white),
-      //          snackPosition: SnackPosition.BOTTOM,
-      //          backgroundColor: Color.fromARGB(255, 246, 123, 127),
-      //          borderRadius: 20,
-      //          margin: EdgeInsets.all(15),
-      //          colorText: Colors.white,
-      //          duration: Duration(seconds: 4),
-      //          isDismissible: true,
-      //         //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-      //          forwardAnimationCurve: Curves.easeOutBack,
-
-      //          );
-      Get.rootDelegate.toNamed(Routes.home);
-     }else{
-          Get.snackbar(
-             'Error',
-               "sorry sure from Email or Password",
-             //  icon: Icon(Icons.person, color: Colors.white),
-               snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Color.fromARGB(255, 246, 123, 127),
-               borderRadius: 20,
-               margin: EdgeInsets.all(15),
-               colorText: Colors.white,
-               duration: Duration(seconds: 4),
-               isDismissible: true,
-              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-               forwardAnimationCurve: Curves.easeOutBack,
-
-               );
-     // Get.to(signupage());
-     print('Error');
-     }
-    }
-    
-
- }
+  var password = ''.obs;
+  Future<void> SignIn() async {
+    await auth.logIn(email.value, password.value);
+    Get.rootDelegate.toNamed(Routes.home);
+  }
+}
