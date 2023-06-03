@@ -1,115 +1,113 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/AddBook_controller.dart';
 
-class Addbookpage extends GetResponsiveView < AddBookController>{
-   AddBookController controller =Get.put( AddBookController());
-     Uint8List? image;
+class Addbookpage extends GetResponsiveView<AddBookController> {
+  @override
+  AddBookController controller = Get.put(AddBookController());
+  Uint8List? image;
+
+  Addbookpage({super.key});
   @override
   Widget builder() {
-    return Column(children: [
-
-         Center(
-                child: Column(
-              children: [
-                SizedBox(width: 170),
-                Material(child: Imageprofile(controller)),
-              ],
-            )),
-              Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
+    return Column(
+      children: [
+        Center(
+            child: Column(
+          children: [
+            const SizedBox(width: 170),
+            Material(child: Imageprofile(controller)),
+          ],
+        )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+              child: SizedBox(
+            width: 450,
+            child: const TextField(
                 decoration: InputDecoration(
-                       labelText: 'Name Book',
-                       labelStyle:
+              labelText: 'Name Book',
+              labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Name Book',
-                       prefixIcon: Icon(
+              hintText: 'Name Book',
+              prefixIcon: Icon(
                 Icons.bookmark_add_outlined,
                 color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
-               Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
+              ),
+            )),
+          )),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+              child: SizedBox(
+            width: 450,
+            child: const TextField(
                 decoration: InputDecoration(
-                       labelText: 'Name Writter',
-                       labelStyle:
+              labelText: 'Name Writter',
+              labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Name Writter',
-                       prefixIcon: Icon(
+              hintText: 'Name Writter',
+              prefixIcon: Icon(
                 Icons.person_2_outlined,
                 color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
-               Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
+              ),
+            )),
+          )),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+              child: SizedBox(
+            width: 450,
+            child: const TextField(
                 decoration: InputDecoration(
-                       labelText: 'Price Book',
-                       labelStyle:
+              labelText: 'Price Book',
+              labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Price Book',
-                       prefixIcon: Icon(
+              hintText: 'Price Book',
+              prefixIcon: Icon(
                 Icons.price_change,
                 color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
-               Container(
-                  width: 450,
-                  child: Material(
-                    child: TextField(
-                        decoration: InputDecoration(
-                         labelText: 'Descrintion About Book',
-                         labelStyle:
-                    TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                         hintText: 'Descrintion About Book',
-                         prefixIcon: Icon(
-                                  Icons.text_fields,
-                                  color: Color.fromARGB(255, 245, 146, 149),
-                         ),
-                       ),
-                      keyboardType: TextInputType.multiline,
-                      minLines: 1,//Normal textInputField will be displayed
-                      maxLines: 5,// when user presses enter it will adapt to it
-                      ),
-                  ),
+              ),
+            )),
+          )),
+        ),
+        SizedBox(
+          width: 450,
+          child: const Material(
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Descrintion About Book',
+                labelStyle: TextStyle(
+                    color: Colors.black45, fontWeight: FontWeight.bold),
+                hintText: 'Descrintion About Book',
+                prefixIcon: Icon(
+                  Icons.text_fields,
+                  color: Color.fromARGB(255, 245, 146, 149),
                 ),
-               
-  GFButton(
-    color: Colors.blueGrey,
-    onPressed: (){},
-    text: "Add Book",
-  ), 
+              ),
+              keyboardType: TextInputType.multiline,
+              minLines: 1, //Normal textInputField will be displayed
+              maxLines: 5, // when user presses enter it will adapt to it
+            ),
+          ),
+        ),
+        GFButton(
+          color: Colors.blueGrey,
+          onPressed: () {},
+          text: "Add Book",
+        ),
+      ],
+    );
+  }
 
-    ],
-
-    );}
-     Widget Imageprofile( AddBookController controller) {
+  Widget Imageprofile(AddBookController controller) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
@@ -120,9 +118,8 @@ class Addbookpage extends GetResponsiveView < AddBookController>{
                   child: Container(
                     width: 400,
                     decoration: BoxDecoration(
-                      
                         border: Border.all(
-                            color: Color.fromARGB(255, 192, 189, 189))),
+                            color: const Color.fromARGB(255, 192, 189, 189))),
                     //    radius: 80.0,
                     //  borderRadius: BorderRadius.circular(100),
                     child: controller.stringPickImage.value.isNotEmpty
@@ -146,7 +143,7 @@ class Addbookpage extends GetResponsiveView < AddBookController>{
                   onTap: () async {
                     openBottomSheet(controller);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.camera_alt,
                     color: Color.fromARGB(255, 245, 146, 149),
                     size: 28.0,
@@ -159,12 +156,12 @@ class Addbookpage extends GetResponsiveView < AddBookController>{
   }
 }
 
-void openBottomSheet( AddBookController controller) {
+void openBottomSheet(AddBookController controller) {
   Get.bottomSheet(
     Container(
       height: 120.0,
       width: 500,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         children: [
           const SizedBox(height: 20),
@@ -174,7 +171,7 @@ void openBottomSheet( AddBookController controller) {
               style: TextStyle(fontSize: 18),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -183,32 +180,32 @@ void openBottomSheet( AddBookController controller) {
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.camera),
+                    child: const Icon(Icons.camera),
                   ),
-                  Text('  Camera'),
+                  const Text('  Camera'),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.image),
+                    child: const Icon(Icons.image),
                   ),
-                  Text('  Gallery'),
+                  const Text('  Gallery'),
                 ],
               )
             ],
@@ -228,5 +225,4 @@ void openBottomSheet( AddBookController controller) {
       borderRadius: BorderRadius.circular(10),
     ),
   );
-    
-    }
+}
