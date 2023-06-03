@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/groups/view/add_group.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
+import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 
 import '../../AddBook/view/addbook.dart';
 import '../../Addpost/view/addpost.dart';
@@ -100,7 +101,7 @@ class SettingPageView extends GetResponsiveView {
                    Material(
                     child: InkWell(
                       onTap: () {
-                         Get.to(Librarypage());
+                         Get.to(ShowLibraryspage());
                       },
                       child: CardSetting("Library", Icons.library_books),
                     ),
@@ -136,43 +137,44 @@ class SettingPageView extends GetResponsiveView {
                       child: CardSetting("permission", Icons.workspace_premium_sharp),
                     ),
                   ),
-                     Material(
-                    child: InkWell(
-                      onTap: () {
-                             Get.dialog(
-                      Align(alignment: Alignment.center,
-                      child: Container(
-                        width:450,height:500 ,  decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                     border: Border.all(color: Colors.blueAccent)
-                    ),
-                        child:
-                      SingleChildScrollView(
-                        child: Column(children: [
-                           SizedBox(height: 10,),
-                          Align(alignment: Alignment.center,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Add Book  ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
-                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                            )),
-                           Container(child:Addbookpage(),),
+                  //    Material(
+                  //   child: InkWell(
+                  //     onTap: () {
+                  //            Get.dialog(
+                  //     Align(alignment: Alignment.center,
+                  //     child: Container(
+                  //       width:450,height:500 ,  decoration: BoxDecoration(
+                  //         color: Colors.white,
+                  //         borderRadius: BorderRadius.circular(10),
+                  //    border: Border.all(color: Colors.blueAccent)
+                  //   ),
+                  //       child:
+                  //     SingleChildScrollView(
+                  //       child: Column(children: [
+                  //          SizedBox(height: 10,),
+                  //         Align(alignment: Alignment.center,
+                  //           child: Padding(
+                  //             padding: const EdgeInsets.all(8.0),
+                  //             child: Text("Add Book  ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                  //             fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
+                  //           )),
+                  //          Container(child:Addbookpage(),),
                            
-                        ],),
-                      )
-                      ,),)
-                    );
-                      },
-                      child: CardSetting("Book", Icons.bookmark_add),
-                    ),
-                  ),
+                  //       ],),
+                  //     )
+                  //     ,),)
+                  //   );
+                  //     },
+                  //     child: CardSetting("Book", Icons.bookmark_add),
+                  //   ),
+                  // ),
+                          CardSetting("Quiz", Icons.check_box),
+                  CardSetting("Language", Icons.language),
+                  CardSetting("Help", Icons.question_mark),
+                  CardSetting("Logout", Icons.exit_to_app),
                   //  userUsed ().theUser.Password!='1234567890'?Wrap(
                   //   children: [
-                  //     CardSetting("Quiz", Icons.check_box),
-                  // CardSetting("Language", Icons.language),
-                  // CardSetting("Help", Icons.question_mark),
-                  // CardSetting("Logout", Icons.exit_to_app),
+              
                   //   ],
                   //  ):Container(
                   //   width: 200,

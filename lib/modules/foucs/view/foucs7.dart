@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../MenuGame/Menu_game.dart';
 import '../../timer/controller/timer_controller.dart';
 import '../controller/foucs_controller.dart';
 import 'foucs8.dart';
@@ -109,7 +110,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                            }, child: Text('yes',
                          style: TextStyle(color:Colors.grey)
                         )), TextButton(onPressed: (){
-                          Get.back();
+                          Get.to(MenuGamePageView());
                           timerController.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Colors.grey)
@@ -129,7 +130,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                            }, child: Text('yes',
                          style: TextStyle(color:Color.fromARGB(255, 80, 137, 212))
                         )), TextButton(onPressed: (){
-                          Get.back();
+                          Get.to(MenuGamePageView());
                           timerController.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Color.fromARGB(255, 80, 137, 212))

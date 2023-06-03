@@ -29,23 +29,23 @@ class postPage extends GetResponsiveView<HomeController> {
           children: [
           
             contentPage(),
-                              ElevatedButton(
-                      onPressed: () async {
-                      await  controller.GetAllPosts();
-                        // controller.IdPost!=idpost;
-                        // controller.GetComments();
-                        // Get.to(CommentPageView());
+                    //           ElevatedButton(
+                    //   onPressed: () async {
+                    //   await  controller.GetAllPosts();
+                    //     // controller.IdPost!=idpost;
+                    //     // controller.GetComments();
+                    //     // Get.to(CommentPageView());
 
-                      },
-                      child: Icon(
-                        AppIconn.chat,
-                        size: 14,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                        shape: CircleBorder(),
-                      ),
-                    ),
+                    //   },
+                    //   child: Icon(
+                    //     AppIconn.chat,
+                    //     size: 14,
+                    //   ),
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: Color.fromARGB(255, 248, 150, 153),
+                    //     shape: CircleBorder(),
+                    //   ),
+                    // ),
 
             Column(
                 children: controller.postDto

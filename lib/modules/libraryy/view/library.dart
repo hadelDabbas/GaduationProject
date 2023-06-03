@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/modules/AddBook/view/addbook.dart';
 import 'package:graduationproject/modules/icons/Icon.dart';
 
 import 'package:graduationproject/modules/libraryy/controller/library_controller.dart';
@@ -99,7 +100,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     '900\$', controller),
               ],
             ),
-            Padding(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+           Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.bottomRight,
@@ -107,7 +111,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     style: ElevatedButton.styleFrom(
                         shadowColor: Colors.blueGrey,
                         padding: const EdgeInsets.symmetric(
-                            vertical: 30, horizontal: 30),
+                            vertical: 20, horizontal: 20),
                         shape: CircleBorder(),
                         backgroundColor: Color.fromARGB(255, 245, 146, 149)),
                     onPressed: () {
@@ -196,6 +200,49 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     )),
               ),
             ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                          shadowColor: Colors.blueGrey,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 20),
+                          shape: CircleBorder(),
+                          backgroundColor: Color.fromARGB(255, 245, 146, 149)),
+                onPressed: (){
+                      Get.dialog(
+                        Align(alignment: Alignment.center,
+                        child: Container(
+                          width:450,height:500 ,  decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                       border: Border.all(color: Colors.blueAccent)
+                      ),
+                          child:
+                        SingleChildScrollView(
+                          child: Column(children: [
+                             SizedBox(height: 10,),
+                            Align(alignment: Alignment.center,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("Add Book  ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                                fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
+                              )),
+                             Container(child:Addbookpage(),),
+                             
+                          ],),
+                        )
+                        ,),)
+                      );
+              }, child: Icon(
+                        Icons.bookmark_add,
+                        color: Colors.white,
+                        size: 25,
+                      ) ),
+            )
+              ],
+            ),
+         
           ],
         ),
       ),

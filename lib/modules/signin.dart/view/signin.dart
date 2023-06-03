@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
+import '../../../routes/app_pages.dart';
 import '../../password/view/password.dart';
 import '../../signup/view/signup1.dart';
 import '../controller/signin_controller.dart';
@@ -159,7 +160,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller>{
                child:  ElevatedButton(
                   onPressed: () {
                   
-                   // Get.to(signupage());
+                      Get.rootDelegate.toNamed(Routes.signup);
                   },
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

@@ -6,7 +6,7 @@ import '../view/intro.dart';
 
 class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();
-
+ final onlastpage=false.obs;
   RxBool animate = false.obs;
   Future StartAnimation() async {
     await Future.delayed(const Duration(seconds: 2));
