@@ -50,16 +50,16 @@ class Contentpage extends GetResponsiveView<ContentController> {
           ),
           Column(
             children:
-                // controller.contents.map((element) => CardContent(element.content.toString(), context)).toList()
-                [
-              CardContent('History', context),
-              CardContent('Comidi', context),
-              CardContent('Culthre', context),
-              CardContent('mathes', context),
-              CardContent('Sport', context),
-              CardContent('Natura', context),
-              CardContent('It', context),
-            ],
+                 controller. contents.map((element) => CardContent(element.typeName.toString(), context)).toList()
+            //     [
+            //   CardContent('History', context),
+            //   CardContent('Comidi', context),
+            //   CardContent('Culthre', context),
+            //   CardContent('mathes', context),
+            //   CardContent('Sport', context),
+            //   CardContent('Natura', context),
+            //   CardContent('It', context),
+            // ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -282,8 +282,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                             //        controller.delcontentelement(content)   ;
                           },
                           icon: Icon(
-                            Icons.delete,
-                            color: Color.fromARGB(255, 245, 74, 62),
+                            Icons.close,
+                        //    color: Color.fromARGB(255, 245, 74, 62),
                           ))))
             ],
           ),

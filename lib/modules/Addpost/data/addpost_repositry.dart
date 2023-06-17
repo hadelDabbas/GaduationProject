@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/content.dart';
 import 'package:graduationproject/app/model/post.dart';
 
 import '../../../Utile/utilExpation.dart';
@@ -11,10 +12,23 @@ class AddpostRepository implements IAddpostRepository {
 
   @override
   Future<bool> AddpostUser(Post post, int iduser) async {
-    var data=  await _dio.post('',data: post.toJson());
-       if (ExpastionStatus(data.statusCode!)) {
+    var result=  await _dio.post('https://localhost:7252/api/Post/AddPost'
+    ,data: post.toJson());
+        print(result.data);
+    if (result.statusCode == 200) {
       return true;
-    } else
+    }
     return false;
+  }
+
+  @override
+  Future<List<Content>> GetAllContent()async {
+   var result = await _dio.get('https://localhost:7252/api/Content/GetContents');
+    print(result);
+    var list = <Content>[];
+    for (var item in result.data) {
+      list.add( Content.fromJson(item));
+    }
+    return list;
   }
   }

@@ -15,13 +15,6 @@ import '../controller/addpost_controller.dart';
 class Addpostview extends GetResponsiveView<AddpostController> {
   AddpostController controller = Get.put(AddpostController());
  Uint8List? image;
-  List<String> Contents = [
-    'History',
-    'Math',
-    'Arabic',
-    'English',
-    'Diversified'
-  ];
 
   // var dropdownvalue;
   @override
@@ -32,7 +25,7 @@ class Addpostview extends GetResponsiveView<AddpostController> {
         () => Container(
           width: 300,
           child: DropdownButton<String>(
-              items: Contents.map<DropdownMenuItem<String>>(
+              items: controller.Contents.map<DropdownMenuItem<String>>(
                 (String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -73,7 +66,11 @@ class Addpostview extends GetResponsiveView<AddpostController> {
             Icons.text_fields,
             color: Color.fromARGB(255, 245, 146, 149),
           ),
-        )),
+        ),
+        onChanged: (value){
+       controller.newpost.value.Description=value;
+        },
+        ),
       )),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -83,7 +80,9 @@ class Addpostview extends GetResponsiveView<AddpostController> {
               // padding:
               //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               backgroundColor: Colors.blueGrey),
-          onPressed: () {},
+          onPressed: () {
+            controller.AddPost();
+          },
           child: Text(
             'Save',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

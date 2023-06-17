@@ -10,7 +10,7 @@ class ContentRepository implements IContentRepository {
 
   @override
   Future<List<Content>> GetContent() async {
-    var result = await _dio.get('');
+    var result = await _dio.get('https://localhost:7252/api/Content/GetContents');
     print(result);
     var list = <Content>[];
     for (var item in result.data) {
@@ -20,13 +20,13 @@ class ContentRepository implements IContentRepository {
   }
 
   Future<bool> DelContent(int id) async {
-    var result = await _dio.delete('https://localhost:7192/api/Content',
+    var result = await _dio.delete('https://localhost:7192/api/Content/Delete',
         queryParameters: {'id': id});
     return result.statusCode == 200;
   }
 
   Future<bool> AddContent(Content content) async {
-    var result = await _dio.post('https://localhost:7192/api/Content',
+    var result = await _dio.post('https://localhost:7192/api/Content/AddType',
         data: content.toJson());
     return result.statusCode == 200;
   }

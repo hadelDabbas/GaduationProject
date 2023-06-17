@@ -1,18 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
+import 'package:graduationproject/app/model/userPost.dart';
 
 import '../../../Utile/utilExpation.dart';
 import '../../../app/model/content.dart';
 import '../../../app/model/post.dart';
+import '../../../app/model/postdto.dart';
 import 'adapter/profile_adapter.dart';
 
 class ProfileRepository implements IProfileRepository {
   final _dio = Get.find<Dio>();
       @override
       Future<User?> Getprofileuser(int iduser) async{
-     var result= await _dio .get('https://localhost:7252/api/User/GetUser/$iduser',
-     queryParameters: {"id":iduser} );
+     var result= await _dio .get('https://localhost:7252/api/Profile/GetInfo/$iduser',);
      if(ExpastionStatus(result.statusCode!)){
       var data= User.fromJson(result.data as Map<String, dynamic>);
       return data;
@@ -33,13 +34,13 @@ class ProfileRepository implements IProfileRepository {
         } 
     
      @override
-  Future<List<Post>> GetUserPost(int iduser) async {
+  Future<List<PostDto>> GetUserPost(int iduser) async {
     var result = await _dio
-        .get('https://localhost:7192/api/Infulonser/GetAllPosts/$iduser');
-    var list = <Post>[];
+        .get('https://localhost:7252/api/Profile/GetPosts/$iduser');
+    var list = <PostDto>[];
     if (result.statusCode == 200) {
       for (var item in result.data) {
-        list.add(Post.fromJson(item));
+        list.add(PostDto.fromJson(item));
       }
     }
     return list;

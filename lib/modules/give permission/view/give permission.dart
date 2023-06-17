@@ -15,6 +15,7 @@ class Givepermission extends GetResponsiveView{
          Material(
           child: Container(
         width: 350,
+        height: 60,
         child: TextField(
             decoration: InputDecoration(
           labelText: 'Administrator Name ',
@@ -30,6 +31,7 @@ class Givepermission extends GetResponsiveView{
         Material(
           child: Container(
         width: 350,
+        height: 60,
         child: TextField(
             decoration: InputDecoration(
           labelText: 'Password Administrator ',
@@ -37,7 +39,7 @@ class Givepermission extends GetResponsiveView{
               TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
           hintText: 'Enter Password Administrator',
           prefixIcon: Icon(
-            Icons.password,
+            Icons.admin_panel_settings_outlined,
             color: Color.fromARGB(255, 245, 146, 149),
           ),
         )),

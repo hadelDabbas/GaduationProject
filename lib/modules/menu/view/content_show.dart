@@ -8,7 +8,7 @@ import '../controller/menu.dart';
 
 class contentPage extends GetResponsiveView <HomeController>{
   HomeController controller=Get.put(HomeController());
-static const listcontent = ['History', 'Global', 'Math', 'Sport'];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,6 +31,7 @@ static const listcontent = ['History', 'Global', 'Math', 'Sport'];
                      shape: GFButtonShape.pills,
                     color: Colors.blueGrey,
                     onPressed: () {
+              controller.GetAllContent() ;
                         Get.dialog(
                           Align(alignment: Alignment.topRight,
                           child: Container(

@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/Addpost/view/addpost.dart';
+import 'package:graduationproject/modules/groups/view/editpost.dart';
 
 import '../../genereted/sheard/util.dart';
+import '../../profile/view/editpost.dart';
 import '../controller/group_controller.dart';
 
 class EditGrpoup extends GetResponsiveView<GroupController> {
@@ -46,7 +48,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
-                      " Add New  Group ",
+                      " Update  Group ",
                       style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
@@ -72,7 +74,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                      width: 450,
                      child: TextField(
                 decoration: InputDecoration(
-                       labelText: 'Name Group',
+                       labelText: 'Edit Name Group',
                        labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
                        hintText: 'Name Group',
@@ -117,7 +119,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   width: 450,
                   child: TextField(
                       decoration: InputDecoration(
-                       labelText: 'Descrintion About Group',
+                       labelText: ' Edit  Descrintion About Group',
                        labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
                        hintText: 'Descrintion About Group',
@@ -137,31 +139,8 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   child: Align(
                     alignment: Alignment.topRight,
                     child: TextButton(onPressed: (){
-                       Get.dialog(
-                            Align(alignment: Alignment.center,
-                            child: Container(
-                              width:500,height:370 ,  decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                           border: Border.all(color: Colors.blueAccent)
-                          ),
-                              child:
-                            SingleChildScrollView(
-                              child: Column(children: [
-                                 SizedBox(height: 10,),
-                                Align(alignment: Alignment.center,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text("Add post : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
-                                    fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                                  )),
-                                 Container(child: Addpostview(),),
-                                 
-                              ],),
-                            )
-                            ,),)
-                          );;
-                    }, child: Text('Are You Want To Add post ? ',style: TextStyle(
+                     Get.to(EditPostgroupview());
+                    }, child: Text('Are You Want To Edit post ? ',style: TextStyle(
                       color: Colors.black54,
                       fontSize: 16,
                       fontWeight: FontWeight.bold
@@ -172,7 +151,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                   onPressed: () {
-                   
+                  
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:Color.fromARGB(255, 245, 146, 149) ,
@@ -183,7 +162,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                           const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
                           ,
                   child: const Text(
-                    'Add Group',
+                    'Edit Group',
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                             ),

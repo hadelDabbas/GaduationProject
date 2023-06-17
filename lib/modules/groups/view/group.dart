@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/groups/view/edit_group.dart';
 
 import '../../comment/view/comment.dart';
 import '../../icons/Icon.dart';
@@ -79,9 +80,10 @@ class GroupView extends GetResponsiveView<GroupController> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   shadowColor: Colors.blueGrey,
-                                  backgroundColor: controller.press.value == false
-                                      ? Color.fromARGB(255, 246, 123, 127)
-                                      : Colors.white,
+                                  backgroundColor:
+                                      controller.press.value == false
+                                          ? Color.fromARGB(255, 246, 123, 127)
+                                          : Colors.white,
                                 ),
                                 onPressed: () {
                                   if (controller.press == false) {
@@ -122,7 +124,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                                         child: Column(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 'Members',
                                                 style: TextStyle(
@@ -194,25 +197,52 @@ class GroupView extends GetResponsiveView<GroupController> {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Tooltip(
-              message: 'Add Post ',
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Icon(
-                  Icons.add,
-                  size: 18,
-                  color: Color.fromARGB(255, 246, 123, 127),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                  shape: CircleBorder(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: Tooltip(
+                  message: 'Edit Group ',
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(EditGrpoup());
+                    },
+                    child: Icon(
+                      Icons.edit,
+                      size: 18,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      shape: CircleBorder(),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Tooltip(
+                  message: 'Add Post ',
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.add,
+                      size: 18,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      shape: CircleBorder(),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           post('Dr.Abdallah hamwe', 'The loop you can used it in flutter',
               'assets/images/loop.png', 'IT', controller),
@@ -309,7 +339,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   txt,
-                  style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(

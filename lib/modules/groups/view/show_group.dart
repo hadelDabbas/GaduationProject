@@ -11,71 +11,75 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController>{
   @override
   Widget builder() {
     final random = Random();
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-            Material(
-              child: InkWell(
-                onTap: () => Get.back(),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+    return SizedBox(
+       height: screen.height,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+              Material(
+                child: InkWell(
+                  onTap: () => Get.back(),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+                    ),
                   ),
                 ),
               ),
-            ),
-             Text(
-                " All Groups ",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Pacifico",
-                    color: Colors.blueGrey,
-                    decoration: TextDecoration.none),
-              ),
-              // SingleChildScrollView(
-              //   child: Container(
-              //            height: 40,
-              //     child: Wrap(children:controller.Content.map((e) => BuildcontentGroup(e)).toList() ,)),
-              // ),
-               SizedBox(height: 8,),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                      width: 500,
-                      child:  Material(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: 'search',labelStyle: TextStyle(color: Color.fromARGB(255, 184, 183, 183),fontWeight: FontWeight.bold),
-                              
-                            hintText: 'search',
-                              prefixIcon: Icon(Icons.search,color: Color.fromARGB(255, 196, 195, 195),),
-                             enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(width: 3, color: Color.fromARGB(255, 196, 195, 195)),
-                                borderRadius: BorderRadius.circular(15),
+               Text(
+                  " All Groups ",
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Pacifico",
+                      color: Colors.blueGrey,
+                      decoration: TextDecoration.none),
+                ),
+                // SingleChildScrollView(
+                //   child: Container(
+                //            height: 40,
+                //     child: Wrap(children:controller.Content.map((e) => BuildcontentGroup(e)).toList() ,)),
+                // ),
+                 SizedBox(height: 8,),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                        width: 500,
+                        child:  Material(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'search',labelStyle: TextStyle(color: Color.fromARGB(255, 184, 183, 183),fontWeight: FontWeight.bold),
                                 
-                              ),
-                                 focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(width: 3, color: Color.fromARGB(255, 196, 195, 195)),
-                                borderRadius: BorderRadius.circular(15),
-                              )
-                          )
-                          ),
-                      )
-                      ),
-              ),
-              SizedBox(height: 8,),
-   Cardgroup('assets/images/IT.gif','Information tecnology'),
-    Cardgroup('assets/images/history.gif','Historyical'),
-     Cardgroup('assets/images/welcom.png','Global'),
-      Cardgroup('assets/images/team.png','Medical'),
-
-          
-        ],
+                              hintText: 'search',
+                                prefixIcon: Icon(Icons.search,color: Color.fromARGB(255, 196, 195, 195),),
+                               enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      const BorderSide(width: 3, color: Color.fromARGB(255, 196, 195, 195)),
+                                  borderRadius: BorderRadius.circular(15),
+                                  
+                                ),
+                                   focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      const BorderSide(width: 3, color: Color.fromARGB(255, 196, 195, 195)),
+                                  borderRadius: BorderRadius.circular(15),
+                                )
+                            )
+                            ),
+                        )
+                        ),
+                ),
+                SizedBox(height: 8,),
+       Cardgroup('assets/images/IT.gif','Information tecnology'),
+      Cardgroup('assets/images/history.gif','Historyical'),
+       Cardgroup('assets/images/welcom.png','Global'),
+        Cardgroup('assets/images/team.png','Medical'),
+       Cardgroup('assets/images/welcom.png','Global'),
+        Cardgroup('assets/images/team.png','Medical'),
+            Container(height: 100,)
+          ],
+        ),
       ),
     );
   }
@@ -87,9 +91,20 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController>{
           onTap: () {
             Get.to(GroupView());
           },
-          child: Container( width: 800,
+          child: Container( 
+            decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.3,
+                  ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(22.0)),
+            
             height: screen.height/6,
               child: Card(
+                
+                 shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(22.0)),
                   margin: EdgeInsets.all(10),
              
              shadowColor: Colors.blueGrey,

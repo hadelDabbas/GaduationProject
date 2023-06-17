@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/complaints/view/complaints.dart';
 import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/groups/view/add_group.dart';
+import 'package:graduationproject/modules/groups/view/edit_group.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 
@@ -52,9 +54,16 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                     child: InkWell(
                       onTap: (){
-                        Get.to(AddGrpoup());
+                       Get.to(AddGrpoup());
                       },
-                      child: CardSetting("Group", Icons.group_add)),
+                      child: Tooltip(
+                        message: 'Add New Group',
+                        child: CardSetting("Group", Icons.group_add,
+                       // Color.fromARGB(255, 63, 201, 214))
+                        )
+                        )
+                        
+                        ),
                   ),
 
                   Material(
@@ -85,7 +94,9 @@ class SettingPageView extends GetResponsiveView {
                       ,),)
                     );
                       },
-                      child: CardSetting("Post", Icons.post_add),
+                      child: Tooltip(
+                        message: 'Add Post',
+                        child: CardSetting("Post", Icons.post_add)),
                     ),
                   ),
                     Material(
@@ -95,7 +106,9 @@ class SettingPageView extends GetResponsiveView {
                     Get.to(Contentpage());
 
                       },
-                      child: CardSetting("Content", Icons.edit_calendar),
+                      child: Tooltip(
+                        message: 'Show content & Add & Delete',
+                        child: CardSetting("Content", Icons.edit_calendar)),
                     ),
                   ),
                    Material(
@@ -103,7 +116,9 @@ class SettingPageView extends GetResponsiveView {
                       onTap: () {
                          Get.to(ShowLibraryspage());
                       },
-                      child: CardSetting("Library", Icons.library_books),
+                      child: Tooltip(
+                        message: 'Show Library & Add & Delete & update ',
+                        child: CardSetting("Library", Icons.library_books)),
                     ),
                   ),
                         Material(
@@ -121,6 +136,7 @@ class SettingPageView extends GetResponsiveView {
                       SingleChildScrollView(
                         child: Column(children: [
                            SizedBox(height: 10,),
+
                           Align(alignment: Alignment.center,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -134,55 +150,27 @@ class SettingPageView extends GetResponsiveView {
                       ,),)
                     );
                       },
-                      child: CardSetting("permission", Icons.workspace_premium_sharp),
+                      child: Tooltip(
+                        message: 'Add Permission',
+                        child: CardSetting("permission", Icons.workspace_premium_sharp)),
                     ),
                   ),
-                  //    Material(
-                  //   child: InkWell(
-                  //     onTap: () {
-                  //            Get.dialog(
-                  //     Align(alignment: Alignment.center,
-                  //     child: Container(
-                  //       width:450,height:500 ,  decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         borderRadius: BorderRadius.circular(10),
-                  //    border: Border.all(color: Colors.blueAccent)
-                  //   ),
-                  //       child:
-                  //     SingleChildScrollView(
-                  //       child: Column(children: [
-                  //          SizedBox(height: 10,),
-                  //         Align(alignment: Alignment.center,
-                  //           child: Padding(
-                  //             padding: const EdgeInsets.all(8.0),
-                  //             child: Text("Add Book  ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
-                  //             fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                  //           )),
-                  //          Container(child:Addbookpage(),),
-                           
-                  //       ],),
-                  //     )
-                  //     ,),)
-                  //   );
-                  //     },
-                  //     child: CardSetting("Book", Icons.bookmark_add),
-                  //   ),
-                  // ),
+                    Material(
+                    child: InkWell(
+                      onTap: () {
+                      
+                    Get.to(ComplaintspageView());
+
+                      },
+                      child: Tooltip(
+                        message: 'Add Complaints',
+                        child: CardSetting("Complaints", Icons.account_balance_wallet_rounded)),
+                    ),
+                  ),
                           CardSetting("Quiz", Icons.check_box),
                   CardSetting("Language", Icons.language),
                   CardSetting("Help", Icons.question_mark),
                   CardSetting("Logout", Icons.exit_to_app),
-                  //  userUsed ().theUser.Password!='1234567890'?Wrap(
-                  //   children: [
-              
-                  //   ],
-                  //  ):Container(
-                  //   width: 200,
-                  //   height: 222,
-                  //   color: Colors.red,
-                  //  ),
-                 
-                  
                   Container(
                     width: 100,
                     height: 100,

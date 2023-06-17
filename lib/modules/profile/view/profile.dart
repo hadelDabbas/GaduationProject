@@ -46,8 +46,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        // controller.userprofile.value.Name.toString(),
-                        'Mohammad Ahmmad',
+                         controller.userprofile.value.Name.toString(),
+                       // 'Mohammad Ahmmad',
                         style: TextStyle(
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.bold,
@@ -59,8 +59,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     Row(
                       children: [
                         Text(
-                          //  controller.userprofile.value.UserName.toString(),
-                          '(Mohammad)',
+                           controller.userprofile.value.UserName.toString(),
+                       //   '(Mohammad)',
                           style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16,
@@ -186,8 +186,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  // controller.userprofile.value.Email.toString(),
-                  'MohmmadAhmad@gmail.com',
+                   controller.userprofile.value.Email.toString(),
+                  //'MohmmadAhmad@gmail.com',
                   style: TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.bold,
@@ -215,8 +215,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  //  controller.userprofile.value.Study.toString()
-                  'Information Tecnology',
+                   controller.userprofile.value.Study.toString(),
+                //  'Information Tecnology',
                   style: TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.bold,
@@ -248,29 +248,30 @@ class Profileview extends GetResponsiveView<ProfileController> {
               child: SingleChildScrollView(
                 child: Column(
                     children: 
+            controller.userpost.map((element) => postprofile(element.UserName.toString(), element.post!.Description.toString(), "url", "", controller,element.post!.Id!," urlUserimage")).toList()
                     // controller.PostList.map((element) => postprofile(
                     //     controller.userprofile.value.Name.toString(),
                     //     element.Description.toString(),
                     //     element.Image.toString(),
                     //     'content',
-                    //     controller,element.Id!,controller.userprofile.value.Image.toString())).toList()
-                    //return content post
-                    /////
+                    //     controller,element.Id!,controller.userprofile.value.Image.toString())).toList(),
+                   // return content post
+                    ///
                     //return name user
 
-                     [
+                    //  [
 
-                      postprofile(
-                          ' Hamza Hamza',
-                          'Forest Is The tallest in the world   8848 mater',
-                          'assets/images/gabal.png',
-                          "History",
-                          controller,1,'assets/images/boy.png'),
-                      postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
-                          'assets/images/19.png', 'Global', controller,2,'assets/images/boy.png'),
-                      postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
-                          'assets/images/19.png', 'Global', controller,3,'assets/images/boy.png')
-                    ],
+                    //   postprofile(
+                    //       ' Hamza Hamza',
+                    //       'Forest Is The tallest in the world   8848 mater',
+                    //       'assets/images/gabal.png',
+                    //       "History",
+                    //       controller,1,'assets/images/boy.png'),
+                    //   postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
+                    //       'assets/images/19.png', 'Global', controller,2,'assets/images/boy.png'),
+                    //   postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
+                    //       'assets/images/19.png', 'Global', controller,3,'assets/images/boy.png')
+                    // ],
                     ),
               ),
             ),

@@ -11,6 +11,15 @@ class ContentController extends GetxController{
         final contents = <Content>[].obs;
         final contRepo=ContentRepository();
   final addcontent = Content().obs;
+
+
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    await getAllContent();
+  }
+
+
   Future <void> getAllContent() async{
     var data = await contRepo.GetContent();
     contents.assignAll(data );

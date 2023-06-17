@@ -2,7 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/modules/math/view/math1.dart';
+
+import 'math3new.dart';
+import 'math6.dart';
+import 'math7.dart';
+import 'math9.dart';
+import 'mathn1.dart';
 
 class DefineMath extends GetResponsiveView { 
   List<String>define=[' This Game Need Spead in calaulate and understandingand \n Are You Ready To Start ? \n '];
@@ -10,10 +15,14 @@ class DefineMath extends GetResponsiveView {
   Widget build(BuildContext Context) {
    return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 103, 25, 117),
-        // decoration: BoxDecoration(
-        //   image:DecorationImage(image: AssetImage('assets/images/b.png'),
-        //   fit:BoxFit.cover )     ),
+     
+   decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/d.png',
+              ), fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.25), BlendMode.modulate)
+              
+              )),
           child:Column(children: [
              InkWell(
                       onTap: () => Get.back(),
@@ -29,38 +38,32 @@ class DefineMath extends GetResponsiveView {
                     ),
               Padding(
               padding: const EdgeInsets.fromLTRB(8, 80, 8, 8),
-              child: Center(child: Text('NUMBER TEST',style: 
-              TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),)),
+              child: Center(child: Text('Math Game',style: 
+              TextStyle(fontSize: 30,
+              fontFamily: "Pacifico",
+              fontWeight: FontWeight.bold,color: Colors.blueGrey),)),
             ),
-             Padding(
-                padding: const EdgeInsets.fromLTRB(8, 50, 8, 8),
-                child: Container(
-                  child: Image.asset('assets/images/3.png')),
-              ),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Center(
-                 child: Text('You Need Spead in calaulate and understand',style: 
-                 TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white)),
-               ),
-             ),
-               Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Center(
-                   child: Text('   Are You Ready To Start ?',style:
-                    TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white)),
-                 ),
-               ),
-              Padding(
-                padding:const EdgeInsets.fromLTRB(8, 15, 8, 8),
-                child: ElevatedButton(  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.pink[200]),),
-                  onPressed: (){
-                    Get.to(Math1PageView());
-                  }, child: Text('Start',
-                style:
-                  TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white))),
-              )
+            SizedBox(height: 15,),
+           Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(height: 170,width: 170,
+                  child: Image.asset('assets/images/10.png')),
+              ) ,
+                     SizedBox(height: 20,),
+              TextButton(onPressed: (){
+          Get.to(MathNew1PageView());
+        }, child: 
+         Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Color.fromARGB(255, 62, 153, 65),width: 2)
+          ),
+           child: Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Text('Are You Want To Start ?',style: TextStyle(fontWeight: FontWeight.bold,
+                   fontSize: 20,color: Colors.black87
+                   ),),
+           ),
+         ),),
           ],)
       )
            );

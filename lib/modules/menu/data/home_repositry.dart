@@ -13,15 +13,17 @@ class HomeRepository implements IHomeRepository {
   final _dio = Get.find<Dio>();
   final auth = Get.find<AuthService>();
   @override
-  Future<List<Content>> GetAlltype() async {
-    var result = await _dio.get('');
+  @override
+  Future<List<Content>> GetContent() async {
+    var result = await _dio.get('https://localhost:7252/api/Content/GetContents');
     print(result);
     var list = <Content>[];
     for (var item in result.data) {
-      list.add(Content.fromJson(item));
+      list.add( Content.fromJson(item));
     }
     return list;
   }
+
 
   @override
   Future<List<PostDto>> GetAllPost() async {

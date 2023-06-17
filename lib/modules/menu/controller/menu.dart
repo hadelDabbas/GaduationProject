@@ -47,7 +47,7 @@ class HomeController extends GetxController
   }
 
   Future<void> GetAllContent() async {
-    var data = await homeRepo.GetAlltype();
+    var data = await homeRepo.GetContent();
     Contents.assignAll(data);
   }
 

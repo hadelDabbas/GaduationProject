@@ -5,8 +5,11 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../api/storage/storge_service.dart';
 import '../../../app/model/content.dart';
+import '../../../app/model/postdto.dart';
 import '../../../app/model/user.dart';
+import '../../../app/model/userPost.dart';
 import '../../genereted/sheard/util.dart';
+import '../../sheard/auth_service.dart';
 
 class ProfileController extends GetxController{
   var click=false.obs;
@@ -17,9 +20,10 @@ class ProfileController extends GetxController{
    final profileRepo=ProfileRepository();
    static const  String KeyData="AuthData";
    final userprofile=User().obs;
-   var iduser=0.obs;
-   final PostList=<Post>[].obs;
+    final userpost=<PostDto>[].obs;
    final UpdateUser=User().obs;
+     final auth = Get.find<AuthService>();
+      final user = User().obs;
      final ImagePicker imagepicker=ImagePicker();
    PickedFile ?imagefile;
       var valuechoice=''.obs;
@@ -30,7 +34,17 @@ class ProfileController extends GetxController{
  @override
   void onInit() {
     super.onInit();
+    GetUser();
+    ShowProfileUser ();
+    GetPostUser();
     }
+
+ Future<void> GetUser() async {
+    user.value = auth.getDataFromStorage() as User;
+//  print(user.value.Email);
+  }
+
+
      Future takePhoto ( ImageSource source) async{
     final PiickedFile=await imagepicker.getImage(source: source);
    imagefile=PiickedFile;
@@ -46,8 +60,8 @@ class ProfileController extends GetxController{
     }
   }
     Future <void>ShowProfileUser ()async{
-     var iduser=(stroge.getData(KeyData) as User).Id ;
-     userprofile.value= (await profileRepo.Getprofileuser(iduser!))!;
+    userprofile.value=user.value;
+   // userprofile.value= (await profileRepo.Getprofileuser(user.value.Id!))!;
      if(userprofile.value!=null){
       print('true');
      }else{
@@ -55,8 +69,8 @@ class ProfileController extends GetxController{
      }
     }
     Future <void>GetPostUser()async{
-     PostList.value=await profileRepo.GetUserPost(iduser.value);
-     if(  PostList.value!=null){
+     userpost.value= await profileRepo.GetUserPost(user.value.Id!) ;
+     if(    userpost.value!=null){
       print('true');
      }else{
       print('false');
@@ -65,7 +79,7 @@ class ProfileController extends GetxController{
     }
     Future <void>UpduteUserInfo()async{
     UpdateUser.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-      var res=await profileRepo.UpdateProfile(UpdateUser.value, iduser.value);
+      var res=await profileRepo.UpdateProfile(UpdateUser.value, user.value.Id!);
       if(res){
         print('update user');
       }else{

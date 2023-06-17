@@ -4,8 +4,11 @@ import 'package:graduationproject/modules/signup/view/signup1.dart';
 import '../modules/Intro/view/intro.dart';
 import '../modules/MenuGame/Menu_game.dart';
 import '../modules/MenuGame/binding/menu_gamebinding.dart';
+import '../modules/flip_card/bindings/flip_cart_binding.dart';
+import '../modules/flip_card/view/flip_cart.dart';
 import '../modules/menu/binding/menu_binding.dart';
 import '../modules/menu/view/HomePage.dart';
+import '../modules/packet/view/packet.dart';
 import '../modules/password/binding/password_binding.dart';
 import '../modules/password/view/password.dart';
 import '../modules/signin.dart/binding/signin_binding.dart';
@@ -19,8 +22,9 @@ class AppPages {
 
   static final routes = [
     GetPage(
-      name: _Paths.Intro,
-      page: () => IntroPageView(),
+      name: _Paths.MenuGame,
+      page: () =>  MenuGamePageView(),
+      binding: MenuGameBinding()
     ),
     GetPage(
         name: _Paths.SignIn,

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class MathController extends GetxController {
-//  Timer?_timer;
+ Timer?_timer;
  var answer = 0.obs;
  var answer2 = 0.obs;
  var answer3 = 0.obs;
@@ -12,6 +12,7 @@ class MathController extends GetxController {
  final time='00.00'.obs;
  var result=0.obs;
 var result2=100.obs;
+var score=0.obs;
 var result3=200.obs;
 @override
   void onInit() {
@@ -20,32 +21,32 @@ var result3=200.obs;
   }
     @override
   void onClose() {
-    //  if(_timer!=null){
-    //   _timer!.cancel();
-    //  }
+     if(_timer!=null){
+      _timer!.cancel();
+     }
     super.onClose();
 
   }
   @override
   void onReady() {
-    //  _startimer(50);
+     _startimer(50);
     super.onReady();
 
   }
   
-  // void _startimer(int seconds) {
-  //  const duration=Duration(seconds: 1);
-  //  remanningsecond=seconds;
-  //  _timer=Timer.periodic(duration, ( Timer timer) { 
-  //   if(remanningsecond==0){
-  //     timer.cancel();}
-  //     else{
-  //    int minutes=(remanningsecond~/60);
-  //   int seconds=(remanningsecond%60);
-  //   time.value=minutes.toString().padLeft(2,'0')+':'+
-  //   seconds.toString().padLeft(2,'0');
-  //   remanningsecond--;
+  void _startimer(int seconds) {
+   const duration=Duration(seconds: 1);
+   remanningsecond=seconds;
+   _timer=Timer.periodic(duration, ( Timer timer) { 
+    if(remanningsecond==0){
+      timer.cancel();}
+      else{
+     int minutes=(remanningsecond~/60);
+    int seconds=(remanningsecond%60);
+    time.value=minutes.toString().padLeft(2,'0')+':'+
+    seconds.toString().padLeft(2,'0');
+    remanningsecond--;
   
-  //     }});
-  //   }
+      }});
+    }
    }

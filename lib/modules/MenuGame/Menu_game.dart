@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/math/view/define_math.dart';
+import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
 import '../foucs/view/define_foucs.dart';
 import '../letter_game/view/define_letter.dart';
@@ -23,15 +24,15 @@ class MenuGamePageView extends GetResponsiveView <MenuController>{
             child: Column(
               children: [
                 Row(children: [
-                      Material(
-                        child: InkWell(
-                          onTap: () => Get.back(),
-                          child: Icon(Icons.arrow_back_ios,
-                                       size: 20, 
-                                     color: Colors.grey
-                                      ),
-                        ),
-                      ),
+                      // Material(
+                      //   child: InkWell(
+                      //     onTap: () => Get.to(HomePage()),
+                      //     child: Icon(Icons.arrow_back_ios,
+                      //                  size: 20, 
+                      //                color: Colors.grey
+                      //                 ),
+                      //   ),
+                      // ),
                 SizedBox(width: 8,),
                Text('Menu Game',
                     style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,decoration: TextDecoration.none,

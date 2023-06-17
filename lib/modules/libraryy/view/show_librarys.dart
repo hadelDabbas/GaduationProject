@@ -218,11 +218,11 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
           },
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40.0),
+                borderRadius: BorderRadius.circular(22.0),
                 border: Border.all(color: Colors.blueGrey)),
             child: Card(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40.0)),
+                    borderRadius: BorderRadius.circular(22.0)),
                 elevation: 10.0,
                 child: Container(
                   width: MediaQuery.of(context).size.width / 1.2,
@@ -242,220 +242,229 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           ),
                         ),
                         SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.5),
+                            width: MediaQuery.of(context).size.width / 2.3),
                         Align(
                           alignment: Alignment.topRight,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
  /////// /////////////////////////////////////// ////update library
-                              IconButton(
-                                  onPressed: () {
-                                    Get.dialog(
-                                      Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        width: 400,
-                                        height: 300,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.blueAccent)),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Align(
-                                                  alignment: Alignment.center,
+                              Tooltip(
+                                message: 'Edit Library',
+                                child: IconButton(
+                                    onPressed: () {
+                                      Get.dialog(
+                                        Align(
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          width: 400,
+                                          height: 300,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                  color: Colors.blueAccent)),
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Align(
+                                                    alignment: Alignment.center,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        "Update Library ",
+                                                        style: TextStyle(
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                "Pacifico",
+                                                            color:
+                                                                Colors.blueGrey,
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                    )),
+                                                Material(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      "Update Library ",
-                                                      style: TextStyle(
+                                                        const EdgeInsets.all(8.0),
+                                                    child: Container(
+                                                      width: 350,
+                                                      height: 40,
+                                                      child: TextFormField(
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Update Library Name',
+                                                          labelStyle: TextStyle(
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      246,
+                                                                      123,
+                                                                      127),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                        onChanged: (value) {},
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Material(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(8.0),
+                                                    child: Container(
+                                                      width: 350,
+                                                      height: 60,
+                                                      child: TextFormField(
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Update Library Postion',
+                                                          labelStyle: TextStyle(
+                                                              color:
+                                                                  Color.fromARGB(
+                                                                      255,
+                                                                      246,
+                                                                      123,
+                                                                      127),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                        onChanged: (value) {},
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 90,
+                                                      child:
+                                                       Image.asset('assets/images/book2.png'),
+                                                    ),
+                                                   SizedBox(width: 80,),
+                                                    GFButton(
+                                                      shape: GFButtonShape.pills,
+                                                      color: Colors.blueGrey,
+                                                      onPressed: () {
+                                                        Get.snackbar(
+                                                          ' Ok ',
+                                                          "Saved Data ",
+                                                          //  icon: Icon(Icons.person, color: Colors.white),
+                                                          snackPosition:
+                                                              SnackPosition
+                                                                  .BOTTOM,
+                                                          backgroundColor:
+                                                              Color.fromARGB(255,
+                                                                  209, 143, 143),
+                                                          borderRadius: 20,
+                                                          margin:
+                                                              EdgeInsets.all(15),
+                                                          colorText: Colors.white,
+                                                          duration: Duration(
+                                                              seconds: 4),
+                                                          isDismissible: true,
+                                                          //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                                          forwardAnimationCurve:
+                                                              Curves.easeOutBack,
+                                                        );
+                                                      },
+                                                      text: "Save",
+                                                      textStyle: TextStyle(
                                                           fontSize: 18,
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          fontFamily:
-                                                              "Pacifico",
-                                                          color:
-                                                              Colors.blueGrey,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none),
+                                                          color: Colors.white),
+                                                 
                                                     ),
-                                                  )),
-                                              Material(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    width: 350,
-                                                    height: 40,
-                                                    child: TextFormField(
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            'Update Library Name',
-                                                        labelStyle: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    246,
-                                                                    123,
-                                                                    127),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                      onChanged: (value) {},
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Material(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    width: 350,
-                                                    height: 60,
-                                                    child: TextFormField(
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            'Update Library Postion',
-                                                        labelStyle: TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    246,
-                                                                    123,
-                                                                    127),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                      onChanged: (value) {},
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    width: 90,
-                                                    child:
-                                                     Image.asset('assets/images/book2.png'),
-                                                  ),
-                                                 SizedBox(width: 80,),
-                                                  GFButton(
-                                                    shape: GFButtonShape.pills,
-                                                    color: Colors.blueGrey,
-                                                    onPressed: () {
-                                                      Get.snackbar(
-                                                        ' Ok ',
-                                                        "Saved Data ",
-                                                        //  icon: Icon(Icons.person, color: Colors.white),
-                                                        snackPosition:
-                                                            SnackPosition
-                                                                .BOTTOM,
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                209, 143, 143),
-                                                        borderRadius: 20,
-                                                        margin:
-                                                            EdgeInsets.all(15),
-                                                        colorText: Colors.white,
-                                                        duration: Duration(
-                                                            seconds: 4),
-                                                        isDismissible: true,
-                                                        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-                                                        forwardAnimationCurve:
-                                                            Curves.easeOutBack,
-                                                      );
-                                                    },
-                                                    text: "Save",
-                                                    textStyle: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.white),
-                                               
-                                                  ),
-                                                ],
-                                              )
-                                            ],
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ));
-                                  },
-                                  icon: Icon(
-                                    Icons.edit,
-                                    color: Color.fromARGB(255, 245, 146, 149),
-                                  )),
+                                      ));
+                                    },
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Color.fromARGB(255, 245, 146, 149),
+                                    )),
+                              ),
                                   ////////////////////////////////////////delete library
-                              IconButton(
-                                  onPressed: () {
-                          Get.dialog(Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        width: 200,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.blueAccent)),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                   children: [
-                    Text(
-                                                      "Are Sure To Remove?",
-                                                      style: TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              "Pacifico",
-                                                          color:
-                                                              Colors.blueGrey,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none),
-                                                    ),
-                                                   Padding(
-                                                     padding: const EdgeInsets.all(8.0),
-                                                     child: Center(
-                                                       child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                        children: [
-                                                      TextButton(onPressed: (){}, child: Text('yse',style: TextStyle(
-                                                        color: Color.fromARGB(255, 245, 146, 149)
-                                                      ),)),
-                                                      TextButton(onPressed: (){}, child: Text('No',style: TextStyle(
-                                                        color: Color.fromARGB(255, 245, 146, 149)
-                                                      ),)),
-                                                        ],),
-                                                     ),
-                                                   )
-                                                     
-                   ],
-                                          )))));
-             
-             
-                                  },
-                                  icon: Icon(
-                                    Icons.delete,
-                                    color: Color.fromARGB(255, 245, 146, 149),
-                                  )),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Tooltip(
+                                  message: 'delete Library',
+                                  child: IconButton(
+                                      onPressed: () {
+                                                          Get.dialog(Align(
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            width: 200,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                border: Border.all(
+                                                    color: Colors.blueAccent)),
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                   children: [
+                                                    Text(
+                                                          "Are Sure To Remove?",
+                                                          style: TextStyle(
+                                                              fontSize: 18,
+                                                              fontWeight:
+                                                                  FontWeight.bold,
+                                                              fontFamily:
+                                                                  "Pacifico",
+                                                              color:
+                                                                  Colors.blueGrey,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none),
+                                                        ),
+                                                       Padding(
+                                                         padding: const EdgeInsets.all(8.0),
+                                                         child: Center(
+                                                           child: Row(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                          TextButton(onPressed: (){}, child: Text('yse',style: TextStyle(
+                                                            color: Color.fromARGB(255, 245, 146, 149)
+                                                          ),)),
+                                                          TextButton(onPressed: (){}, child: Text('No',style: TextStyle(
+                                                            color: Color.fromARGB(255, 245, 146, 149)
+                                                          ),)),
+                                                            ],),
+                                                         ),
+                                                       )
+                                                         
+                                                   ],
+                                              )))));
+                                             
+                                             
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        color: Colors.black54,
+                                      )),
+                                ),
+                              ),
                             ],
                           ),
                         ),
