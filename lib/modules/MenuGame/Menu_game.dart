@@ -1,6 +1,5 @@
-
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/math/view/define_math.dart';
@@ -10,17 +9,16 @@ import '../foucs/view/define_foucs.dart';
 import '../letter_game/view/define_letter.dart';
 import '../word_game/view/define_word.dart';
 
-
-
-class MenuGamePageView extends GetResponsiveView <MenuController>{
-  MenuController controller=Get.put(MenuController());
-@override
+class MenuGamePageView extends GetResponsiveView<MenuController> {
+  MenuGamePageView({super.key});
+  @override
   Widget builder() {
-     final random = Random();
+    final random = Random();
     // final random1=Random();
     return SizedBox(
       height: screen.height,
       child: SingleChildScrollView(
+
             child: Column(
               children: [
                 Row(children: [
@@ -112,28 +110,7 @@ class MenuGamePageView extends GetResponsiveView <MenuController>{
               child: Text('Number Of Level is : 3',style:
                TextStyle(color: Color.fromARGB(255, 230, 219, 219),
                 fontSize: 18,fontWeight: FontWeight.bold),),
-            ),
-            Row(
-              children: [
-                  Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('mixmium : 300',style: TextStyle(fontSize: 16),),
-            ),
-                  Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('minumm is : 0',style: TextStyle(fontSize: 16),),
-            ),
-              ],
-            ),
-        
-          ])
-            
-          ),
-        ),
-        onTap: () {
-          Get.to(n);
-        },
-      ),
-    );
+            ),])))));
+
   }
 }
