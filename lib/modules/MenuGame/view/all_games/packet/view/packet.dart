@@ -11,56 +11,86 @@ class PacketPageView extends GetResponsiveView<PacketController> {
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 35,
-              width: 170,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blueGrey,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    ' Remiming :',
-                    style: TextStyle(
-                        color: Colors.white,
-                        decoration: TextDecoration.none,
-                        fontSize: 18),
-                  ),
-                  Obx(
-                    () => Text(
-                      controller.reminning.value.toString(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          decoration: TextDecoration.none,
-                          fontSize: 18),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.blueGrey,
                     ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Obx(() => controller.isMessage.value
-              ? Container(
-                  color: Colors.green.shade300,
-                  child: const Center(
                     child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Congratulations, ',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            ' Remiming :',
+                            style: TextStyle(
+                                color: Colors.white,
+                                decoration: TextDecoration.none,
+                                fontSize: 18),
+                          ),
+                          Obx(
+                            () => Text(
+                              controller.reminning.value.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 18),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
-                )
-              : const SizedBox.shrink()),
-          Center(
-            child: Obx(
+                ),
+                TextButton(
+                    onPressed: () {
+                      if (controller.cardsSucc.length ==
+                          controller.listpacket.length) {
+                        if (controller.numberlevel.value == 1) {
+                          controller.secandLevel();
+                          controller.numberlevel.value = 2;
+                        } else if (controller.numberlevel.value == 2) {
+                          controller.therdLevel();
+                          controller.numberlevel.value = 3;
+                        } else if (controller.numberlevel.value == 3) {
+                          Get.defaultDialog(
+                            title: 'Congratulations',
+                            middleText: 'You Passed All Level In This Game',
+                          );
+                        }
+                      } else {
+                        Get.defaultDialog(
+                          middleText: 'you should Flip All Card',
+                        );
+                      }
+                    },
+                    child: const Text('NEXT Level'))
+              ],
+            ),
+            Obx(() => controller.isMessage.value
+                ? Container(
+                    color: Colors.green.shade300,
+                    child: const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Congratulations, ',
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
+                : const SizedBox.shrink()),
+            Obx(
               () => Wrap(
                 children: controller.listpacket
                     .map((packet) => Material(
@@ -75,6 +105,7 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                                     const Duration(milliseconds: 50));
                                 if (controller.openCards.first.index ==
                                     controller.openCards.last.index) {
+                                  controller.reminning.value++;
                                   controller.cardsSucc
                                       .add(controller.openCards.first);
                                   controller.cardsSucc
@@ -107,8 +138,8 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                     .toList(),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ));
   }
