@@ -1,23 +1,14 @@
-import 'dart:html';
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/animation/gf_animation.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:getwidget/types/gf_animation_type.dart';
 import 'package:graduationproject/app/model/post.dart';
-import 'package:graduationproject/modules/MenuGame/Menu_game.dart';
-import 'package:graduationproject/modules/foucs/view/foucs1.dart';
 import 'package:graduationproject/modules/icons/Icon.dart';
-import 'package:graduationproject/modules/letter_game/view/letter1.dart';
 import 'package:graduationproject/modules/menu/controller/menu.dart';
 
-import '../../comment/view/comment.dart';
 import 'content_show.dart';
 
 class postPage extends GetResponsiveView<HomeController> {
-  static const listcontent = ['History', 'Global', 'Math', 'Sport'];
+  postPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,38 +18,36 @@ class postPage extends GetResponsiveView<HomeController> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-          
             contentPage(),
-                    //           ElevatedButton(
-                    //   onPressed: () async {
-                    //   await  controller.GetAllPosts();
-                    //     // controller.IdPost!=idpost;
-                    //     // controller.GetComments();
-                    //     // Get.to(CommentPageView());
+            //           ElevatedButton(
+            //   onPressed: () async {
+            //   await  controller.GetAllPosts();
+            //     // controller.IdPost!=idpost;
+            //     // controller.GetComments();
+            //     // Get.to(CommentPageView());
 
-                    //   },
-                    //   child: Icon(
-                    //     AppIconn.chat,
-                    //     size: 14,
-                    //   ),
-                    //   style: ElevatedButton.styleFrom(
-                    //     backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                    //     shape: CircleBorder(),
-                    //   ),
-                    // ),
+            //   },
+            //   child: Icon(
+            //     AppIconn.chat,
+            //     size: 14,
+            //   ),
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Color.fromARGB(255, 248, 150, 153),
+            //     shape: CircleBorder(),
+            //   ),
+            // ),
 
             Column(
                 children: controller.postDto
                     .map((element) => post(
                         element.UserName.toString(),
-                    element.post!.Description.toString(),
+                        element.post!.Description.toString(),
                         element.UserImage.toString(),
                         element.post!.Image.toString(),
                         element.GroupName.toString(),
                         element.post!.Id!,
                         element.Interaction!,
-                        element.post!
-                        ))
+                        element.post!))
                     .toList()),
 
             //   post(' Hamza Hamza','Forest Is The tallest in the world   8848 mater',
@@ -71,7 +60,8 @@ class postPage extends GetResponsiveView<HomeController> {
     );
   }
 
-  Widget post(String title, String txt, String url, String post, String GroupName,int idpost,bool interaction,Post posts) {
+  Widget post(String title, String txt, String url, String post,
+      String GroupName, int idpost, bool interaction, Post posts) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
       child: Center(
@@ -89,8 +79,8 @@ class postPage extends GetResponsiveView<HomeController> {
             children: [
               Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: GFAvatar(
                       size: 20,
                       //  shape: GFAvatarShape.standard,
@@ -103,19 +93,19 @@ class postPage extends GetResponsiveView<HomeController> {
                         alignment: Alignment.topLeft,
                         child: Text(
                           title,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                               color: Colors.blueGrey),
                         )),
                   ),
-                  Text("(" + post + ")",
-                      style: TextStyle(
+                  Text("($post)",
+                      style: const TextStyle(
                         color: Colors.grey,
                       )),
-                  Icon(Icons.arrow_forward_ios_sharp),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Icon(Icons.arrow_forward_ios_sharp),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: GFAvatar(
                       size: 20,
                       backgroundImage: AssetImage('assets/images/2.png'),
@@ -126,11 +116,11 @@ class postPage extends GetResponsiveView<HomeController> {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Image border
-                child: Container(
+                child: SizedBox(
                   width: 400,
                   height: 150,
                   child: SizedBox.fromSize(
-                    size: Size.fromRadius(48), // Image radius
+                    size: const Size.fromRadius(48), // Image radius
                     child: Image.asset(url, fit: BoxFit.cover),
                   ),
                 ),
@@ -139,10 +129,10 @@ class postPage extends GetResponsiveView<HomeController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   txt,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Align(
@@ -150,58 +140,58 @@ class postPage extends GetResponsiveView<HomeController> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 350,
                     ),
                     ElevatedButton(
                       onPressed: () async {
-                      await  controller.GetAllPosts();
+                        await controller.GetAllPosts();
                         // controller.IdPost!=idpost;
                         // controller.GetComments();
                         // Get.to(CommentPageView());
-
                       },
-                      child: Icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 248, 150, 153),
+                        shape: const CircleBorder(),
+                      ),
+                      child: const Icon(
                         AppIconn.chat,
                         size: 14,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                        shape: CircleBorder(),
                       ),
                     ),
 
                     ElevatedButton(
                       onPressed: () {
-                        controller.userpost.value.IdPost=idpost;
-                                 controller.userpost.value.post=posts;
-                                   controller.userpost.value.user=controller.user.value;
-                                  controller.userpost.value.Id=controller.user.value.Id;
-                       if(interaction){
-                        controller.userpost.value.Interaction=false;
-                        controller.GetInterActionUser( );
-                       }else{
-                         controller.userpost.value.Interaction=false;
-                        controller.GetInterActionUser( );
-                       }
+                        controller.userpost.value.IdPost = idpost;
+                        controller.userpost.value.post = posts;
+                        controller.userpost.value.user = controller.user.value;
+                        controller.userpost.value.Id = controller.user.value.Id;
+                        if (interaction) {
+                          controller.userpost.value.Interaction = false;
+                          controller.GetInterActionUser();
+                        } else {
+                          controller.userpost.value.Interaction = false;
+                          controller.GetInterActionUser();
+                        }
                         // if (controller.click == false) {
                         //   controller.click.value = true;
                         // } else {
                         //   controller.click.value = false;
                         // }
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 248, 150, 153),
+                        shape: const CircleBorder(),
+                      ),
                       child: Obx(
                         () => Icon(
                           AppIconn.favorite,
                           size: 14,
-                          color: interaction == true
-                              ? Colors.red
-                              : Colors.white,
+                          color:
+                              interaction == true ? Colors.red : Colors.white,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                        shape: CircleBorder(),
                       ),
                     )
                     // Icon(Icons.add_alert),
