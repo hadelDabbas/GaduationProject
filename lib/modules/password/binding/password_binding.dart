@@ -4,8 +4,6 @@ import 'package:graduationproject/modules/password/controller/password_controlle
 class PasswordBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<passwordController>(
-      () => passwordController(),
-    );
+    Get.put(passwordController());
   }
 }

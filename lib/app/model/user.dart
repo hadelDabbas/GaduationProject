@@ -12,22 +12,21 @@ class User {
   Uint8List? Image;
   String? Study;
   String? Paypal;
-  String? Admin ;
+  String? Admin;
 
-  User({
-    this.Id,
-    this.Name,
-    this.Phone,
-    this.Email,
-    this.Address,
-    this.Password,
-    this.Paypal,
-    this.Image,
-    this.Study,
-    this.Age,
-    this.UserName,
-    this.Admin
-  });
+  User(
+      {this.Id,
+      this.Name,
+      this.Phone,
+      this.Email,
+      this.Address,
+      this.Password,
+      this.Paypal,
+      this.Image,
+      this.Study,
+      this.Age,
+      this.UserName,
+      this.Admin});
 
   User.fromJson(Map<String, dynamic> json) {
     Id = json['id'];
@@ -43,12 +42,12 @@ class User {
     Image = json['image'] == null
         ? null
         : Uint8List.fromList(List<int>.from(json['image']!));
-        Admin=json['  Admin'];
+    Admin = json['  Admin'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
-    json['id'] = Id;
+    json['id'] = Id ?? 0;
     json['study'] = Study;
     json['age'] = Age == null ? null : Age!;
     json['name'] = Name;
@@ -59,7 +58,7 @@ class User {
     json['userName'] = UserName;
     json['paypal'] = Paypal == null ? null : Paypal!;
     json['image'] = Image == null ? null : Uint8List.fromList(Image!);
-    json['  Admin']=Admin;
+    json['  Admin'] = Admin;
     return json;
   }
 }
