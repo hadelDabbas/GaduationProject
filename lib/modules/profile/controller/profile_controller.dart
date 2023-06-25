@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/post.dart';
 import 'package:graduationproject/modules/profile/data/profile_repositry.dart';
 import 'package:image_picker/image_picker.dart';
@@ -35,7 +36,10 @@ class ProfileController extends GetxController{
    final comments=<Comments>[].obs;
    final addcomment=Comments().obs;
    final postidnew=Post().obs;
-   
+   final UserFollow=<User>[].obs;
+    final FollowUser=<User>[].obs;
+    final userfollowGroups=<Group>[].obs;
+    final currentGroup=Group().obs;
 
  @override
   void onInit() {
@@ -137,5 +141,17 @@ class ProfileController extends GetxController{
  user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
     var data = await profileRepo.UpdateProfile(user.value, user.value.Id!);
 
+  }
+     Future<void> GetUserFollow() async {
+    var data = await profileRepo.GetFollow(user.value.Id!);
+    UserFollow.assignAll(data);
+  }
+     Future<void> GetFollowuser() async {
+    var data = await profileRepo.GetFollow(user.value.Id!);
+    FollowUser.assignAll(data);
+  }
+     Future<void> GetuserGroup() async {
+    var data = await profileRepo.GetUserGroups(user.value.Id!);
+userfollowGroups.assignAll(data);
   }
 }

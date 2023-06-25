@@ -1,3 +1,4 @@
+import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/user.dart';
 
 import '../../../../app/model/comment.dart';
@@ -15,8 +16,9 @@ abstract class IProfileRepository {
      Future<List<Content>> GetContent();
  Future <bool>UpdatePost(int idpost,Post post);
  Future <bool>DeletePost(int idpost);
-   Future<User?> GetFollowers(int iduser);
-     Future<User?> GetFollowed(int iduser);
+   Future<List<User> > GetFollow(int iduser);
+     Future<List<User> > GetFollowed(int iduser);
+      Future<List<Group> > GetUserGroups(int iduser);
  Future <bool>UpdateProfile(User user,int iduser);
  
   // Future<Post?>Getpost(int idpost);

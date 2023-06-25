@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/modules/menu/controller/menu.dart';
 import 'package:graduationproject/modules/menu/view/post.dart';
 import 'package:graduationproject/modules/profile/controller/profile_controller.dart';
 import 'package:graduationproject/modules/profile/view/edit_profile.dart';
 import 'package:graduationproject/modules/profile/view/editpost.dart';
 
+import '../../../app/model/group.dart';
 import '../../../app/model/post.dart';
 import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
@@ -87,6 +89,50 @@ class Profileview extends GetResponsiveView<ProfileController> {
                             shape: CircleBorder(),
                           ),
                         ),
+                            ElevatedButton(
+                          onPressed: () {
+                        controller.GetuserGroup();
+                          Get.dialog(Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                    width: 300,
+                                    height: 700,
+                                    color: Colors.white,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Groups',
+                                              style: TextStyle(
+                                                  fontSize: 24,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                  decoration:
+                                                      TextDecoration.none),
+                                            ),
+                                          ),
+                                           Column(
+                                            children: controller.userfollowGroups.map((e) => shapFolloword(e.groupName.toString(), e.Image!,controller.user.value,e)).toList(),
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                              ));
+                          },
+                          child: Icon(
+                            Icons.group,
+                            size: 14,
+                            color: Colors.blueGrey,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shadowColor: Colors.blueGrey,
+                            shape: CircleBorder(),
+                          ),
+                        ),
                       ],
                     ),
                     Padding(
@@ -98,7 +144,38 @@ class Profileview extends GetResponsiveView<ProfileController> {
                               shadowColor: Colors.blueGrey,
                               backgroundColor: Colors.white,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.GetUserFollow();
+                                Get.dialog(Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                    width: 300,
+                                    height: 700,
+                                    color: Colors.white,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Follow',
+                                              style: TextStyle(
+                                                  fontSize: 24,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                  decoration:
+                                                      TextDecoration.none),
+                                            ),
+                                          ),
+                                         Column(
+                                            children: controller.UserFollow.map((e) => shapFolloword(e.Name.toString(), e.Image!,e,controller.currentGroup.value)).toList(),
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                              ));
+                            },
                             child: Text(
                               'Follow',
                               style: TextStyle(
@@ -113,6 +190,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                               backgroundColor: Colors.white,
                             ),
                             onPressed: () {
+                              controller.GetFollowuser();
                               Get.dialog(Align(
                                 alignment: Alignment.topRight,
                                 child: Container(
@@ -135,12 +213,15 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                       TextDecoration.none),
                                             ),
                                           ),
-                                          shapFolloword('ASIA Badnjki',
-                                              'assets/images/girl.gif'),
-                                          shapFolloword('HADEEL Dabbas',
-                                              'assets/images/girl.gif'),
-                                          shapFolloword('HAYA Ysoufi',
-                                              'assets/images/girl.gif')
+                                          Column(
+                                            children: controller.FollowUser.map((e) => shapFolloword(e.Name.toString(), e.Image!,e,controller.currentGroup.value)).toList(),
+                                          )
+                                          // shapFolloword('ASIA Badnjki',
+                                          //     'assets/images/girl.gif'),
+                                          // shapFolloword('HADEEL Dabbas',
+                                          //     'assets/images/girl.gif'),
+                                          // shapFolloword('HAYA Ysoufi',
+                                          //     'assets/images/girl.gif')
                                         ],
                                       ),
                                     )),
@@ -549,7 +630,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
     );
   }
 
-  Widget shapFolloword(String name, String url) {
+  Widget shapFolloword(String name, Uint8List image,User user,Group group) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -560,7 +641,17 @@ class Profileview extends GetResponsiveView<ProfileController> {
             border: Border.all(color: Colors.blueGrey)),
         child: Row(
           children: [
-            Container(width: 80, height: 80, child: Image.asset(url)),
+            Container(width: 80, height: 80, child:   image==null?
+                    Image.asset(
+                            'assets/images/angryimg.png',
+                            width: screen.width,
+                            fit: BoxFit.fill,
+                          )
+                        : Utility.imageFromBase64String(
+                            Utility.base64String(
+                               image),
+                            80,
+                            80),),
             SizedBox(
               width: 30,
             ),

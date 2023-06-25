@@ -76,7 +76,7 @@ class MathNew1PageView extends GetResponsiveView<MathController> {
               ),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Padding(
+            child:  Padding(
               padding: EdgeInsets.all(8.0),
               child: Column(
                 children: [

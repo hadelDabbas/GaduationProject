@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/comment.dart';
+import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/userPost.dart';
 
@@ -127,15 +128,36 @@ class ProfileRepository implements IProfileRepository {
 }
 
   @override
-  Future<User?> GetFollowed(int iduser) {
-    // TODO: implement GetFollowed
-    throw UnimplementedError();
+  Future<List<User> > GetFollow(int iduser)async {
+     var result = await _dio.get('https://localhost:7252/api/Profile/GetFollow',queryParameters: {"id":iduser});
+    print(result);
+    var list = <User>[];
+    for (var item in result.data) {
+      list.add( User.fromJson(item));
+    }
+    return list;
   }
 
   @override
-  Future<User?> GetFollowers(int iduser) {
-    // TODO: implement GetFollowers
-    throw UnimplementedError();
+  Future<List<User> > GetFollowed(int iduser)async {
+     var result = await _dio.get('https://localhost:7252/api/Profile/GetFollowed',queryParameters: {"id":iduser});
+    print(result);
+    var list = <User>[];
+    for (var item in result.data) {
+      list.add( User.fromJson(item));
+    }
+    return list;
+  }
+
+  @override
+  Future<List<Group>> GetUserGroups(int iduser)async {
+       var result = await _dio.get('https://localhost:7252/api/Profile/GetGroups',queryParameters: {"id":iduser});
+    print(result);
+    var list = <Group>[];
+    for (var item in result.data) {
+      list.add( Group.fromJson(item));
+    }
+    return list;
   }
 
   // @override

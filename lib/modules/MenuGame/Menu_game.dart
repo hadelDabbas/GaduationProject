@@ -20,9 +20,8 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const Row(
+             Row(
               children: [
-                Row(children: [
               
                 SizedBox(width: 8,),
                Text('Menu Game',
@@ -38,45 +37,12 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
                'assets/images/cubes.png',DefineMath ()),
                cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
                'assets/images/15.png',FoucsGameView() ),
+                    cardshape(random, 'Packet Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+               'assets/images/15.png',PacketPageView() ),
   
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            cardshape(
-                random,
-                'Packet Test',
-                'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                'assets/images/15.png',
-                PacketPageView()),
-            cardshape(
-                random,
-                'Letter Test',
-                'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                'assets/images/letter.png',
-                const splashscreenLetter()),
-            cardshape(
-                random,
-                'Word Test',
-                '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
-                'assets/images/4.png',
-                const Splashscrren()),
-            cardshape(
-                random,
-                'Math Test',
-                ' In This Test You Need To Be Speed This Test Increse Information ',
-                'assets/images/cubes.png',
-                DefineMath()),
-            cardshape(
-                random,
-                'Foucs Test',
-                'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                'assets/images/15.png',
-                FoucsGameView()),
-          ],
-        ),
-      ),
+      )
     );
   }
 

@@ -25,8 +25,6 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.MenuGame,
-      page: () => Profileview(),
-      binding: MenuGameBinding()
       page: () => MenuGamePageView(),
       bindings: [MenuGameBinding(), PacketBinding()],
     ),
