@@ -15,7 +15,7 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController>{
    return Scaffold(
     body: SingleChildScrollView(
       child: Container(
-      
+      height: 700,
         child: Column(children: [
               SizedBox(width: 100,),
                Padding(
@@ -102,7 +102,9 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController>{
       child: Container(
          width: 400,
         height: 70,
-        color: Colors.white,
+       decoration: BoxDecoration(
+           color: Colors.white,
+          borderRadius: BorderRadius.circular(12)),
         child:txt=='T'?
          Column(children: [
             Text('Time Off Do You Want To Retry ? ',style: TextStyle(fontSize: 20,
@@ -160,7 +162,7 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController>{
               radius: 50,
               content: Column(
                 children: [
-                 Text(controller.result.value.toString(),style:
+                 Text(controller.score.value.toString(),style:
                   TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
                    Text('Congratulations, You Win Second Level',style: TextStyle(fontSize: 16),),
                   Text('Do You Want To Go To Next Level',style: TextStyle(fontSize: 16),),

@@ -15,6 +15,7 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController>{
    return Scaffold(
     body: SingleChildScrollView(
       child: Container(
+        height: 700,
         child: Column(
           children: [
             SizedBox(width: 100,),
@@ -105,7 +106,10 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController>{
       child: Container(
          width: 400,
         height: 70,
-        color: Colors.white,
+        decoration: BoxDecoration(
+           color: Colors.white,
+          borderRadius: BorderRadius.circular(10)),
+       
         child:txt=='T'?
          Column(children: [
             Text('Time Off Do You Want To Retry ? ',style: TextStyle(fontSize: 20,

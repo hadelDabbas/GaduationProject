@@ -10,11 +10,11 @@ import 'foucs8.dart';
 
 class FoucsGameView7 extends GetResponsiveView<FoucsController>{
    FoucsController controller=Get.put(FoucsController());
-   TimerController timerController=Get.put(TimerController());
   @override
   Widget build(BuildContext context) {
    return Scaffold(
     body: Container(
+      height: 700,
       child: Column(
         children: [
           SizedBox(width: 100,),
@@ -27,7 +27,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                                            ) ,
                                child: Row(children: [
                       Obx(() => Center(
-                     child: Text('  ${timerController.time.value}',
+                     child: Text('  ${controller.time.value}',
                      style: TextStyle(
                      color: Colors.white,  ),),  )),
                        Text(' : Timer', style: TextStyle(
@@ -35,6 +35,12 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                     ],),
                            ),
             ),
+                 Text('النتيجه :'+controller.score.toString(),    style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico",
+                          color: Colors.blueGrey,
+                          decoration: TextDecoration.none),),
           SizedBox(height: 20,),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -74,8 +80,9 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                   child: ElevatedButton(  style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 240, 145, 211)),),
                     onPressed: (){
-                      if(timerController.time.value.toString()!='00:01' ){
+                      if(controller.time.value.toString()!='00:01' ){
                       if(value=='27'){
+                        controller.score.value+=10;
                       Get.to(FoucsGameView8());
                     }else{
                   Result('E');
@@ -95,7 +102,9 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
       child: Container(
          width: 400,
         height: 70,
-        color: Colors.white,
+         decoration: BoxDecoration(
+           color: Colors.white,
+          borderRadius: BorderRadius.circular(12)),
         child:txt=='T'?
          Column(children: [
             Text('Time Off Do You Want To Retry ? ',style: TextStyle(fontSize: 20,
@@ -106,12 +115,12 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                       SizedBox(width: 40,),
                            TextButton(onPressed: (){
                               Get.back();
-                           timerController.onReady();
+                       controller.onReady();
                            }, child: Text('yes',
                          style: TextStyle(color:Colors.grey)
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                          timerController.onClose();
+                       controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Colors.grey)
                         )),        
@@ -126,12 +135,12 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController>{
                       SizedBox(width: 40,),
                            TextButton(onPressed: (){
                               Get.back();
-                           timerController.onReady();
+                         controller.onReady();
                            }, child: Text('yes',
                          style: TextStyle(color:Color.fromARGB(255, 80, 137, 212))
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                          timerController.onClose();
+                        controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Color.fromARGB(255, 80, 137, 212))
                         )),        

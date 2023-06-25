@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
 import 'package:graduationproject/modules/profile/controller/profile_controller.dart';
+import 'package:graduationproject/modules/profile/view/profile.dart';
 
 import '../../genereted/sheard/util.dart';
 
@@ -68,6 +69,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+               initialValue: controller.user.value.Name,
+              onChanged: (val){
+          controller.user.value.Name=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
                     labelText: 'Enter Your New Name',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -91,6 +96,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.UserName,
+                    onChanged: (val){
+          controller.user.value.UserName=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
                     labelText: 'Enter New UserName', labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -115,6 +124,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.Age,
+                    onChanged: (val){
+          controller.user.value.Age=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.numbers,color: Colors.blueGrey,),
                     labelText: 'Enter Your New Age',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -141,6 +154,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.Email,
+                    onChanged: (val){
+          controller.user.value.Email=val;
+              },
                 controller: emailcontroller,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email,color: Colors.blueGrey,),
@@ -169,6 +186,10 @@ ProfileController controller=Get.put(ProfileController());
                 child: Container(
                   width: 450,
                   child: Obx(() => TextFormField(
+                     initialValue: controller.user.value.Password,
+                        onChanged: (val){
+          controller.user.value.Password=passcontroller.text;
+              },
                     controller:passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
@@ -205,6 +226,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.Study,
+                    onChanged: (val){
+          controller.user.value.Study=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.cast_for_education,color: Colors.blueGrey,),
                     labelText: 'Enter New Education',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -230,6 +255,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.Address,
+                    onChanged: (val){
+          controller.user.value.Address=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.location_city,color: Colors.blueGrey,),
                     labelText: 'Enter New Adress',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -255,6 +284,10 @@ ProfileController controller=Get.put(ProfileController());
             child: Container(
               width: 450,
               child: TextFormField(
+                 initialValue: controller.user.value.Paypal,
+                    onChanged: (val){
+          controller.user.value.Paypal=val;
+              },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.money,color: Colors.blueGrey,),
                     labelText: 'Enter New PayBal',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
@@ -279,12 +312,15 @@ ProfileController controller=Get.put(ProfileController());
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                if (_formfield.currentState!.validate()) {
-                  print("Data Added Successfully");
                   emailcontroller.clear();
                   passcontroller.clear();
-                  Get.to(HomePage());
-                }
+                  controller.Updateprofile();
+                  Get.to(Profileview());
+                // if (_formfield.currentState!.validate()) {
+                //   print("Data Added Successfully");
+                
+                //   Get.to(HomePage());
+                // }
               },
               style: ElevatedButton.styleFrom(shadowColor: Colors.blueGrey,
               backgroundColor: Colors.white,
@@ -315,14 +351,14 @@ ProfileController controller=Get.put(ProfileController());
                       child: controller.stringPickImage.value.isNotEmpty
                           ? Utility.imageFromBase64String(
                               controller.stringPickImage.value, 200, 200)
-                          : image == null
+                          : controller.user.value.Image == null
                               ? Image.asset(
                                   'assets/images/boy.gif',
                                   width: 200,
                                   height: 200,
                                 )
                               : Utility.imageFromBase64String(
-                                  Utility.base64String(image!), 200, 200),
+                                  Utility.base64String(controller.user.value.Image!), 200, 200),
                     )
                     ),
           Positioned(

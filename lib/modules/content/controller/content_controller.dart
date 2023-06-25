@@ -25,8 +25,8 @@ class ContentController extends GetxController{
     contents.assignAll(data );
 
   }
-   Future<void> delcontentelement(Content content) async {
-    var res = await contRepo.DelContent(content.Id!);
+   Future<void> delcontentelement(int idcontent) async {
+    var res = await contRepo.DelContent(idcontent);
     if (res) {
       getAllContent();
     }

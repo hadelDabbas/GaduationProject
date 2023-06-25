@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 class FoucsController extends GetxController with GetSingleTickerProviderStateMixin{
    late AnimationController animationController;
   var isAnimating=false.obs;
-  var result=0.obs;
   var score=0.obs;
   Timer?_timer;
  int remanningsecond=1;

@@ -1,7 +1,9 @@
+import 'package:graduationproject/app/model/bookType.dart';
 import 'package:graduationproject/app/model/buy_book.dart';
 import 'package:graduationproject/app/model/library.dart';
 
 import '../../../../app/model/book.dart';
+import '../../../../app/model/writter.dart';
 
 abstract class ILibraryRepository{
   Future<List<Book>> getAllbook(int idlibrary);
@@ -13,5 +15,8 @@ abstract class ILibraryRepository{
      Future<bool>DeleteLibrary(int idlibrary);
      Future <bool>UpdateBook(int idbook,int idlibrsry,Book book);
      Future <bool>UpdateLibrary(int idlibrsry,Library library);
-
+  Future <List<Writer>>GetAllAuthourlibrary(int idlibrary);
+     Future <List<BookType>>GetAllTypeBooklibrary(int library);
+      Future <List<Book>>GetAllBookByType(int idlibrary,int idBooktype);
+     Future <List<Book>>GetAllBookByWitter(int library,int idwriter);
 }

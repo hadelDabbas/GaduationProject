@@ -21,7 +21,7 @@ class HomeController extends GetxController
   final Contents = <Content>[].obs;
   final postDto = <PostDto>[].obs;
   final listcomment = <Comments>[].obs;
-  final idcontent = 0;
+  final idcontent = 0.obs;
   final homeRepo = HomeRepository();
   final auth = Get.find<AuthService>();
   final user = User().obs;
@@ -57,12 +57,13 @@ class HomeController extends GetxController
   }
 
   Future<void> GetpostByType() async {
-    var data = await homeRepo.GetByContent(idcontent);
+    var data = await homeRepo.GetByContent(idcontent.value);
     postDto.assignAll(data);
   }
 
   Future<void> AddComment() async {
     var data = await homeRepo.AddComment(addcomment.value, Iduser);
+    GetComments();
     if (data) {
       print('True');
     } else {

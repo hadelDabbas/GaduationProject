@@ -4,6 +4,7 @@ import 'package:graduationproject/modules/profile/data/profile_repositry.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../api/storage/storge_service.dart';
+import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
 import '../../../app/model/postdto.dart';
 import '../../../app/model/user.dart';
@@ -20,7 +21,7 @@ class ProfileController extends GetxController{
    final profileRepo=ProfileRepository();
    static const  String KeyData="AuthData";
    final userprofile=User().obs;
-    final userpost=<PostDto>[].obs;
+    final Listuserpost=<PostDto>[].obs;
    final UpdateUser=User().obs;
      final auth = Get.find<AuthService>();
       final user = User().obs;
@@ -28,14 +29,19 @@ class ProfileController extends GetxController{
    PickedFile ?imagefile;
       var valuechoice=''.obs;
     var dropdownvalue = 'History'.obs;
-      List <String> Contents=['History','Math','Arabic','English','Diversified'];
+    final Contents=<Content>[].obs;
    final stringPickImage = ''.obs;
+   final userpost=UserPost().obs;
+   final comments=<Comments>[].obs;
+   final addcomment=Comments().obs;
+   final postidnew=Post().obs;
+   
 
  @override
   void onInit() {
     super.onInit();
     GetUser();
-    ShowProfileUser ();
+   GetprofileUser ();
     GetPostUser();
     }
 
@@ -59,58 +65,77 @@ class ProfileController extends GetxController{
       print('Failed to pick image: $e');
     }
   }
-    Future <void>ShowProfileUser ()async{
-    userprofile.value=user.value;
-   // userprofile.value= (await profileRepo.Getprofileuser(user.value.Id!))!;
-     if(userprofile.value!=null){
-      print('true');
-     }else{
-      print('false');
-     }
+    Future <void>GetprofileUser ()async{
+    var data=await profileRepo.Getprofileuser(user.value.Id!);
+    userprofile.value=data!;
+   
     }
     Future <void>GetPostUser()async{
-     userpost.value= await profileRepo.GetUserPost(user.value.Id!) ;
-     if(    userpost.value!=null){
-      print('true');
-     }else{
-      print('false');
-     }
+    var data= await profileRepo.GetUserPost(user.value.Id!) ;
+    Listuserpost.assignAll(data);
 
     }
-    Future <void>UpduteUserInfo()async{
-    UpdateUser.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-      var res=await profileRepo.UpdateProfile(UpdateUser.value, user.value.Id!);
-      if(res){
-        print('update user');
-      }else{
-        print('not update user');
-      }
-    }
-    Future <void> UpdatePostUser(int idpost)async{
-        var res=await profileRepo.UpdatePost(idpost,editpost.value);
-      if(res){
-        print('update user');
-      }else{
-        print('not update user');
-      }
-    }
-    Future <void> DeletPost(int idpost)async{
-         var res=await profileRepo.DeletePost(idpost);
-      if(res){
-        GetPostUser();
-        print('update user');
+    // Future <void>UpduteUserInfo()async{
+    // UpdateUser.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    //   var res=await profileRepo.UpdateProfile(UpdateUser.value, user.value.Id!);
+    //   if(res){
+    //     print('update user');
+    //   }else{
+    //     print('not update user');
+    //   }
+    // }
+    // Future <void> UpdatePostUser(int idpost)async{
+    //     var res=await profileRepo.UpdatePost(idpost,editpost.value);
+    //   if(res){
+    //     print('update user');
+    //   }else{
+    //     print('not update user');
+    //   }
+    // }
+    // Future <void> DeletPost(int idpost)async{
+    //      var res=await profileRepo.DeletePost(idpost);
+    //   if(res){
+    //     GetPostUser();
+    //     print('update user');
         
-      }else{
-        print('not update user');
-      }
-    }
-    Future <void>Getpost(int idpost)async{
-   var result=await profileRepo.Getpost(idpost);
-   editpost.value=result!;
-    }
-       Future <void>Updatecontentpost(String content)async{
-   var result=await profileRepo.GetIdContent(content);
-        newcontent.value=result!;
-    }
-    
+    //   }else{
+    //     print('not update user');
+    //   }
+    // }
+  //   Future <void>Getpost(int idpost)async{
+  //  var result=await profileRepo.Getpost(idpost);
+  //  editpost.value=result!;
+  //   }
+  //      Future <void>Updatecontentpost(String content)async{
+  //  var result=await profileRepo.GetIdContent(content);
+  //       newcontent.value=result!;
+  //   }
+      Future<void> GetInterActionUser(int idpost) async {
+    var data = await profileRepo.InteractionUser(userpost.value,idpost);
+  }
+   Future<void> GetAllComments(int idpost) async {
+    var data = await profileRepo.GetComments(idpost);
+    comments.assignAll(data);
+  }
+    Future<void> AddComment(int idpost) async {
+    var data = await profileRepo.GetComments(idpost);
+  }
+   Future<void> GetAllContent() async {
+    var data = await profileRepo.GetContent();
+    Contents.assignAll(data);
+  }
+    Future<void> UpdatePost() async {
+   postidnew.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    var data = await profileRepo.UpdatePost(postidnew.value.Id!, postidnew.value);
+
+  }
+     Future<void> DeletPost(int idpost) async {
+    var data = await profileRepo.DeletePost(idpost);
+    GetPostUser();
+  }
+    Future<void> Updateprofile() async {
+ user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    var data = await profileRepo.UpdateProfile(user.value, user.value.Id!);
+
+  }
 }

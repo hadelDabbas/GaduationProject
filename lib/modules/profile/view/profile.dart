@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +12,8 @@ import 'package:graduationproject/modules/profile/controller/profile_controller.
 import 'package:graduationproject/modules/profile/view/edit_profile.dart';
 import 'package:graduationproject/modules/profile/view/editpost.dart';
 
+import '../../../app/model/post.dart';
+import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
 
 class Profileview extends GetResponsiveView<ProfileController> {
@@ -46,8 +51,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                         controller.userprofile.value.Name.toString(),
-                       // 'Mohammad Ahmmad',
+                        controller.userprofile.value.Name.toString(),
+                        // 'Mohammad Ahmmad',
                         style: TextStyle(
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.bold,
@@ -59,8 +64,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     Row(
                       children: [
                         Text(
-                           controller.userprofile.value.UserName.toString(),
-                       //   '(Mohammad)',
+                          controller.userprofile.value.UserName.toString(),
+                          //   '(Mohammad)',
                           style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16,
@@ -186,7 +191,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                   controller.userprofile.value.Email.toString(),
+                  controller.userprofile.value.Email.toString(),
                   //'MohmmadAhmad@gmail.com',
                   style: TextStyle(
                       color: Colors.blueGrey,
@@ -215,8 +220,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                   controller.userprofile.value.Study.toString(),
-                //  'Information Tecnology',
+                  controller.userprofile.value.Study.toString(),
+                  //  'Information Tecnology',
                   style: TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.bold,
@@ -247,32 +252,20 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   )),
               child: SingleChildScrollView(
                 child: Column(
-                    children: 
-            controller.userpost.map((element) => postprofile(element.UserName.toString(), element.post!.Description.toString(), "url", "", controller,element.post!.Id!," urlUserimage")).toList()
-                    // controller.PostList.map((element) => postprofile(
-                    //     controller.userprofile.value.Name.toString(),
-                    //     element.Description.toString(),
-                    //     element.Image.toString(),
-                    //     'content',
-                    //     controller,element.Id!,controller.userprofile.value.Image.toString())).toList(),
-                   // return content post
-                    ///
-                    //return name user
-
-                    //  [
-
-                    //   postprofile(
-                    //       ' Hamza Hamza',
-                    //       'Forest Is The tallest in the world   8848 mater',
-                    //       'assets/images/gabal.png',
-                    //       "History",
-                    //       controller,1,'assets/images/boy.png'),
-                    //   postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
-                    //       'assets/images/19.png', 'Global', controller,2,'assets/images/boy.png'),
-                    //   postprofile('Aya Hamm', 'How Number Square IN This Photo? ',
-                    //       'assets/images/19.png', 'Global', controller,3,'assets/images/boy.png')
-                    // ],
-                    ),
+                    children:
+                        //  [
+                        //   postprofile('asia','' , "GroupName", "imageGroup", "DescriptionGroup", "imagpost", true, 'It')
+                        // ]
+                        controller.Listuserpost.map((element) => postprofile(
+                            element.UserName.toString(),
+                            element.UserImage!,
+                            element.GroupName.toString(),
+                            element.GroupImage!,
+                            element.post!.Description.toString(),
+                            element.post!.Image!,
+                            element.Interaction!,
+                            element.post!.content!.typeName.toString(),
+                            element.post!)).toList()),
               ),
             ),
           ),
@@ -281,14 +274,22 @@ class Profileview extends GetResponsiveView<ProfileController> {
     );
   }
 
-  Widget postprofile(String title, String txt, String url, String post,
-      ProfileController controller,int idpost,String urlUserimage) {
+  Widget postprofile(
+      String nameuser,
+      Uint8List imageuser,
+      String GroupName,
+      Uint8List imageGroup,
+      String Descriptionpost,
+      Uint8List imagpost,
+      bool interaction,
+      String postType,
+      Post post) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
       child: Center(
         child: Container(
           width: 500,
-          height: 200,
+          height: 210,
           decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.grey,
@@ -300,28 +301,73 @@ class Profileview extends GetResponsiveView<ProfileController> {
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.person,
-                    color: Colors.blueGrey,
-                  ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Container(width: 50,height: 50,child:
+                   imageuser==null?
+                    Image.asset(
+                            'assets/images/angryimg.png',
+                            width: screen.width,
+                            fit: BoxFit.fill,
+                          )
+                        : Utility.imageFromBase64String(
+                            Utility.base64String(
+                               imageuser),
+                            50,
+                            50),
+                   ),
+                 ),
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          title,
+                          // 'Asia',
+                          nameuser,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              fontSize: 16,
                               color: Colors.blueGrey),
                         )),
                   ),
-                  Text("(" + post + ")",
+                  Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    size: 12,
+                    color: Colors.black87,
+                  ),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Container(width: 50,height: 50,child:
+                   imageGroup==null?
+                    Image.asset(
+                            'assets/images/angryimg.png',
+                            width: screen.width,
+                            fit: BoxFit.fill,
+                          )
+                        : Utility.imageFromBase64String(
+                            Utility.base64String(
+                               imageGroup),
+                            50,
+                            50),
+                   ),
+                 ),
+                  Text(
+                    GroupName,
+                    //  nameuser,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.blueGrey),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text("(" + postType + ")",
                       style: TextStyle(
                         color: Colors.grey,
                       )),
                   SizedBox(
-                    width: 200,
+                    width: 100,
                   ),
                   Align(
                     alignment: Alignment.topRight,
@@ -329,7 +375,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                       children: [
                         IconButton(
                             onPressed: () {
-                            controller.Getpost(idpost);
+                          controller.postidnew.value.Id=post.Id!;
                               Get.dialog(Align(
                                 alignment: Alignment.center,
                                 child: Container(
@@ -378,9 +424,30 @@ class Profileview extends GetResponsiveView<ProfileController> {
                             )),
                         IconButton(
                             onPressed: () {
-                 //delete post
-                 controller.DeletPost(idpost);
-
+                             Get.dialog(Align(
+                              alignment: Alignment.center,
+                              child: Container(height: 200,width: 200,
+                              color: Colors.white,
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: Colors.blueGrey,width: 2)),
+                              child: Column(
+                                children: [
+                                Center(child: Text('Are You Sure ?',style: TextStyle(color: Colors.blueGrey,fontSize: 18,
+                                fontWeight: FontWeight.bold,decoration: TextDecoration.none),),),
+                                Row(mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextButton(onPressed: (){
+                              controller.DeletPost(post.Id!);
+                                  }, child: Text('Yes',style: TextStyle(decoration: TextDecoration.none),)),
+                                   TextButton(onPressed: (){
+                                    Get.back();
+                                   }, child: Text('No',style: TextStyle(decoration: TextDecoration.none),))
+                                ],
+                                )
+                                ],
+                              ),
+                              ),
+                             ));
                             },
                             icon: Icon(
                               Icons.delete,
@@ -395,18 +462,27 @@ class Profileview extends GetResponsiveView<ProfileController> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Image border
                 child: Container(
-                  width: 200,
-                  height: 100,
+                  width: 450,
+                  height: 120,
                   child: SizedBox.fromSize(
                     size: Size.fromRadius(48), // Image radius
-                    child: Image.asset(url, fit: BoxFit.cover),
+                    child: imagpost==null?Image.asset(
+                            'assets/images/1.png',
+                            width: screen.width,
+                            fit: BoxFit.fill,
+                          )
+                        : Utility.imageFromBase64String(
+                            Utility.base64String(
+                                imagpost),
+                            screen.width,
+                            null)
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
-                  txt,
+                  Descriptionpost,
                   style: TextStyle(fontSize: 12),
                 ),
               ),
@@ -422,7 +498,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
                       width: 350,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.postidnew.value.Id=post.Id!;
+                       controller.GetAllComments(post.Id!) ;
+
+                      },
                       child: Icon(
                         AppIconn.chat,
                         size: 12,
@@ -435,11 +515,14 @@ class Profileview extends GetResponsiveView<ProfileController> {
 
                     ElevatedButton(
                       onPressed: () {
-                        if (controller.click == false) {
-                          controller.click.value = true;
-                        } else {
-                          controller.click.value = false;
-                        }
+                        controller.userpost.value.IdUser=controller.userprofile.value.Id;
+                       if(interaction){              
+                  controller.userpost.value.Interaction=false;
+                        controller.GetInterActionUser( post.Id!);
+                       }else{
+                         controller.userpost.value.Interaction=true;
+                        controller.GetInterActionUser(  post.Id!);
+                       }
                       },
                       child: Obx(
                         () => Icon(

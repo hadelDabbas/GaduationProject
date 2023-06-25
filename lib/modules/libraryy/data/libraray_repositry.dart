@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/book.dart';
+import 'package:graduationproject/app/model/bookType.dart';
 import 'package:graduationproject/app/model/buy_book.dart';
 import 'package:graduationproject/app/model/library.dart';
+import 'package:graduationproject/app/model/writter.dart';
 
 import '../../../Utile/utilExpation.dart';
 import 'adapter/librrary_adapter.dart';
@@ -104,6 +106,54 @@ class LibraryRepository implements ILibraryRepository {
     var list = <Library>[];
     for (var item in result.data) {
       list.add(Library.fromJson(item));
+    }
+    return list;
+  }
+  
+  @override
+  Future<List<Writer>>GetAllAuthourlibrary( int idlibrary) async{
+     var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    print(result);
+    var list = <Writer>[];
+    for (var item in result.data) {
+      list.add(Writer.fromJson(item));
+    }
+    return list;
+  }
+  
+  @override
+  Future<List<BookType>>GetAllTypeBooklibrary( int library)async {
+   var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    print(result);
+    var list = <BookType>[];
+    for (var item in result.data) {
+      list.add(BookType.fromJson(item));
+    }
+    return list;
+  }
+  
+  @override
+  Future<List<Book>> GetAllBookByType(int idlibrary, int idBooktype)async {
+     var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    print(result);
+    var list = <Book>[];
+    for (var item in result.data) {
+      list.add(Book.fromJson(item));
+    }
+    return list;
+  }
+  
+  @override
+  Future<List<Book>> GetAllBookByWitter(int library, int idwriter) async{
+  var result =
+        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    print(result);
+    var list = <Book>[];
+    for (var item in result.data) {
+      list.add(Book.fromJson(item));
     }
     return list;
   }

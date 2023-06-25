@@ -25,36 +25,35 @@ class EditPostview extends GetResponsiveView<ProfileController> {
   // var dropdownvalue;
   @override
   Widget build(BuildContext context) {
-    TextEditingController _controller=TextEditingController(text: controller.editpost.value.Description);
+    TextEditingController _controller=TextEditingController(text: controller.postidnew.value.Description);
     return Column(children: [
-      Material(
-          child: Obx(
-        () => Container(
-          width: 300,
-          child: DropdownButton<String>(
-              items: controller.Contents.map<DropdownMenuItem<String>>(
-                (String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(
-                          color: Colors.black45, fontWeight: FontWeight.bold),
-                    ),
-                  );
-                },
-              ).toList(),
-              isExpanded: true,
-              value: controller.Contents.first,
-              iconSize: 24,
-              elevation: 16,
-              onChanged: (String? newval) {
-                controller.Contents.first = newval!;
-                controller.Updatecontentpost(newval);
-                controller.editpost.value.IdType=controller.newcontent.value.Id;
-              }),
-        ),
-      )),
+      // Material(
+      //     child: Obx(
+      //   () => Container(
+      //     width: 300,
+      //     child: DropdownButton<String>(
+      //         items: controller.Contents.map<DropdownMenuItem<String>>(
+      //           (String value) {
+      //             return DropdownMenuItem<String>(
+      //               value: value,
+      //               child: Text(
+      //                 value,
+      //                 style: TextStyle(
+      //                     color: Colors.black45, fontWeight: FontWeight.bold),
+      //               ),
+      //             );
+      //           },
+      //         ).toList(),
+      //         isExpanded: true,
+      //         value: controller.Contents.first,
+      //         iconSize: 24,
+      //         elevation: 16,
+      //         onChanged: (String? newval) {
+      //           controller.updatepost.value.content!.typeName!=newval;
+      //           controller.Contents.value.first.typeName= newval!;
+      //         }),
+      //   ),
+      // )),
       Center(
           child: Column(
         children: [
@@ -78,7 +77,7 @@ class EditPostview extends GetResponsiveView<ProfileController> {
           ),
         ),
         onChanged: (value) {
-          controller.editpost.value.Description=value;
+          controller.postidnew.value.Description=value;
         },
         ),
       )),
@@ -87,12 +86,9 @@ class EditPostview extends GetResponsiveView<ProfileController> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               shadowColor: Colors.blueGrey,
-              // padding:
-              //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               backgroundColor: Colors.blueGrey),
           onPressed: () {
-           // controller.updatepost();
-           controller.UpdatePostUser(controller.editpost.value.Id!);
+           controller.UpdatePost();
           },
           child: Text(
             'Save',
@@ -113,14 +109,14 @@ class EditPostview extends GetResponsiveView<ProfileController> {
                       child: controller.stringPickImage.value.isNotEmpty
                           ? Utility.imageFromBase64String(
                               controller.stringPickImage.value, 200, 200)
-                          : image == null
+                          : controller.postidnew.value.Image == null
                               ? Image.asset(
                                   'assets/images/boy.gif',
                                   width: 200,
                                   height: 200,
                                 )
                               : Utility.imageFromBase64String(
-                                  Utility.base64String(image!), 200, 200),
+                                  Utility.base64String(controller.postidnew.value.Image!), 200, 200),
                     )
                     ),
           Positioned(

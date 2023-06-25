@@ -50,16 +50,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
           ),
           Column(
             children:
-                 controller. contents.map((element) => CardContent(element.typeName.toString(), context)).toList()
-            //     [
-            //   CardContent('History', context),
-            //   CardContent('Comidi', context),
-            //   CardContent('Culthre', context),
-            //   CardContent('mathes', context),
-            //   CardContent('Sport', context),
-            //   CardContent('Natura', context),
-            //   CardContent('It', context),
-            // ],
+                 controller. contents.map((element) => CardContent(element.typeName.toString(), context,element.Id!)).toList()
+          
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -240,7 +232,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
     );
   }
 
-  Widget CardContent(String name, BuildContext context) {
+  Widget CardContent(String name, BuildContext context,int idcontent) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: GFBorder(
@@ -279,7 +271,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                   child: Material(
                       child: IconButton(
                           onPressed: () {
-                            //        controller.delcontentelement(content)   ;
+                                    controller.delcontentelement(idcontent)   ;
                           },
                           icon: Icon(
                             Icons.close,

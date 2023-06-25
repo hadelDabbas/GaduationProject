@@ -22,15 +22,7 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
             child: Column(
               children: [
                 Row(children: [
-                      // Material(
-                      //   child: InkWell(
-                      //     onTap: () => Get.to(HomePage()),
-                      //     child: Icon(Icons.arrow_back_ios,
-                      //                  size: 20, 
-                      //                color: Colors.grey
-                      //                 ),
-                      //   ),
-                      // ),
+              
                 SizedBox(width: 8,),
                Text('Menu Game',
                     style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,decoration: TextDecoration.none,
@@ -75,6 +67,9 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
   Widget cardshape (Random random,String nameplay,String discribtion,String url,Widget n){
     return Material(
       child: InkWell(
+        onTap: () {
+          Get.to(n);
+        },
         child: Container( width: 800,
         height: screen.height/2.5,
           child: Card(
