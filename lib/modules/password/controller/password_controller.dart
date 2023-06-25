@@ -1,53 +1,52 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/modules/menu/view/HomePage.dart';
+import 'package:graduationproject/routes/app_pages.dart';
 
+import '../../sheard/auth_service.dart';
 import '../data/password_repostiry.dart';
 
-class passwordController extends GetxController{
+class passwordController extends GetxController {
   var passtoggle = true.obs;
   RxBool hidePassword = true.obs;
-  var newPassword=''.obs;
-  var confirmpassword=''.obs;
-  final pass=PasswordRepository();
-  var email=''.obs;
-   Future Confirmpass()async{
-     var data=  await pass.resetPassuser(email.value, newPassword.value);
-     if(data){
-      print(true);
-            Get.snackbar(
-              'Good',
-               "Add New Password Succfuly",
-               icon: Icon(Icons.person, color: Colors.white),
-               snackPosition: SnackPosition.BOTTOM,
-               backgroundColor: Color.fromARGB(255, 246, 123, 127),
-               borderRadius: 20,
-               margin: EdgeInsets.all(15),
-               colorText: Colors.white,
-               duration: Duration(seconds: 4),
-               isDismissible: true,
-              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-               forwardAnimationCurve: Curves.easeOutBack,
+  var newPassword = ''.obs;
+  var confirmpassword = ''.obs;
+  final pass = PasswordRepository();
+  final auth = Get.find<AuthService>();
+  var email = ''.obs;
+  Future confirmPassword() async {
+    var data = await pass.resetPassuser(email.value, newPassword.value);
 
-               );
-      Get.to(HomePage());
-     }else{
+    if (data) {
+      await auth.logIn(email.value, newPassword.value);
       Get.snackbar(
-              'Error',
-               "Sure From Email Or Passwoprd",
-               icon: Icon(Icons.person, color: Colors.white),
-               snackPosition: SnackPosition.BOTTOM,
-               backgroundColor:Color.fromARGB(255, 246, 123, 127),
-               borderRadius: 20,
-               margin: EdgeInsets.all(15),
-               colorText: Colors.white,
-               duration: Duration(seconds: 4),
-               isDismissible: true,
-              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-               forwardAnimationCurve: Curves.easeOutBack,
-
-               );
-     }
-   }
+        'Good',
+        "Add New Password Succfuly",
+        icon: const Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+        isDismissible: true,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+      Get.rootDelegate.toNamed(Routes.home);
+    } else {
+      Get.snackbar(
+        'Error',
+        "Sure From Email Or Passwoprd",
+        icon: const Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+        isDismissible: true,
+        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+    }
+  }
 }

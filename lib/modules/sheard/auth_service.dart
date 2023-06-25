@@ -20,7 +20,7 @@ class AuthService {
     return null;
   }
 
-  Future<Object?> logIn(String email, String password) async {
+  Future<User?> logIn(String email, String password) async {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
         queryParameters: {"email": email, "password": password});
     print(result.data);
@@ -35,9 +35,9 @@ class AuthService {
   Future<bool> signUp(User object) async {
     var result = await _dio.post('https://localhost:7252/api/User/AddUser',
         data: object.toJson());
-    print(result.data);
     if (result.statusCode == 200) {
-      stroge.saveData(KeyData, jsonEncode(object.toJson()));
+      var data = await logIn(object.Email!, object.Password!);
+      stroge.saveData(KeyData, jsonEncode(data!.toJson()));
       return true;
     }
     return false;
