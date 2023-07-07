@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/modules/AddBook/view/addbook.dart';
 import 'package:graduationproject/modules/icons/Icon.dart';
-
 import 'package:graduationproject/modules/libraryy/controller/library_controller.dart';
 
 import 'updatebook.dart';
 
 class Librarypage extends GetResponsiveView<LibraryContrller> {
+  @override
   LibraryContrller controller = Get.put(LibraryContrller());
+
+  Librarypage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         title: Center(
           child: Text(
             controller.Newlibrary.value.libraryName.toString(),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
                 fontFamily: "Pacifico",
@@ -37,16 +38,16 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                         width: 450,
                         child: TextField(
                             decoration: InputDecoration(
                                 labelText: 'search',
-                                labelStyle: TextStyle(
+                                labelStyle: const TextStyle(
                                     color: Color.fromARGB(255, 184, 183, 183),
                                     fontWeight: FontWeight.bold),
                                 hintText: 'search',
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.search,
                                   color: Color.fromARGB(255, 245, 146, 149),
                                 ),
@@ -77,7 +78,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 TextCategory('Category'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Wrap(
@@ -112,9 +113,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             shadowColor: Colors.blueGrey,
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 20),
-                            shape: CircleBorder(),
+                            shape: const CircleBorder(),
                             backgroundColor:
-                                Color.fromARGB(255, 245, 146, 149)),
+                                const Color.fromARGB(255, 245, 146, 149)),
                         onPressed: () {
                           Get.dialog(Align(
                             alignment: Alignment.topRight,
@@ -125,8 +126,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                      const Padding(
+                                        padding: EdgeInsets.all(8.0),
                                         child: Text(
                                           'Basket',
                                           style: TextStyle(
@@ -151,16 +152,16 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           '1'),
                                       Row(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 160,
                                           ),
-                                          Text('Total : ',
+                                          const Text('Total : ',
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   decoration:
                                                       TextDecoration.none,
                                                   color: Colors.blueGrey)),
-                                          Text("45000\$",
+                                          const Text("45000\$",
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   decoration:
@@ -172,20 +173,20 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               alignment: Alignment.bottomRight,
                                               child: ElevatedButton(
                                                 onPressed: () {},
-                                                child: Icon(
-                                                  Icons.check,
-                                                  size: 16,
-                                                  color: Colors.white,
-                                                ),
                                                 style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                      Color.fromARGB(
+                                                      const Color.fromARGB(
                                                           255, 246, 123, 127),
                                                   padding: const EdgeInsets
                                                           .symmetric(
                                                       vertical: 20,
                                                       horizontal: 20),
-                                                  shape: CircleBorder(),
+                                                  shape: const CircleBorder(),
+                                                ),
+                                                child: Icon(
+                                                  Icons.check,
+                                                  size: 16,
+                                                  color: Colors.white,
                                                 ),
                                               ),
                                             ),
@@ -197,7 +198,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 )),
                           ));
                         },
-                        child: Icon(
+                        child: const Icon(
                           AppIconn.shopping_cart,
                           color: Colors.white,
                           size: 25,
@@ -211,8 +212,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           shadowColor: Colors.blueGrey,
                           padding: const EdgeInsets.symmetric(
                               vertical: 20, horizontal: 20),
-                          shape: CircleBorder(),
-                          backgroundColor: Color.fromARGB(255, 245, 146, 149)),
+                          shape: const CircleBorder(),
+                          backgroundColor:
+                              const Color.fromARGB(255, 245, 146, 149)),
                       onPressed: () {
                         Get.dialog(Align(
                           alignment: Alignment.center,
@@ -226,13 +228,13 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Align(
+                                  const Align(
                                       alignment: Alignment.center,
                                       child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.all(8.0),
                                         child: Text(
                                           "Add Book  ",
                                           style: TextStyle(
@@ -252,7 +254,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           ),
                         ));
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.bookmark_add,
                         color: Colors.white,
                         size: 25,
@@ -272,8 +274,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         foregroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
           if (states.contains(MaterialState.focused)) return Colors.red;
-          if (states.contains(MaterialState.hovered))
-            return Color.fromARGB(255, 246, 123, 127);
+          if (states.contains(MaterialState.hovered)) {
+            return const Color.fromARGB(255, 246, 123, 127);
+          }
           if (states.contains(MaterialState.pressed)) return Colors.blue;
           return Colors.blueGrey; // null throus error in flutter 2.2+.
         }),
@@ -283,7 +286,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
           alignment: Alignment.center,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.blueGrey, width: 3)),
             width: 300,
@@ -292,7 +295,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               child: Column(children: [
                 Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 24,
                       fontFamily: "Pacifico",
                       color: Color.fromARGB(255, 246, 123, 127),
@@ -300,14 +303,14 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 ),
                 name == "BookType"
                     ? Column(
-                        children: controller.Booktype.map(
-                                (e) => buildItem(e.bookType.toString(), e.Id!,'B'))
+                        children: controller.Booktype.map((e) =>
+                                buildItem(e.bookType.toString(), e.id!, 'B'))
                             .toList(),
                       )
                     : Column(
-                        children:
-                            controller.AllAutour.map((e) => buildItem(e.writerName.toString(),e.Id!,'A'))
-                                .toList(),
+                        children: controller.AllAutour.map((e) =>
+                                buildItem(e.writerName.toString(), e.id!, 'A'))
+                            .toList(),
                       )
               ]),
             ),
@@ -315,7 +318,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         ));
       },
       child: Text(name,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 18,
               fontFamily: "Pacifico",
               fontWeight: FontWeight.bold)),
@@ -343,18 +346,18 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                             width: 160, height: 160, child: Image.asset(url)),
                         Column(
                           children: [
                             Row(
                               children: [
-                                Text(
+                                const Text(
                                   'Name Book:   ',
                                   style: TextStyle(
                                       fontSize: 18,
@@ -365,7 +368,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 ),
                                 Text(
                                   namebook,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
@@ -376,7 +379,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                             Row(
                               children: [
-                                Text(
+                                const Text(
                                   'Author Name :   ',
                                   style: TextStyle(
                                       fontSize: 18,
@@ -387,7 +390,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 ),
                                 Text(
                                   name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black54,
@@ -397,7 +400,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                             Row(
                               children: [
-                                Text(
+                                const Text(
                                   'Price :   ',
                                   style: TextStyle(
                                       fontSize: 18,
@@ -407,7 +410,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       decoration: TextDecoration.none),
                                 ),
                                 Text(price,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black54,
@@ -418,8 +421,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         )
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         '  Description : ',
                         style: TextStyle(
@@ -437,8 +440,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         children: <Widget>[
                           Flexible(
                               child: Center(
-                            child: new Text(
-                                style: TextStyle(
+                            child: const Text(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.black54,
                                   decoration: TextDecoration.none,
@@ -448,7 +451,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         ],
                       )),
                     ),
-                    Text('How Many Pices Do You Want ?',
+                    const Text('How Many Pices Do You Want ?',
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.blueGrey,
@@ -456,21 +459,21 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             fontFamily: "Pacifico")),
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 200,
                         ),
                         Obx(
                           () => Center(
                               child: Text(
                             controller.valuepice.value.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 30,
                               color: Colors.black54,
                               decoration: TextDecoration.none,
                             ),
                           )),
                         ),
-                        Text(' pice',
+                        const Text(' pice',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.black54,
@@ -481,12 +484,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     Center(
                       child: Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 185,
                           ),
                           Material(
                               child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.add,
                               color: Color.fromARGB(255, 246, 123, 127),
                             ),
@@ -496,7 +499,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           )),
                           Material(
                               child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.remove,
                               color: Color.fromARGB(255, 246, 123, 127),
                             ),
@@ -515,16 +518,17 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 246, 123, 127),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                            shape: const CircleBorder(),
+                          ),
                           child: Icon(
                             AppIconn.shopping_cart,
                             size: 16,
                             color: Colors.white,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 20),
-                            shape: CircleBorder(),
                           ),
                         ),
                       ),
@@ -547,7 +551,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(3)),
           child: Column(children: [
-            Container(
+            SizedBox(
                 width: 330,
                 height: 200,
                 child: Image.asset(
@@ -556,7 +560,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 )),
             Text(
               namebook,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
@@ -571,18 +575,18 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 246, 123, 127),
                           decoration: TextDecoration.none),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(price,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.black54,
@@ -610,14 +614,13 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       child: SingleChildScrollView(
                                         child: Column(
                                           children: [
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
-                                            Align(
+                                            const Align(
                                                 alignment: Alignment.center,
                                                 child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Text(
                                                     "Update Book Info  ",
                                                     style: TextStyle(
@@ -638,7 +641,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                     ),
                                   ));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                   color: Colors.blueGrey,
                                 ))),
@@ -658,7 +661,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                   color: Colors.blueAccent)),
                                           child: Column(
                                             children: [
-                                              Center(
+                                              const Center(
                                                 child: Text(
                                                   'Are You Sure?  ',
                                                   style: TextStyle(
@@ -671,7 +674,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                           TextDecoration.none),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               Row(
@@ -679,17 +682,17 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   GFButton(
-                                                    color: Color.fromARGB(
+                                                    color: const Color.fromARGB(
                                                         255, 246, 123, 127),
                                                     onPressed: () {},
                                                     text: "Delete",
                                                     shape: GFButtonShape.pills,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 2,
                                                   ),
                                                   GFButton(
-                                                    color: Color.fromARGB(
+                                                    color: const Color.fromARGB(
                                                         255, 246, 123, 127),
                                                     onPressed: () {},
                                                     text: "Cancle",
@@ -700,7 +703,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                             ],
                                           ))));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                 ))),
@@ -731,46 +734,46 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               children: [
                 Row(
                   children: [
-                    Container(width: 80, height: 80, child: Image.asset(url)),
-                    SizedBox(
+                    SizedBox(width: 80, height: 80, child: Image.asset(url)),
+                    const SizedBox(
                       width: 30,
                     ),
                   ],
                 ),
                 Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 18,
                           decoration: TextDecoration.none,
                           color: Colors.blueGrey),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 50,
                         ),
-                        Text('count :',
+                        const Text('count :',
                             style: TextStyle(
                                 fontSize: 18,
                                 decoration: TextDecoration.none,
                                 color: Colors.blueGrey)),
                         Text(count,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18,
                                 decoration: TextDecoration.none,
                                 color: Colors.black54)),
-                        SizedBox(
+                        const SizedBox(
                           width: 90,
                         ),
-                        Align(
+                        const Align(
                             child: Icon(
                           Icons.delete,
                           color: Colors.red,
@@ -787,22 +790,22 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
     );
   }
 
-  Widget buildItem(String value,int id,String type) {
+  Widget buildItem(String value, int id, String type) {
     return Material(
       child: InkWell(
-        onTap: (){
-          if(type=='B'){
+        onTap: () {
+          if (type == 'B') {
             controller.getAllBookByType(id);
-          }else{
-  controller.getAllBookByWritter(id);
+          } else {
+            controller.getAllBookByWritter(id);
           }
         },
-        child: Container(
+        child: SizedBox(
           height: 100,
           width: 280,
           child: Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black54,
                 fontSize: 18,
                 decoration: TextDecoration.none),

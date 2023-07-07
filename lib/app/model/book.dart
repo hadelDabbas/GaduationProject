@@ -1,42 +1,41 @@
-
 import 'dart:typed_data';
 
-import 'bookType.dart';
-import 'bookType.dart';
-class  Book{
-  int? Id;
-  String?BookName ;
-   Uint8List? bookImage;
-  int?BookPrice;
-  int?IdBookType;
-  BookType? bookType ;
-Book( {
-    this.Id,
-   this.BookName,
-   this.bookImage,
-   this.BookPrice,
-   this.IdBookType,
-   this.bookType,
+import 'book_type.dart';
+
+class Book {
+  int? id;
+  String? bookName;
+  Uint8List? bookImage;
+  int? bookPrice;
+  int? idBookType;
+  BookType? bookType;
+  Book({
+    this.id,
+    this.bookName,
+    this.bookImage,
+    this.bookPrice,
+    this.idBookType,
+    this.bookType,
   });
 
- Book.fromJson(Map<String, dynamic> json) {
-   Id = json['id'];
-  BookName =json['bookName '];
-     bookImage = json['bookImage'] == null
+  Book.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    bookName = json['bookName '];
+    bookImage = json['bookImage'] == null
         ? null
         : Uint8List.fromList(List<int>.from(json['image']!));
-    BookPrice =json['bookPrice '];   
- IdBookType =json['idBookType ']; 
-   bookType =json['bookType ']; 
+    bookPrice = json['bookPrice '];
+    idBookType = json['idBookType '];
+    bookType = json['bookType '];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['bookName']=BookName;
-  json['image'] =  bookImage == null ? null : Uint8List.fromList( bookImage!);
-  json[' bookPrice']= BookPrice;
-  json['idBookType']= IdBookType;
-  json[' bookType']= bookType;
+    final Map<String, dynamic> json = <String, dynamic>{};
+    json['bookName'] = bookName;
+    json['image'] = bookImage == null ? null : Uint8List.fromList(bookImage!);
+    json[' bookPrice'] = bookPrice;
+    json['idBookType'] = idBookType;
+    json[' bookType'] = bookType;
     return json;
   }
 }
