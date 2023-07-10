@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/define_math.dart';
 
-import 'view/all_games/foucs/view/define_foucs.dart';
+import 'view/all_games/foucs/view/foucs1.dart';
 import 'view/all_games/letter_game/view/define_letter.dart';
 import 'view/all_games/packet/view/packet.dart';
 import 'view/all_games/word_game/view/define_word.dart';
@@ -16,34 +16,60 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
     final random = Random();
     // final random1=Random();
     return SizedBox(
-      height: screen.height,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-             Row(
-              children: [
-              
-                SizedBox(width: 8,),
-               Text('Menu Game',
-                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,decoration: TextDecoration.none,
-                     color: Colors.blueGrey,fontFamily: "Pacifico")),
-                ],),
-                    SizedBox(height: 15,),
-                                    cardshape(random, 'Letter Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-               'assets/images/letter.png',splashscreenLetter() ),
-               cardshape(random, 'Word Test', '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
-                                              'assets/images/4.png'    , Splashscrren()      ),
-               cardshape(random, 'Math Test',' In This Test You Need To Be Speed This Test Increse Information ',
-               'assets/images/cubes.png',DefineMath ()),
-               cardshape(random, 'Foucs Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-               'assets/images/15.png',FoucsGameView() ),
-                    cardshape(random, 'Packet Test', 'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-               'assets/images/15.png',PacketPageView() ),
-  
-              ],
-            ),
-      )
-    );
+        height: screen.height,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Text('Menu Game',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.none,
+                          color: Colors.blueGrey,
+                          fontFamily: "Pacifico")),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              cardshape(
+                  random,
+                  'Letter Test',
+                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+                  'assets/images/letter.png',
+                  const splashscreenLetter()),
+              cardshape(
+                  random,
+                  'Word Test',
+                  '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
+                  'assets/images/4.png',
+                  const Splashscrren()),
+              cardshape(
+                  random,
+                  'Math Test',
+                  ' In This Test You Need To Be Speed This Test Increse Information ',
+                  'assets/images/cubes.png',
+                  DefineMath()),
+              cardshape(
+                  random,
+                  'Foucs Test',
+                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+                  'assets/images/15.png',
+                  FoucsGameView1()),
+              cardshape(
+                  random,
+                  'Packet Test',
+                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+                  'assets/images/15.png',
+                  PacketPageView()),
+            ],
+          ),
+        ));
   }
 
   Widget Types(String name, String Url, Random random, Random random1) {

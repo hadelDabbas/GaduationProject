@@ -56,7 +56,8 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<bool> AddLibrary(Library library) async {
-    var result = await _dio.put("", data: library.toJson());
+    var result = await _dio.post('https://localhost:7252/api/Library',
+        data: library.toJson());
     if (result.statusCode == 200) {
       return true;
     } else {
@@ -67,7 +68,7 @@ class LibraryRepository implements ILibraryRepository {
   @override
   Future<bool> DeleteLibrary(int idlibrary) async {
     var result = await _dio.delete(
-      "path",
+      "https://localhost:7252/api/Library?id=$idlibrary",
     );
     if (result.statusCode == 200) {
       return true;
@@ -88,7 +89,8 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<bool> UpdateLibrary(int idlibrsry, Library library) async {
-    var result = await _dio.post("", data: library.toJson());
+    var result = await _dio.put('https://localhost:7252/api/Library/$idlibrsry',
+        data: library.toJson());
     if (result.statusCode == 200) {
       return true;
     } else {
@@ -98,8 +100,7 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<List<Library>> getAllLibrary() async {
-    var result =
-        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    var result = await _dio.get('https://localhost:7252/api/Library');
     print(result);
     var list = <Library>[];
     for (var item in result.data) {

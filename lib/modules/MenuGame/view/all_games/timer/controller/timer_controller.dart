@@ -22,7 +22,7 @@ class TimerController extends GetxController {
 
   @override
   void onReady() {
-    _startimer(70);
+    _startimer(01);
     super.onReady();
   }
 
@@ -37,7 +37,7 @@ class TimerController extends GetxController {
         int seconds = (remanningsecond % 60);
         time.value =
             '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
-        remanningsecond--;
+        remanningsecond++;
       }
     });
   }

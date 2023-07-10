@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/colors/gf_color.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 
@@ -8,7 +7,6 @@ import '../../../app/model/library.dart';
 import '../controller/library_controller.dart';
 
 class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
-  LibraryContrller controller = Get.put(LibraryContrller());
   List<String> namelibrary = [
     ' Al Tourath',
     ' Al Arabi',
@@ -16,186 +14,171 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
     ' Al Hadara'
   ];
 
+  ShowLibraryspage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Material(
-                child: InkWell(
-                  onTap: () => Get.back(),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.arrow_back_ios,
-                          size: 20, color: Colors.grey),
+    return Scaffold(
+      body: SingleChildScrollView(
+          child: Column(children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Material(
+                  child: InkWell(
+                    onTap: () => Get.back(),
+                    child: const Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.arrow_back_ios,
+                            size: 20, color: Colors.grey),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    " Librarays  ",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Pacifico",
-                        color: Colors.blueGrey,
-                        decoration: TextDecoration.none),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      " Librarays  ",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico",
+                          color: Colors.blueGrey,
+                          decoration: TextDecoration.none),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 100,
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 90,
-                  height: 90,
-                  child: Image.asset("assets/images/doda.png"),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 90,
-                  height: 90,
-                  child: Image.asset("assets/images/book3.png"),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 22,
-          ),
-
-          Wrap(
-            children:
-               controller.listLibrary.map((e) => shapelibrarycard(context, e.libraryName.toString()
-               ,e.libraryAddress.toString(),e.Id!,e)).toList(),
-          ),
-          ////////Add New Library
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Material(
-                child: Tooltip(
-                  message: 'Add New Library',
-                  child: GFIconButton(
-                    color: Colors.blueGrey,
-                    onPressed: () {
-                      Get.dialog(Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.blueAccent)),
-                            width: 400,
-                            height: 250,
-                            child: Column(children: [
-                              Text(
-                                " Add New Librarays  ",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: "Pacifico",
-                                    color: Colors.blueGrey,
-                                    decoration: TextDecoration.none),
-                              ),
-                              Material(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 350,
-                                    height: 60,
-                                    child: TextFormField(
-                                      decoration: InputDecoration(
-                                        icon: Icon(
-                                          Icons.library_books,
-                                          color: Color.fromARGB(
-                                              255, 246, 123, 127),
-                                        ),
-                                        labelText: 'Add Library Name',
-                                        labelStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 246, 123, 127),
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      onChanged: (value) {
-                                        controller.Addlibrary.value.libraryName=value;
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Material(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 350,
-                                    height: 60,
-                                    child: TextFormField(
-                                      decoration: InputDecoration(
-                                        icon: Icon(
-                                          Icons.location_on,
-                                          color: Color.fromARGB(
-                                              255, 246, 123, 127),
-                                        ),
-                                        labelText: 'Add Library Postion',
-                                        labelStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                255, 246, 123, 127),
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      onChanged: (value) {
-                                        controller.Addlibrary.value.libraryAddress=value;
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: GFButton(
-                                  onPressed: () {
-                                 controller.addLibrary(controller.Addlibrary.value)  ; 
-                                  },
-                                  text: "Added",
-                                  color: Colors.blueGrey,
-                                  shape: GFButtonShape.pills,
-                                ),
-                              ),
-                            ]),
-                          )));
-                    },
-                    icon: Icon(Icons.add),
-                    shape: GFIconButtonShape.pills,
-                  ),
-                ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SizedBox(
+                    width: 90,
+                    height: 90,
+                    child: Image.asset("assets/images/doda.png"),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SizedBox(
+                    width: 90,
+                    height: 90,
+                    child: Image.asset("assets/images/book3.png"),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+        Obx(() => Wrap(
+              children: controller.listLibrary
+                  .map((e) => shapelibrarycard(context, e))
+                  .toList(),
+            )),
+      ])),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Get.dialog(Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.blueAccent)),
+                  width: 400,
+                  height: 250,
+                  child: Column(children: [
+                    const Text(
+                      " Add New Librarays  ",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico",
+                          color: Colors.blueGrey,
+                          decoration: TextDecoration.none),
+                    ),
+                    Material(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 350,
+                          height: 60,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              icon: Icon(
+                                Icons.library_books,
+                                color: Color.fromARGB(255, 246, 123, 127),
+                              ),
+                              labelText: 'Add Library Name',
+                              labelStyle: TextStyle(
+                                  color: Color.fromARGB(255, 246, 123, 127),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onChanged: (value) {
+                              controller.Addlibrary.value.libraryName = value;
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Material(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: 350,
+                          height: 60,
+                          child: TextFormField(
+                            decoration: const InputDecoration(
+                              icon: Icon(
+                                Icons.location_on,
+                                color: Color.fromARGB(255, 246, 123, 127),
+                              ),
+                              labelText: 'Add Library Postion',
+                              labelStyle: TextStyle(
+                                  color: Color.fromARGB(255, 246, 123, 127),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onChanged: (value) {
+                              controller.Addlibrary.value.libraryAddress =
+                                  value;
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: GFButton(
+                        onPressed: () {
+                          controller.addLibrary(controller.Addlibrary.value);
+                        },
+                        text: "Added",
+                        color: Colors.blueGrey,
+                        shape: GFButtonShape.pills,
+                      ),
+                    ),
+                  ]),
+                )));
+          }),
     );
   }
 
-  Widget shapelibrarycard(BuildContext context, String name,String address,int idlibrary,Library library) {
+  Widget shapelibrarycard(BuildContext context, Library library) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
       child: Material(
         child: InkWell(
           onTap: () {
-            controller.IdLibrary.value=idlibrary;
-            controller.Newlibrary.value=library;
+            controller.IdLibrary.value = library.Id!;
+            controller.Newlibrary.value = library;
             Get.to(Librarypage());
           },
           child: Container(
@@ -206,28 +189,27 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
                 elevation: 10.0,
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width / 1.2,
                   height: MediaQuery.of(context).size.height / 6,
                   child: Column(children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            name,
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black54,
-                                decoration: TextDecoration.none),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              library.libraryName!,
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                  decoration: TextDecoration.none),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                            width: MediaQuery.of(context).size.width / 2.3),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               /////// /////////////////////////////////////// ////update library
@@ -249,15 +231,14 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                           child: SingleChildScrollView(
                                             child: Column(
                                               children: [
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 10,
                                                 ),
-                                                Align(
+                                                const Align(
                                                     alignment: Alignment.center,
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Text(
                                                         "Update Library ",
                                                         style: TextStyle(
@@ -278,28 +259,33 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                     padding:
                                                         const EdgeInsets.all(
                                                             8.0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: 350,
                                                       height: 40,
                                                       child: TextFormField(
-                                                     //   controller:name.toString() ,
+                                                        //   controller:name.toString() ,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText:
-                                                              'Update Library Name',
-                                                          labelStyle: TextStyle(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      246,
-                                                                      123,
-                                                                      127),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          labelText: library
+                                                              .libraryName!,
+                                                          labelStyle:
+                                                              const TextStyle(
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          246,
+                                                                          123,
+                                                                          127),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
                                                         ),
                                                         onChanged: (value) {
-                                                          controller.updatelibrary.value.libraryName=value;
+                                                          controller
+                                                                  .updatelibrary
+                                                                  .value
+                                                                  .libraryName =
+                                                              value;
                                                         },
                                                       ),
                                                     ),
@@ -310,27 +296,32 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                     padding:
                                                         const EdgeInsets.all(
                                                             8.0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: 350,
                                                       height: 60,
                                                       child: TextFormField(
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText:
-                                                              'Update Library Postion',
-                                                          labelStyle: TextStyle(
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      246,
-                                                                      123,
-                                                                      127),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          labelText: library
+                                                              .libraryAddress!,
+                                                          labelStyle:
+                                                              const TextStyle(
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          246,
+                                                                          123,
+                                                                          127),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
                                                         ),
                                                         onChanged: (value) {
-                                                            controller.updatelibrary.value.libraryAddress=value;
+                                                          controller
+                                                                  .updatelibrary
+                                                                  .value
+                                                                  .libraryAddress =
+                                                              value;
                                                         },
                                                       ),
                                                     ),
@@ -338,20 +329,44 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                 ),
                                                 Row(
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       width: 90,
                                                       child: Image.asset(
                                                           'assets/images/book2.png'),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 80,
                                                     ),
                                                     GFButton(
                                                       shape:
                                                           GFButtonShape.pills,
                                                       color: Colors.blueGrey,
-                                                      onPressed: () {
-                                                        controller.UpdateLibrary(idlibrary);
+                                                      onPressed: () async {
+                                                        controller
+                                                            .updatelibrary
+                                                            .value
+                                                            .libraryName = controller
+                                                                .updatelibrary
+                                                                .value
+                                                                .libraryName ??
+                                                            library
+                                                                .libraryName!;
+                                                        controller
+                                                            .updatelibrary
+                                                            .value
+                                                            .libraryAddress = controller
+                                                                .updatelibrary
+                                                                .value
+                                                                .libraryAddress ??
+                                                            library
+                                                                .libraryAddress!;
+                                                        controller
+                                                            .updatelibrary
+                                                            .value
+                                                            .Id = library.Id;
+                                                        await controller
+                                                            .UpdateLibrary(
+                                                                library.Id!);
                                                         Get.snackbar(
                                                           ' Ok ',
                                                           "Saved Data ",
@@ -360,19 +375,21 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                               SnackPosition
                                                                   .BOTTOM,
                                                           backgroundColor:
-                                                              Color.fromARGB(
+                                                              const Color
+                                                                      .fromARGB(
                                                                   255,
                                                                   209,
                                                                   143,
                                                                   143),
                                                           borderRadius: 20,
                                                           margin:
-                                                              EdgeInsets.all(
-                                                                  15),
+                                                              const EdgeInsets
+                                                                  .all(15),
                                                           colorText:
                                                               Colors.white,
-                                                          duration: Duration(
-                                                              seconds: 4),
+                                                          duration:
+                                                              const Duration(
+                                                                  seconds: 4),
                                                           isDismissible: true,
                                                           //  dismissDirection: SnackDismissDirection.HORIZONTAL,
                                                           forwardAnimationCurve:
@@ -381,11 +398,14 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                         );
                                                       },
                                                       text: "Save",
-                                                      textStyle: TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.white),
+                                                      textStyle:
+                                                          const TextStyle(
+                                                              fontSize: 18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.white),
                                                     ),
                                                   ],
                                                 )
@@ -395,7 +415,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                         ),
                                       ));
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.edit,
                                       color: Color.fromARGB(255, 245, 146, 149),
                                     )),
@@ -407,7 +427,6 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                   message: 'delete Library',
                                   child: IconButton(
                                       onPressed: () {
-
                                         Get.dialog(Align(
                                             alignment: Alignment.center,
                                             child: Container(
@@ -424,7 +443,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                 child: SingleChildScrollView(
                                                     child: Column(
                                                   children: [
-                                                    Text(
+                                                    const Text(
                                                       "Are Sure To Remove?",
                                                       style: TextStyle(
                                                           fontSize: 18,
@@ -449,11 +468,14 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                   .center,
                                                           children: [
                                                             TextButton(
-                                                                onPressed:
-                                                                    () {
-                                                              controller.dellibrary(idlibrary)   ;     
-                                                                    },
-                                                                child: Text(
+                                                                onPressed: () {
+                                                                  controller
+                                                                      .dellibrary(
+                                                                          library
+                                                                              .Id!);
+                                                                },
+                                                                child:
+                                                                    const Text(
                                                                   'Yes',
                                                                   style: TextStyle(
                                                                       color: Color.fromARGB(
@@ -463,11 +485,11 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                           149)),
                                                                 )),
                                                             TextButton(
-                                                                onPressed:
-                                                                    () {
-                                                                      Get.back();
-                                                                    },
-                                                                child: Text(
+                                                                onPressed: () {
+                                                                  Get.back();
+                                                                },
+                                                                child:
+                                                                    const Text(
                                                                   'No',
                                                                   style: TextStyle(
                                                                       color: Color.fromARGB(
@@ -483,21 +505,21 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                   ],
                                                 )))));
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.close,
                                         color: Colors.black54,
                                       )),
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Icon(
                             Icons.add_location_sharp,
                             color: Color.fromARGB(255, 245, 146, 149),
@@ -506,8 +528,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            address,
-                            style: TextStyle(
+                            library.libraryAddress!,
+                            style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black54,

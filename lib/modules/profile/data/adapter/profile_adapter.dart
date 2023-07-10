@@ -8,20 +8,18 @@ import '../../../../app/model/postdto.dart';
 import '../../../../app/model/userPost.dart';
 
 abstract class IProfileRepository {
-  Future<User?> Getprofileuser(int iduser);
- Future<List<PostDto>> GetUserPost(int iduser);
-  Future<bool>InteractionUser(UserPost userPost,int idpost);
-   Future<List<Comments> >GetComments(int idpost);
-     Future<bool> AddComment(Comments comments);
-     Future<List<Content>> GetContent();
- Future <bool>UpdatePost(int idpost,Post post);
- Future <bool>DeletePost(int idpost);
-   Future<List<User> > GetFollow(int iduser);
-     Future<List<User> > GetFollowed(int iduser);
-      Future<List<Group> > GetUserGroups(int iduser);
- Future <bool>UpdateProfile(User user,int iduser);
- 
+  Future<List<PostDto>> GetUserPost(int iduser);
+  Future<bool> InteractionUser(UserPost userPost, int idpost);
+  Future<List<Comments>> GetComments(int idpost);
+  Future<bool> AddComment(Comments comments);
+  Future<List<Content>> GetContent();
+  Future<bool> UpdatePost(int idpost, Post post);
+  Future<bool> DeletePost(int idpost);
+  Future<List<User>> GetFollow(int iduser);
+  Future<List<User>> GetFollowed(int iduser);
+  Future<List<Group>> GetUserGroups(int iduser);
+  Future<bool> UpdateProfile(User user, int iduser);
+
   // Future<Post?>Getpost(int idpost);
   //Future<Content?>GetIdContent(String content);
-  
 }

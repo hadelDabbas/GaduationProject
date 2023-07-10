@@ -11,7 +11,8 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: SizedBox(
+      height: 700,
       child: Column(
         children: [
           const SizedBox(
@@ -30,7 +31,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                 children: [
                   Obx(() => Center(
                         child: Text(
-                          '  ${controller.timerController.time.value}',
+                          '  ${controller.time.value}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -42,6 +43,15 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                 ],
               ),
             ),
+          ),
+          Text(
+            'النتيجه :${controller.score}',
+            style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Pacifico",
+                color: Colors.blueGrey,
+                decoration: TextDecoration.none),
           ),
           const SizedBox(
             height: 20,
@@ -95,8 +105,9 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                   const Color.fromARGB(255, 240, 145, 211)),
             ),
             onPressed: () {
-              if (controller.timerController.time.value.toString() != '00:01') {
+              if (controller.time.value.toString() != '00:01') {
                 if (value == '27') {
+                  controller.score.value += 10;
                   Get.to(FoucsGameView8());
                 } else {
                   Result('E');
@@ -121,7 +132,8 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
           child: Container(
               width: 400,
               height: 70,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
               child: txt == 'T'
                   ? Column(
                       children: [
@@ -140,14 +152,14 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.back();
-                                  controller.timerController.onReady();
+                                  controller.onReady();
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
-                                  controller.timerController.onClose();
+                                  controller.onClose();
                                 },
                                 child: const Text('No',
                                     style: TextStyle(color: Colors.grey))),
@@ -172,7 +184,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.back();
-                                  controller.timerController.onReady();
+                                  controller.onReady();
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(
@@ -181,7 +193,7 @@ class FoucsGameView7 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
-                                  controller.timerController.onClose();
+                                  controller.onClose();
                                 },
                                 child: const Text('No',
                                     style: TextStyle(

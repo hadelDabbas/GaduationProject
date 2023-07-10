@@ -53,7 +53,9 @@ class HomeController extends GetxController
 
   Future<void> GetAllPosts() async {
     var data = await homeRepo.GetAllPost();
-    postDto.assignAll(data);
+    if (data.isNotEmpty) {
+      postDto.assignAll(data);
+    }
   }
 
   Future<void> GetpostByType() async {
@@ -77,6 +79,6 @@ class HomeController extends GetxController
   }
 
   Future<void> GetInterActionUser() async {
-    var data = await homeRepo.InteractionUser(userpost.value, Iduser);
+    await homeRepo.InteractionUser(userpost.value, Iduser);
   }
 }

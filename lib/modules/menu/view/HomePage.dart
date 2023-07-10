@@ -8,6 +8,8 @@ import 'package:graduationproject/modules/menu/view/post.dart';
 import 'package:graduationproject/modules/profile/view/profile.dart';
 import 'package:graduationproject/modules/settings/view/settings.dart';
 
+import '../../search/view/search_view.dart';
+
 class HomePage extends GetResponsiveView<HomeController> {
   @override
   HomePage({super.key});
@@ -78,9 +80,7 @@ Widget getselectedwidget({required int index}) {
 
       break;
     case 3:
-      widget = Container(
-        child: const Text('0'),
-      );
+      widget = SearchPage();
       break;
     case 4:
       widget = ShowGroupPageView();

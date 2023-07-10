@@ -11,7 +11,8 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
+        height: 700,
         child: Column(
           children: [
             const SizedBox(
@@ -132,7 +133,8 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
           child: Container(
               width: 400,
               height: 70,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
               child: txt == 'T'
                   ? Column(
                       children: [

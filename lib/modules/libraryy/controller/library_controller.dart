@@ -66,8 +66,8 @@ class LibraryContrller extends GetxController {
   }
 
   Future<void> UpdateLibrary(int idlibrary) async {
-    var res = libraryRepo..UpdateLibrary(idlibrary, updatelibrary.value);
-    if (res == true) {
+    var res = await libraryRepo.UpdateLibrary(idlibrary, updatelibrary.value);
+    if (res) {
       getAllLibrary();
       Get.back();
     }

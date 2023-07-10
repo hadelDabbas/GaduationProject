@@ -1,17 +1,12 @@
-import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/app/model/user.dart';
-import 'package:graduationproject/modules/menu/controller/menu.dart';
-import 'package:graduationproject/modules/menu/view/post.dart';
 import 'package:graduationproject/modules/profile/controller/profile_controller.dart';
-import 'package:graduationproject/modules/profile/view/edit_profile.dart';
 import 'package:graduationproject/modules/profile/view/editpost.dart';
+import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../../app/model/group.dart';
 import '../../../app/model/post.dart';
@@ -19,17 +14,16 @@ import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
 
 class Profileview extends GetResponsiveView<ProfileController> {
-  ProfileController controller = Get.put(ProfileController());
+  Profileview({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Column(children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              width: 10,
-            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(6, 20, 8, 8),
               child: Container(
@@ -37,7 +31,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     border: Border.all(color: Colors.white, width: 2)),
                 height: 150,
                 width: 150,
-                child: Align(
+                child: const Align(
                   alignment: Alignment.topLeft,
                   child: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/boy.gif'),
@@ -55,7 +49,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                       child: Text(
                         controller.userprofile.value.Name.toString(),
                         // 'Mohammad Ahmmad',
-                        style: TextStyle(
+                        style: const TextStyle(
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.bold,
                           color: Colors.blueGrey,
@@ -67,8 +61,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                       children: [
                         Text(
                           controller.userprofile.value.UserName.toString(),
-                          //   '(Mohammad)',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 16,
                             decoration: TextDecoration.none,
@@ -76,61 +69,67 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            Get.to(EditProfileview());
+                            Get.rootDelegate.toNamed(Routes.editProfile);
                           },
-                          child: Icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shadowColor: Colors.blueGrey,
+                            shape: const CircleBorder(),
+                          ),
+                          child: const Icon(
                             Icons.edit,
                             size: 14,
                             color: Colors.blueGrey,
                           ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            controller.GetuserGroup();
+                            Get.dialog(Align(
+                              alignment: Alignment.topRight,
+                              child: Container(
+                                  width: 300,
+                                  height: 700,
+                                  color: Colors.white,
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Groups',
+                                            style: TextStyle(
+                                                fontSize: 24,
+                                                fontFamily: "Pacifico",
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                decoration:
+                                                    TextDecoration.none),
+                                          ),
+                                        ),
+                                        Column(
+                                          children: controller.userfollowGroups
+                                              .map((e) => shapFolloword(
+                                                  e.groupName.toString(),
+                                                  e.Image!,
+                                                  controller.user.value,
+                                                  e))
+                                              .toList(),
+                                        )
+                                      ],
+                                    ),
+                                  )),
+                            ));
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shadowColor: Colors.blueGrey,
-                            shape: CircleBorder(),
+                            shape: const CircleBorder(),
                           ),
-                        ),
-                            ElevatedButton(
-                          onPressed: () {
-                        controller.GetuserGroup();
-                          Get.dialog(Align(
-                                alignment: Alignment.topRight,
-                                child: Container(
-                                    width: 300,
-                                    height: 700,
-                                    color: Colors.white,
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              'Groups',
-                                              style: TextStyle(
-                                                  fontSize: 24,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  decoration:
-                                                      TextDecoration.none),
-                                            ),
-                                          ),
-                                           Column(
-                                            children: controller.userfollowGroups.map((e) => shapFolloword(e.groupName.toString(), e.Image!,controller.user.value,e)).toList(),
-                                          )
-                                        ],
-                                      ),
-                                    )),
-                              ));
-                          },
-                          child: Icon(
+                          child: const Icon(
                             Icons.group,
                             size: 14,
                             color: Colors.blueGrey,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            shadowColor: Colors.blueGrey,
-                            shape: CircleBorder(),
                           ),
                         ),
                       ],
@@ -146,7 +145,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                             ),
                             onPressed: () {
                               controller.GetUserFollow();
-                                Get.dialog(Align(
+                              Get.dialog(Align(
                                 alignment: Alignment.topRight,
                                 child: Container(
                                     width: 300,
@@ -155,8 +154,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               'Follow',
                                               style: TextStyle(
@@ -168,22 +167,28 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                       TextDecoration.none),
                                             ),
                                           ),
-                                         Column(
-                                            children: controller.UserFollow.map((e) => shapFolloword(e.Name.toString(), e.Image!,e,controller.currentGroup.value)).toList(),
+                                          Column(
+                                            children: controller.UserFollow.map(
+                                                (e) => shapFolloword(
+                                                    e.Name.toString(),
+                                                    e.Image!,
+                                                    e,
+                                                    controller.currentGroup
+                                                        .value)).toList(),
                                           )
                                         ],
                                       ),
                                     )),
                               ));
                             },
-                            child: Text(
+                            child: const Text(
                               'Follow',
                               style: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                          SizedBox(width: 3),
+                          const SizedBox(width: 3),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shadowColor: Colors.blueGrey,
@@ -200,8 +205,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                          const Padding(
+                                            padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               'Followed',
                                               style: TextStyle(
@@ -214,7 +219,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                             ),
                                           ),
                                           Column(
-                                            children: controller.FollowUser.map((e) => shapFolloword(e.Name.toString(), e.Image!,e,controller.currentGroup.value)).toList(),
+                                            children: controller.FollowUser.map(
+                                                (e) => shapFolloword(
+                                                    e.Name.toString(),
+                                                    e.Image!,
+                                                    e,
+                                                    controller.currentGroup
+                                                        .value)).toList(),
                                           )
                                           // shapFolloword('ASIA Badnjki',
                                           //     'assets/images/girl.gif'),
@@ -227,7 +238,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     )),
                               ));
                             },
-                            child: Text(
+                            child: const Text(
                               'Followed',
                               style: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
@@ -240,11 +251,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   ],
                 ),
               ],
-            )
+            ),
+            const SizedBox()
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
           child: Align(
               alignment: Alignment.topLeft,
               child: Text(
@@ -259,11 +271,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.fromLTRB(8, 8, 8, 1),
           child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.email,
                   color: Color.fromARGB(255, 246, 123, 127),
@@ -274,7 +286,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 child: Text(
                   controller.userprofile.value.Email.toString(),
                   //'MohmmadAhmad@gmail.com',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -288,11 +300,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.fromLTRB(8, 1, 8, 8),
           child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.cast_for_education,
                   color: Color.fromARGB(255, 246, 123, 127),
@@ -303,7 +315,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 child: Text(
                   controller.userprofile.value.Study.toString(),
                   //  'Information Tecnology',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -317,7 +329,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
           padding: const EdgeInsets.all(0.0),
           child: Card(
             elevation: 6.0,
-            color: Color.fromARGB(255, 246, 123, 127),
+            color: const Color.fromARGB(255, 246, 123, 127),
             clipBehavior: Clip.hardEdge,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
@@ -382,22 +394,21 @@ class Profileview extends GetResponsiveView<ProfileController> {
             children: [
               Row(
                 children: [
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(width: 50,height: 50,child:
-                   imageuser==null?
-                    Image.asset(
-                            'assets/images/angryimg.png',
-                            width: screen.width,
-                            fit: BoxFit.fill,
-                          )
-                        : Utility.imageFromBase64String(
-                            Utility.base64String(
-                               imageuser),
-                            50,
-                            50),
-                   ),
-                 ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: imageuser == null
+                          ? Image.asset(
+                              'assets/images/angryimg.png',
+                              width: screen.width,
+                              fit: BoxFit.fill,
+                            )
+                          : Utility.imageFromBase64String(
+                              Utility.base64String(imageuser), 50, 50),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
@@ -405,49 +416,48 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         child: Text(
                           // 'Asia',
                           nameuser,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               color: Colors.blueGrey),
                         )),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios_sharp,
                     size: 12,
                     color: Colors.black87,
                   ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(width: 50,height: 50,child:
-                   imageGroup==null?
-                    Image.asset(
-                            'assets/images/angryimg.png',
-                            width: screen.width,
-                            fit: BoxFit.fill,
-                          )
-                        : Utility.imageFromBase64String(
-                            Utility.base64String(
-                               imageGroup),
-                            50,
-                            50),
-                   ),
-                 ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: imageGroup == null
+                          ? Image.asset(
+                              'assets/images/angryimg.png',
+                              width: screen.width,
+                              fit: BoxFit.fill,
+                            )
+                          : Utility.imageFromBase64String(
+                              Utility.base64String(imageGroup), 50, 50),
+                    ),
+                  ),
                   Text(
                     GroupName,
                     //  nameuser,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                         color: Colors.blueGrey),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Text("(" + postType + ")",
-                      style: TextStyle(
+                  Text("($postType)",
+                      style: const TextStyle(
                         color: Colors.grey,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     width: 100,
                   ),
                   Align(
@@ -456,7 +466,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                       children: [
                         IconButton(
                             onPressed: () {
-                          controller.postidnew.value.Id=post.Id!;
+                              controller.postidnew.value.Id = post.Id!;
                               Get.dialog(Align(
                                 alignment: Alignment.center,
                                 child: Container(
@@ -470,14 +480,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
-                                        Align(
+                                        const Align(
                                             alignment: Alignment.center,
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 "Edit post : ",
                                                 style: TextStyle(
@@ -498,39 +507,67 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                 ),
                               ));
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit,
                               size: 20,
                               color: Colors.blueGrey,
                             )),
                         IconButton(
                             onPressed: () {
-                             Get.dialog(Align(
-                              alignment: Alignment.center,
-                              child: Container(height: 200,width: 200,
-                              color: Colors.white,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.blueGrey,width: 2)),
-                              child: Column(
-                                children: [
-                                Center(child: Text('Are You Sure ?',style: TextStyle(color: Colors.blueGrey,fontSize: 18,
-                                fontWeight: FontWeight.bold,decoration: TextDecoration.none),),),
-                                Row(mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  TextButton(onPressed: (){
-                              controller.DeletPost(post.Id!);
-                                  }, child: Text('Yes',style: TextStyle(decoration: TextDecoration.none),)),
-                                   TextButton(onPressed: (){
-                                    Get.back();
-                                   }, child: Text('No',style: TextStyle(decoration: TextDecoration.none),))
-                                ],
-                                )
-                                ],
-                              ),
-                              ),
-                             ));
+                              Get.dialog(Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  height: 200,
+                                  width: 200,
+                                  color: Colors.white,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                          color: Colors.blueGrey, width: 2)),
+                                  child: Column(
+                                    children: [
+                                      const Center(
+                                        child: Text(
+                                          'Are You Sure ?',
+                                          style: TextStyle(
+                                              color: Colors.blueGrey,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          TextButton(
+                                              onPressed: () {
+                                                controller.DeletPost(post.Id!);
+                                              },
+                                              child: const Text(
+                                                'Yes',
+                                                style: TextStyle(
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              )),
+                                          TextButton(
+                                              onPressed: () {
+                                                Get.back();
+                                              },
+                                              child: const Text(
+                                                'No',
+                                                style: TextStyle(
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              ))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ));
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.delete,
                               color: Colors.red,
                               size: 20,
@@ -542,32 +579,31 @@ class Profileview extends GetResponsiveView<ProfileController> {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Image border
-                child: Container(
+                child: SizedBox(
                   width: 450,
                   height: 120,
                   child: SizedBox.fromSize(
-                    size: Size.fromRadius(48), // Image radius
-                    child: imagpost==null?Image.asset(
-                            'assets/images/1.png',
-                            width: screen.width,
-                            fit: BoxFit.fill,
-                          )
-                        : Utility.imageFromBase64String(
-                            Utility.base64String(
-                                imagpost),
-                            screen.width,
-                            null)
-                  ),
+                      size: const Size.fromRadius(48), // Image radius
+                      child: imagpost == null
+                          ? Image.asset(
+                              'assets/images/1.png',
+                              width: screen.width,
+                              fit: BoxFit.fill,
+                            )
+                          : Utility.imageFromBase64String(
+                              Utility.base64String(imagpost),
+                              screen.width,
+                              null)),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
                   Descriptionpost,
-                  style: TextStyle(fontSize: 12),
+                  style: const TextStyle(fontSize: 12),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Align(
@@ -575,36 +611,42 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 350,
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        controller.postidnew.value.Id=post.Id!;
-                       controller.GetAllComments(post.Id!) ;
-
+                        controller.postidnew.value.Id = post.Id!;
+                        controller.GetAllComments(post.Id!);
                       },
-                      child: Icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 248, 150, 153),
+                        shape: const CircleBorder(),
+                      ),
+                      child: const Icon(
                         AppIconn.chat,
                         size: 12,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                        shape: CircleBorder(),
                       ),
                     ),
 
                     ElevatedButton(
                       onPressed: () {
-                        controller.userpost.value.IdUser=controller.userprofile.value.Id;
-                       if(interaction){              
-                  controller.userpost.value.Interaction=false;
-                        controller.GetInterActionUser( post.Id!);
-                       }else{
-                         controller.userpost.value.Interaction=true;
-                        controller.GetInterActionUser(  post.Id!);
-                       }
+                        controller.userpost.value.IdUser =
+                            controller.userprofile.value.Id;
+                        if (interaction) {
+                          controller.userpost.value.Interaction = false;
+                          controller.GetInterActionUser(post.Id!);
+                        } else {
+                          controller.userpost.value.Interaction = true;
+                          controller.GetInterActionUser(post.Id!);
+                        }
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 248, 150, 153),
+                        shape: const CircleBorder(),
+                      ),
                       child: Obx(
                         () => Icon(
                           AppIconn.favorite,
@@ -613,10 +655,6 @@ class Profileview extends GetResponsiveView<ProfileController> {
                               ? Colors.red
                               : Colors.white,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 248, 150, 153),
-                        shape: CircleBorder(),
                       ),
                     )
                     // Icon(Icons.add_alert),
@@ -630,7 +668,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
     );
   }
 
-  Widget shapFolloword(String name, Uint8List image,User user,Group group) {
+  Widget shapFolloword(String name, Uint8List image, User user, Group group) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -641,33 +679,34 @@ class Profileview extends GetResponsiveView<ProfileController> {
             border: Border.all(color: Colors.blueGrey)),
         child: Row(
           children: [
-            Container(width: 80, height: 80, child:   image==null?
-                    Image.asset(
-                            'assets/images/angryimg.png',
-                            width: screen.width,
-                            fit: BoxFit.fill,
-                          )
-                        : Utility.imageFromBase64String(
-                            Utility.base64String(
-                               image),
-                            80,
-                            80),),
             SizedBox(
+              width: 80,
+              height: 80,
+              child: image == null
+                  ? Image.asset(
+                      'assets/images/angryimg.png',
+                      width: screen.width,
+                      fit: BoxFit.fill,
+                    )
+                  : Utility.imageFromBase64String(
+                      Utility.base64String(image), 80, 80),
+            ),
+            const SizedBox(
               width: 30,
             ),
             Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 27,
                 ),
                 Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18,
                       decoration: TextDecoration.none,
                       color: Colors.blueGrey),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 130,
                 ),
                 Align(
@@ -675,8 +714,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   child: GFButton(
                     onPressed: () {},
                     text: "remove",
-                    textStyle: TextStyle(color: Colors.black54),
-                    icon: Icon(
+                    textStyle: const TextStyle(color: Colors.black54),
+                    icon: const Icon(
                       Icons.delete,
                       color: Colors.red,
                     ),

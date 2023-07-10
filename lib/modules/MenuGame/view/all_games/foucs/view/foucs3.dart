@@ -7,11 +7,13 @@ import 'foucs5.dart';
 
 class FoucsGameView3 extends GetResponsiveView<FoucsController> {
   FoucsGameView3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
+        height: 700,
         child: Column(
           children: [
             const SizedBox(
@@ -109,7 +111,7 @@ class FoucsGameView3 extends GetResponsiveView<FoucsController> {
             onPressed: () {
               if (controller.time.value.toString() != '00:01') {
                 if (value == '9') {
-                  controller.result.value = 300;
+                  //     controller.result.value=300;
                   controller.score.value += 10;
                   snak();
                   // Get.to(FoucsGameView4());
@@ -136,7 +138,8 @@ class FoucsGameView3 extends GetResponsiveView<FoucsController> {
           child: Container(
               width: 400,
               height: 70,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
               child: txt == 'T'
                   ? Column(
                       children: [
@@ -219,7 +222,7 @@ class FoucsGameView3 extends GetResponsiveView<FoucsController> {
         radius: 50,
         content: Column(children: [
           Text(
-            controller.result.value.toString(),
+            controller.score.value.toString(),
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           const Text(

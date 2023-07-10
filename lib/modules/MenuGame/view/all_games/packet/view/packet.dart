@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../timer/view/timer.dart';
 import '../controller/packet_controller.dart';
 
 class PacketPageView extends GetResponsiveView<PacketController> {
@@ -18,38 +19,43 @@ class PacketPageView extends GetResponsiveView<PacketController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.blueGrey,
-                    ),
-                    child: Padding(
+                Row(
+                  children: [
+                    TimerPageView(),
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            ' Remiming :',
-                            style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.none,
-                                fontSize: 18),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blueGrey,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                ' Remiming :',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    decoration: TextDecoration.none,
+                                    fontSize: 18),
+                              ),
+                              Obx(
+                                () => Text(
+                                  controller.reminning.value.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      decoration: TextDecoration.none,
+                                      fontSize: 18),
+                                ),
+                              )
+                            ],
                           ),
-                          Obx(
-                            () => Text(
-                              controller.reminning.value.toString(),
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  decoration: TextDecoration.none,
-                                  fontSize: 18),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
                 TextButton(
                     onPressed: () {

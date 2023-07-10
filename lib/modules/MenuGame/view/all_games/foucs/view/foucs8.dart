@@ -11,74 +11,86 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: Column(
-        children: [
-          const SizedBox(
-            width: 100,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 35,
-              width: 120,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: const Color.fromARGB(255, 240, 145, 211),
-              ),
-              child: Row(
-                children: [
-                  Obx(() => Center(
-                        child: Text(
-                          '  ${controller.timerController.time.value}',
-                          style: const TextStyle(
-                            color: Colors.white,
+        body: SingleChildScrollView(
+      child: SizedBox(
+        height: 700,
+        child: Column(
+          children: [
+            const SizedBox(
+              width: 100,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 35,
+                width: 120,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color.fromARGB(255, 240, 145, 211),
+                ),
+                child: Row(
+                  children: [
+                    Obx(() => Center(
+                          child: Text(
+                            '  ${controller.time.value}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      )),
-                  const Text(' : Timer',
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 233, 227, 227)))
-                ],
+                        )),
+                    const Text(' : Timer',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 233, 227, 227)))
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Center(
-              child: Text('  How Many  Square In  This Photo ?',
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 117, 115, 115))),
+            Text(
+              'النتيجه :${controller.score}',
+              style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Pacifico",
+                  color: Colors.blueGrey,
+                  decoration: TextDecoration.none),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 8, 8),
-            child: Container(
-                width: 500,
-                height: 250,
-                color: Colors.white,
-                child: Image.asset('assets/images/22.png')),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ShapeAnswer('44'),
-              ShapeAnswer('42'),
-              ShapeAnswer('40'),
-            ],
-          )
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text('  How Many  Square In  This Photo ?',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 117, 115, 115))),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 8, 8),
+              child: Container(
+                  width: 500,
+                  height: 250,
+                  color: Colors.white,
+                  child: Image.asset('assets/images/22.png')),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ShapeAnswer('44'),
+                ShapeAnswer('42'),
+                ShapeAnswer('40'),
+              ],
+            )
+          ],
+        ),
       ),
     ));
   }
@@ -95,8 +107,9 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                   const Color.fromARGB(255, 240, 145, 211)),
             ),
             onPressed: () {
-              if (controller.timerController.time.value.toString() != '00:01') {
+              if (controller.time.value.toString() != '00:01') {
                 if (value == '40') {
+                  controller.score.value += 10;
                   Get.to(FoucsGameView9());
                 } else {
                   Result('E');
@@ -121,7 +134,8 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
           child: Container(
               width: 400,
               height: 70,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(12)),
               child: txt == 'T'
                   ? Column(
                       children: [
@@ -140,14 +154,14 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.back();
-                                  controller.timerController.onReady();
+                                  controller.onReady();
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
-                                  controller.timerController.onClose();
+                                  controller.onClose();
                                 },
                                 child: const Text('No',
                                     style: TextStyle(color: Colors.grey))),
@@ -172,7 +186,7 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.back();
-                                  controller.timerController.onReady();
+                                  controller.onReady();
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(
@@ -181,7 +195,7 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
-                                  controller.timerController.onClose();
+                                  controller.onClose();
                                 },
                                 child: const Text('No',
                                     style: TextStyle(

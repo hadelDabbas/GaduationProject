@@ -8,9 +8,6 @@ import 'package:graduationproject/modules/libraryy/controller/library_controller
 import 'updatebook.dart';
 
 class Librarypage extends GetResponsiveView<LibraryContrller> {
-  @override
-  LibraryContrller controller = Get.put(LibraryContrller());
-
   Librarypage({super.key});
 
   @override
@@ -73,8 +70,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextCategory('Authour'),
-                // TextCategory('Book'),
-                //  TextCategory('Area Book'),
                 TextCategory('Category'),
               ],
             ),
@@ -183,7 +178,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                       horizontal: 20),
                                                   shape: const CircleBorder(),
                                                 ),
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.check,
                                                   size: 16,
                                                   color: Colors.white,
@@ -436,12 +431,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                          child: Row(
+                          child: const Row(
                         children: <Widget>[
                           Flexible(
                               child: Center(
-                            child: const Text(
-                                style: const TextStyle(
+                            child: Text(
+                                style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.black54,
                                   decoration: TextDecoration.none,
@@ -525,7 +520,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 vertical: 20, horizontal: 20),
                             shape: const CircleBorder(),
                           ),
-                          child: Icon(
+                          child: const Icon(
                             AppIconn.shopping_cart,
                             size: 16,
                             color: Colors.white,

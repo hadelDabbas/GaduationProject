@@ -1,20 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:getwidget/types/gf_animation_type.dart';
 
 import '../controller/menu.dart';
 
-class contentPage extends GetResponsiveView<HomeController> {
-  HomeController controller = Get.put(HomeController());
+class ContentPage extends GetResponsiveView<HomeController> {
+  ContentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.topLeft,
             child: Text(
@@ -27,9 +25,7 @@ class contentPage extends GetResponsiveView<HomeController> {
             ),
           ),
         ),
-        SizedBox(
-          width: 240,
-        ),
+
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Align(
@@ -42,7 +38,7 @@ class contentPage extends GetResponsiveView<HomeController> {
                 Get.dialog(Align(
                   alignment: Alignment.topRight,
                   child: Container(
-                    width: 120,
+                    width: 200,
                     height: 900,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -51,13 +47,13 @@ class contentPage extends GetResponsiveView<HomeController> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Align(
+                          const Align(
                               alignment: Alignment.center,
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   "Contents ",
                                   style: TextStyle(
@@ -68,11 +64,11 @@ class contentPage extends GetResponsiveView<HomeController> {
                                       decoration: TextDecoration.none),
                                 ),
                               )),
-                          Wrap(
-                            children: controller.Contents.map((element) =>
-                                buildContent(element.typeName.toString(),
-                                    element.Id!)).toList(),
-                          )
+                          Obx(() => Wrap(
+                                children: controller.Contents.map((element) =>
+                                    buildContent(element.typeName.toString(),
+                                        element.Id!)).toList(),
+                              ))
                         ],
                       ),
                     ),
@@ -80,7 +76,7 @@ class contentPage extends GetResponsiveView<HomeController> {
                 ));
               },
               text: "Contents",
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
@@ -124,19 +120,18 @@ class contentPage extends GetResponsiveView<HomeController> {
         child: Material(
           child: InkWell(
             onTap: () {
-              controller.idcontent .value= idcontentt;
+              controller.idcontent.value = idcontentt;
               controller.GetpostByType();
             },
             child: Container(
-              width: 100,
               height: 40,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 248, 150, 153),
+                  color: const Color.fromARGB(255, 248, 150, 153),
                   borderRadius: BorderRadius.circular(14)),
               child: Center(
                 child: Text(
                   content,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),

@@ -18,7 +18,7 @@ class postPage extends GetResponsiveView<HomeController> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            contentPage(),
+            ContentPage(),
             //           ElevatedButton(
             //   onPressed: () async {
             //   await  controller.GetAllPosts();

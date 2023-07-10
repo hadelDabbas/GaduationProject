@@ -6,8 +6,8 @@ class TimerPageView extends GetResponsiveView<TimerController> {
   TimerPageView({super.key});
   @override
   Widget builder() {
-    return Scaffold(
-      body: Row(children: [
+    return Container(
+      child: Row(children: [
         const SizedBox(
           width: 180,
         ),

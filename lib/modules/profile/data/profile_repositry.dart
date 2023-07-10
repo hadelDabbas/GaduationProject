@@ -12,19 +12,6 @@ import 'adapter/profile_adapter.dart';
 
 class ProfileRepository implements IProfileRepository {
   final _dio = Get.find<Dio>();
-  //
-  @override
-  Future<User?> Getprofileuser(int iduser) async {
-    var result = await _dio.get(
-      'https://localhost:7252/api/Profile/GetInfo/$iduser',
-    );
-    if (result.statusCode == 200) {
-      var data = User.fromJson(result.data as Map<String, dynamic>);
-      return data;
-    } else {
-      return null;
-    }
-  }
 
   @override
   Future<bool> UpdateProfile(User user, int iduser) async {
@@ -49,6 +36,8 @@ class ProfileRepository implements IProfileRepository {
       for (var item in result.data) {
         list.add(PostDto.fromJson(item));
       }
+    } else {
+      return list;
     }
     return list;
   }
