@@ -5,7 +5,6 @@ import 'package:graduationproject/app/model/content.dart';
 import 'package:graduationproject/app/model/postdto.dart';
 import 'package:graduationproject/app/model/userPost.dart';
 
-import '../../../Utile/utilExpation.dart';
 import '../../sheard/auth_service.dart';
 import 'adapter/home_adapter.dart';
 
@@ -15,15 +14,15 @@ class HomeRepository implements IHomeRepository {
   @override
   @override
   Future<List<Content>> GetContent() async {
-    var result = await _dio.get('https://localhost:7252/api/Content/GetContents');
+    var result =
+        await _dio.get('https://localhost:7252/api/Content/GetContents');
     print(result);
     var list = <Content>[];
     for (var item in result.data) {
-      list.add( Content.fromJson(item));
+      list.add(Content.fromJson(item));
     }
     return list;
   }
-
 
   @override
   Future<List<PostDto>> GetAllPost() async {
@@ -53,7 +52,7 @@ class HomeRepository implements IHomeRepository {
   Future<bool> AddComment(Comments comments, int Iduser) async {
     var data = await _dio.post('https://localhost:7252/api/Post',
         data: comments.toJson());
-    if (ExpastionStatus(data.statusCode!)) {
+    if (data.statusCode == 200) {
       return true;
     } else {
       print(data.statusMessage);
@@ -75,7 +74,7 @@ class HomeRepository implements IHomeRepository {
   Future<bool> InteractionUser(UserPost userPost, int idpost) async {
     var data = await _dio.put('https://localhost:7252/api/UserPost/$idpost',
         data: userPost.toJson());
-    if (ExpastionStatus(data.statusCode!)) {
+    if (data.statusCode == 200) {
       return true;
     } else {
       print(data.statusMessage);

@@ -1,10 +1,8 @@
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/content.dart';
 import 'package:graduationproject/app/model/post.dart';
 
-import '../../../Utile/utilExpation.dart';
 import 'adapter/addpost_adapter.dart';
 
 class AddpostRepository implements IAddpostRepository {
@@ -12,9 +10,9 @@ class AddpostRepository implements IAddpostRepository {
 
   @override
   Future<bool> AddpostUser(Post post, int iduser) async {
-    var result=  await _dio.post('https://localhost:7252/api/Post/AddPost'
-    ,data: post.toJson());
-        print(result.data);
+    var result = await _dio.post('https://localhost:7252/api/Post/AddPost',
+        data: post.toJson());
+    print(result.data);
     if (result.statusCode == 200) {
       return true;
     }
@@ -22,13 +20,14 @@ class AddpostRepository implements IAddpostRepository {
   }
 
   @override
-  Future<List<Content>> GetAllContent()async {
-   var result = await _dio.get('https://localhost:7252/api/Content/GetContents');
+  Future<List<Content>> GetAllContent() async {
+    var result =
+        await _dio.get('https://localhost:7252/api/Content/GetContents');
     print(result);
     var list = <Content>[];
     for (var item in result.data) {
-      list.add( Content.fromJson(item));
+      list.add(Content.fromJson(item));
     }
     return list;
   }
-  }
+}

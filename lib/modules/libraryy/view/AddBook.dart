@@ -9,8 +9,10 @@ import '../controller/library_controller.dart';
 
 class Addbookpage extends GetResponsiveView<LibraryContrller> {
   @override
- LibraryContrller controller = Get.put(LibraryContrller());
+  LibraryContrller controller = Get.put(LibraryContrller());
   Uint8List? image;
+
+  Addbookpage({super.key});
   @override
   Widget builder() {
     return Column(
@@ -23,33 +25,33 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
           ],
         )),
         Padding(
-          padding:EdgeInsets.all(8.0),
-          child: Material(
-              child: SizedBox(
-            width: 450,
-            child: TextField(
-             onChanged: (value){
-             controller.addBook.value.BookName=value;
-            } ,
-                decoration: InputDecoration(
-              labelText: 'Name Book',
-              labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-              hintText: 'Name Book',
-              prefixIcon: Icon(
-                Icons.bookmark_add_outlined,
-                color: Color.fromARGB(255, 245, 146, 149),
-              ),
-            ),
-            ),
-          )),
-        ),
-        Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
               child: SizedBox(
             width: 450,
-            child: const TextField(
+            child: TextField(
+              onChanged: (value) {
+                controller.addBook.value.bookName = value;
+              },
+              decoration: const InputDecoration(
+                labelText: 'Name Book',
+                labelStyle: TextStyle(
+                    color: Colors.black45, fontWeight: FontWeight.bold),
+                hintText: 'Name Book',
+                prefixIcon: Icon(
+                  Icons.bookmark_add_outlined,
+                  color: Color.fromARGB(255, 245, 146, 149),
+                ),
+              ),
+            ),
+          )),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Material(
+              child: SizedBox(
+            width: 450,
+            child: TextField(
                 decoration: InputDecoration(
               labelText: 'Name Writter',
               labelStyle:
@@ -63,34 +65,34 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
           )),
         ),
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Material(
               child: SizedBox(
             width: 450,
-            child:  TextField(
-                onChanged: (value){
-            // controller.addBook.value.BookPrice=value;
-            } ,
-                decoration: InputDecoration(
-              labelText: 'Price Book',
-              labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-              hintText: 'Price Book',
-              prefixIcon: Icon(
-                Icons.price_change,
-                color: Color.fromARGB(255, 245, 146, 149),
-              ),
-            )),
+            child: TextField(
+                onChanged: (value) {
+                  // controller.addBook.value.BookPrice=value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Price Book',
+                  labelStyle: TextStyle(
+                      color: Colors.black45, fontWeight: FontWeight.bold),
+                  hintText: 'Price Book',
+                  prefixIcon: Icon(
+                    Icons.price_change,
+                    color: Color.fromARGB(255, 245, 146, 149),
+                  ),
+                )),
           )),
         ),
         SizedBox(
           width: 450,
-          child:  Material(
+          child: Material(
             child: TextField(
-                onChanged: (value){
-           //  controller.addBook.value.BookName=value;
-            } ,
-              decoration: InputDecoration(
+              onChanged: (value) {
+                //  controller.addBook.value.BookName=value;
+              },
+              decoration: const InputDecoration(
                 labelText: 'Descrintion About Book',
                 labelStyle: TextStyle(
                     color: Colors.black45, fontWeight: FontWeight.bold),

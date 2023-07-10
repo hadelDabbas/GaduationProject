@@ -7,7 +7,7 @@ import 'modules/sheard/auth_service.dart';
 import 'routes/app_pages.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,8 +27,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
+      locale: const Locale('en', 'EN'),
       defaultTransition: Transition.cupertino,
       getPages: AppPages.routes,
+      enableLog: true,
     );
   }
 }
