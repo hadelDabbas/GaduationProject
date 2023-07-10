@@ -5,7 +5,10 @@ import '../../timer/view/timer.dart';
 import '../controller/packet_controller.dart';
 
 class PacketPageView extends GetResponsiveView<PacketController> {
- PacketController controller=Get.put(PacketController());
+  @override
+  PacketController controller = Get.put(PacketController());
+
+  PacketPageView({super.key});
   //PacketPageView({super.key});
 
   @override
@@ -19,64 +22,53 @@ class PacketPageView extends GetResponsiveView<PacketController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                    InkWell(
-                      onTap: () => Get.back(),
-                      child: Align(alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.arrow_back_ios,
-                                       size: 20, 
-                                     color: Colors.grey
-                                      ),
-                        ),
-                      ),
+                InkWell(
+                  onTap: () => Get.back(),
+                  child: const Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.arrow_back_ios,
+                          size: 20, color: Colors.grey),
                     ),
+                  ),
+                ),
                 const SizedBox(),
                 Row(
                   children: [
                     TimerPageView(),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.blueGrey,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                ' Remiming :',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                    fontSize: 18),
-                              ),
-                              Obx(
-                                () => Text(
-                                  controller.reminning.value.toString(),
-                                  style: const TextStyle(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.blueGrey,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Correct Answer :',
+                                  style: TextStyle(
                                       color: Colors.white,
                                       decoration: TextDecoration.none,
                                       fontSize: 18),
                                 ),
-                              )
-                            ],
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            ' Correct Answer :',
-                            style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.none,
-                                fontSize: 18),
+                                Obx(
+                                  () => Text(
+                                    controller.reminning.value.toString(),
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        decoration: TextDecoration.none,
+                                        fontSize: 18),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
+                        )),
                   ],
                 ),
                 TextButton(
