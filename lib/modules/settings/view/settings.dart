@@ -7,10 +7,13 @@ import 'package:graduationproject/modules/groups/view/add_group.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
+import 'package:graduationproject/modules/testwidget/view/test.dart';
 
 import '../../AddBook/view/addbook.dart';
 import '../../Addpost/view/addpost.dart';
+import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../refrence/view/refrence.dart';
 
 class SettingPageView extends GetResponsiveView {
   @override
@@ -53,121 +56,206 @@ class SettingPageView extends GetResponsiveView {
                 children: [
                   Material(
                     child: InkWell(
-                      onTap: (){
-                       Get.to(AddGrpoup());
-                      },
-                      child: Tooltip(
-                        message: 'Add New Group',
-                        child: CardSetting("Group", Icons.group_add,
-                       // Color.fromARGB(255, 63, 201, 214))
-                        )
-                        )
-                        
-                        ),
+                        onTap: () {
+                          Get.to(AddGrpoup());
+                        },
+                        child: Tooltip(
+                            message: 'Add New Group',
+                            child: CardSetting(
+                              "Group", Icons.group_add,
+                              // Color.fromARGB(255, 63, 201, 214))
+                            ))),
                   ),
-
                   Material(
                     child: InkWell(
                       onTap: () {
-                             Get.dialog(
-                      Align(alignment: Alignment.center,
-                      child: Container(
-                        width:500,height:370 ,  decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                     border: Border.all(color: Colors.blueAccent)
-                    ),
-                        child:
-                      SingleChildScrollView(
-                        child: Column(children: [
-                           SizedBox(height: 10,),
-                          Align(alignment: Alignment.center,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Add post : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
-                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                            )),
-                           Container(child: Addpostview(),),
-                           
-                        ],),
-                      )
-                      ,),)
-                    );
+                        Get.dialog(Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 500,
+                            height: 370,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Add post : ",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Colors.blueGrey,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      )),
+                                  Container(
+                                    child: Addpostview(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ));
                       },
                       child: Tooltip(
-                        message: 'Add Post',
-                        child: CardSetting("Post", Icons.post_add)),
+                          message: 'Add Post',
+                          child: CardSetting("Post", Icons.post_add)),
                     ),
                   ),
-                    Material(
+                  Material(
                     child: InkWell(
                       onTap: () {
-                      
-                    Get.to(Contentpage());
-
+                        Get.to(Contentpage());
                       },
                       child: Tooltip(
-                        message: 'Show content & Add & Delete',
-                        child: CardSetting("Content", Icons.edit_calendar)),
+                          message: 'Show content & Add & Delete',
+                          child: CardSetting("Content", Icons.edit_calendar)),
                     ),
                   ),
-                   Material(
+                  Material(
                     child: InkWell(
                       onTap: () {
-                         Get.to(ShowLibraryspage());
+                        Get.to(ShowLibraryspage());
                       },
                       child: Tooltip(
-                        message: 'Show Library & Add & Delete & update ',
-                        child: CardSetting("Library", Icons.library_books)),
+                          message: 'Show Library & Add & Delete & update ',
+                          child: CardSetting("Library", Icons.library_books)),
                     ),
                   ),
-                        Material(
+                  Material(
                     child: InkWell(
                       onTap: () {
-                             Get.dialog(
-                      Align(alignment: Alignment.center,
-                      child: Container(
-                        width:400,height:400 ,  decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                     border: Border.all(color: Colors.blueAccent)
-                    ),
-                        child:
-                      SingleChildScrollView(
-                        child: Column(children: [
-                           SizedBox(height: 10,),
-
-                          Align(alignment: Alignment.center,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("Give permission ",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
-                              fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                            )),
-                           Container(child:Givepermission() ,),
-                           
-                        ],),
-                      )
-                      ,),)
-                    );
+                        Get.dialog(Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 400,
+                            height: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Give permission ",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Colors.blueGrey,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      )),
+                                  Container(
+                                    child: Givepermission(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ));
                       },
                       child: Tooltip(
-                        message: 'Add Permission',
-                        child: CardSetting("permission", Icons.workspace_premium_sharp)),
+                          message: 'Add Permission',
+                          child: CardSetting(
+                              "permission", Icons.workspace_premium_sharp)),
                     ),
                   ),
-                    Material(
+                  Material(
                     child: InkWell(
                       onTap: () {
-                      
-                    Get.to(ComplaintspageView());
-
+                        Get.to(ComplaintspageView());
                       },
                       child: Tooltip(
-                        message: 'Add Complaints',
-                        child: CardSetting("Complaints", Icons.account_balance_wallet_rounded)),
+                          message: 'Add Complaints',
+                          child: CardSetting("Complaints",
+                              Icons.account_balance_wallet_rounded)),
                     ),
                   ),
-                          CardSetting("Quiz", Icons.check_box),
+                         Material(
+                    child: InkWell(
+                      onTap: () {
+                        Get.to(RefrencePageView());
+                      },
+                      child: Tooltip(
+                          message: 'Show Refrences',
+                          child: CardSetting(" Refrences",
+                              Icons.location_on)),
+                    ),
+                  ),
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                                  Get.dialog(Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 400,
+                            height: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "User Complaints ",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Colors.blueGrey,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      )),
+                                  Container(
+                                    child: UserComplaintspageView()),
+                                  
+                                ],
+                              ),
+                            ),
+                          ),
+                        ));
+                      },
+                      child: Tooltip(
+                          message: 'User Complaints',
+                          child: CardSetting(" User Complaints",
+                              Icons.account_balance_wallet_rounded)),
+                    ),
+                  ),
+                  Material(
+                      child: InkWell(
+                          onTap: () {
+                            Get.to(TestPageView());
+                          },
+                          child: Tooltip(
+                              message: 'Show all Quiz',
+                              child: CardSetting("Quiz", Icons.check_box)))),
                   CardSetting("Language", Icons.language),
                   CardSetting("Help", Icons.question_mark),
                   CardSetting("Logout", Icons.exit_to_app),

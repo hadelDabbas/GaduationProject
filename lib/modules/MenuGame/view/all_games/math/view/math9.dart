@@ -5,6 +5,7 @@ import '../../../../Menu_game.dart';
 import '../controller/math_controller.dart';
 
 class MathNew9PageView extends GetResponsiveView<MathController> {
+  MathController controller=Get.put(MathController());
   MathNew9PageView({super.key});
 
   @override

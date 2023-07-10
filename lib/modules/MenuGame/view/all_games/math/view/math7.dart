@@ -6,6 +6,7 @@ import '../controller/math_controller.dart';
 import 'math8.dart';
 
 class MathNew7PageView extends GetResponsiveView<MathController> {
+  MathController controller=Get.put(MathController());
   MathNew7PageView({super.key});
 
   @override

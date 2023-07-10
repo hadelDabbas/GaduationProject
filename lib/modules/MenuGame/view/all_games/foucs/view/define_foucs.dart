@@ -5,6 +5,7 @@ import '../controller/foucs_controller.dart';
 import 'foucs4.dart';
 
 class FoucsGameView extends GetResponsiveView<FoucsController> {
+  
   FoucsGameView({super.key});
 
   @override
