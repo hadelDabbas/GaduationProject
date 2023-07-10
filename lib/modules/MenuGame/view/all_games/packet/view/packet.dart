@@ -5,7 +5,8 @@ import '../../timer/view/timer.dart';
 import '../controller/packet_controller.dart';
 
 class PacketPageView extends GetResponsiveView<PacketController> {
-  PacketPageView({super.key});
+ PacketController controller=Get.put(PacketController());
+  //PacketPageView({super.key});
 
   @override
   Widget builder() {
@@ -18,6 +19,18 @@ class PacketPageView extends GetResponsiveView<PacketController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                    InkWell(
+                      onTap: () => Get.back(),
+                      child: Align(alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.arrow_back_ios,
+                                       size: 20, 
+                                     color: Colors.grey
+                                      ),
+                        ),
+                      ),
+                    ),
                 const SizedBox(),
                 Row(
                   children: [
@@ -51,6 +64,15 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                                 ),
                               )
                             ],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            ' Correct Answer :',
+                            style: TextStyle(
+                                color: Colors.white,
+                                decoration: TextDecoration.none,
+                                fontSize: 18),
                           ),
                         ),
                       ),

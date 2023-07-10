@@ -32,6 +32,7 @@ class PacketController extends GetxController {
   }
 
   void secandLevel() {
+    
     listpacket.clear();
     openCards.clear();
     cardsSucc.clear();

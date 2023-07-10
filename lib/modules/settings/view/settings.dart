@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/complaints/view/complaints.dart';
 import 'package:graduationproject/modules/groups/view/add_group.dart';
+import 'package:graduationproject/modules/groups/view/edit_group.dart';
 import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
+import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../Addpost/view/addpost.dart';
+import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../refrence/view/refrence.dart';
 
 class SettingPageView extends GetResponsiveView {
   SettingPageView({super.key});
@@ -75,6 +79,13 @@ class SettingPageView extends GetResponsiveView {
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -109,6 +120,7 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                     child: InkWell(
                       onTap: () {
+                        Get.to(Contentpage());
                         Get.rootDelegate.toNamed(Routes.content);
                       },
                       child: Tooltip(
@@ -142,6 +154,13 @@ class SettingPageView extends GetResponsiveView {
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
                                   const SizedBox(
                                     height: 10,
                                   ),
@@ -185,6 +204,72 @@ class SettingPageView extends GetResponsiveView {
                               Icons.account_balance_wallet_rounded)),
                     ),
                   ),
+                         Material(
+                    child: InkWell(
+                      onTap: () {
+                        Get.to(RefrencePageView());
+                      },
+                      child: Tooltip(
+                          message: 'Show Refrences',
+                          child: CardSetting(" Refrences",
+                              Icons.location_on)),
+                    ),
+                  ),
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                                  Get.dialog(Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 400,
+                            height: 400,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "User Complaints ",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Colors.blueGrey,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      )),
+                                  Container(
+                                    child: UserComplaintspageView()),
+                                  
+                                ],
+                              ),
+                            ),
+                          ),
+                        ));
+                      },
+                      child: Tooltip(
+                          message: 'User Complaints',
+                          child: CardSetting(" User Complaints",
+                              Icons.account_balance_wallet_rounded)),
+                    ),
+                  ),
+                  Material(
+                      child: InkWell(
+                          onTap: () {
+                            Get.to(TestPageView());
+                          },
+                          child: Tooltip(
+                              message: 'Show all Quiz',
+                              child: CardSetting("Quiz", Icons.check_box)))),
                   CardSetting("Quiz", Icons.check_box),
                   CardSetting("Language", Icons.language),
                   CardSetting("Help", Icons.question_mark),
