@@ -139,12 +139,12 @@ class Letter5pageview extends GetResponsiveView<LetterController> {
                               }
                             } else {
                               Result('G',
-                                  'تهانينا اجتزت هذا المستوى هل تريد الانتقال للمستوى التالي؟');
+                                  'تهانينا اجتزت هذا المستوى مع  النتيجة :' +controller.score.value.toString());
                               controller.score.value += 10;
                               controller.resulting55.value = 0;
                             }
                           } else {
-                            Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                            Result('T', "انتهى الوقت مع النتيجة :"+controller.score.value.toString());
                           }
                         },
                         icon: const Icon(
@@ -276,18 +276,17 @@ class Letter5pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
-                              controller.onReady();
+                              Get.to(MenuGamePageView());
                             },
                             child: const Text('نعم',
                                 style: TextStyle(color: Colors.grey))),
-                        TextButton(
-                            onPressed: () {
-                              Get.to(MenuGamePageView());
-                              controller.onClose();
-                            },
-                            child: const Text('لا',
-                                style: TextStyle(color: Colors.grey))),
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Get.to(MenuGamePageView());
+                        //       controller.onClose();
+                        //     },
+                        //     child: const Text('لا',
+                        //         style: TextStyle(color: Colors.grey))),
                       ],
                     ),
                   ],
@@ -308,18 +307,19 @@ class Letter5pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.to(Letter7pageview());
+                              Get.to(MenuGamePageView());
+                         //     Get.to(Letter7pageview());
                               controller.onReady();
                             },
                             child: const Text('نعم',
                                 style: TextStyle(color: Colors.blueGrey))),
-                        TextButton(
-                            onPressed: () {
-                              Get.to(MenuGamePageView());
-                              controller.onClose();
-                            },
-                            child: const Text('لا',
-                                style: TextStyle(color: Colors.blueGrey))),
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Get.to(MenuGamePageView());
+                        //       controller.onClose();
+                        //     },
+                        //     child: const Text('لا',
+                        //         style: TextStyle(color: Colors.blueGrey))),
                       ],
                     ),
                   ],

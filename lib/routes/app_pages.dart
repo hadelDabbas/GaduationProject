@@ -29,16 +29,7 @@ class AppPages {
   AppPages._();
 
   static final routes = [
-    GetPage(
-        name: _Paths.SignIn,
-        page: () => SignInViewPage(),
-        binding: SignInBinding()),
-    GetPage(
-      name: _Paths.MenuGame,
-      page: () => MenuGamePageView(),
-      bindings: const [],
-    ),
-    GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
+      GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
       HomeBinding(),
       ProfileBinding(),
       SearchBinding(),
@@ -54,6 +45,16 @@ class AppPages {
         page: () => EditProfileview(),
       ),
     ]),
+    GetPage(
+        name: _Paths.SignIn,
+        page: () => SignInViewPage(),
+        binding: SignInBinding()),
+    GetPage(
+      name: _Paths.MenuGame,
+      page: () => MenuGamePageView(),
+      bindings: const [],
+    ),
+  
     GetPage(
         name: _Paths.password,
         page: () => ForgetViewPage(),

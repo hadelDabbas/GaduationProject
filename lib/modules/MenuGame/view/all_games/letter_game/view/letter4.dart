@@ -283,8 +283,9 @@ class Letter4pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
+                            //  Get.back();
                               controller.onReady();
+                                Get.to(Letter1());
                             },
                             child: const Text('نعم',
                                 style: TextStyle(color: Colors.grey))),

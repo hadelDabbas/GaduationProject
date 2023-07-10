@@ -5,9 +5,9 @@ import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/math
 import '../../../../Menu_game.dart';
 import '../controller/math_controller.dart';
 
-class MathNew1PageView extends GetResponsiveView<MathController> {
+class MathNew11PageView extends GetResponsiveView<MathController> {
   MathController controller=Get.put(MathController());
-  MathNew1PageView({super.key});
+ 
 
   @override
   Widget builder() {
@@ -123,7 +123,7 @@ class MathNew1PageView extends GetResponsiveView<MathController> {
                   controller.score.value += 10;
                   Get.to(MathNew2PageView());
                 } else {
-                  Result('E');
+                 Get.to(MathNew2PageView());
                 }
               } else {
                 Result('T');
@@ -153,7 +153,7 @@ class MathNew1PageView extends GetResponsiveView<MathController> {
                   ? Column(
                       children: [
                         const Text(
-                          'Time Off Do You Want To Retry ? ',
+                          'Time Off Do You Want To contuine? ',
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -166,8 +166,9 @@ class MathNew1PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                 
                                   controller.onReady();
+                                    Get.to(MathNew2PageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),

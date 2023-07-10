@@ -8,6 +8,7 @@ import 'package:graduationproject/modules/menu/view/post.dart';
 import 'package:graduationproject/modules/profile/view/profile.dart';
 import 'package:graduationproject/modules/settings/view/settings.dart';
 
+import '../../MenuGame/view/splash_game.dart';
 import '../../search/view/search_view.dart';
 
 class HomePage extends GetResponsiveView<HomeController> {
@@ -73,7 +74,7 @@ Widget getselectedwidget({required int index}) {
       widget = Profileview();
       break;
     case 1:
-      widget = MenuGamePageView();
+      widget = SplashGame();
       break;
     case 2:
       widget = postPage();

@@ -140,8 +140,8 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
               child: txt == 'T'
                   ? Column(
                       children: [
-                        const Text(
-                          'Time Off Do You Want To Retry ? ',
+                      Text(
+                          'Time Off Do You With score : ' +controller.score.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -152,19 +152,19 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
                             const SizedBox(
                               width: 40,
                             ),
-                            TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                  controller.onReady();
-                                },
-                                child: const Text('yes',
-                                    style: TextStyle(color: Colors.grey))),
+                            // TextButton(
+                            //     onPressed: () {
+                            //       Get.back();
+                            //       controller.onReady();
+                            //     },
+                            //     child: const Text('yes',
+                            //         style: TextStyle(color: Colors.grey))),
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
                                   controller.onClose();
                                 },
-                                child: const Text('No',
+                                child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),
                           ],
                         ),
@@ -172,8 +172,8 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
                     )
                   : Column(
                       children: [
-                        const Text(
-                          'Error Value Do You Want Retry ?',
+                      Text(
+                          'Your Score is  :' +controller.score.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -184,21 +184,21 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
                             const SizedBox(
                               width: 40,
                             ),
-                            TextButton(
-                                onPressed: () {
-                                  Get.back();
-                                  controller.onReady();
-                                },
-                                child: const Text('yes',
-                                    style: TextStyle(
-                                        color: Color.fromARGB(
-                                            255, 80, 137, 212)))),
+                            // TextButton(
+                            //     onPressed: () {
+                            //       Get.back();
+                            //       controller.onReady();
+                            //     },
+                            //     child: const Text('yes',
+                            //         style: TextStyle(
+                            //             color: Color.fromARGB(
+                            //                 255, 80, 137, 212)))),
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
                                   controller.onClose();
                                 },
-                                child: const Text('No',
+                                child: const Text('Yes',
                                     style: TextStyle(
                                         color: Color.fromARGB(
                                             255, 80, 137, 212)))),
@@ -226,10 +226,10 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
             'Congratulations, You Win Second Level',
             style: TextStyle(fontSize: 16),
           ),
-          const Text(
-            'Do You Want To Go To Next Level',
-            style: TextStyle(fontSize: 16),
-          ),
+          // const Text(
+          //   'Do You Want To Go To Next Level',
+          //   style: TextStyle(fontSize: 16),
+          // ),
           Row(
             children: [
               const SizedBox(
@@ -237,7 +237,8 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
               ),
               TextButton(
                   onPressed: () {
-                    Get.to(FoucsGameView7());
+                      Get.to(MenuGamePageView());
+                   // Get.to(FoucsGameView7());
                   },
                   child: const Text('yes',
                       style:

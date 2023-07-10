@@ -144,7 +144,7 @@ class Letter6pageview extends GetResponsiveView<LetterController> {
                             controller.resulting3.value = 0;
                           }
                         } else {
-                          Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                          Result('T', "انتهى الوقت هل تريد الاستمرار :");
                         }
                       },
                       icon: const Icon(
@@ -279,8 +279,9 @@ class Letter6pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
+                          //    Get.back();
                               controller.onReady();
+                                   Get.to(Letter3());
                             },
                             child: Text('نعم',
                                 style: TextStyle(color: Colors.blue[900]))),

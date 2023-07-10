@@ -2,14 +2,18 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/MenuGame/view/all_games/foucs/view/define_foucs.dart';
 import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/define_math.dart';
+import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
+import 'controller/menu_game_controller.dart';
 import 'view/all_games/foucs/view/foucs1.dart';
 import 'view/all_games/letter_game/view/define_letter.dart';
 import 'view/all_games/packet/view/packet.dart';
 import 'view/all_games/word_game/view/define_word.dart';
 
-class MenuGamePageView extends GetResponsiveView<MenuController> {
+class MenuGamePageView extends GetResponsiveView<MenuGameController> {
+  MenuGameController controller=Get.put(MenuGameController());
   MenuGamePageView({super.key});
   @override
   Widget builder() {
@@ -20,8 +24,20 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Row(
+               Row(
                 children: [
+                      Material(
+                        child: InkWell(
+                                  onTap: () => Get.to(HomePage()),
+                                  child: const Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+                                    ),
+                                  ),
+                                ),
+                      ),
                   SizedBox(
                     width: 8,
                   ),
@@ -42,7 +58,7 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
                   'Letter Test',
                   'In This Test You Need To Be Speed This Test Increse Information ang experaince',
                   'assets/images/letter.png',
-                  const splashscreenLetter()),
+                   splashscreenLetter()),
               cardshape(
                   random,
                   'Word Test',
@@ -60,7 +76,7 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
                   'Foucs Test',
                   'In This Test You Need To Be Speed This Test Increse Information ang experaince',
                   'assets/images/15.png',
-                  FoucsGameView1()),
+                 FoucsGameView ()),
               cardshape(
                   random,
                   'Packet Test',
@@ -70,19 +86,6 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
             ],
           ),
         ));
-  }
-
-  Widget Types(String name, String Url, Random random, Random random1) {
-    return SizedBox(
-      width: screen.width / 8,
-      child: Card(
-        color: Color.fromARGB(random.nextInt(10), random.nextInt(10),
-            random.nextInt(10), random.nextInt(10)),
-        child: Column(
-          children: [SizedBox(width: 5, child: Image.asset(Url))],
-        ),
-      ),
-    );
   }
 
   Widget cardshape(Random random, String nameplay, String discribtion,
@@ -95,11 +98,7 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
                 height: screen.height / 2.5,
                 child: Card(
                     margin: const EdgeInsets.all(10),
-                    color: Color.fromARGB(
-                        random.nextInt(256),
-                        random.nextInt(256),
-                        random.nextInt(256),
-                        random.nextInt(256)),
+                    color:Color.fromARGB(255, 248, 150, 153),
                     shadowColor: Colors.blueGrey,
                     elevation: 30,
                     child: Column(
@@ -138,10 +137,10 @@ class MenuGamePageView extends GetResponsiveView<MenuController> {
                           Flexible(
                               child: Text(discribtion,
                                   style: const TextStyle(fontSize: 18))),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              'Number Of Level is : 3',
+                             'Number Level Is :'+ controller.numberlevel.value.toString(),
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,

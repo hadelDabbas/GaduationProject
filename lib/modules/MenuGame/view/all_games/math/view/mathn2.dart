@@ -123,7 +123,7 @@ class MathNew2PageView extends GetResponsiveView<MathController> {
                   controller.score.value += 10;
                   Get.to(MathNew3PageView());
                 } else {
-                  Result('E');
+              Get.to(MathNew3PageView());
                 }
               } else {
                 Result('T');
@@ -153,7 +153,7 @@ class MathNew2PageView extends GetResponsiveView<MathController> {
                   ? Column(
                       children: [
                         const Text(
-                          'Time Off Do You Want To Retry ? ',
+                          'Time Off Do You Want To Contuine ? ',
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -166,8 +166,9 @@ class MathNew2PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                  ;
                                   controller.onReady();
+                                    Get.to(MathNew3PageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),

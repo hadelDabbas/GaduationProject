@@ -59,7 +59,7 @@ class MathNew5PageView extends GetResponsiveView<MathController> {
             ),
           ),
           Text(
-            'النتيجه :${controller.score}',
+            'النتيجه :${controller.score2}',
             style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -120,10 +120,10 @@ class MathNew5PageView extends GetResponsiveView<MathController> {
             onPressed: () {
               if (controller.time.value.toString() != '00:01') {
                 if (value == '28') {
-                  controller.score.value += 10;
+                  controller.score2.value += 10;
                   Get.to(MathNew6PageView());
                 } else {
-                  Result('E');
+                Get.to(MathNew6PageView());
                 }
               } else {
                 Result('T');
@@ -153,7 +153,7 @@ class MathNew5PageView extends GetResponsiveView<MathController> {
                   ? Column(
                       children: [
                         const Text(
-                          'Time Off Do You Want To Retry ? ',
+                          'Time Off Do You Want To contuine ? ',
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -166,8 +166,9 @@ class MathNew5PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                               
                                   controller.onReady();
+                                    Get.to(MathNew6PageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),

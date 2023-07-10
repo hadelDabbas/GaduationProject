@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/MenuGame/controller/menu_game_controller.dart';
 
+import 'math4n.dart';
+import 'math7.dart';
 import 'mathn1.dart';
 
-class DefineMath extends GetResponsiveView {
+class DefineMath extends GetResponsiveView<MenuGameController> {
+  MenuGameController controller=Get.put(MenuGameController());
   DefineMath({super.key});
 
   @override
@@ -58,7 +62,25 @@ class DefineMath extends GetResponsiveView {
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.to(MathNew1PageView());
+                         switch(controller.numberlevel.value){
+                case 1:
+                  Get.to(MathNew11PageView());
+                    controller.onReady();
+                  break;
+                   case 2:
+                  Get.to(MathNew4PageView());
+                    controller.onReady();
+                  break;
+                    case 3:
+                  Get.to(MathNew7PageView());
+                    controller.onReady();
+                  break;
+                 default:
+                    Get.to(MathNew7PageView());
+                  break;
+              }
+            
+                   
                   },
                   child: Container(
                     decoration: BoxDecoration(

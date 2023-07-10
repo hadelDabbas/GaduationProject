@@ -12,6 +12,8 @@ class MathController extends GetxController {
   var result = 0.obs;
   var result2 = 100.obs;
   var score = 0.obs;
+  var score2=0.obs;
+  var score3=0.obs;
   var result3 = 200.obs;
   @override
   void onClose() {

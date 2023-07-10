@@ -119,12 +119,12 @@ class Letter2 extends GetResponsiveView<LetterController> {
                       }
                     } else {
                       Result('G',
-                          'تهانينا اجتزت هذا المستوى هل تريد الانتقال للمستوى التالي؟');
+                        "تهانينا اجتزت المستوى الاول مع نتيجه :" +controller.score.value.toString());
                       controller.score.value += 10;
                       controller.resulting2.value = 0;
                     }
                   } else {
-                    Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                    Result('T',"انتهى الوقت مع النتيجه"+controller.score.value.toString());
                   }
                 },
                 icon: Icon(
@@ -248,18 +248,17 @@ class Letter2 extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
-                              controller.onReady();
+                             Get.to(MenuGamePageView());
                             },
                             child: const Text('نعم',
                                 style: TextStyle(color: Colors.grey))),
-                        TextButton(
-                            onPressed: () {
-                              Get.to(MenuGamePageView());
-                              controller.onClose();
-                            },
-                            child: const Text('لا',
-                                style: TextStyle(color: Colors.grey))),
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Get.to(MenuGamePageView());
+                        //       controller.onClose();
+                        //     },
+                        //     child: const Text('لا',
+                        //         style: TextStyle(color: Colors.grey))),
                       ],
                     ),
                   ],
@@ -281,20 +280,22 @@ class Letter2 extends GetResponsiveView<LetterController> {
                         TextButton(
                             onPressed: () {
 /////go to second level meduim
-                              Get.to(Letter6pageview());
+///Get.
+                              // Get.to(Letter6pageview());
+                              Get.to(MenuGamePageView());
                               controller.onReady();
                             },
                             child: const Text('نعم',
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 80, 137, 212)))),
-                        TextButton(
-                            onPressed: () {
-                              Get.to(MenuGamePageView());
-                              controller.onClose();
-                            },
-                            child: const Text('لا',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 80, 137, 212)))),
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Get.to(MenuGamePageView());
+                        //       controller.onClose();
+                        //     },
+                        //     child: const Text('لا',
+                        //         style: TextStyle(
+                        //             color: Color.fromARGB(255, 80, 137, 212)))),
                       ],
                     ),
                   ],

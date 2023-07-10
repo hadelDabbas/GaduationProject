@@ -9,6 +9,8 @@ class MenuGameController extends GetxController
   late AnimationController ancontroller;
   late Animation<double> animation;
   static MenuGameController get find => Get.find();
+  var level=''.obs;
+  var numberlevel=0.obs;
 
   RxBool animate = false.obs;
   @override
@@ -18,5 +20,17 @@ class MenuGameController extends GetxController
         AnimationController(duration: const Duration(seconds: 5), vsync: this);
     animation = CurvedAnimation(parent: ancontroller, curve: Curves.linear);
     ancontroller.repeat();
+  }
+  void NumberLevel(){
+    switch (level.value){
+      case 'First Level':
+      numberlevel.value=1;
+      break;
+        case 'Second Level':
+      numberlevel.value=2;
+      break;
+     default:
+     numberlevel.value=3;
+    }
   }
 }

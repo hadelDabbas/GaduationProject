@@ -147,12 +147,12 @@ class Letter9pageview extends GetResponsiveView<LetterController> {
                             }
                           } else {
                             Result('G',
-                                'لقد اجتزت جميع المستويات نتيجتك هي 90 شكرا لمشاركتك');
+                                "تهانينا لقد فزت ");
                             controller.score.value += 10;
                             controller.resulting8.value = 0;
                           }
                         } else {
-                          Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                          Result('T', "انتهى الوقت مع نتيجة :" +controller.score.value.toString());
                         }
                       },
                       icon: const Icon(
@@ -292,19 +292,18 @@ class Letter9pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
-                              controller.onReady();
+                           Get.to(MenuGamePageView());
                             },
                             child: Text('نعم',
                                 style: TextStyle(color: Colors.green[200]))),
-                        TextButton(
-                            onPressed: () {
-                              Get.to(MenuGamePageView());
+                        // TextButton(
+                        //     onPressed: () {
+                        //       Get.to(MenuGamePageView());
 
-                              controller.onClose();
-                            },
-                            child: Text('لا',
-                                style: TextStyle(color: Colors.green[200]))),
+                        //       controller.onClose();
+                        //     },
+                        //     child: Text('لا',
+                        //         style: TextStyle(color: Colors.green[200]))),
                       ],
                     ),
                   ],

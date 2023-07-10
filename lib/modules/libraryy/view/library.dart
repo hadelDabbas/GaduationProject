@@ -431,7 +431,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                          child: const Row(
+                          child:  Row(
                         children: <Widget>[
                           Flexible(
                               child: Center(

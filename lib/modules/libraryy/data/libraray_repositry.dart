@@ -14,7 +14,7 @@ class LibraryRepository implements ILibraryRepository {
   @override
   Future<List<Book>> getAllbook(int idlibrary) async {
     var result =
-        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+        await _dio.get('https://localhost:7192/api/CompanyContent/$idlibrary');
     var list = <Book>[];
     for (var item in result.data) {
       list.add(Book.fromJson(item));

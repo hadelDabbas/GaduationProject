@@ -145,7 +145,7 @@ class Letter3 extends GetResponsiveView<LetterController> {
                                 controller.resulting33.value = 0;
                               }
                             } else {
-                              Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                              Result('T', "انتهى الوقت هل تريد اكمال اللعبه");
                             }
                           },
                           icon: const Icon(
@@ -284,8 +284,9 @@ class Letter3 extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
+                             
                               controller.onReady();
+                                Get.to(Letter5pageview());
                             },
                             child: const Text('نعم',
                                 style: TextStyle(color: Colors.grey))),

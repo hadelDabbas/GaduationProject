@@ -154,7 +154,7 @@ class Letter8pageview extends GetResponsiveView<LetterController> {
                             controller.resulting9.value = 0;
                           }
                         } else {
-                          Result('T', 'انتهى الوقت هل تريد اعادة اللعبة');
+                          Result('T', "انتهى الوقت هل تريد المتابعة ؟");
                         }
                       },
                       icon: const Icon(
@@ -288,7 +288,7 @@ class Letter8pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Get.back();
+                         Get.to(Letter9pageview());
                               controller.onReady();
                             },
                             child: const Text('نعم',

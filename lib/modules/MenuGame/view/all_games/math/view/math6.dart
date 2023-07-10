@@ -59,7 +59,7 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
             ),
           ),
           Text(
-            'النتيجه :${controller.score}',
+            'النتيجه :${controller.score2}',
             style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
             onPressed: () {
               if (controller.time.value.toString() != '00:01') {
                 if (value == "بعد 5 سنوات") {
-                  controller.score.value += 10;
+                  controller.score2.value += 10;
                   correct();
                 } else {
                   Result('E');
@@ -154,8 +154,8 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
               child: txt == 'T'
                   ? Column(
                       children: [
-                        const Text(
-                          'Time Off Do You Want To Retry ? ',
+                         Text(
+                          'Time Off Go To MenuGame with score : '+ controller.score2.value.toString() ,
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -168,26 +168,27 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
-                                  controller.onReady();
+                                  // Get.back();
+                                  // controller.onReady();
+                                   Get.to(MenuGamePageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),
-                            TextButton(
-                                onPressed: () {
-                                  Get.to(MenuGamePageView());
-                                  controller.onClose();
-                                },
-                                child: const Text('No',
-                                    style: TextStyle(color: Colors.blueGrey))),
+                            // TextButton(
+                            //     onPressed: () {
+                            //       Get.to(MenuGamePageView());
+                            //       controller.onClose();
+                            //     },
+                            //     child: const Text('No',
+                            //         style: TextStyle(color: Colors.blueGrey))),
                           ],
                         ),
                       ],
                     )
                   : Column(
                       children: [
-                        const Text(
-                          'Error Value Do You Want Retry ?',
+                         Text(
+                         'Your Result is :' + controller.score2.value.toString() ,
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -200,8 +201,7 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
-                                  controller.onReady();
+                                Get.to(MenuGamePageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),
@@ -231,7 +231,7 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
         height: 100,
         child: Column(children: [
           const Text(
-            'هل تريد الانتقال للمرحله التاليه؟',
+            "تهانينا ربحت المستوى الثاني",
             style: TextStyle(
                 fontSize: 20,
                 decoration: TextDecoration.none,
@@ -244,8 +244,8 @@ class MathNew6PageView extends GetResponsiveView<MathController> {
               ),
               TextButton(
                   onPressed: () {
-                    Get.to(MathNew7PageView());
-                    controller.onReady();
+                    Get.to(MenuGamePageView());
+                   // controller.onReady();
                   },
                   child: const Text('نعم',
                       style: TextStyle(color: Colors.blueGrey))),

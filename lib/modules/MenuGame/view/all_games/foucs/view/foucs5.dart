@@ -115,7 +115,7 @@ class FoucsGameView5 extends GetResponsiveView<FoucsController> {
                   controller.score.value += 10;
                   Get.to(FoucsGameView6());
                 } else {
-                  Result('E');
+             Get.to(FoucsGameView6());
                 }
               } else {
                 Result('T');
@@ -143,7 +143,7 @@ class FoucsGameView5 extends GetResponsiveView<FoucsController> {
                   ? Column(
                       children: [
                         const Text(
-                          'Time Off Do You Want To Retry ? ',
+                          'Time Off Do You Want To contuine ? ',
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -156,8 +156,9 @@ class FoucsGameView5 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                            
                                   controller.onReady();
+                                   Get.to(FoucsGameView6());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),

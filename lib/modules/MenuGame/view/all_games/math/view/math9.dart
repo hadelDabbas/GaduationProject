@@ -59,7 +59,7 @@ class MathNew9PageView extends GetResponsiveView<MathController> {
               ),
             ),
             Text(
-              'النتيجه :${controller.score}',
+              'النتيجه :${controller.score3}',
               style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class MathNew9PageView extends GetResponsiveView<MathController> {
             onPressed: () {
               if (controller.time.value.toString() != '00:01') {
                 if (value == "تحت 7, فوق 5") {
-                  controller.score.value += 10;
+                  controller.score3.value += 10;
                   correct();
                 } else {
                   Result('E');
@@ -165,8 +165,8 @@ class MathNew9PageView extends GetResponsiveView<MathController> {
               child: txt == 'T'
                   ? Column(
                       children: [
-                        const Text(
-                          'Time Off Do You Want To Retry ? ',
+                         Text(
+                          'Time Off And level3 Do You With score ? '+ controller.score3.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -181,24 +181,25 @@ class MathNew9PageView extends GetResponsiveView<MathController> {
                                 onPressed: () {
                                   Get.back();
                                   controller.onReady();
+                                  Get.to(MenuGamePageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),
-                            TextButton(
-                                onPressed: () {
-                                  Get.to(MenuGamePageView());
-                                  controller.onClose();
-                                },
-                                child: const Text('No',
-                                    style: TextStyle(color: Colors.blueGrey))),
+                            // TextButton(
+                            //     onPressed: () {
+                            //       Get.to(MenuGamePageView());
+                            //       controller.onClose();
+                            //     },
+                            //     child: const Text('No',
+                            //         style: TextStyle(color: Colors.blueGrey))),
                           ],
                         ),
                       ],
                     )
                   : Column(
                       children: [
-                        const Text(
-                          'Error Value Do You Want Retry ?',
+                         Text(
+                         'Your Result is :' + controller.score3.value.toString() ,
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,

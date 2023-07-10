@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/MenuGame/controller/menu_game_controller.dart';
 
 import '../controller/foucs_controller.dart';
+import 'foucs2.dart';
 import 'foucs4.dart';
+import 'foucs5.dart';
+import 'foucs7.dart';
 
 class FoucsGameView extends GetResponsiveView<FoucsController> {
-  
+  MenuGameController Mcontroller=Get.put(MenuGameController());
   FoucsGameView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // height: MediaQuery.of(context).size.height ,
-        //           width: MediaQuery.of(context).size.width ,
-        //           decoration: BoxDecoration(
-        //             borderRadius: BorderRadius.circular(20),
-        //             gradient: const LinearGradient(
-        //               colors: [Color.fromARGB(255, 246, 248, 250), Color.fromARGB(255, 243, 196, 227)],
-        //               begin: Alignment.bottomRight,
-        //               end: Alignment.center,
-        //               stops: [0.4, 0.7],
-        //               tileMode: TileMode.repeated,
-        //             ),
-        //           ),
         child: Column(children: [
           InkWell(
             onTap: () => Get.back(),
@@ -90,8 +82,20 @@ class FoucsGameView extends GetResponsiveView<FoucsController> {
                       const Color.fromARGB(255, 179, 96, 154)),
                 ),
                 onPressed: () {
+              switch(Mcontroller.numberlevel.value){
+                case 1:
                   Get.to(FoucsGameView4());
-                },
+                    controller.onReady();
+                  break;
+                   case 2:
+                Get.to(FoucsGameView5());
+                    controller.onReady();
+                  break;
+                 default:
+                 Get.to(FoucsGameView7());
+                    controller.onReady();
+                  break;
+              };},
                 child: const Text('Play Now',
                     style: TextStyle(
                         fontSize: 20,

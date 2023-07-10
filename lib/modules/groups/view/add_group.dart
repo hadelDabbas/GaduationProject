@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 
 import '../../genereted/sheard/util.dart';
@@ -11,7 +12,7 @@ import '../controller/group_controller.dart';
 class AddGrpoup extends GetResponsiveView<GroupController> {
   GroupController controller = Get.put(GroupController());
   Uint8List? image;
-   List<String> Contents = [
+  List<String> Contents = [
     'History',
     'Math',
     'Arabic',
@@ -65,129 +66,185 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 Material(child: Imageprofile(controller)),
               ],
             )),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
-                decoration: InputDecoration(
-                       labelText: 'Name Group',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Name Group',
-                       prefixIcon: Icon(
-                Icons.abc_outlined,
-                color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(
-              child: Obx(
-                    () => Container(
-              width: 450,
-              child: DropdownButton<String>(
-                  items: Contents.map<DropdownMenuItem<String>>(
-                    (String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: TextStyle(
-                              color: Colors.black45, fontWeight: FontWeight.bold),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                  isExpanded: true,
-                  value: controller.dropdownvalue.value,
-                  iconSize: 24,
-                  elevation: 16,
-                  onChanged: (String? newval) {
-                    controller.dropdownvalue.value = newval!;
-                  }),
+                  child: Container(
+                width: 450,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Name Group',
+                    labelStyle: TextStyle(
+                        color: Colors.black45, fontWeight: FontWeight.bold),
+                    hintText: 'Name Group',
+                    prefixIcon: Icon(
+                      Icons.abc_outlined,
+                      color: Color.fromARGB(255, 245, 146, 149),
                     ),
-                  )),
-            ),
-                Container(
-                  width: 450,
-                  child: TextField(
-                      decoration: InputDecoration(
-                       labelText: 'Descrintion About Group',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Descrintion About Group',
-                       prefixIcon: Icon(
-                Icons.text_fields,
-                color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     ),
-                    keyboardType: TextInputType.multiline,
-                    minLines: 1,//Normal textInputField will be displayed
-                    maxLines: 5,// when user presses enter it will adapt to it
-                    ),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: TextButton(onPressed: (){
-                       Get.dialog(
-                            Align(alignment: Alignment.center,
-                            child: Container(
-                              width:500,height:370 ,  decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                           border: Border.all(color: Colors.blueAccent)
-                          ),
-                              child:
-                            SingleChildScrollView(
-                              child: Column(children: [
-                                 SizedBox(height: 10,),
-                                Align(alignment: Alignment.center,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text("Add post : ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,
-                                    fontFamily: "Pacifico",color: Colors.blueGrey,decoration: TextDecoration.none),),
-                                  )),
-                                 Container(child: Addpostview(),),
-                                 
-                              ],),
-                            )
-                            ,),)
-                          );;
-                    }, child: Text('Are You Want To Add post ? ',style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                    ),)),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                  onPressed: () {
-                   
+                  onChanged: (value) {
+                    controller.AddnewGroup.value.groupName = value;
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:Color.fromARGB(255, 245, 146, 149) ,
-                      shape: RoundedRectangleBorder(
-                        //backgroundColor:Colors.accents,
-                          borderRadius: BorderRadius.circular(30)),
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
-                          ,
-                  child: const Text(
-                    'Add Group',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                            ),
                 ),
+              )),
+            ),
+            Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "GroupType",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.contents
+                          .map((element) => TextButton(
+                              onPressed: () {
+                                controller.AddnewGroup.value.content = element;
+                              },
+                              child: Text(element.typeName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Material(
+            //   child: Obx(
+            //         () => Container(
+            //   width: 450,
+            //   child: DropdownButton<String>(
+            //       items: Contents.map<DropdownMenuItem<String>>(
+            //         (String value) {
+            //           return DropdownMenuItem<String>(
+            //             value: value,
+            //             child: Text(
+            //               value,
+            //               style: TextStyle(
+            //                   color: Colors.black45, fontWeight: FontWeight.bold),
+            //             ),
+            //           );
+            //         },
+            //       ).toList(),
+            //       isExpanded: true,
+            //       value: controller.dropdownvalue.value,
+            //       iconSize: 24,
+            //       elevation: 16,
+            //       onChanged: (String? newval) {
+            //         controller.dropdownvalue.value = newval!;
+            //       }),
+            //         ),
+            //       )),
+            // ),
+            Container(
+              width: 450,
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Descrintion About Group',
+                  labelStyle: TextStyle(
+                      color: Colors.black45, fontWeight: FontWeight.bold),
+                  hintText: 'Descrintion About Group',
+                  prefixIcon: Icon(
+                    Icons.text_fields,
+                    color: Color.fromARGB(255, 245, 146, 149),
+                  ),
+                ),
+                keyboardType: TextInputType.multiline,
+                minLines: 1, //Normal textInputField will be displayed
+                maxLines: 5, // when user presses enter it will adapt to it
+                onChanged: (value) {
+                  controller.AddnewGroup.value.Description = value;
+                },
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: TextButton(
+                    onPressed: () {
+                      Get.dialog(Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: 500,
+                          height: 370,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.blueAccent)),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Align(
+                                    alignment: Alignment.center,
+                                    child: Padding(
+                                      //////////////////////////////////////////
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Add post : ",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "Pacifico",
+                                            color: Colors.blueGrey,
+                                            decoration: TextDecoration.none),
+                                      ),
+                                    )),
+                                Container(
+                                  child: Addpostview(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ));
+                      ;
+                    },
+                    child: Text(
+                      'Are You Want To Add post ? ',
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  controller.AddGroup();
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 245, 146, 149),
+                    shape: RoundedRectangleBorder(
+                        //backgroundColor:Colors.accents,
+                        borderRadius: BorderRadius.circular(30)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 50)),
+                child: const Text(
+                  'Add Group',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -205,7 +262,6 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   child: Container(
                     width: 500,
                     decoration: BoxDecoration(
-                      
                         border: Border.all(
                             color: Color.fromARGB(255, 192, 189, 189))),
                     //    radius: 80.0,

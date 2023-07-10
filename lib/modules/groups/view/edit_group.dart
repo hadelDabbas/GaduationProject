@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 import 'package:graduationproject/modules/groups/view/editpost.dart';
 
@@ -72,8 +73,10 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                child: Material(
                        child: Container(
                      width: 450,
-                     child: TextField(
+                     child: TextFormField(
+                   initialValue: controller.currentGroup.value.groupName,
                 decoration: InputDecoration(
+                  
                        labelText: 'Edit Name Group',
                        labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
@@ -82,42 +85,78 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                 Icons.abc_outlined,
                 color: Color.fromARGB(255, 245, 146, 149),
                        ),
-                     )
+                     ),
+                     onChanged: (value) {
+                       controller.currentGroup.value.groupName=value;
+                     },
                      ),
                    )),
              ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Material(
-              child: Obx(
-                    () => Container(
-              width: 450,
-              child: DropdownButton<String>(
-                  items: Contents.map<DropdownMenuItem<String>>(
-                    (String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(
-                          value,
-                          style: TextStyle(
-                              color: Colors.black45, fontWeight: FontWeight.bold),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                  isExpanded: true,
-                  value: controller.dropdownvalue.value,
-                  iconSize: 24,
-                  elevation: 16,
-                  onChanged: (String? newval) {
-                    controller.dropdownvalue.value = newval!;
-                  }),
+                      Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: controller.currentGroup.value.content!.typeName.toString(),
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.contents
+                          .map((element) => TextButton(
+                              onPressed: () {
+                                controller.currentGroup.value.content = element;
+                              },
+                              child: Text(element.typeName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
                     ),
-                  )),
+                  ),
+                ),
+              ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Material(
+            //   child: Obx(
+            //         () => Container(
+            //   width: 450,
+            //   child: DropdownButton<String>(
+            //       items: Contents.map<DropdownMenuItem<String>>(
+            //         (String value) {
+            //           return DropdownMenuItem<String>(
+            //             value: value,
+            //             child: Text(
+            //               value,
+            //               style: TextStyle(
+            //                   color: Colors.black45, fontWeight: FontWeight.bold),
+            //             ),
+            //           );
+            //         },
+            //       ).toList(),
+            //       isExpanded: true,
+            //       value: controller.dropdownvalue.value,
+            //       iconSize: 24,
+            //       elevation: 16,
+            //       onChanged: (String? newval) {
+            //         controller.dropdownvalue.value = newval!;
+            //       }),
+            //         ),
+            //       )),
+            // ),
                 Container(
                   width: 450,
-                  child: TextField(
+                  child: TextFormField(
+                     initialValue: controller.currentGroup.value.Description,
                       decoration: InputDecoration(
                        labelText: ' Edit  Descrintion About Group',
                        labelStyle:
@@ -131,27 +170,30 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                     keyboardType: TextInputType.multiline,
                     minLines: 1,//Normal textInputField will be displayed
                     maxLines: 5,// when user presses enter it will adapt to it
+                    onChanged: (value) {
+                   controller.currentGroup.value.Description=value;
+                    },
                     ),
                 ),
                 SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: TextButton(onPressed: (){
-                     Get.to(EditPostgroupview());
-                    }, child: Text('Are You Want To Edit post ? ',style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold
-                    ),)),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Align(
+                //     alignment: Alignment.topRight,
+                //     child: TextButton(onPressed: (){
+                //      Get.to(EditPostgroupview());
+                //     }, child: Text('Are You Want To Edit post ? ',style: TextStyle(
+                //       color: Colors.black54,
+                //       fontSize: 16,
+                //       fontWeight: FontWeight.bold
+                //     ),)),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                   onPressed: () {
-                  
+                  controller.UpdateGroup();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:Color.fromARGB(255, 245, 146, 149) ,

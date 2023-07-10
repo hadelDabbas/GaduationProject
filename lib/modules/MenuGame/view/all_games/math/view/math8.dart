@@ -60,7 +60,7 @@ class MathNew8PageView extends GetResponsiveView<MathController> {
               ),
             ),
             Text(
-              'النتيجه :${controller.score}',
+              'النتيجه :${controller.score3}',
               style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -127,10 +127,10 @@ class MathNew8PageView extends GetResponsiveView<MathController> {
             onPressed: () {
               if (controller.time.value.toString() != '00:01') {
                 if (value == "الاول 9,الثاني 6,الثالث 2") {
-                  controller.score.value += 10;
+                  controller.score3.value += 10;
                   correct();
                 } else {
-                  Result('E');
+                 Get.to(MathNew9PageView());
                 }
               } else {
                 Result('T');
@@ -162,7 +162,7 @@ class MathNew8PageView extends GetResponsiveView<MathController> {
                   ? Column(
                       children: [
                         const Text(
-                          'Time Off Do You Want To Retry ? ',
+                          'Time Off Do You Want To Contuine ? ',
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -175,8 +175,9 @@ class MathNew8PageView extends GetResponsiveView<MathController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                 
                                   controller.onReady();
+                                   Get.to(MathNew9PageView());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.blueGrey))),

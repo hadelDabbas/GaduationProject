@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../controller/menu_game_controller.dart';
 import 'letter4.dart';
+import 'letter6.dart';
+import 'letter7.dart';
 
-class splashscreenLetter extends StatelessWidget {
-  const splashscreenLetter({super.key});
+class splashscreenLetter extends GetResponsiveView< MenuGameController> {
+   MenuGameController controller=Get.put( MenuGameController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,20 @@ class splashscreenLetter extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Get.to(Letter4pageview());
+              switch(controller.numberlevel.value){
+                case 1:
+                  Get.to(Letter4pageview());
+                    controller.onReady();
+                  break;
+                   case 2:
+                  Get.to(Letter6pageview());
+                    controller.onReady();
+                  break;
+                 default:
+                  Get.to(Letter7pageview());
+                    controller.onReady();
+                  break;
+              }
             },
             child: Container(
               decoration: BoxDecoration(
