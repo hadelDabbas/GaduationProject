@@ -14,7 +14,7 @@ class signupage extends GetResponsiveView<SignUpController> {
   final _formfield = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passcontroller = TextEditingController();
-   Uint8List? image;
+  Uint8List? image;
 
   @override
   Widget build(BuildContext context) {
@@ -25,29 +25,30 @@ class signupage extends GetResponsiveView<SignUpController> {
         child: Column(children: [
           InkWell(
             onTap: () => Get.back(),
-            child: Align(
+            child: const Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
             height: 25,
           ),
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               '   Sign Up',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Colors.blueGrey,fontFamily: "Pacifico"),
+                  color: Colors.blueGrey,
+                  fontFamily: "Pacifico"),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
             height: 30,
           ),
@@ -58,20 +59,23 @@ class signupage extends GetResponsiveView<SignUpController> {
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.grey[600]),
               )),
-               Center(
-          child: Column(
-        children: [
-          SizedBox(width: 170),
-            Material(child: Imageprofile(controller)),
-        ],
-      )),
+          Center(
+              child: Column(
+            children: [
+              const SizedBox(width: 170),
+              Material(child: Imageprofile(controller)),
+            ],
+          )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.person_outline,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter YourName',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -87,6 +91,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                   controller.user.value.Name = value;
                 },
                 validator: (value) {
+                  // for number
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                     return "Enter Correct Name";
@@ -99,11 +104,14 @@ class signupage extends GetResponsiveView<SignUpController> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.person_outline,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter UserName',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -140,38 +148,41 @@ class signupage extends GetResponsiveView<SignUpController> {
                 borderRadius: BorderRadius.circular(18)),
             child: Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 3,
                 ),
                 InkWell(
                     onTap: () {
                       controller.chooseDate();
-                
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.date_range,
                       color: Color.fromARGB(255, 246, 123, 127),
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 2,
                 ),
                 Obx(() => Text(
                       DateFormat("dd.MM.yyyy")
                           .format(controller.selectedDate.value)
                           .toString(),
-                      style: TextStyle(fontSize: 18,color: Colors.black54),
+                      style:
+                          const TextStyle(fontSize: 18, color: Colors.black54),
                     )),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 controller: emailcontroller,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter Email',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -195,20 +206,24 @@ class signupage extends GetResponsiveView<SignUpController> {
                   } else if (!emailvalue) {
                     return " Enter Correct Email";
                   }
+                  return null;
                 },
               ),
             ),
           ),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: 450,
                 child: Obx(
                   () => TextFormField(
                     controller: passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 246, 123, 127),),
+                        prefixIcon: const Icon(
+                          Icons.lock,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                        ),
                         suffixIcon: InkWell(
                           onTap: () {
                             controller.passtoggle.value =
@@ -220,8 +235,8 @@ class signupage extends GetResponsiveView<SignUpController> {
                         ),
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(width: 3, color: Colors.blueGrey),
+                          borderSide: const BorderSide(
+                              width: 3, color: Colors.blueGrey),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -238,17 +253,21 @@ class signupage extends GetResponsiveView<SignUpController> {
                       } else if (passcontroller.text.length < 6) {
                         return "Password Length Should Be More Than 6 Charachters";
                       }
+                      return null;
                     },
                   ),
                 ),
               )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.cast_for_education,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.cast_for_education,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter Education',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -276,11 +295,14 @@ class signupage extends GetResponsiveView<SignUpController> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.location_city,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.location_city,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter Adress',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -308,11 +330,14 @@ class signupage extends GetResponsiveView<SignUpController> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               width: 450,
               child: TextFormField(
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.money,color: Color.fromARGB(255, 246, 123, 127),),
+                    prefixIcon: const Icon(
+                      Icons.money,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
                     labelText: 'Enter PayBal',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
@@ -343,10 +368,10 @@ class signupage extends GetResponsiveView<SignUpController> {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                
                 if (_formfield.currentState!.validate()) {
                   print("Data Added Successfully");
-                  controller.user.value.Age=controller.selectedDate.value.toString();
+                  controller.user.value.Age =
+                      controller.selectedDate.value.toString();
                   controller.signUpUser();
                   // emailcontroller.clear();
                   // passcontroller.clear();
@@ -368,34 +393,34 @@ class signupage extends GetResponsiveView<SignUpController> {
       ),
     ));
   }
-  Widget Imageprofile( SignUpController controller) {
+
+  Widget Imageprofile(SignUpController controller) {
     return Center(
       child: Stack(
         children: <Widget>[
-           Obx(() =>  CircleAvatar(
-            radius: 80.0,
-                    //  borderRadius: BorderRadius.circular(100),
-                      child: controller.stringPickImage.value.isNotEmpty
-                          ? Utility.imageFromBase64String(
-                              controller.stringPickImage.value, 200, 200)
-                          : image == null
-                              ? Image.asset(
-                                  'assets/images/boy.gif',
-                                  width: 200,
-                                  height: 200,
-                                )
-                              : Utility.imageFromBase64String(
-                                  Utility.base64String(image!), 200, 200),
-                    )
-                    ),
+          Obx(() => CircleAvatar(
+                radius: 80.0,
+                //  borderRadius: BorderRadius.circular(100),
+                child: controller.stringPickImage.value.isNotEmpty
+                    ? Utility.imageFromBase64String(
+                        controller.stringPickImage.value, 200, 200)
+                    : image == null
+                        ? Image.asset(
+                            'assets/images/boy.gif',
+                            width: 200,
+                            height: 200,
+                          )
+                        : Utility.imageFromBase64String(
+                            Utility.base64String(image!), 200, 200),
+              )),
           Positioned(
               bottom: 20.0,
               right: 20.0,
               child: InkWell(
-                onTap: ()async {
-             openBottomSheet(controller);
+                onTap: () async {
+                  openBottomSheet(controller);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.camera_alt,
                   color: Color.fromARGB(255, 245, 146, 149),
                   size: 28.0,
@@ -406,14 +431,13 @@ class signupage extends GetResponsiveView<SignUpController> {
     );
   }
 }
-void openBottomSheet( SignUpController controller) {
+
+void openBottomSheet(SignUpController controller) {
   Get.bottomSheet(
-    Container(height: 120.0,
-    width: 500,
-    margin: EdgeInsets.symmetric(
-      vertical: 20,
-      horizontal: 20
-    ),
+    Container(
+      height: 120.0,
+      width: 500,
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         children: [
           const SizedBox(height: 20),
@@ -423,7 +447,7 @@ void openBottomSheet( SignUpController controller) {
               style: TextStyle(fontSize: 18),
             ),
           ),
-           SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -431,35 +455,35 @@ void openBottomSheet( SignUpController controller) {
             children: <Widget>[
               Row(
                 children: [
-               FloatingActionButton(
-                backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                foregroundColor: Colors.white,
-                mini: true,
-                onPressed: () {
-               controller.pickImageFun();
-                },
-                child: Icon(Icons.camera),
-              ),
-              Text('  Camera'),
+                  FloatingActionButton(
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+                    foregroundColor: Colors.white,
+                    mini: true,
+                    onPressed: () {
+                      controller.pickImageFun();
+                    },
+                    child: const Icon(Icons.camera),
+                  ),
+                  const Text('  Camera'),
                 ],
               ),
-             
-                SizedBox(
-            width: 10,
-          ),
-          Row(children: [
-               FloatingActionButton(
-                backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                foregroundColor: Colors.white,
-                mini: true,
-                onPressed: () {
-                   controller.pickImageFun();
-                },
-                child: Icon(Icons.image),
+              const SizedBox(
+                width: 10,
               ),
-                 Text('  Gallery'),
-          ],)
-              
+              Row(
+                children: [
+                  FloatingActionButton(
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+                    foregroundColor: Colors.white,
+                    mini: true,
+                    onPressed: () {
+                      controller.pickImageFun();
+                    },
+                    child: const Icon(Icons.image),
+                  ),
+                  const Text('  Gallery'),
+                ],
+              )
             ],
           ),
           // OutlinedButton(
