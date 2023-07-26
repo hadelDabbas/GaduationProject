@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../app/model/refrence.dart';
 import '../controller/refrence_controller.dart';
 
 class RefrencePageView extends GetResponsiveView <RerenceController>{
@@ -47,12 +48,12 @@ class RefrencePageView extends GetResponsiveView <RerenceController>{
               ],
             ),
         Column(
-          children: controller.refrences.map((e) => shap(e)).toList(),
+          children: controller.ListRefrence.map((e) => shap(e.referenceName.toString(),e)).toList(),
         ),
           ],
         )));
   }
-  Widget shap( String title){
+  Widget shap( String title, Reference e){
     return         Material(
               child: Padding(
                 padding: const EdgeInsets.all(6),
@@ -69,7 +70,9 @@ class RefrencePageView extends GetResponsiveView <RerenceController>{
                           decoration: TextDecoration.none),
                           contentChild: 
                           Column
-                          (children:controller.ItRefrence.map((e) => InkWell(
+                          (
+                            //////////we need list link
+                            children:controller.ItRefrence.map((e) => InkWell(
                             onTap:() async {
                         final url = e;
                         if (await canLaunch(url)) {
