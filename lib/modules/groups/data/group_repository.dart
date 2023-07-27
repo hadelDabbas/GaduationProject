@@ -3,8 +3,11 @@ import 'package:get/get.dart';
 import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/user.dart';
 
+import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
+import '../../../app/model/post.dart';
 import '../../../app/model/postdto.dart';
+import '../../../app/model/userPost.dart';
 import 'adapter/group_adapter.dart';
 
 class GroupRepository implements IGroupRepository {
@@ -99,6 +102,61 @@ class GroupRepository implements IGroupRepository {
     var list = <PostDto>[];
     for (var item in result.data) {
       list.add(PostDto.fromJson(item));
+    }
+    return list;
+  }
+    @override
+  Future<bool> InteractionUser(UserPost userPost, int idpost) async {
+    var data = await _dio.put('https://localhost:7252/api/UserPost/$idpost',
+        data: userPost.toJson());
+    if (data.statusCode == 200) {
+      return true;
+    } else {
+      print(data.statusMessage);
+    }
+    return false;
+
+  }
+  
+  @override
+  Future<List<Comments>> GetComment(int idpost) async {
+    var data = await _dio.get('https://localhost:7252/api/Comment/$idpost');
+    var list = <Comments>[];
+    for (var item in data.data) {
+      list.add(Comments.fromJson(item));
+    }
+    return list;
+  }
+  @override
+  Future<bool> AddComment(Comments comments, int Iduser) async {
+    var data = await _dio.post('https://localhost:7252/api/Post',
+        data: comments.toJson());
+    if (data.statusCode == 200) {
+      return true;
+    } else {
+      print(data.statusMessage);
+    }
+    return false;
+  }
+   @override
+  Future<bool> AddpostUser(Post post, int iduser,int idgroup) async {
+    var result = await _dio.post('https://localhost:7252/api/Post/AddPost',
+        data: post.toJson());
+    print(result.data);
+    if (result.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Future<List<Content>> GetAllContent() async {
+    var result =
+        await _dio.get('https://localhost:7252/api/Content/GetContents');
+    print(result);
+    var list = <Content>[];
+    for (var item in result.data) {
+      list.add(Content.fromJson(item));
     }
     return list;
   }

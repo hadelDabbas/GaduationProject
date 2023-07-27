@@ -1,8 +1,10 @@
+import 'dart:html';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
 
 import '../../../app/model/post.dart';
@@ -251,7 +253,9 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'Add Post ',
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                       Addpostview();
+                    },
                     child: Icon(
                       Icons.add,
                       size: 18,
@@ -459,7 +463,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                       onPressed: () {
                       
                         // controller.postidnew.value.Id = post.Id!;
-                        // controller.GetAllComments(post.Id!);
+                        controller.GetComments(post.Id!);
+                        Get.to(Comment());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -474,15 +479,18 @@ class GroupView extends GetResponsiveView<GroupController> {
 
                     ElevatedButton(
                       onPressed: () {
-                        // controller.userpost.value.IdUser =
-                        //     controller.userprofile.value.Id;
-                        // if (interaction) {
-                        //   controller.userpost.value.Interaction = false;
-                        //   controller.GetInterActionUser(post.Id!);
-                        // } else {
-                        //   controller.userpost.value.Interaction = true;
-                        //   controller.GetInterActionUser(post.Id!);
-                        // }
+                        controller.userpost.value.IdPost = post.Id;
+                        controller.userpost.value.post = post;
+                        controller.userpost.value.user = controller.user.value;
+                        controller.userpost.value.Id = controller.user.value.Id;
+                        if (interaction) {
+                          controller.userpost.value.Interaction = false;
+                          controller.GetInterActionUser();
+                        } else {
+                          controller.userpost.value.Interaction = false;
+                          controller.GetInterActionUser();
+                        }
+                     
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:

@@ -66,29 +66,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 Material(child: Imageprofile(controller)),
               ],
             )),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Material(
-                  child: Container(
-                width: 450,
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Name Group',
-                    labelStyle: TextStyle(
-                        color: Colors.black45, fontWeight: FontWeight.bold),
-                    hintText: 'Name Group',
-                    prefixIcon: Icon(
-                      Icons.abc_outlined,
-                      color: Color.fromARGB(255, 245, 146, 149),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    controller.AddnewGroup.value.groupName = value;
-                  },
-                ),
-              )),
-            ),
-            Material(
+              Material(
               child: Padding(
                 padding: const EdgeInsets.all(6),
                 child: Container(
@@ -120,6 +98,29 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Material(
+                  child: Container(
+                width: 450,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Name Group',
+                    labelStyle: TextStyle(
+                        color: Colors.black45, fontWeight: FontWeight.bold),
+                    hintText: 'Name Group',
+                    prefixIcon: Icon(
+                      Icons.abc_outlined,
+                      color: Color.fromARGB(255, 245, 146, 149),
+                    ),
+                  ),
+                  onChanged: (value) {
+                    controller.AddnewGroup.value.groupName = value;
+                  },
+                ),
+              )),
+            ),
+          
             // Padding(
             //   padding: const EdgeInsets.all(8.0),
             //   child: Material(
@@ -170,62 +171,62 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 },
               ),
             ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: TextButton(
-                    onPressed: () {
-                      Get.dialog(Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          width: 500,
-                          height: 370,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.blueAccent)),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Align(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      //////////////////////////////////////////
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Add post : ",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Pacifico",
-                                            color: Colors.blueGrey,
-                                            decoration: TextDecoration.none),
-                                      ),
-                                    )),
-                                Container(
-                                  child: Addpostview(),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ));
-                      ;
-                    },
-                    child: Text(
-                      'Are You Want To Add post ? ',
-                      style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    )),
-              ),
-            ),
+            // SizedBox(height: 10),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Align(
+            //     alignment: Alignment.topRight,
+            //     child: TextButton(
+            //         onPressed: () {
+            //           Get.dialog(Align(
+            //             alignment: Alignment.center,
+            //             child: Container(
+            //               width: 430,
+            //               height: 370,
+            //               decoration: BoxDecoration(
+            //                   color: Colors.white,
+            //                   borderRadius: BorderRadius.circular(10),
+            //                   border: Border.all(color: Colors.blueAccent)),
+            //               child: SingleChildScrollView(
+            //                 child: Column(
+            //                   children: [
+            //                     SizedBox(
+            //                       height: 10,
+            //                     ),
+            //                     Align(
+            //                         alignment: Alignment.center,
+            //                         child: Padding(
+            //                           //////////////////////////////////////////
+            //                           padding: const EdgeInsets.all(8.0),
+            //                           child: Text(
+            //                             "Add post : ",
+            //                             style: TextStyle(
+            //                                 fontSize: 18,
+            //                                 fontWeight: FontWeight.bold,
+            //                                 fontFamily: "Pacifico",
+            //                                 color: Colors.blueGrey,
+            //                                 decoration: TextDecoration.none),
+            //                           ),
+            //                         )),
+            //                     Container(
+            //                       child: Addpostview(),
+            //                     ),
+            //                   ],
+            //                 ),
+            //               ),
+            //             ),
+            //           ));
+            //           ;
+            //         },
+            //         child: Text(
+            //           'Are You Want To Add post ? ',
+            //           style: TextStyle(
+            //               color: Colors.black54,
+            //               fontSize: 16,
+            //               fontWeight: FontWeight.bold),
+            //         )),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

@@ -7,6 +7,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/modules/complaints/controller/complaints_controller.dart';
 
 import '../../AddBook/controller/AddBook_controller.dart';
+import '../../genereted/sheard/util.dart';
 
 class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
   ComplaintsController controller = Get.put(ComplaintsController());
@@ -63,44 +64,65 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
           SizedBox(
             height: 20,
           ),
-          CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
-              context, 'assets/images/2.png'),
-          CardComplaints(
-              'Hadel Dabase',
-              'I Will Publish Post in Group Math I wamt to apply',
-              context,
-              'assets/images/team.png'),
-          CardComplaints(
-              'Haya Yosofi',
-              'I want to by Admain for publish question and testing',
-              context,
-              'assets/images/11.png'),
-          CardComplaints(
-              'Asia Badnjki',
-              'I dont love Your App And I hope to improved it',
-              context,
-              'assets/images/12.png'),
+          Column(
+            children: controller.ListComplaintsAdmain.map((element) => CardComplaints(element.user!.Name.toString(),
+             element.complaint.toString(),
+             context, element.user!.Image!)).toList(),
+          )
+          // CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
+          //     context, 'assets/images/2.png'),
+          // CardComplaints(
+          //     'Hadel Dabase',
+          //     'I Will Publish Post in Group Math I wamt to apply',
+          //     context,
+          //     'assets/images/team.png'),
+          // CardComplaints(
+          //     'Haya Yosofi',
+          //     'I want to by Admain for publish question and testing',
+          //     context,
+          //     'assets/images/11.png'),
+          // CardComplaints(
+          //     'Asia Badnjki',
+          //     'I dont love Your App And I hope to improved it',
+          //     context,
+          //     'assets/images/12.png'),
         ],
       ),
     );
   }
 
   Widget CardComplaints(
-      String name, String Complaints, BuildContext context, String url) {
+      String name, String Complaints, BuildContext context, Uint8List url) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GFImageOverlay(
-                height: 40,
-                width: 40,
-                shape: BoxShape.circle,
-                image: AssetImage(url),
-                boxFit: BoxFit.cover,
-              ),
-            ),
+               Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: url == null
+                          ? Image.asset(
+                              'assets/images/angryimg.png',
+                              width: screen.width,
+                              fit: BoxFit.cover,
+                            )
+                          : Utility.imageFromBase64String(
+                              Utility.base64String(url), 50, 50),
+                    ),
+                  ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: GFImageOverlay(
+            //     height: 40,
+            //     width: 40,
+            //     shape: BoxShape.circle,
+            //     image: AssetImage(
+            //       url),
+            //     boxFit: BoxFit.cover,
+            //   ),
+            // ),
             Container(
               width: MediaQuery.of(context).size.width / 1.2,
               // height: MediaQuery.of(context).size.height / 4,

@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
+import '../../genereted/sheard/util.dart';
 import '../controller/complaints_controller.dart';
 
 class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
@@ -37,7 +40,7 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                           minLines: 1,//Normal textInputField will be displayed
                           maxLines: 5,// when user presses enter it will adapt to it
                           onChanged: (value) {
-                            
+                            controller.newComplaint.value.complaint=value;
                           },
                           validator: (value) {
                                         if (value!.isEmpty ||
@@ -56,8 +59,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
             child: Align(
               alignment: Alignment.centerRight,
               child: ElevatedButton(
+                //////////////add Complaints from user
                 onPressed: () {
                   if (_formfield.currentState!.validate()) {
+                    controller.newComplaint.value.IdUser=controller.user.value.Id;
+                       controller.newComplaint.value.user=controller.user.value;
+                       controller.addComplaint();
                     myController.clear();
                   }
                 },
@@ -83,17 +90,18 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                               decoration: TextDecoration.none),
                                         ),
                                         Column(
-                                          children: [
-                                            complaintscard('I want to remove group history ', 'assets/images/4.png',context,'A'),
-                                            complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
-                                          ],
+                                          children: 
+                                            controller.listUser.map((e) => complaintscard(e.complaint.toString(), e.user!.Image!, context, '')).toList()
+                                            // complaintscard('I want to remove group history ', 'assets/images/4.png',context,'A'),
+                                            // complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
+                                          // ],
                                         )
           ],
         ),
       ),
     );}
     
-    Widget complaintscard( String complaints, String url,BuildContext context,String type){
+    Widget complaintscard( String complaints, Uint8List url,BuildContext context,String type){
       return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -107,16 +115,31 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     borderRadius: BorderRadius.circular(10.0)),
                     child: Column(children: [
                       Row(children: [
-                                    Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GFImageOverlay(
-                  height: 40,
-                  width: 40,
-                  shape: BoxShape.circle,
-                  image: AssetImage(url),
-                  boxFit: BoxFit.cover,
-                ),
-              ),
+                           Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: 40,
+                      height: 40,
+                      child: url == null
+                          ? Image.asset(
+                              'assets/images/angryimg.png',
+                              width: screen.width,
+                              fit: BoxFit.cover,
+                            )
+                          : Utility.imageFromBase64String(
+                              Utility.base64String(url), 50, 50),
+                    ),
+                  ),
+              //                       Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: GFImageOverlay(
+              //     height: 40,
+              //     width: 40,
+              //     shape: BoxShape.circle,
+              //     image: AssetImage(url),
+              //     boxFit: BoxFit.cover,
+              //   ),
+              // ),
                                 Align(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -180,113 +203,5 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     ]),
         ),
       );
-// Padding(
-//         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-//         child: Row(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: GFImageOverlay(
-//                 height: 40,
-//                 width: 40,
-//                 shape: BoxShape.circle,
-//                 image: AssetImage(url),
-//                 boxFit: BoxFit.cover,
-//               ),
-//             ),
-//             Container(
-//              width: MediaQuery.of(context).size.width / 0.1,
-//               // height: MediaQuery.of(context).size.height / 4,
-//               decoration: BoxDecoration(
-//                   border: Border.all(
-//                     color: Colors.grey,
-//                     width: 1.3,
-//                   ),
-//                   color: Colors.white,
-//                   borderRadius: BorderRadius.circular(22.0)),
-//               child: Card(
-//                        shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(22.0)),
-//                 child: Column(children: [
-//                   Align(
-//                     alignment: Alignment.topLeft,
-//                     child: Text(
-//                       'name',
-//                       style: TextStyle(
-//                         fontFamily: "Pacifico",
-//                         fontSize: 20,
-//                         fontWeight: FontWeight.bold,
-//                         color: Color.fromARGB(255, 246, 123, 127),
-//                       ),
-//                     ),
-//                   ),
-//                   new Container(
-//                     padding: const EdgeInsets.all(16.0),
-//                     width: 100,
-//                     child: new Column(
-//                       children: <Widget>[
-//                         new Text(
-//                           complaints,
-//                           textAlign: TextAlign.left,
-//                           style: TextStyle(
-//                               fontSize: 18,
-//                               fontWeight: FontWeight.bold,
-//                               color: Colors.black54),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                   Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         SizedBox(
-//                           width: 78,
-//                         ),
-//                         Align(
-//                           alignment: Alignment.bottomRight,
-//                           child: Tooltip(
-//                             message: 'Not Accept',
-//                             child: ElevatedButton(
-//                               onPressed: () async {},
-//                               child: Icon(
-//                                 Icons.close,
-//                                 size: 18,
-//                               ),
-//                               style: ElevatedButton.styleFrom(
-//                                 backgroundColor:
-//                                     Color.fromARGB(255, 238, 106, 97),
-//                                 shape: CircleBorder(),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Align(
-//                           alignment: Alignment.bottomRight,
-//                           child: Tooltip(
-//                             message: ' Accept',
-//                             child: ElevatedButton(
-//                               onPressed: () async {},
-//                               child: Icon(
-//                                 Icons.check,
-//                                 size: 18,
-//                               ),
-//                               style: ElevatedButton.styleFrom(
-//                                 backgroundColor: Colors.green,
-//                                 shape: CircleBorder(),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   )
-//                   //   Icon(Icons.abc, color: Color.fromARGB(255, 246, 123, 127)),
-//                 ]),
-//               ),
-//             ),
-//           ],
-//         ));
     }
     }
