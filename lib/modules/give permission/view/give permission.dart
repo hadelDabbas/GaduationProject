@@ -2,11 +2,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/colors/gf_color.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:getwidget/components/dropdown/gf_multiselect.dart';
 import 'package:getwidget/types/gf_checkbox_type.dart';
 
 class Givepermission extends GetResponsiveView{
-  List<String>permission=['Admain All permission','Admain All','Admain Library','Admain post','Admain Group'];
+  List<String>permission=['Admain All permission'
+  ,'Admain All','Admain Library','Admain post','Admain Group'];
 @override
 
   Widget build(BuildContext context){
@@ -44,44 +46,92 @@ class Givepermission extends GetResponsiveView{
           ),
         )),
       )),
-      Material(
-        child: GFMultiSelect(
-        items:permission,
-        onSelect: (value) {
-          print('selected $value ');
-        },
-        dropdownTitleTileText: ' ',
-        dropdownTitleTileMargin: EdgeInsets.only(
-        top: 22, left: 18, right: 18, bottom: 5),
-        dropdownTitleTilePadding: EdgeInsets.all(10),
-        dropdownUnderlineBorder:
-        const BorderSide(color: Colors.transparent, width: 2),
-        dropdownTitleTileBorder:
-        Border.all(color: Colors.blueGrey, width: 1),
-        dropdownTitleTileBorderRadius: BorderRadius.circular(5),
-        expandedIcon: const Icon(
-          Icons.keyboard_arrow_down,
-          color: Colors.black54,
-        ),
-        collapsedIcon: const Icon(
-          Icons.keyboard_arrow_up,
-          color: Colors.black54,
-        ),
-        submitButton: Text('OK'),buttonColor: Color.fromARGB(255, 246, 123, 127) ,
-        cancelButton: Text('Cancel'),
-        dropdownTitleTileTextStyle:
-        const TextStyle(fontSize: 14, color: Colors.black54),
-        padding: const EdgeInsets.all(6),
-        margin: const EdgeInsets.all(6),
-        type: GFCheckboxType.basic,
-        activeBgColor: Color.fromARGB(255, 246, 123, 127),
-        activeBorderColor: Color.fromARGB(255, 246, 123, 127),
-        inactiveBorderColor: Colors.blueGrey,
-      ),
-      ),
-      
-      
-
+          Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Admain Library",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.contents
+                          .map((element) => TextButton(
+                              onPressed: () {
+                                controller.AddnewGroup.value.content = element;
+                              },
+                              child: Text(element.typeName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+         Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Admain Group",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.contents
+                          .map((element) => TextButton(
+                              onPressed: () {
+                                controller.AddnewGroup.value.content = element;
+                              },
+                              child: Text(element.typeName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                   checkShose(' All Permission'),
+                checkShose('Add New Group'),
+                   checkShose('Add New Refrence'),
+                           checkShose('Add New Library'),
+                           checkShose('Delete Librarys'),
+                            checkShose('Delete Groups'),
+              ],
+            )
+      ],
+    );
+  }
+  Widget checkShose(String text){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(text,style: TextStyle(color: Colors.black54,
+        fontSize: 20,
+        fontWeight: FontWeight.bold
+        ),),
+        Checkbox(value: false, onChanged: (value){})
       ],
     );
   }

@@ -416,18 +416,18 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         )
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        '  Description : ',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Pacifico",
-                            color: Color.fromARGB(255, 246, 123, 127),
-                            decoration: TextDecoration.none),
-                      ),
-                    ),
+                    // const Padding(
+                    //   padding: EdgeInsets.all(8.0),
+                    //   child: Text(
+                    //     '  Description : ',
+                    //     style: TextStyle(
+                    //         fontSize: 20,
+                    //         fontWeight: FontWeight.bold,
+                    //         fontFamily: "Pacifico",
+                    //         color: Color.fromARGB(255, 246, 123, 127),
+                    //         decoration: TextDecoration.none),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(

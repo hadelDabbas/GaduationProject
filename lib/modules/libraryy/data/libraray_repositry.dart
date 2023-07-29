@@ -156,4 +156,16 @@ class LibraryRepository implements ILibraryRepository {
     }
     return list;
   }
+  
+  // @override
+  // Future<List> GetAllUserInvoic(int iduser)async {
+  //      var result =
+  //       await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+  //   print(result);
+  //   var list = <Invoic>[];
+  //   for (var item in result.data) {
+  //     list.add(Invoic.fromJson(item));
+  //   }
+  //   return list;
+  // }
 }

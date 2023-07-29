@@ -29,5 +29,14 @@ class RefrenceRepository implements IRefrenceRepository {
       return null;
     }
   }
+  
+  @override
+  Future<bool> DelRefrence(String nameRefrence) async{
+    var result = await _dio.delete(
+     'https://localhost:7192/api/Refrence',
+     queryParameters: {"nameRefrence":nameRefrence }
+    );
+    return result.statusCode == 200;
+  }
 
 }

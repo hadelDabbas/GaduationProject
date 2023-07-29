@@ -19,4 +19,6 @@ abstract class ILibraryRepository {
   Future<List<BookType>> GetAllTypeBooklibrary(int library);
   Future<List<Book>> GetAllBookByType(int idlibrary, int idBooktype);
   Future<List<Book>> GetAllBookByWitter(int library, int idwriter);
+  // Future<List<invoice>> GetAllUserInvoic(int iduser);
+   // Future<List<invoice>> GetAllLibraryInvoic(int iduser);
 }

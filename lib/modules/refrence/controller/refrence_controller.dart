@@ -7,8 +7,11 @@ class RerenceController extends GetxController{
    final refrenceRepo=RefrenceRepository();
    final ListRefrence=< Reference >[].obs;
    final refrence=Reference().obs;
-  final refrences=['IT Reference','Arabic Reference','Math Reference',
-  'Medical Reference','Chamistry  Reference','Phaysis  Reference'];
+   final DelRefrence=Reference().obs;
+  final refrences=['IT Reference','Arabic Reference',
+  // 'Math Reference',
+  // 'Medical Reference','Chamistry  Reference','Phaysis  Reference'
+  ];
   final ItRefrence=['https://www.dataunitconverter.com/blog/bit-nibble-byte',
   'https://www.techtarget.com/searchmobilecomputing/definition/wireless',
   'https://www.baeldung.com/java-stack-heap',
@@ -28,5 +31,8 @@ class RerenceController extends GetxController{
     var data = await refrenceRepo.GetRefrence(id);
        refrence.value=data!;
 
+  }
+   Future<void> DeleRefrence() async {
+    var data = await refrenceRepo.DelRefrence(DelRefrence.value.referenceName!);
   }
 }

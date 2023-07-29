@@ -16,6 +16,9 @@ abstract class Routes {
   static const content = _Paths.content;
   static const libery = _Paths.libery;
   static const search = _Paths.search;
+  static const booktype = _Paths.booktype;
+   static const refrence = _Paths.refrence;
+    static const  setting = _Paths. setting;
 }
 
 abstract class _Paths {
@@ -33,4 +36,7 @@ abstract class _Paths {
   static const content = '/content';
   static const libery = '/libery';
   static const search = '/search';
+    static const booktype = '/booktype';
+       static const refrence = '/refrence';
+              static const setting = '/setting';
 }
