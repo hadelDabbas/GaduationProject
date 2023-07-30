@@ -6,6 +6,7 @@ import '../../../../app/model/refrence.dart';
 
 abstract class IComplaintsRepository {
     Future<List< Complaint>> GetAllComplaint();
-      Future<List< Complaint>>  Getcomplaint(int id);
-    Future< bool> Putcomplaints(int id,Complaint c);
+      Future<List< Complaint>>  GetcomplaintUser(int id);
+    Future< bool> Putcomplaints(Complaint c);
+    Future<bool>Updatecomplaint(Complaint c);
  }

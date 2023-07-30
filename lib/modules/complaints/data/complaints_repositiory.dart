@@ -12,7 +12,7 @@ class ComplaintsRepository implements IComplaintsRepository {
   @override
   Future<List<Complaint>> GetAllComplaint() async{
     var result =
-        await _dio.get('https://localhost:7192/api/Complaint');
+        await _dio.get('https://localhost:7192/api/Complaint/GetCpmplaints');
     var list = <Complaint>[];
     for (var item in result.data) {
       list.add(Complaint.fromJson(item));
@@ -21,9 +21,9 @@ class ComplaintsRepository implements IComplaintsRepository {
   }
 
   @override
-  Future<List<Complaint>> Getcomplaint(int id)async {
+  Future<List<Complaint>> GetcomplaintUser(int iduser)async {
      var result =
-        await _dio.get('https://localhost:7192/api/Complaint/$id');
+        await _dio.get('https://localhost:7192/api/Complaint/GetUserComplaint');
     var list = <Complaint>[];
     for (var item in result.data) {
       list.add(Complaint.fromJson(item));
@@ -32,8 +32,19 @@ class ComplaintsRepository implements IComplaintsRepository {
   }
   
   @override
-  Future<bool> Putcomplaints(int id,Complaint c) async{
-     var result = await _dio.post('https://localhost:7192/api/Complaint/$id', 
+  Future<bool> Putcomplaints(Complaint c) async{
+     var result = await _dio.post('https://localhost:7192/api/Complaint/AddComplaint', 
+     data: c.toJson());
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  @override
+  Future<bool> Updatecomplaint(Complaint c) async {
+   var result = await _dio.put('https://localhost:7192/api/Complaint/Put', 
      data: c.toJson());
     if (result.statusCode == 200) {
       return true;

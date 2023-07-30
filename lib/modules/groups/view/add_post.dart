@@ -13,7 +13,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../genereted/sheard/util.dart';
 import '../controller/group_controller.dart';
 
-class Addpostview extends GetResponsiveView<GroupController> {
+class Addpostviewas extends GetResponsiveView<GroupController> {
  GroupController controller = Get.put(GroupController());
  Uint8List? image;
 

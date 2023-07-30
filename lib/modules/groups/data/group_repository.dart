@@ -8,6 +8,7 @@ import '../../../app/model/content.dart';
 import '../../../app/model/post.dart';
 import '../../../app/model/postdto.dart';
 import '../../../app/model/userPost.dart';
+import '../../../app/model/user_Group.dart';
 import 'adapter/group_adapter.dart';
 
 class GroupRepository implements IGroupRepository {
@@ -85,12 +86,7 @@ class GroupRepository implements IGroupRepository {
     return list;
   }
   
-  @override
-  Future<bool> AddMember(int idperson, int idGroup)async {
-      var result = await _dio.post('',
-      queryParameters: {'id': idperson});
-    return result.statusCode == 200;
-  }
+
    @override
   Future<List<PostDto>>  GetAllPost(int idgroup) async {
    
@@ -159,5 +155,24 @@ class GroupRepository implements IGroupRepository {
       list.add(Content.fromJson(item));
     }
     return list;
+  }
+  
+  @override
+  Future<bool> RemoveMember( UserGroup userGroup)async {
+       var result = await _dio.delete('https://localhost:7252/api/UserGroup',
+           data: userGroup.toJson());
+    return result.statusCode == 200;
+  }
+    @override
+  Future<bool> AddMember(UserGroup userGroup )async {
+      var result = await _dio.post('https://localhost:7252/api/UserGroup',
+     data: userGroup.toJson());
+    return result.statusCode == 200;
+  }
+  
+  @override
+  Future<bool> exsitingMember(int Iduser)async {
+   var result = await _dio.get('https://localhost:7252/api/UserGroup',);
+    return result.statusCode == 200;
   }
 }

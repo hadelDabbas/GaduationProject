@@ -6,6 +6,7 @@ class Buybook {
   double? price;
   String? address;
   int? idUser;
+  int? Count;
   User? user;
   int? idLibrary;
   Library? library;
@@ -15,6 +16,7 @@ class Buybook {
       this.address,
       this.idUser,
       this.user,
+      this.Count,
       this.idLibrary,
       this.library});
 
@@ -24,6 +26,7 @@ class Buybook {
     address = json['address'];
     idUser = json[' idUser'];
     user = json[' user'];
+     Count = json[' Count'];
     idLibrary = json['idLibrary'];
     library = json['library'];
   }
@@ -32,6 +35,7 @@ class Buybook {
     final Map<String, dynamic> json = <String, dynamic>{};
     json['Price'] = price;
     json['address'] = address;
+    json[' Count'] =  Count;
     json[' idUser'] = idUser;
     json[' user'] = user;
     json['idLibrary'] = idLibrary;

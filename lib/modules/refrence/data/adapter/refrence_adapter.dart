@@ -5,7 +5,7 @@ import '../../../../app/model/refrence.dart';
 
 abstract class IRefrenceRepository {
     Future<List< Reference>> GetAllRefrence();
-      Future< Reference?> GetRefrence(int id);
-  //  Future<bool> AdRefrence(BookType book);
-       Future<bool> DelRefrence(String nameRefrence);
+      Future<List< Reference>> GetRefrencelink(int id);
+       Future<bool> DelRefrence(Reference reference);
+        Future<bool> AddRefrence(Reference reference); 
  }

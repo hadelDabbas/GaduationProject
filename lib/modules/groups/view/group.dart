@@ -94,21 +94,30 @@ class GroupView extends GetResponsiveView<GroupController> {
                           ),
                           Obx(
                             () => Tooltip(
-                              message: 'Join TO Group',
+                              message:controller.msg.value ,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   shadowColor: Colors.blueGrey,
                                   backgroundColor:
-                                      controller.press.value == false
+                                      // controller.press.value == false
+                                      controller.personExsisting.value==false
                                           ? Color.fromARGB(255, 246, 123, 127)
                                           : Colors.white,
                                 ),
                                 /////////////////////////dont work
                                 onPressed: () {
-                                  if (controller.press == false) {
-                                    controller.press.value = true;
+                                  if (  controller.personExsisting.value==false) {
+                               controller.personExsisting.value = true;
+                               controller.msg.value='Joning';
+                               controller.addMember.value.IdGroup=controller.currentGroup.value.Id;
+                                controller.addMember.value.IdUser=controller.user.value.Id;
+                                    controller.AddMember();
                                   } else {
-                                    controller.press.value = false;
+                                  controller.personExsisting.value = false;
+                                    controller.msg.value='Exit';
+                                    controller.addMember.value.IdGroup=controller.currentGroup.value.Id;
+                                controller.addMember.value.IdUser=controller.user.value.Id;
+                                    controller.RemoveMember();
                                   }
                                 },
                                 /////////////////////////////////////////

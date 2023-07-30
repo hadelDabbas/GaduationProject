@@ -98,101 +98,88 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                       (e) => Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  'Sql Server',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black54),
-                                ),
-                              ),
-                              // IconButton(
-                              //     onPressed: () {
-                              //        Get.dialog(Align(
-                              //                       alignment: Alignment.center,
-                              //                       child: Container(
-                              //                           width: 220,
-                              //                           height: 120,
-                              //                           decoration: BoxDecoration(
-                              //                               color: Colors.white,
-                              //                               borderRadius:
-                              //                                   BorderRadius.circular(
-                              //                                       10),
-                              //                               border: Border.all(
-                              //                                   color:
-                              //                                       Colors.blueAccent)),
-                              //                           child: SingleChildScrollView(
-                              //                               child: Column(
-                              //                             children: [
-                              //                               const Text(
-                              //                                 "Are Sure To Remove?",
-                              //                                 style: TextStyle(
-                              //                                     fontSize: 18,
-                              //                                     fontWeight:
-                              //                                         FontWeight.bold,
-                              //                                     fontFamily:
-                              //                                         "Pacifico",
-                              //                                     color:
-                              //                                         Colors.blueGrey,
-                              //                                     decoration:
-                              //                                         TextDecoration
-                              //                                             .none),
-                              //                               ),
-                              //                               Padding(
-                              //                                 padding:
-                              //                                     const EdgeInsets.all(
-                              //                                         8.0),
-                              //                                 child: Center(
-                              //                                   child: Row(
-                              //                                     mainAxisAlignment:
-                              //                                         MainAxisAlignment
-                              //                                             .center,
-                              //                                     children: [
-                              //                                       TextButton(
-                              //                                           onPressed: () {
-                                                                        
-                              //                                           },
-                              //                                           child:
-                              //                                               const Text(
-                              //                                             'Yes',
-                              //                                             style: TextStyle(
-                              //                                                 color: Color.fromARGB(
-                              //                                                     255,
-                              //                                                     245,
-                              //                                                     146,
-                              //                                                     149)),
-                              //                                           )),
-                              //                                       TextButton(
-                              //                                           onPressed: () {
-                              //                                             Get.back();
-                              //                                           },
-                              //                                           child:
-                              //                                               const Text(
-                              //                                             'No',
-                              //                                             style: TextStyle(
-                              //                                                 color: Color.fromARGB(
-                              //                                                     255,
-                              //                                                     245,
-                              //                                                     146,
-                              //                                                     149)),
-                              //                                           )),
-                              //                                     ],
-                              //                                   ),
-                              //                                 ),
-                              //                               )
-                              //                             ],
-                              //                           )))));
-                              //     },
-                              //     icon: Icon(
-                              //       Icons.delete,
-                              //       color: Color.fromARGB(255, 184, 183, 183),
-                              //     ))
-                            ],
-                          ),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                        '',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Get.dialog(Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                    width: 220,
+                                    height: 120,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.blueAccent)),
+                                    child: SingleChildScrollView(
+                                        child: Column(
+                                      children: [
+                                        const Text(
+                                          "Are Sure To Remove?",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Colors.blueGrey,
+                                              decoration: TextDecoration.none),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                TextButton(
+                                                    onPressed: () {
+                                               
+                                                    },
+                                                    child: const Text(
+                                                      'Yes',
+                                                      style: TextStyle(
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              245,
+                                                              146,
+                                                              149)),
+                                                    )),
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Get.back();
+                                                    },
+                                                    child: const Text(
+                                                      'No',
+                                                      style: TextStyle(
+                                                          color: Color.fromARGB(
+                                                              255,
+                                                              245,
+                                                              146,
+                                                              149)),
+                                                    )),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )))));
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            color: Color.fromARGB(255, 184, 183, 183),
+                          ))
+                    ],
+                  ),
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(

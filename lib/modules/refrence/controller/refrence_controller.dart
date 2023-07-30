@@ -6,8 +6,9 @@ import '../data/refrence_repositry.dart';
 class RerenceController extends GetxController{
    final refrenceRepo=RefrenceRepository();
    final ListRefrence=< Reference >[].obs;
-   final refrence=Reference().obs;
+   final ListRefrenceLink=<Reference>[].obs;
    final DelRefrence=Reference().obs;
+   final Addrefrence=Reference().obs;
   final refrences=['IT Reference','Arabic Reference',
   // 'Math Reference',
   // 'Medical Reference','Chamistry  Reference','Phaysis  Reference'
@@ -28,11 +29,14 @@ class RerenceController extends GetxController{
     ListRefrence.assignAll(data);
   }
     Future<void> getRefrence(int id) async {
-    var data = await refrenceRepo.GetRefrence(id);
-       refrence.value=data!;
+    var data = await refrenceRepo.GetRefrencelink(id);
+    ListRefrenceLink.assignAll(data);
 
   }
    Future<void> DeleRefrence() async {
-    var data = await refrenceRepo.DelRefrence(DelRefrence.value.referenceName!);
+    var data = await refrenceRepo.DelRefrence(DelRefrence.value);
+  }
+    Future<void> AddRefrence() async {
+    var data = await refrenceRepo.AddRefrence(Addrefrence.value);
   }
 }

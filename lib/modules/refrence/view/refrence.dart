@@ -49,12 +49,12 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                 ),
               ],
             ),
-            Column(
-                children: controller.refrences.map((e) => shap22(e)).toList()),
             // Column(
-            //   children: controller.ListRefrence.map(
-            //       (e) => shap(e.referenceName.toString(), e)).toList(),
-            // ),
+            //     children: controller.refrences.map((e) => shap22(e)).toList()),
+            Column(
+              children: controller.ListRefrence.map(
+                  (e) => shap22(e.content.toString(), e)).toList(),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -107,16 +107,49 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: GFAccordion(
-                                            title: "Type Refrence",
-                                            textStyle: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20,
-                                                color: Color.fromARGB(
-                                                    255, 246, 123, 127),
-                                                decoration:
-                                                    TextDecoration.none),
-                                            contentChild: Column(),
-                                          ),
+                                              title: "Type Refrence",
+                                              textStyle: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                  decoration:
+                                                      TextDecoration.none),
+                                              contentChild: Column(
+                                                children: controller.ListRefrence
+                                                    .map((element) => Container(
+                                                        decoration: BoxDecoration(
+                                                            border: Border.all(
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        194,
+                                                                        192,
+                                                                        192)),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            controller.Addrefrence.value.content=element.content;
+                                                          },
+                                                          child: Text(
+                                                            element.content
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 18,
+                                                                color: Colors
+                                                                    .black54,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .none),
+                                                          ),
+                                                        ))).toList(),
+                                              )),
                                         ),
                                       ),
                                     ),
@@ -135,6 +168,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             onChanged: (value) {
+                                            controller.Addrefrence.value.referenceName=value;   
                                               // controller.addBookType.value.bookType =
                                               //     value;
                                             },
@@ -163,13 +197,16 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                               1, //Normal textInputField will be displayed
                                           maxLines:
                                               5, // when user presses enter it will adapt to it
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                             controller.Addrefrence.value.Link=value;   
+                                          },
                                         ),
                                       ),
                                     ),
                                     Center(
                                       child: GFButton(
                                         onPressed: () {
+                                          controller.AddRefrence();
                                           // controller.AddBookType(
                                           //     controller.addBookType.value);
                                         },
@@ -236,6 +273,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           onChanged: (value) {
+                                            controller.Addrefrence.value.content!.typeName=value;
                                             // controller.addBookType.value.bookType =
                                             //     value;
                                           },
@@ -246,6 +284,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   Center(
                                     child: GFButton(
                                       onPressed: () {
+                                        controller.AddRefrence();
                                         // controller.AddBookType(
                                         //     controller.addBookType.value);
                                       },
@@ -268,9 +307,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
         )));
   }
 
-  Widget shap22(
-    String title,
-  ) {
+  Widget shap22(String title, Reference e) {
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(6),
@@ -286,7 +323,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                 color: Color.fromARGB(255, 246, 123, 127),
                 decoration: TextDecoration.none),
             contentChild: Column(
-                children: controller.ItRefrence.map(
+                children: controller.ListRefrenceLink.map(
               (e) => Column(
                 children: [
                   Row(
@@ -295,100 +332,96 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Sql Server',
+                          e.referenceName.toString(),
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                             Get.dialog(Align(
-                                            alignment: Alignment.center,
-                                            child: Container(
-                                                width: 220,
-                                                height: 120,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    border: Border.all(
-                                                        color:
-                                                            Colors.blueAccent)),
-                                                child: SingleChildScrollView(
-                                                    child: Column(
-                                                  children: [
-                                                    const Text(
-                                                      "Are Sure To Remove?",
-                                                      style: TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontFamily:
-                                                              "Pacifico",
-                                                          color:
-                                                              Colors.blueGrey,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .none),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Center(
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                
-                                                                },
-                                                                child:
-                                                                    const Text(
-                                                                  'Yes',
-                                                                  style: TextStyle(
-                                                                      color: Color.fromARGB(
-                                                                          255,
-                                                                          245,
-                                                                          146,
-                                                                          149)),
-                                                                )),
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Get.back();
-                                                                },
-                                                                child:
-                                                                    const Text(
-                                                                  'No',
-                                                                  style: TextStyle(
-                                                                      color: Color.fromARGB(
-                                                                          255,
-                                                                          245,
-                                                                          146,
-                                                                          149)),
-                                                                )),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                )))));
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Color.fromARGB(255, 184, 183, 183),
-                          ))
+                      // IconButton(
+                      //     onPressed: () {
+                      //       Get.dialog(Align(
+                      //           alignment: Alignment.center,
+                      //           child: Container(
+                      //               width: 220,
+                      //               height: 120,
+                      //               decoration: BoxDecoration(
+                      //                   color: Colors.white,
+                      //                   borderRadius: BorderRadius.circular(10),
+                      //                   border: Border.all(
+                      //                       color: Colors.blueAccent)),
+                      //               child: SingleChildScrollView(
+                      //                   child: Column(
+                      //                 children: [
+                      //                   const Text(
+                      //                     "Are Sure To Remove?",
+                      //                     style: TextStyle(
+                      //                         fontSize: 18,
+                      //                         fontWeight: FontWeight.bold,
+                      //                         fontFamily: "Pacifico",
+                      //                         color: Colors.blueGrey,
+                      //                         decoration: TextDecoration.none),
+                      //                   ),
+                      //                   Padding(
+                      //                     padding: const EdgeInsets.all(8.0),
+                      //                     child: Center(
+                      //                       child: Row(
+                      //                         mainAxisAlignment:
+                      //                             MainAxisAlignment.center,
+                      //                         children: [
+                      //                           TextButton(
+                      //                               onPressed: () {
+                      //                                 controller.DelRefrence
+                      //                                     .value.Id = e.Id;
+                      //                                 controller.DelRefrence
+                      //                                     .value.Link = e.Link;
+                      //                                 controller
+                      //                                         .DelRefrence
+                      //                                         .value
+                      //                                         .referenceName =
+                      //                                     e.referenceName;
+                      //                                 controller.DeleRefrence();
+                      //                               },
+                      //                               child: const Text(
+                      //                                 'Yes',
+                      //                                 style: TextStyle(
+                      //                                     color: Color.fromARGB(
+                      //                                         255,
+                      //                                         245,
+                      //                                         146,
+                      //                                         149)),
+                      //                               )),
+                      //                           TextButton(
+                      //                               onPressed: () {
+                      //                                 Get.back();
+                      //                               },
+                      //                               child: const Text(
+                      //                                 'No',
+                      //                                 style: TextStyle(
+                      //                                     color: Color.fromARGB(
+                      //                                         255,
+                      //                                         245,
+                      //                                         146,
+                      //                                         149)),
+                      //                               )),
+                      //                         ],
+                      //                       ),
+                      //                     ),
+                      //                   )
+                      //                 ],
+                      //               )))));
+                      //     },
+                      //     icon: Icon(
+                      //       Icons.delete,
+                      //       color: Color.fromARGB(255, 184, 183, 183),
+                      //     ))
                     ],
                   ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      e,
+                      e.Link.toString(),
                       style: TextStyle(
                           color: Colors.blue,
                           decoration: TextDecoration.none,
@@ -405,47 +438,47 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
     );
   }
 
-  Widget shap(String title, Reference e) {
-    return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(6),
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Color.fromARGB(255, 194, 192, 192)),
-              borderRadius: BorderRadius.circular(10)),
-          child: GFAccordion(
-            title: title,
-            textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color.fromARGB(255, 246, 123, 127),
-                decoration: TextDecoration.none),
-            contentChild: Column(
-                //////////we need list link
-                children: controller.ItRefrence.map((e) => InkWell(
-                    onTap: () async {
-                      final url = e;
-                      if (await canLaunch(url)) {
-                        await launch(
-                          url,
-                          //  forceSafariVC: false,
-                        );
-                      }
-                    },
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        e,
-                        style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.none,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ))).toList()),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget shap(String title, Reference e) {
+  //   return Material(
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(6),
+  //       child: Container(
+  //         decoration: BoxDecoration(
+  //             border: Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+  //             borderRadius: BorderRadius.circular(10)),
+  //         child: GFAccordion(
+  //           title: title,
+  //           textStyle: TextStyle(
+  //               fontWeight: FontWeight.bold,
+  //               fontSize: 20,
+  //               color: Color.fromARGB(255, 246, 123, 127),
+  //               decoration: TextDecoration.none),
+  //           contentChild: Column(
+  //               //////////we need list link
+  //               children: controller.ListRefrenceLink.map((e) => InkWell(
+  //                   onTap: () async {
+  //                     // final url = e;
+  //                     if (await canLaunch(e.Link.toString())) {
+  //                       await launch(
+  //                        e.Link.toString(),
+  //                         //  forceSafariVC: false,
+  //                       );
+  //                     }
+  //                   },
+  //                   child: Align(
+  //                     alignment: Alignment.topLeft,
+  //                     child: Text(
+  //                       e,
+  //                       style: TextStyle(
+  //                           color: Colors.blue,
+  //                           decoration: TextDecoration.none,
+  //                           fontSize: 17,
+  //                           fontWeight: FontWeight.bold),
+  //                     ),
+  //                   ))).toList()),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/complaints.dart';
 import 'package:graduationproject/modules/complaints/controller/complaints_controller.dart';
 
 import '../../AddBook/controller/AddBook_controller.dart';
@@ -65,9 +66,10 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
             height: 20,
           ),
           Column(
-            children: controller.ListComplaintsAdmain.map((element) => CardComplaints(element.user!.Name.toString(),
+            children: controller.ListComplaintsAdmain.map((element) =>
+             CardComplaints(element.user!.Name.toString(),
              element.complaint.toString(),
-             context, element.user!.Image!)).toList(),
+             context, element.user!.Image!,element.type!,element)).toList(),
           )
           // CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
           //     context, 'assets/images/2.png'),
@@ -92,7 +94,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
   }
 
   Widget CardComplaints(
-      String name, String Complaints, BuildContext context, Uint8List url) {
+      String name, String Complaints, BuildContext context, Uint8List url,int type,Complaint c) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
@@ -178,7 +180,10 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                           child: Tooltip(
                             message: 'Not Accept',
                             child: ElevatedButton(
-                              onPressed: () async {},
+                              onPressed: () async {
+                             c.type=1;
+                             controller.UpdateComplaint(c); 
+                              },
                               child: Icon(
                                 Icons.close,
                                 size: 18,
@@ -196,7 +201,10 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                           child: Tooltip(
                             message: ' Accept',
                             child: ElevatedButton(
-                              onPressed: () async {},
+                              onPressed: () async {
+                                   c.type=0;
+                             controller.UpdateComplaint(c); 
+                              },
                               child: Icon(
                                 Icons.check,
                                 size: 18,

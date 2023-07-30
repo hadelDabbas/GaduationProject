@@ -1,42 +1,38 @@
 
-// import 'dart:typed_data';
+import 'dart:typed_data';
 
-// import 'bookType.dart';
-// import 'bookType.dart';
-// class  Book{
-//   int? Id;
-//   String?IdBookName ;
-//    Uint8List? bookImage;
-//   int?BookPrice;
-//   int?IdBookType;
-//   BookType? bookType ;
-// Book( {
-//     this.Id,
-//    this.BookName,
-//    this.bookImage,
-//    this.BookPrice,
-//    this.IdBookType,
-//    this.bookType,
-//   });
+import 'package:graduationproject/app/model/writter.dart';
 
-//  Book.fromJson(Map<String, dynamic> json) {
-//    Id = json['id'];
-//   BookName =json['bookName '];
-//      bookImage = json['bookImage'] == null
-//         ? null
-//         : Uint8List.fromList(List<int>.from(json['image']!));
-//     BookPrice =json['bookPrice '];   
-//  IdBookType =json['idBookType ']; 
-//    bookType =json['bookType ']; 
-//   }
+import 'book.dart';
 
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> json = new Map<String, dynamic>();
-//     json['bookName']=BookName;
-//   json['image'] =  bookImage == null ? null : Uint8List.fromList( bookImage!);
-//   json[' bookPrice']= BookPrice;
-//   json['idBookType']= IdBookType;
-//   json[' bookType']= bookType;
-//     return json;
-//   }
-// }
+class   BookWriter{
+  int? Id;
+ int? IdBook ;
+  Book? book;
+  int ?IdWriter;
+Writer? writer;
+ BookWriter( {
+    this.Id,
+   this.IdBook,
+   this.book,
+   this.IdWriter,
+   this.writer,
+  });
+
+  BookWriter.fromJson(Map<String, dynamic> json) {
+   Id = json['id'];
+  IdBook =json['IdBook '];
+  book =json['book '];   
+ IdWriter =json['IdWriter ']; 
+   writer =json['writer']; 
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = new Map<String, dynamic>();
+    json['IdBook']=IdBook;
+  json[' book']= book;
+  json['IdWriter']= IdWriter;
+  json[' writer']= writer;
+    return json;
+  }
+}

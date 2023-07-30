@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
+import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../app/model/comment.dart';
@@ -27,6 +28,7 @@ final nowgroup=0.obs;
  var groupRepo=GroupRepository();
   final addcomment = Comments().obs;
  var currentGroup=Group().obs;
+ final msg=''.obs;
  var Members=<User>[].obs;
  var postsList=<PostDto>[].obs;
  var AddnewGroup=Group().obs;
@@ -34,7 +36,10 @@ final nowgroup=0.obs;
   final userpost = UserPost().obs;
   final auth = Get.find<AuthService>();
   final user=User().obs;
+  final personExsisting=false.obs;
     final IdPost = 0;
+    final addMember=UserGroup().obs;
+    final removeMember=UserGroup().obs;
      final listcomment = <Comments>[].obs;
    PickedFile ?imagefile;
  //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global']; 
@@ -161,5 +166,17 @@ postsList.assignAll(data );
         forwardAnimationCurve: Curves.easeOutBack,
       );
     }
+  }
+   Future<void> AddMember() async {
+    var res = await groupRepo.AddMember(addMember.value);
+    
+  }
+   Future<void> RemoveMember() async {
+    var res = await groupRepo.RemoveMember(removeMember.value);
+  
+  }
+   Future<void> ExsistingMember() async {
+    personExsisting.value = await  groupRepo.exsitingMember(user.value.Id!);
+  
   }
 }
