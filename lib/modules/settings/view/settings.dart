@@ -9,6 +9,7 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Addpost/view/addpost.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../libraryy/view/library.dart';
 import '../../refrence/view/refrence.dart';
 
 class SettingPageView extends GetResponsiveView {
@@ -251,6 +252,14 @@ class SettingPageView extends GetResponsiveView {
                           child: Tooltip(
                               message: 'Show all Quiz',
                               child: CardSetting("Quiz", Icons.check_box)))),
+                              Material(
+                      child: InkWell(
+                          onTap: () {
+                            Get.to(Librarypage());
+                          },
+                          child: Tooltip(
+                              message: 'Show all Quiz',
+                              child: CardSetting("lib", Icons.check_box)))),
                   CardSetting("Quiz", Icons.check_box),
                   CardSetting("Language", Icons.language),
                   CardSetting("Help", Icons.question_mark),

@@ -8,7 +8,7 @@ import 'package:graduationproject/modules/libraryy/controller/library_controller
 import 'updatebook.dart';
 
 class Librarypage extends GetResponsiveView<LibraryContrller> {
-  Librarypage({super.key});
+  LibraryContrller contrller = Get.put(LibraryContrller());
 
   @override
   Widget build(BuildContext context) {
@@ -113,85 +113,96 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 const Color.fromARGB(255, 245, 146, 149)),
                         onPressed: () {
                           Get.dialog(Align(
-                            alignment: Alignment.topRight,
-                            child: Container(
-                                width: 500,
-                                height: 700,
-                                color: Colors.white,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'Basket',
-                                          style: TextStyle(
-                                              fontSize: 24,
-                                              fontFamily: "Pacifico",
-                                              color: Color.fromARGB(
-                                                  255, 246, 123, 127),
-                                              decoration: TextDecoration.none),
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
+                                width: 400,
+                                height: 260,
+                                child: Column(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: const Text(
+                                      " Input Information To Buy ",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: "Pacifico",
+                                          color: Colors.blueGrey,
+                                          decoration: TextDecoration.none),
+                                    ),
+                                  ),
+                                  Material(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        width: 350,
+                                        height: 60,
+                                        child: TextFormField(
+                                          decoration: const InputDecoration(
+                                            prefixIcon: Icon(Icons.location_on),
+                                            labelText: 'Input Location',
+                                            labelStyle: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          onChanged: (value) {
+                                            // controller.addBookType.value.bookType =
+                                            //     value;
+                                          },
                                         ),
                                       ),
-                                      shapPice('بالنيابة عنهم',
-                                          'assets/images/ali1.png', '3'),
-                                      shapPice('الاسود يليق بك',
-                                          'assets/images/ahlam1.png', '2'),
-                                      shapPice('اربعون',
-                                          'assets/images/ahmad1.png', '4'),
-                                      shapPice('فوضى الحواس',
-                                          'assets/images/ahlam2.png', '1'),
-                                      shapPice('رحلتي مع غاندي',
-                                          'assets/images/ahmad2.png', '3'),
-                                      shapPice('خيال', 'assets/images/ali3.png',
-                                          '1'),
-                                      Row(
-                                        children: [
-                                          const SizedBox(
-                                            width: 160,
-                                          ),
-                                          const Text('Total : ',
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  color: Colors.blueGrey)),
-                                          const Text("45000\$",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  color: Colors.black54)),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: ElevatedButton(
-                                                onPressed: () {},
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor:
-                                                      const Color.fromARGB(
-                                                          255, 246, 123, 127),
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      vertical: 20,
-                                                      horizontal: 20),
-                                                  shape: const CircleBorder(),
-                                                ),
-                                                child: const Icon(
-                                                  Icons.check,
-                                                  size: 16,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                )),
-                          ));
+                                  Material(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        width: 350,
+                                        height: 60,
+                                        child: TextFormField(
+                                          decoration: const InputDecoration(
+                                            prefixIcon: Icon(Icons.money),
+                                            labelText: 'Input PayBal',
+                                            labelStyle: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          onChanged: (value) {
+                                            // controller.addBookType.value.bookType =
+                                            //     value;
+                                          },
+                                          validator: (value) {
+                                            if (value!.isEmpty ||
+                                                !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                                    .hasMatch(value)) {
+                                              return "Enter Correct Paybal";
+                                            } else {
+                                              return null;
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: GFButton(
+                                      onPressed: () {
+                                         Baket();
+                                         //Get.back();
+                                      },
+                                      text: "Input",
+                                      color: Colors.blueGrey,
+                                      shape: GFButtonShape.pills,
+                                    ),
+                                  ),
+                                ]),
+                              )));
                         },
                         child: const Icon(
                           AppIconn.shopping_cart,
@@ -332,7 +343,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
             alignment: Alignment.center,
             child: Container(
               width: 450,
-              height: 470,
+              height: 350,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -416,42 +427,15 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         )
                       ],
                     ),
-                    // const Padding(
-                    //   padding: EdgeInsets.all(8.0),
-                    //   child: Text(
-                    //     '  Description : ',
-                    //     style: TextStyle(
-                    //         fontSize: 20,
-                    //         fontWeight: FontWeight.bold,
-                    //         fontFamily: "Pacifico",
-                    //         color: Color.fromARGB(255, 246, 123, 127),
-                    //         decoration: TextDecoration.none),
-                    //   ),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                          child:  Row(
-                        children: <Widget>[
-                          Flexible(
-                              child: Center(
-                            child: Text(
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black54,
-                                  decoration: TextDecoration.none,
-                                ),
-                                "  This application gives you additional experiences through a set of scientific and entertaining tests,in addition to scientific games that strengthen perception and stimulate the brain"),
-                          ))
-                        ],
-                      )),
+                      child: const Text('How Many Pices Do You Want ?',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.blueGrey,
+                              decoration: TextDecoration.none,
+                              fontFamily: "Pacifico")),
                     ),
-                    const Text('How Many Pices Do You Want ?',
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.blueGrey,
-                            decoration: TextDecoration.none,
-                            fontFamily: "Pacifico")),
                     Row(
                       children: [
                         const SizedBox(
@@ -462,7 +446,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               child: Text(
                             controller.valuepice.value.toString(),
                             style: const TextStyle(
-                              fontSize: 30,
+                              fontSize: 23,
                               color: Colors.black54,
                               decoration: TextDecoration.none,
                             ),
@@ -718,7 +702,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 450,
+        width: 400,
         height: 120,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -766,13 +750,100 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 decoration: TextDecoration.none,
                                 color: Colors.black54)),
                         const SizedBox(
-                          width: 90,
+                          width: 40,
                         ),
-                        const Align(
-                            child: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        )),
+                        Row(
+                          children: [
+                            Material(
+                              child: Tooltip(
+                                message: 'buy them',
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.check_box,
+                                      color: Color.fromARGB(255, 246, 123, 127),
+                                    )),
+                              ),
+                            ),
+                            Material(
+                              child: Tooltip(
+                                message: 'edit count',
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.grey,
+                                    )),
+                              ),
+                            ),
+                            Material(
+                              child: Tooltip(
+                                message: 'delete items',
+                                child: IconButton(
+                                    onPressed: () {
+                                                Get.dialog(Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                          width: 280,
+                                          height: 120,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                  color: Colors.blueAccent)),
+                                          child: Column(
+                                            children: [
+                                              const Center(
+                                                child: Text(
+                                                  'Are You Sure?  ',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Colors.blueGrey,
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  GFButton(
+                                                    color: const Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    onPressed: () {},
+                                                    text: "Del",
+                                                    shape: GFButtonShape.pills,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 4,
+                                                  ),
+                                                  GFButton(
+                                                    color: const Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    onPressed: () {},
+                                                    text: "Cancle",
+                                                    shape: GFButtonShape.pills,
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ))));
+                                    },
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    )),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     )
                   ],
@@ -783,6 +854,77 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         ),
       ),
     );
+  }
+
+  Future Baket() {
+    return Get.dialog(Align(
+      alignment: Alignment.topRight,
+      child: Container(
+          width: 450,
+          height: 700,
+          color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Basket',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: "Pacifico",
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                  ),
+                ),
+                shapPice('بالنيابة عنهم', 'assets/images/ali1.png', '3'),
+                shapPice('الاسود يليق بك', 'assets/images/ahlam1.png', '2'),
+                shapPice('اربعون', 'assets/images/ahmad1.png', '4'),
+                shapPice('فوضى الحواس', 'assets/images/ahlam2.png', '1'),
+                shapPice('رحلتي مع غاندي', 'assets/images/ahmad2.png', '3'),
+                shapPice('خيال', 'assets/images/ali3.png', '1'),
+                Row(
+                  children: [
+                    const SizedBox(
+                      width: 160,
+                    ),
+                    const Text('Total : ',
+                        style: TextStyle(
+                            fontSize: 18,
+                            decoration: TextDecoration.none,
+                            color: Colors.blueGrey)),
+                    const Text("45000\$",
+                        style: TextStyle(
+                            fontSize: 18,
+                            decoration: TextDecoration.none,
+                            color: Colors.black54)),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 246, 123, 127),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                            shape: const CircleBorder(),
+                          ),
+                          child: const Icon(
+                            Icons.check,
+                            size: 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )),
+    ));
   }
 
   Widget buildItem(String value, int id, String type) {
