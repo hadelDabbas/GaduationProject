@@ -1,6 +1,8 @@
 import 'package:graduationproject/app/model/library.dart';
 import 'package:graduationproject/app/model/user.dart';
 
+import 'booklibrary.dart';
+
 class Buybook {
   int? id;
   double? price;
@@ -8,8 +10,8 @@ class Buybook {
   int? idUser;
   int? Count;
   User? user;
-  int? idLibrary;
-  Library? library;
+int ? IdBookLibrary;
+BookLibrary? bookLibrary;
   Buybook(
       {this.id,
       this.price,
@@ -17,8 +19,8 @@ class Buybook {
       this.idUser,
       this.user,
       this.Count,
-      this.idLibrary,
-      this.library});
+      this.IdBookLibrary,
+      this.bookLibrary});
 
   Buybook.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -27,8 +29,8 @@ class Buybook {
     idUser = json[' idUser'];
     user = json[' user'];
      Count = json[' Count'];
-    idLibrary = json['idLibrary'];
-    library = json['library'];
+ IdBookLibrary = json['IdBookLibrary'];
+  bookLibrary = json['bookLibrary'];
   }
 
   Map<String, dynamic> toJson() {
@@ -38,8 +40,8 @@ class Buybook {
     json[' Count'] =  Count;
     json[' idUser'] = idUser;
     json[' user'] = user;
-    json['idLibrary'] = idLibrary;
-    json['library'] = library;
+    json[' IdBookLibrary'] =  IdBookLibrary;
+    json['bookLibrary'] = bookLibrary;
     return json;
   }
 }
