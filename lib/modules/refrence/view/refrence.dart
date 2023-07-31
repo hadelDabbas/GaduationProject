@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/content.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/model/refrence.dart';
@@ -53,7 +54,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
             //     children: controller.refrences.map((e) => shap22(e)).toList()),
             Column(
               children: controller.ListRefrence.map(
-                  (e) => shap22(e.content.toString(), e)).toList(),
+                  (e) => shap22(e.typeName.toString(), e)).toList(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -132,10 +133,10 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                                                         10)),
                                                         child: TextButton(
                                                           onPressed: () {
-                                                            controller.Addrefrence.value.content=element.content;
+                                                            controller.Addrefrence.value.content=element;
                                                           },
                                                           child: Text(
-                                                            element.content
+                                                            element.typeName
                                                                 .toString(),
                                                             style: TextStyle(
                                                                 fontWeight:
@@ -307,7 +308,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
         )));
   }
 
-  Widget shap22(String title, Reference e) {
+  Widget shap22(String title, Content e) {
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(6),
@@ -315,123 +316,130 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
           decoration: BoxDecoration(
               border: Border.all(color: Color.fromARGB(255, 194, 192, 192)),
               borderRadius: BorderRadius.circular(10)),
-          child: GFAccordion(
-            title: title,
-            textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color.fromARGB(255, 246, 123, 127),
-                decoration: TextDecoration.none),
-            contentChild: Column(
-                children: controller.ListRefrenceLink.map(
-              (e) => Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Material(
+            child: InkWell(
+              onTap: () {
+             controller.   getRefrence(e.Id!);
+              },
+              child: GFAccordion(
+                title: title,
+                textStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 246, 123, 127),
+                    decoration: TextDecoration.none),
+                contentChild: Column(
+                    children: controller.ListRefrenceLink.map(
+                  (e) => Column(
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              e.referenceName.toString(),
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54),
+                            ),
+                          ),
+                          // IconButton(
+                          //     onPressed: () {
+                          //       Get.dialog(Align(
+                          //           alignment: Alignment.center,
+                          //           child: Container(
+                          //               width: 220,
+                          //               height: 120,
+                          //               decoration: BoxDecoration(
+                          //                   color: Colors.white,
+                          //                   borderRadius: BorderRadius.circular(10),
+                          //                   border: Border.all(
+                          //                       color: Colors.blueAccent)),
+                          //               child: SingleChildScrollView(
+                          //                   child: Column(
+                          //                 children: [
+                          //                   const Text(
+                          //                     "Are Sure To Remove?",
+                          //                     style: TextStyle(
+                          //                         fontSize: 18,
+                          //                         fontWeight: FontWeight.bold,
+                          //                         fontFamily: "Pacifico",
+                          //                         color: Colors.blueGrey,
+                          //                         decoration: TextDecoration.none),
+                          //                   ),
+                          //                   Padding(
+                          //                     padding: const EdgeInsets.all(8.0),
+                          //                     child: Center(
+                          //                       child: Row(
+                          //                         mainAxisAlignment:
+                          //                             MainAxisAlignment.center,
+                          //                         children: [
+                          //                           TextButton(
+                          //                               onPressed: () {
+                          //                                 controller.DelRefrence
+                          //                                     .value.Id = e.Id;
+                          //                                 controller.DelRefrence
+                          //                                     .value.Link = e.Link;
+                          //                                 controller
+                          //                                         .DelRefrence
+                          //                                         .value
+                          //                                         .referenceName =
+                          //                                     e.referenceName;
+                          //                                 controller.DeleRefrence();
+                          //                               },
+                          //                               child: const Text(
+                          //                                 'Yes',
+                          //                                 style: TextStyle(
+                          //                                     color: Color.fromARGB(
+                          //                                         255,
+                          //                                         245,
+                          //                                         146,
+                          //                                         149)),
+                          //                               )),
+                          //                           TextButton(
+                          //                               onPressed: () {
+                          //                                 Get.back();
+                          //                               },
+                          //                               child: const Text(
+                          //                                 'No',
+                          //                                 style: TextStyle(
+                          //                                     color: Color.fromARGB(
+                          //                                         255,
+                          //                                         245,
+                          //                                         146,
+                          //                                         149)),
+                          //                               )),
+                          //                         ],
+                          //                       ),
+                          //                     ),
+                          //                   )
+                          //                 ],
+                          //               )))));
+                          //     },
+                          //     icon: Icon(
+                          //       Icons.delete,
+                          //       color: Color.fromARGB(255, 184, 183, 183),
+                          //     ))
+                        ],
+                      ),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          e.referenceName.toString(),
+                          e.Link.toString(),
                           style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.none,
                               fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54),
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      // IconButton(
-                      //     onPressed: () {
-                      //       Get.dialog(Align(
-                      //           alignment: Alignment.center,
-                      //           child: Container(
-                      //               width: 220,
-                      //               height: 120,
-                      //               decoration: BoxDecoration(
-                      //                   color: Colors.white,
-                      //                   borderRadius: BorderRadius.circular(10),
-                      //                   border: Border.all(
-                      //                       color: Colors.blueAccent)),
-                      //               child: SingleChildScrollView(
-                      //                   child: Column(
-                      //                 children: [
-                      //                   const Text(
-                      //                     "Are Sure To Remove?",
-                      //                     style: TextStyle(
-                      //                         fontSize: 18,
-                      //                         fontWeight: FontWeight.bold,
-                      //                         fontFamily: "Pacifico",
-                      //                         color: Colors.blueGrey,
-                      //                         decoration: TextDecoration.none),
-                      //                   ),
-                      //                   Padding(
-                      //                     padding: const EdgeInsets.all(8.0),
-                      //                     child: Center(
-                      //                       child: Row(
-                      //                         mainAxisAlignment:
-                      //                             MainAxisAlignment.center,
-                      //                         children: [
-                      //                           TextButton(
-                      //                               onPressed: () {
-                      //                                 controller.DelRefrence
-                      //                                     .value.Id = e.Id;
-                      //                                 controller.DelRefrence
-                      //                                     .value.Link = e.Link;
-                      //                                 controller
-                      //                                         .DelRefrence
-                      //                                         .value
-                      //                                         .referenceName =
-                      //                                     e.referenceName;
-                      //                                 controller.DeleRefrence();
-                      //                               },
-                      //                               child: const Text(
-                      //                                 'Yes',
-                      //                                 style: TextStyle(
-                      //                                     color: Color.fromARGB(
-                      //                                         255,
-                      //                                         245,
-                      //                                         146,
-                      //                                         149)),
-                      //                               )),
-                      //                           TextButton(
-                      //                               onPressed: () {
-                      //                                 Get.back();
-                      //                               },
-                      //                               child: const Text(
-                      //                                 'No',
-                      //                                 style: TextStyle(
-                      //                                     color: Color.fromARGB(
-                      //                                         255,
-                      //                                         245,
-                      //                                         146,
-                      //                                         149)),
-                      //                               )),
-                      //                         ],
-                      //                       ),
-                      //                     ),
-                      //                   )
-                      //                 ],
-                      //               )))));
-                      //     },
-                      //     icon: Icon(
-                      //       Icons.delete,
-                      //       color: Color.fromARGB(255, 184, 183, 183),
-                      //     ))
+                      )
                     ],
                   ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      e.Link.toString(),
-                      style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.none,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
+                ).toList()),
               ),
-            ).toList()),
+            ),
           ),
         ),
       ),

@@ -1,20 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/content.dart';
 import 'package:graduationproject/app/model/refrence.dart';
 import 'package:graduationproject/app/model/user.dart';
 
+import '../../../app/model/refrenceDto.dart';
 import 'adapter/refrence_adapter.dart';
 
 class RefrenceRepository implements IRefrenceRepository {
   final _dio = Get.find<Dio>();
 
   @override
-  Future<List<Reference>> GetAllRefrence()async {
+  Future<List<Content>> GetAllRefrence()async {
     var result =
         await _dio.get('https://localhost:7192/api/Reference/GetReferenceContent');
-    var list = <Reference>[];
+    var list = <Content>[];
     for (var item in result.data) {
-      list.add(Reference.fromJson(item));
+      ////////question
+      list.add(Content.fromJson(item));
     }
     return list;
   }
@@ -44,6 +47,17 @@ class RefrenceRepository implements IRefrenceRepository {
    var result = await _dio.post('https://localhost:7252/api/Reference/AddReference',
         data:  reference.toJson());
     return result.statusCode == 200;
+  }
+  
+  @override
+  Future<List<RefrenceDto>> GeAllrefrenceAdmain()async {
+     var result = await _dio.get('https://localhost:7252/api/Reference/GetReferenceLink/',
+    );
+    var list = <RefrenceDto>[];
+    for (var item in result.data) {
+      list.add(RefrenceDto.fromJson(item));
+    }
+    return list;
   }
 
 

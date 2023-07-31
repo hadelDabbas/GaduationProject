@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
+import '../../../app/model/refrenceDto.dart';
+import '../../genereted/sheard/util.dart';
 import '../controller/refrence_controller.dart';
 
 class UserRefrencePageView extends GetResponsiveView<RerenceController> {
@@ -45,12 +47,15 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                 ),
               ],
             ),
-            shapeUser('Aya Ahmad',),
-                  shapeUser('Randa  Ahjkdw',)
+            Column(
+              children: controller.listAdmainrefrence.map((element) =>shapeUser( element.Admin!.Name.toString(),element)).toList()
+            )
+            // shapeUser('Aya Ahmad',),
+            //       shapeUser('Randa  Ahjkdw',)
           ]),
         ),
         );}
-        Widget shapeUser(String nameuser){
+        Widget shapeUser(String nameuser,RefrenceDto dto){
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -61,17 +66,28 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
               children: [
                               Row(
                           children: [
-            Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GFImageOverlay(
-                  height: 40,
+                              dto.Admin!.Image == null
+              ? Image.asset(
+                  'assets/images/It.png',
                   width: 40,
-                  shape: BoxShape.circle,
-                  image: AssetImage(
-                    'assets/images/2.png'),
-                  boxFit: BoxFit.cover,
-                ),
-              ),
+              height: 40,
+                  fit: BoxFit.fill,
+                )
+              : Utility.imageFromBase64String(
+                  Utility.base64String( dto.Admin!.Image !),
+                  40,
+              40,),
+            // Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: GFImageOverlay(
+            //       height: 40,
+            //       width: 40,
+            //       shape: BoxShape.circle,
+            //       image: AssetImage(
+            //         'assets/images/2.png'),
+            //       boxFit: BoxFit.cover,
+            //     ),
+            //   ),
                     Text(
                         nameuser,
                         style: TextStyle(
@@ -85,116 +101,125 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                           ],
                         ),
                 Column(
-                  children: controller.refrences.map((e) =>       Material(
-                    child: GFAccordion(
-                    title: e,
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 246, 123, 127),
-                        decoration: TextDecoration.none),
-                    contentChild: Column(
-                        children: controller.ItRefrence.map(
-                      (e) => Column(
-                        children: [
-                          Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                        '',
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54),
+                  children: dto.type!.map((e) =>    
+                     Material(
+                    child: InkWell(
+                      //we need to call function to return refrence name and link to user
+                      onTap: (){},
+                      child: GFAccordion(
+                      title: e,
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                          decoration: TextDecoration.none),
+                      contentChild: Column(
+                          children: controller.ItRefrence.map(
+                        (e) => Column(
+                          children: [
+                            Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                          '',
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54),
+                          ),
                         ),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Get.dialog(Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                    width: 220,
-                                    height: 120,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: Colors.blueAccent)),
-                                    child: SingleChildScrollView(
-                                        child: Column(
-                                      children: [
-                                        const Text(
-                                          "Are Sure To Remove?",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
-                                              decoration: TextDecoration.none),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Center(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                TextButton(
-                                                    onPressed: () {
-                                               
-                                                    },
-                                                    child: const Text(
-                                                      'Yes',
-                                                      style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              245,
-                                                              146,
-                                                              149)),
-                                                    )),
-                                                TextButton(
-                                                    onPressed: () {
-                                                      Get.back();
-                                                    },
-                                                    child: const Text(
-                                                      'No',
-                                                      style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              245,
-                                                              146,
-                                                              149)),
-                                                    )),
-                                              ],
-                                            ),
+                        IconButton(
+                            onPressed: () {
+                              Get.dialog(Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      width: 220,
+                                      height: 120,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.blueAccent)),
+                                      child: SingleChildScrollView(
+                                          child: Column(
+                                        children: [
+                                          const Text(
+                                            "Are Sure To Remove?",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: "Pacifico",
+                                                color: Colors.blueGrey,
+                                                decoration: TextDecoration.none),
                                           ),
-                                        )
-                                      ],
-                                    )))));
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Color.fromARGB(255, 184, 183, 183),
-                          ))
-                    ],
-                  ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              e,
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  decoration: TextDecoration.none,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
-                    ).toList()),
-                                ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Center(
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  TextButton(
+                                                      onPressed: () {
+                                      controller.DelRefrence.value.content!.typeName=e.toString();      
+
+                                      
+                                                  
+                                                 controller. DeleRefrence() ;
+                                                      },
+                                                      child: const Text(
+                                                        'Yes',
+                                                        style: TextStyle(
+                                                            color: Color.fromARGB(
+                                                                255,
+                                                                245,
+                                                                146,
+                                                                149)),
+                                                      )),
+                                                  TextButton(
+                                                      onPressed: () {
+                                                        Get.back();
+                                                      },
+                                                      child: const Text(
+                                                        'No',
+                                                        style: TextStyle(
+                                                            color: Color.fromARGB(
+                                                                255,
+                                                                245,
+                                                                146,
+                                                                149)),
+                                                      )),
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      )))));
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              color: Color.fromARGB(255, 184, 183, 183),
+                            ))
+                      ],
+                                      ),
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                e,
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.none,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
+                      ).toList()),
+                                  ),
+                    ),
                   ), ).toList()
             
                   

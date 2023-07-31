@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
 
+import '../../../app/model/content.dart';
 import '../../../app/model/refrence.dart';
+import '../../../app/model/refrenceDto.dart';
 import '../data/refrence_repositry.dart';
 
 class RerenceController extends GetxController{
    final refrenceRepo=RefrenceRepository();
-   final ListRefrence=< Reference >[].obs;
+   final ListRefrence=<Content >[].obs;
    final ListRefrenceLink=<Reference>[].obs;
    final DelRefrence=Reference().obs;
    final Addrefrence=Reference().obs;
+   final listAdmainrefrence=<RefrenceDto>[].obs;
   final refrences=['IT Reference','Arabic Reference',
   // 'Math Reference',
   // 'Medical Reference','Chamistry  Reference','Phaysis  Reference'
@@ -38,5 +41,10 @@ class RerenceController extends GetxController{
   }
     Future<void> AddRefrence() async {
     var data = await refrenceRepo.AddRefrence(Addrefrence.value);
+  }
+   Future<void> getAllrefreneAdmi() async {
+    var data = await refrenceRepo.GeAllrefrenceAdmain();
+   listAdmainrefrence.assignAll(data);
+
   }
 }
