@@ -10,6 +10,9 @@ import 'package:image_picker/image_picker.dart';
 import '../../../api/storage/storge_service.dart';
 import '../../../app/model/BookDetalites.dart';
 import '../../../app/model/booklibrary.dart';
+import '../../../app/model/buybookDetailsDto.dart';
+import '../../../app/model/buybookDto.dart';
+import '../../../app/model/buybookUser.dart';
 import '../../../app/model/user.dart';
 import '../../../app/model/writter.dart';
 import '../../genereted/sheard/util.dart';
@@ -46,7 +49,15 @@ class LibraryContrller extends GetxController {
     final auth = Get.find<AuthService>();
     final ArrayBuyBook=<Buybook>[].obs;
     final staute=''.obs;
-    
+    final idBookLibrary=0.obs;
+    final ListBookLibrary=<BookLibrary>[].obs;
+    final AddBooklibrary=BookLibrary().obs;
+    final sum=0.0.obs;
+    final ListuserBuyBook=<BuyBookUserDto>[].obs;
+    final backBuyBook=Buybook().obs;
+    final listBuyBookDto=<BuyBookDto>[].obs;
+    final currentLibrary=Library().obs;
+    final listDetailsBuyBook=<BuyBookDetailsDto>[].obs;
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -165,7 +176,52 @@ class LibraryContrller extends GetxController {
     var data = await libraryRepo.BackIdBookWritter(idbbook);
    updatebookwritter.value=data!;
   }
-   Future<void> AddToBuyBook(Buybook buyBook) async {
+   Future<void> AddToBuyBooktempority(Buybook buyBook) async {
     ArrayBuyBook.add(buyBook);
+  }
+    Future<void> AddToBuyBookback(Buybook buyBook) async {
+  var data = await libraryRepo.AddToBuyBook(buyBook);
+  }
+    Future<void> getIdBookLibrary(int idbbook,int idlibraryas) async {
+    var data = await libraryRepo.BackIdBookLibrary(idbbook,idlibraryas);
+   idBookLibrary.value=data!;
+   var result=await libraryRepo.GetBooklibrary(idBookLibrary.value);
+   ListBookLibrary.add(result!);
+  }
+  
+     Future<void> UpdateBuyBook(Buybook b) async {
+    var res = await libraryRepo.UpdateBuyBook(b);
+    if (res) {
+      Get.back();
+    }
+  }
+    Future<void> GetUserBuyBook() async {
+    var data = await libraryRepo.GetUserBuyBook(user.value.Id!);
+   ListuserBuyBook.assignAll(data);
+  }
+  Future<int?>GetCount( int idbook,int idlibrary)async{
+       var datas = await libraryRepo.BackIdBookLibrary(idbook,idlibrary);
+        var data = await libraryRepo.BackBuyBook(datas !);
+        backBuyBook.value=data!;
+        return backBuyBook.value.Count;
+  }
+  
+  Future<void> getBuyBookDto() async {
+    var data = await libraryRepo.GetBuysfromLibrary( IdLibrary.value);
+  listBuyBookDto.assignAll(data);
+  }
+   Future<void> getlibrary() async {
+    var res = await libraryRepo.getLibrary(IdLibrary.value);
+    currentLibrary.value=res!;
+  }
+   Future<void> getDetailsBuyBook(int idl,int idu) async {
+    var data = await libraryRepo.GetDetailsBuyBook(idl,idu);
+   listDetailsBuyBook.assignAll(data);
+  }
+   Future<int?>GetCountdete( int idbook,int idlibrary)async{
+       var datas = await libraryRepo.BackIdBookLibrary(idbook,idlibrary);
+        var data = await libraryRepo.BackBuyBook(datas !);
+        backBuyBook.value=data!;
+        return backBuyBook.value.IdBookLibrary;
   }
 }

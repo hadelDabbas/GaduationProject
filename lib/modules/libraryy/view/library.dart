@@ -8,6 +8,7 @@ import 'package:graduationproject/modules/icons/Icon.dart';
 import 'package:graduationproject/modules/libraryy/controller/library_controller.dart';
 
 import '../../../app/model/BookDetalites.dart';
+import '../../../app/model/buy_book.dart';
 import '../../genereted/sheard/util.dart';
 import 'AddBook.dart';
 import 'updatebook.dart';
@@ -375,6 +376,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: InkWell(
         onTap: () {
+          //store book and library in object booklibrary
+          contrller.getIdBookLibrary(d.book!.id!,controller.IdLibrary.value);
           Get.dialog(Align(
             alignment: Alignment.center,
             child: Container(
@@ -551,17 +554,18 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton(
                           onPressed: () {
+                           contrller.getIdBookLibrary(d.book!.id!, controller.IdLibrary.value);
+                           contrller.idBookLibrary.value=controller.buybook.value.IdBookLibrary!;
                             controller.buybook.value.Count =
                                 controller.valuepice.value;
                             controller.buybook.value.user =
                                 controller.user.value;
                             controller.buybook.value.idUser =
                                 controller.user.value.Id;
-                            controller.buybook.value.idLibrary =
-                                controller.IdLibrary.value;
+                         
                             controller.buybook.value.price =
                                 int.parse(price).toDouble();
-                            contrller.AddToBuyBook(controller.buybook.value);
+                            contrller.AddToBuyBooktempority(controller.buybook.value);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
@@ -791,7 +795,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
     );
   }
 
-  Widget shapPice(String name, String url, String count) {
+  Widget shapPice(int idlibrarybook, int count,Buybook m) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -802,11 +806,23 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
             border: Border.all(color: Colors.blueGrey)),
         child: Column(
           children: [
-            Row(
-              children: [
+          Row(children:contrller.ListBookLibrary.where((p0) => p0.Id==idlibrarybook).map((e) =>
+           Row(
+            children: [
                 Row(
                   children: [
-                    SizedBox(width: 80, height: 80, child: Image.asset(url)),
+                    e.book!.bookImage == null
+                ? Image.asset(
+                    'assets/images/It.png',
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.fill,
+                  )
+                : Utility.imageFromBase64String(
+                    Utility.base64String(e.book!.bookImage!),80, 80),
+                    // SizedBox(
+                    //   width: 80, height: 80,
+                    //    child: Image.asset(url)),
                     const SizedBox(
                       width: 30,
                     ),
@@ -818,7 +834,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       height: 20,
                     ),
                     Text(
-                      name,
+                      e.book!.bookName.toString(),
                       style: const TextStyle(
                           fontSize: 18,
                           decoration: TextDecoration.none,
@@ -837,7 +853,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 fontSize: 18,
                                 decoration: TextDecoration.none,
                                 color: Colors.blueGrey)),
-                        Text(count,
+                        Text(count.toString(),
                             style: const TextStyle(
                                 fontSize: 18,
                                 decoration: TextDecoration.none,
@@ -851,7 +867,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               child: Tooltip(
                                 message: 'buy them',
                                 child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      contrller.sum.value += (e.book!.bookPrice! * count).toDouble();
+                   contrller.AddToBuyBookback(m);
+                                    },
                                     icon: Icon(
                                       Icons.check_box,
                                       color: Color.fromARGB(255, 246, 123, 127),
@@ -902,7 +921,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      'Previuos Count Of Book is: 6 ',
+                                                      'Previuos Count Of Book is:  '+count.toString(),
                                                       style: TextStyle(
                                                           fontSize: 18,
                                                           fontWeight:
@@ -1005,7 +1024,15 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                         color: const Color
                                                                 .fromARGB(
                                                             255, 246, 123, 127),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          // contrller.sum.value -=   (e.book!.bookPrice! * count).toDouble(); 
+                                                    m.Count= controller
+                                                                  .valuepice
+                                                                  .value;
+                                                                //  contrller.sum.value += 
+                                                                //  (e.book!.bookPrice! * count).toDouble(); 
+                                                                // contrller.UpdateBuyBook(m);  
+                                                        },
                                                         text: "Save",
                                                         shape:
                                                             GFButtonShape.pills,
@@ -1078,7 +1105,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                         color: const Color
                                                                 .fromARGB(
                                                             255, 246, 123, 127),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                        contrller.ArrayBuyBook.remove(m);  
+
+                                                        },
                                                         text: "Del",
                                                         shape:
                                                             GFButtonShape.pills,
@@ -1090,7 +1120,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                         color: const Color
                                                                 .fromARGB(
                                                             255, 246, 123, 127),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          Get.back();
+                                                        },
                                                         text: "Cancle",
                                                         shape:
                                                             GFButtonShape.pills,
@@ -1112,8 +1144,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     )
                   ],
                 ),
-              ],
-            ),
+            ],
+           )).toList()
+          
+           )
           ],
         ),
       ),
@@ -1141,6 +1175,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         decoration: TextDecoration.none),
                   ),
                 ),
+                Column(children:
+                contrller.ArrayBuyBook.map((element) => shapPice(element.IdBookLibrary!, element.Count!,element)).toList()
+                
+                 ),
               //  Column(
               //           children: controller.ArrayBuyBook.map((e) =>shapPice(e., url, count))
               //               .toList(),
@@ -1161,7 +1199,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             fontSize: 18,
                             decoration: TextDecoration.none,
                             color: Colors.blueGrey)),
-                    const Text("45000\$",
+                     Text(contrller.sum.value.toString()+'\$',
                         style: TextStyle(
                             fontSize: 18,
                             decoration: TextDecoration.none,

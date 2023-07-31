@@ -6,6 +6,9 @@ import 'package:graduationproject/app/model/library.dart';
 import '../../../../app/model/BookDetalites.dart';
 import '../../../../app/model/book.dart';
 import '../../../../app/model/booklibrary.dart';
+import '../../../../app/model/buybookDetailsDto.dart';
+import '../../../../app/model/buybookDto.dart';
+import '../../../../app/model/buybookUser.dart';
 import '../../../../app/model/writter.dart';
 
 abstract class ILibraryRepository {
@@ -28,7 +31,13 @@ abstract class ILibraryRepository {
     Future<BookWriter?> BackIdBookWritter(int idbook);
      Future<bool> Bookwritter(BookWriter book);
       Future<bool> UpdateBookwritter(BookWriter book);
-  
-  // Future<List<invoice>> GetAllUserInvoic(int iduser);
-   // Future<List<invoice>> GetAllLibraryInvoic(int iduser);
+   Future<int?> BackIdBookLibrary(int idbook ,int idlibrary);
+     Future<Buybook?> BackBuyBook( int idbooklibrary);
+   Future<BookLibrary?> GetBooklibrary(int idBooklibrary);
+   Future<bool> AddToBuyBook(Buybook n);
+    Future<bool> UpdateBuyBook(Buybook b);
+      Future<List<BuyBookUserDto>> GetUserBuyBook(int iduser);
+        Future<List<BuyBookDto>> GetBuysfromLibrary(int idLibrary);
+            Future<Library?> getLibrary(int idlibrary);
+          Future<List<BuyBookDetailsDto>> GetDetailsBuyBook(int idlibrary,int iduser );    
 }

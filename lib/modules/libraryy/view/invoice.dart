@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../app/model/book.dart';
+import '../../../app/model/buybookUser.dart';
 import '../../genereted/sheard/util.dart';
 import '../controller/library_controller.dart';
 
@@ -40,14 +42,19 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                       decoration: TextDecoration.none),
                 ),
               )),
-          CardInvoic('Al Hekma', context),
-            CardInvoic('Al World', context),
+              Column(
+                children: controller.ListuserBuyBook.map((element) =>
+                 CardInvoic(element.library!.libraryName.toString(),
+                 context,element)).toList()
+              )
+          // CardInvoic('Al Hekma', context),
+          //   CardInvoic('Al World', context),
         ]),
       ),
     );
   }
 
-  Widget CardInvoic(String nameLIbr, BuildContext context) {
+  Widget CardInvoic(String nameLIbr, BuildContext context,BuyBookUserDto b) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: Align(
@@ -79,23 +86,24 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                     ),
                   ),
                 ),
-                itemBook(),
-                itemBook(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          'Total : 4556\$',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "Pacifico",
-                                fontWeight: FontWeight.bold,
-                         color: Color.fromARGB(255, 42, 42, 114),
-                                decoration: TextDecoration.none),
-                          ),
-                      ),
-                    ),
+            
+                itemBook(b),
+                // itemBook(),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Align(
+                    //     alignment: Alignment.bottomRight,
+                    //     child: Text(
+                    //       'Total : 4556\$',
+                    //         style: TextStyle(
+                    //             fontSize: 20,
+                    //             fontFamily: "Pacifico",
+                    //             fontWeight: FontWeight.bold,
+                    //      color: Color.fromARGB(255, 42, 42, 114),
+                    //             decoration: TextDecoration.none),
+                    //       ),
+                    //   ),
+                    // ),
               ]),
             ),
           ),
@@ -104,7 +112,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
     );
   }
 
-  Widget itemBook() {
+  Widget itemBook(BuyBookUserDto b) {
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: Container(
@@ -130,7 +138,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                             decoration: TextDecoration.none),
                       ),
                       Text(
-                        "  رحلتي مع غاندي",
+                     b.book!.bookName.toString(),
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
@@ -157,7 +165,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                                 decoration: TextDecoration.none),
                           ),
                           Text(
-                            ' 4 ',
+                           controller.GetCount(b.book!.id!, b.library!.Id!).toString(),
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -180,7 +188,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                           //       decoration: TextDecoration.none),
                           // ),
                           Text(
-                            '500\$ to one' ,
+                           b.book!.bookPrice.toString()+'\$ to one' ,
                             style: TextStyle(
                                 fontSize: 20,
                                    fontFamily: "Pacifico",
