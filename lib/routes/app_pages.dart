@@ -10,6 +10,7 @@ import '../modules/MenuGame/view/all_games/timer/bindings/timer_binding.dart';
 import '../modules/MenuGame/view/all_games/word_game/bindings/word_game_binding.dart';
 import '../modules/content/binding/content_binding.dart';
 import '../modules/content/view/content.dart';
+import '../modules/groups/binding/group_binding.dart';
 import '../modules/libraryy/binding/library_Binding.dart';
 import '../modules/libraryy/view/show_librarys.dart';
 import '../modules/menu/binding/menu_binding.dart';
@@ -29,12 +30,13 @@ class AppPages {
   AppPages._();
 
   static final routes = [
-      GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
+    GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
       HomeBinding(),
       ProfileBinding(),
       SearchBinding(),
       TimerBinding(),
       MenuGameBinding(),
+      GroupBinding(),
       PacketBinding(),
       FoucsBinding(),
       LetterBinding(),
@@ -54,7 +56,6 @@ class AppPages {
       page: () => MenuGamePageView(),
       bindings: const [],
     ),
-  
     GetPage(
         name: _Paths.password,
         page: () => ForgetViewPage(),

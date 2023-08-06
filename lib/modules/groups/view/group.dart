@@ -1,28 +1,30 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
 
 import '../../../app/model/post.dart';
-import '../../comment/view/comment.dart';
 import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
 import '../controller/group_controller.dart';
 
 class GroupView extends GetResponsiveView<GroupController> {
+  @override
   GroupController controller = Get.put(GroupController());
+
+  GroupView({super.key});
+  @override
   Widget builder() {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
           InkWell(
             onTap: () => Get.back(),
-            child: Align(
+            child: const Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
               ),
             ),
@@ -50,20 +52,20 @@ class GroupView extends GetResponsiveView<GroupController> {
             padding: const EdgeInsets.all(8.0),
             child: Card(
               //  shadowColor: Colors.white60,
-              color: Color.fromARGB(255, 236, 236, 243),
+              color: const Color.fromARGB(255, 236, 236, 243),
               child: Column(
                 children: [
                   Center(
                     child: Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 80,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             controller.currentGroup.value.groupName!,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.blueGrey),
@@ -87,7 +89,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                     child: Center(
                       child: Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 120,
                           ),
                           Obx(
@@ -96,10 +98,10 @@ class GroupView extends GetResponsiveView<GroupController> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   shadowColor: Colors.blueGrey,
-                                  backgroundColor:
-                                      controller.press.value == false
-                                          ? Color.fromARGB(255, 246, 123, 127)
-                                          : Colors.white,
+                                  backgroundColor: controller.press.value ==
+                                          false
+                                      ? const Color.fromARGB(255, 246, 123, 127)
+                                      : Colors.white,
                                 ),
                                 /////////////////////////dont work
                                 onPressed: () {
@@ -115,21 +117,22 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   style: TextStyle(
                                       color: controller.press.value == false
                                           ? Colors.white
-                                          : Color.fromARGB(255, 246, 123, 127),
+                                          : const Color.fromARGB(
+                                              255, 246, 123, 127),
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Tooltip(
                             message: 'Members In This Group',
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shadowColor: Colors.blueGrey,
                                 backgroundColor:
-                                    Color.fromARGB(255, 246, 123, 127),
+                                    const Color.fromARGB(255, 246, 123, 127),
                               ),
                               onPressed: () {
                                 Get.dialog(Align(
@@ -141,9 +144,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       child: SingleChildScrollView(
                                         child: Column(
                                           children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                            const Padding(
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 'Members',
                                                 style: TextStyle(
@@ -156,10 +158,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                                               ),
                                             ),
                                             Column(
-                                              children: controller.Members.map(
-                                                  (element) => shapFolloword(
-                                                      element.Name.toString(),
-                                                      element.Image!)).toList(),
+                                              children: controller.members
+                                                  .map((element) =>
+                                                      shapFolloword(
+                                                          element.Name
+                                                              .toString(),
+                                                          element.Image!))
+                                                  .toList(),
                                             )
                                             // shapFolloword('ASIA Badnjki',
                                             //     'assets/images/girl.gif'),
@@ -172,7 +177,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       )),
                                 ));
                               },
-                              child: Text(
+                              child: const Text(
                                 'Members',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -185,8 +190,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -205,15 +210,15 @@ class GroupView extends GetResponsiveView<GroupController> {
                       children: <Widget>[
                         Flexible(
                             child: Center(
-                          child: new Text(
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.black54,
-                                decoration: TextDecoration.none,
-                              ),
-                            controller.currentGroup.value.Description.toString())
-                        ))
+                                child: Text(
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.black54,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                    controller.currentGroup.value.Description
+                                        .toString())))
                       ],
                     )),
                   ),
@@ -232,16 +237,16 @@ class GroupView extends GetResponsiveView<GroupController> {
                     onPressed: () {
                       Get.to(EditGrpoup());
                     },
-                    child: Icon(
-                      Icons.edit,
-                      size: 18,
-                      color: Color.fromARGB(255, 246, 123, 127),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
+                    ),
+                    child: const Icon(
+                      Icons.edit,
+                      size: 18,
+                      color: Color.fromARGB(255, 246, 123, 127),
                     ),
                   ),
                 ),
@@ -252,16 +257,16 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'Add Post ',
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Icon(
-                      Icons.add,
-                      size: 18,
-                      color: Color.fromARGB(255, 246, 123, 127),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
-                      shape: CircleBorder(),
+                      shape: const CircleBorder(),
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      size: 18,
+                      color: Color.fromARGB(255, 246, 123, 127),
                     ),
                   ),
                 ),
@@ -269,15 +274,18 @@ class GroupView extends GetResponsiveView<GroupController> {
             ],
           ),
           Column(
-            children: controller.postsList.map((element) => postprofile(   element.UserName.toString(),
-                            element.UserImage!,
-                            element.GroupName.toString(),
-                            element.GroupImage!,
-                            element.post!.Description.toString(),
-                            element.post!.Image!,
-                            element.Interaction!,
-                            element.post!.content!.typeName.toString(),
-                            element.post!)).toList(),
+            children: controller.postsList
+                .map((element) => postprofile(
+                    element.UserName.toString(),
+                    element.UserImage!,
+                    element.GroupName.toString(),
+                    element.GroupImage!,
+                    element.post!.Description.toString(),
+                    element.post!.Image!,
+                    element.Interaction!,
+                    element.post!.content!.typeName.toString(),
+                    element.post!))
+                .toList(),
           )
           // post('Dr.Abdallah hamwe', 'The loop you can used it in flutter',
           //     'assets/images/loop.png', 'IT', controller),
@@ -299,25 +307,24 @@ class GroupView extends GetResponsiveView<GroupController> {
             border: Border.all(color: Colors.blueGrey)),
         child: Row(
           children: [
-            Container(width: 80, height: 80, child: 
-              url == null
-                        ? Image.asset(
-                            'assets/images/1.png',
-                            width: screen.width,
-                            fit: BoxFit.fill,
-                          )
-                        : Utility.imageFromBase64String(
-                            Utility.base64String(
-                                url),
-                            screen.width,
-                            null),
-            ),
             SizedBox(
+              width: 80,
+              height: 80,
+              child: url == null
+                  ? Image.asset(
+                      'assets/images/1.png',
+                      width: screen.width,
+                      fit: BoxFit.fill,
+                    )
+                  : Utility.imageFromBase64String(
+                      Utility.base64String(url), screen.width, null),
+            ),
+            const SizedBox(
               width: 30,
             ),
             Text(
               name,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 18,
                   decoration: TextDecoration.none,
                   color: Colors.blueGrey),
@@ -328,7 +335,7 @@ class GroupView extends GetResponsiveView<GroupController> {
     );
   }
 
-   Widget postprofile(
+  Widget postprofile(
       String nameuser,
       Uint8List imageuser,
       String GroupName,
@@ -339,20 +346,19 @@ class GroupView extends GetResponsiveView<GroupController> {
       String postType,
       Post post) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-      child: Center(
-        child: Container(
-          width: 500,
-          height: 210,
-          decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-                width: 1.3,
-              ),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)),
-          child: Column(
-            children: [
+        padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+        child: Center(
+          child: Container(
+            width: 500,
+            height: 210,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1.3,
+                ),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15)),
+            child: Column(children: [
               Row(
                 children: [
                   Padding(
@@ -417,96 +423,95 @@ class GroupView extends GetResponsiveView<GroupController> {
                   Text("($postType)",
                       style: const TextStyle(
                         color: Colors.grey,
-                      )),      
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20), // Image border
-                child: SizedBox(
-                  width: 450,
-                  height: 120,
-                  child: SizedBox.fromSize(
-                      size: const Size.fromRadius(48), // Image radius
-                      child: imagpost == null
-                          ? Image.asset(
-                              'assets/images/1.png',
-                              width: screen.width,
-                              fit: BoxFit.fill,
-                            )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imagpost),
-                              screen.width,
-                              null)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Text(
-                  Descriptionpost,
-                  style: const TextStyle(fontSize: 12),
-                ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const SizedBox(
-                      width: 350,
+                      )),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20), // Image border
+                    child: SizedBox(
+                      width: 450,
+                      height: 120,
+                      child: SizedBox.fromSize(
+                          size: const Size.fromRadius(48), // Image radius
+                          child: imagpost == null
+                              ? Image.asset(
+                                  'assets/images/1.png',
+                                  width: screen.width,
+                                  fit: BoxFit.fill,
+                                )
+                              : Utility.imageFromBase64String(
+                                  Utility.base64String(imagpost),
+                                  screen.width,
+                                  null)),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                      
-                        // controller.postidnew.value.Id = post.Id!;
-                        // controller.GetAllComments(post.Id!);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 248, 150, 153),
-                        shape: const CircleBorder(),
-                      ),
-                      child: const Icon(
-                        AppIconn.chat,
-                        size: 12,
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      Descriptionpost,
+                      style: const TextStyle(fontSize: 12),
                     ),
-
-                    ElevatedButton(
-                      onPressed: () {
-                        // controller.userpost.value.IdUser =
-                        //     controller.userprofile.value.Id;
-                        // if (interaction) {
-                        //   controller.userpost.value.Interaction = false;
-                        //   controller.GetInterActionUser(post.Id!);
-                        // } else {
-                        //   controller.userpost.value.Interaction = true;
-                        //   controller.GetInterActionUser(post.Id!);
-                        // }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 248, 150, 153),
-                        shape: const CircleBorder(),
-                      ),
-                      child: Obx(
-                        () => Icon(
-                          AppIconn.favorite,
-                          size: 12,
-                          color: controller.click.value == true
-                              ? Colors.red
-                              : Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const SizedBox(
+                          width: 350,
                         ),
-                      ),
-                    )
-                    // Icon(Icons.add_alert),
-                  ],
-                ),
-              )
-            ],
+                        ElevatedButton(
+                          onPressed: () {
+                            // controller.postidnew.value.Id = post.Id!;
+                            // controller.GetAllComments(post.Id!);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 248, 150, 153),
+                            shape: const CircleBorder(),
+                          ),
+                          child: const Icon(
+                            AppIconn.chat,
+                            size: 12,
+                          ),
+                        ),
+
+                        ElevatedButton(
+                          onPressed: () {
+                            // controller.userpost.value.IdUser =
+                            //     controller.userprofile.value.Id;
+                            // if (interaction) {
+                            //   controller.userpost.value.Interaction = false;
+                            //   controller.GetInterActionUser(post.Id!);
+                            // } else {
+                            //   controller.userpost.value.Interaction = true;
+                            //   controller.GetInterActionUser(post.Id!);
+                            // }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(255, 248, 150, 153),
+                            shape: const CircleBorder(),
+                          ),
+                          child: Obx(
+                            () => Icon(
+                              AppIconn.favorite,
+                              size: 12,
+                              color: controller.click.value == true
+                                  ? Colors.red
+                                  : Colors.white,
+                            ),
+                          ),
+                        )
+                        // Icon(Icons.add_alert),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ]),
           ),
-        ]),
-      ),
-    ));
+        ));
   }
 }

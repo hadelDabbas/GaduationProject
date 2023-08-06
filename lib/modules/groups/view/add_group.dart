@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
@@ -10,6 +9,7 @@ import '../../genereted/sheard/util.dart';
 import '../controller/group_controller.dart';
 
 class AddGrpoup extends GetResponsiveView<GroupController> {
+  @override
   GroupController controller = Get.put(GroupController());
   Uint8List? image;
   List<String> Contents = [
@@ -19,6 +19,8 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
     'English',
     'Diversified'
   ];
+
+  AddGrpoup({super.key});
   @override
   Widget builder() {
     return Scaffold(
@@ -30,21 +32,21 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 Material(
                   child: InkWell(
                     onTap: () => Get.back(),
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(Icons.arrow_back_ios,
                             size: 20, color: Colors.grey),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 100,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
                       " Add New  Group ",
@@ -62,17 +64,17 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
             Center(
                 child: Column(
               children: [
-                SizedBox(width: 170),
+                const SizedBox(width: 170),
                 Material(child: Imageprofile(controller)),
               ],
             )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Material(
-                  child: Container(
+                  child: SizedBox(
                 width: 450,
                 child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Name Group',
                     labelStyle: TextStyle(
                         color: Colors.black45, fontWeight: FontWeight.bold),
@@ -83,7 +85,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                     ),
                   ),
                   onChanged: (value) {
-                    controller.AddnewGroup.value.groupName = value;
+                    controller.addnewGroup.value.groupName = value;
                   },
                 ),
               )),
@@ -93,12 +95,12 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 padding: const EdgeInsets.all(6),
                 child: Container(
                   decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 194, 192, 192)),
                       borderRadius: BorderRadius.circular(10)),
                   child: GFAccordion(
                     title: "GroupType",
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         color: Color.fromARGB(255, 246, 123, 127),
@@ -107,13 +109,14 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                       children: controller.contents
                           .map((element) => TextButton(
                               onPressed: () {
-                                controller.AddnewGroup.value.content = element;
+                                controller.addnewGroup.value.content = element;
                               },
-                              child: Text(element.typeName.toString(),   style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black54,
-                                            decoration: TextDecoration.none))))
+                              child: Text(element.typeName.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black54,
+                                      decoration: TextDecoration.none))))
                           .toList(),
                     ),
                   ),
@@ -149,10 +152,10 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
             //         ),
             //       )),
             // ),
-            Container(
+            SizedBox(
               width: 450,
               child: TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Descrintion About Group',
                   labelStyle: TextStyle(
                       color: Colors.black45, fontWeight: FontWeight.bold),
@@ -166,11 +169,11 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 minLines: 1, //Normal textInputField will be displayed
                 maxLines: 5, // when user presses enter it will adapt to it
                 onChanged: (value) {
-                  controller.AddnewGroup.value.Description = value;
+                  controller.addnewGroup.value.Description = value;
                 },
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -189,14 +192,14 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                Align(
+                                const Align(
                                     alignment: Alignment.center,
                                     child: Padding(
                                       //////////////////////////////////////////
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text(
                                         "Add post : ",
                                         style: TextStyle(
@@ -215,9 +218,8 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                           ),
                         ),
                       ));
-                      ;
                     },
-                    child: Text(
+                    child: const Text(
                       'Are You Want To Add post ? ',
                       style: TextStyle(
                           color: Colors.black54,
@@ -233,7 +235,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   controller.AddGroup();
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 245, 146, 149),
+                    backgroundColor: const Color.fromARGB(255, 245, 146, 149),
                     shape: RoundedRectangleBorder(
                         //backgroundColor:Colors.accents,
                         borderRadius: BorderRadius.circular(30)),
@@ -263,7 +265,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                     width: 500,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: Color.fromARGB(255, 192, 189, 189))),
+                            color: const Color.fromARGB(255, 192, 189, 189))),
                     //    radius: 80.0,
                     //  borderRadius: BorderRadius.circular(100),
                     child: controller.stringPickImage.value.isNotEmpty
@@ -287,7 +289,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   onTap: () async {
                     openBottomSheet(controller);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.camera_alt,
                     color: Color.fromARGB(255, 245, 146, 149),
                     size: 28.0,
@@ -305,7 +307,7 @@ void openBottomSheet(GroupController controller) {
     Container(
       height: 120.0,
       width: 500,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         children: [
           const SizedBox(height: 20),
@@ -315,7 +317,7 @@ void openBottomSheet(GroupController controller) {
               style: TextStyle(fontSize: 18),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -324,32 +326,32 @@ void openBottomSheet(GroupController controller) {
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.camera),
+                    child: const Icon(Icons.camera),
                   ),
-                  Text('  Camera'),
+                  const Text('  Camera'),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.image),
+                    child: const Icon(Icons.image),
                   ),
-                  Text('  Gallery'),
+                  const Text('  Gallery'),
                 ],
               )
             ],
