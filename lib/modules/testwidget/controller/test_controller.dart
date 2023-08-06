@@ -1,6 +1,8 @@
 
 import 'package:get/get.dart';
 
+import '../../../app/model/test.dart';
+import '../data/test_repositry.dart';
 import '../view/question.dart';
 
 class TestController extends GetxController{
@@ -9,13 +11,17 @@ class TestController extends GetxController{
  var AllQustion= <Question>[].obs;
  var correctvalue=''.obs;
   var result=0.obs;
- 
+  final idtest=0.obs;
+  final testRepo=TestRepository();
+  final ListTestContent=<Test>[];
+  final nowTest=Test().obs;
 
     @override
     void onInit(){
      
       super.onInit();
-      fullInfo();
+       getAllTestKind();
+      // fullInfo();
       // getUser();
     }
      void fullInfo(){
@@ -33,4 +39,12 @@ class TestController extends GetxController{
          }
         
       }
+        Future<void> getAllTestKind() async {
+    var data = await testRepo.GetAllTypeTest();
+  ListTestContent.assignAll(data);
+  }
+       Future<void> getTest() async {
+    var data = await testRepo.GetTest(idtest.value);
+   nowTest.value=data!;
+  }
     }

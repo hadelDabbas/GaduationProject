@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 
 import '../../genereted/sheard/util.dart';
@@ -22,13 +23,47 @@ LibraryContrller controller = Get.put(LibraryContrller());
                 Material(child: Imageprofile(controller)),
               ],
             )),
+                 Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Book Type",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,  
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.Booktype
+                          .map((element) => TextButton(
+                              onPressed: () {
+                       controller.currentBook.value.book!.bookType=element;
+                              },
+                              child: Text(element.bookType.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
               Padding(
                padding: const EdgeInsets.all(8.0),
                child: Material(
                        child: Container(
                      width: 450,
-                     child: TextField(
+                     child: TextFormField(
+                        initialValue: controller.currentBook.value.book!.bookName.toString(),
                 decoration: InputDecoration(
+                  
                        labelText: 'Name Book',
                        labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
@@ -37,35 +72,21 @@ LibraryContrller controller = Get.put(LibraryContrller());
                 Icons.bookmark_add_outlined,
                 color: Color.fromARGB(255, 245, 146, 149),
                        ),
-                     )
+                     ),
+                     onChanged: ( value){
+                   controller.currentBook.value.book!.bookName=value;
+                     },
                      ),
                    )),
              ),
+            // 
                Padding(
                padding: const EdgeInsets.all(8.0),
                child: Material(
                        child: Container(
                      width: 450,
-                     child: TextField(
-                decoration: InputDecoration(
-                       labelText: 'Name Writter',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Name Writter',
-                       prefixIcon: Icon(
-                Icons.person_2_outlined,
-                color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
-               Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
+                     child: TextFormField(
+                        initialValue: controller.currentBook.value.book!.bookPrice.toString(),
                 decoration: InputDecoration(
                        labelText: 'Price Book',
                        labelStyle:
@@ -75,53 +96,99 @@ LibraryContrller controller = Get.put(LibraryContrller());
                 Icons.price_change,
                 color: Color.fromARGB(255, 245, 146, 149),
                        ),
-                     )
+                     ),
+                     onChanged: (Value){
+                       controller.currentBook.value.book!.bookPrice=int.parse(Value).toInt();
+                     },
                      ),
                    )),
              ),
-                  Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextField(
-                decoration: InputDecoration(
-                       labelText: 'Count Book',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Count Book',
-                       prefixIcon: Icon(
-                Icons.numbers,
-                color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     )
-                     ),
-                   )),
-             ),
-               Container(
-                  width: 450,
-                  child: Material(
-                    child: TextField(
-                        decoration: InputDecoration(
-                         labelText: 'Descrintion About Book',
-                         labelStyle:
-                    TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                         hintText: 'Descrintion About Book',
-                         prefixIcon: Icon(
-                                  Icons.text_fields,
-                                  color: Color.fromARGB(255, 245, 146, 149),
-                         ),
-                       ),
-                      keyboardType: TextInputType.multiline,
-                      minLines: 1,//Normal textInputField will be displayed
-                      maxLines: 5,// when user presses enter it will adapt to it
-                      ),
+                 Tooltip(
+              message: 'Update Info Book',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(126)),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 17, horizontal: 17)),
+                      onPressed: () {
+                       controller.UpdateBookinfo(controller.currentBook.value.book!.id!,
+                        controller.currentBook.value.book!);
+                      },
+                      child: Icon(Icons.check)),
+                ),
+              ),
+            ),
+               Text('Choose Writers To This Book',style: TextStyle(fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey
+            ),),
+   
+             Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Book Writter",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,  
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.AllAutour
+                          .map((element) => TextButton(
+                              onPressed: () {
+                       controller.updatebookwritter.value.IdBook=controller.currentBook.value.book!.id;
+                     controller.updatebookwritter.value.IdWriter=element.id;
+                     controller.UpdateBookwriter( controller.updatebookwritter.value);
+                              },
+                              child: Text(element.writerName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
                   ),
                 ),
+              ),
+            ),
+            //       Padding(
+            //    padding: const EdgeInsets.all(8.0),
+            //    child: Material(
+            //            child: Container(
+            //          width: 450,
+            //          child: TextField(
+            //     decoration: InputDecoration(
+            //            labelText: 'Count Book',
+            //            labelStyle:
+            //       TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+            //            hintText: 'Count Book',
+            //            prefixIcon: Icon(
+            //     Icons.numbers,
+            //     color: Color.fromARGB(255, 245, 146, 149),
+            //            ),
+            //          )
+            //          ),
+            //        )),
+            //  ),
                
   GFButton(
     color: Colors.blueGrey,
-    onPressed: (){},
+    onPressed: (){
+      controller.updateBooklibrary.value.IdBook=controller.currentBook.value.book!.id;
+        controller.updateBooklibrary.value.IdLibrary=controller.IdLibrary.value;
+    },
     text: "Update Info Book",
   ), 
 

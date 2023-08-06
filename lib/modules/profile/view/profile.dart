@@ -712,7 +712,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: GFButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      ////sure here
+                    // controller.followdelete.value.followId=controller.user.value.Id;
+                    // controller.followdelete.value.followedId=user.Id;
+                    controller.Delefolloewd(user.Id!);
+                    },
                     text: "remove",
                     textStyle: const TextStyle(color: Colors.black54),
                     icon: const Icon(

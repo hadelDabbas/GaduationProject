@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,32 +21,38 @@ class Addpostview extends GetResponsiveView<AddpostController> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Material(
-          child: Obx(
-        () => Container(
-          width: 300,
-          child: DropdownButton<String>(
-              items: controller.Contents.map<DropdownMenuItem<String>>(
-                (String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(
-                          color: Colors.black45, fontWeight: FontWeight.bold),
+       Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Post Type",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,  
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.contents
+                          .map((element) => TextButton(
+                              onPressed: () {
+                                controller.newpost.value.content = element;
+                              },
+                              child: Text(element.typeName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
                     ),
-                  );
-                },
-              ).toList(),
-              isExpanded: true,
-              value: controller.dropdownvalue.value,
-              iconSize: 24,
-              elevation: 16,
-              onChanged: (String? newval) {
-                controller.dropdownvalue.value = newval!;
-              }),
-        ),
-      )),
+                  ),
+                ),
+              ),
+            ),
       Center(
           child: Column(
         children: [

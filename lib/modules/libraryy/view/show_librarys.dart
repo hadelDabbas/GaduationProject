@@ -4,6 +4,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 
 import '../../../app/model/library.dart';
+import '../../settings/view/settings.dart';
 import '../controller/library_controller.dart';
 
 class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
@@ -28,7 +29,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
               children: [
                 Material(
                   child: InkWell(
-                    onTap: () => Get.back(),
+                    onTap: () => Get.to(SettingPageView()),
                     child: const Align(
                       alignment: Alignment.topLeft,
                       child: Padding(

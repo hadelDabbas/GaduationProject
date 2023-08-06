@@ -1,27 +1,45 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
+import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
 import '../../../app/model/group.dart';
+import '../../../app/model/post.dart';
 import '../../../app/model/postdto.dart';
+import '../../../app/model/userPost.dart';
 import '../../genereted/sheard/util.dart';
+import '../../sheard/auth_service.dart';
 import '../data/group_repository.dart';
 
 class GroupController extends GetxController {
   var page = 2.obs;
   var click = false.obs;
   var press = false.obs;
+  final nowgroup = 0.obs;
+  final newpost = Post().obs;
+  final contents = <Content>[].obs;
   var dropdownvalue = 'History'.obs;
   final ImagePicker imagepicker = ImagePicker();
-  final allGroups = <Group>[].obs;
+  var allGroups = <Group>[].obs;
   var groupRepo = GroupRepository();
+  final addcomment = Comments().obs;
   var currentGroup = Group().obs;
-  final members = <User>[].obs;
+  final msg = ''.obs;
+  var members = <User>[].obs;
   var postsList = <PostDto>[].obs;
-  final addnewGroup = Group().obs;
+  var addnewGroup = Group().obs;
   final stringPickImage = ''.obs;
-  var contents = <Content>[].obs;
+  final userpost = UserPost().obs;
+  final auth = Get.find<AuthService>();
+  final user = User().obs;
+  final personExsisting = false.obs;
+  final IdPost = 0;
+  final addMember = UserGroup().obs;
+  final removeMember = UserGroup().obs;
+  final listcomment = <Comments>[].obs;
   PickedFile? imagefile;
   //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global'];
 
@@ -90,5 +108,83 @@ class GroupController extends GetxController {
     if (res) {
       Get.back();
     }
+  }
+
+  Future<void> GetInterActionUser() async {
+    await groupRepo.InteractionUser(userpost.value, IdPost);
+  }
+
+  Future<void> GetUser() async {
+    user.value = auth.getDataFromStorage() as User;
+//  print(user.value.Email);
+  }
+
+  Future<void> GetComments(int IdPost) async {
+    var data = await groupRepo.GetComment(IdPost);
+    listcomment.assignAll(data);
+  }
+
+  Future<void> AddComment() async {
+    var data = await groupRepo.AddComment(addcomment.value, user.value.Id!);
+    // GetComments( );
+    if (data) {
+      print('True');
+    } else {
+      print('false');
+    }
+  }
+
+  Future<void> GetContens() async {
+    var data = await groupRepo.GetAllContent();
+    contents.assignAll(data);
+  }
+
+  Future<void> AddPost() async {
+    newpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    var data = await groupRepo.AddpostUser(
+        newpost.value, user.value.Id!, currentGroup.value.Id!);
+    if (data) {
+      Get.snackbar(
+        'Good',
+        "  Add New Post Succsful ",
+        //  icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+        isDismissible: true,
+        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+    } else {
+      Get.snackbar(
+        'Error ',
+        "The new post dont added",
+        //  icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+        isDismissible: true,
+        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+    }
+  }
+
+  Future<void> AddMember() async {
+    // var res = await groupRepo.AddMember(addMember.value);
+  }
+
+  Future<void> RemoveMember() async {
+    var res = await groupRepo.RemoveMember(removeMember.value);
+  }
+
+  Future<void> ExsistingMember() async {
+    personExsisting.value = await groupRepo.exsitingMember(user.value.Id!);
   }
 }

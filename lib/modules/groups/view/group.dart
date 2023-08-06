@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
 
 import '../../../app/model/post.dart';
@@ -94,21 +95,36 @@ class GroupView extends GetResponsiveView<GroupController> {
                           ),
                           Obx(
                             () => Tooltip(
-                              message: 'Join TO Group',
+                              message: controller.msg.value,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   shadowColor: Colors.blueGrey,
-                                  backgroundColor: controller.press.value ==
-                                          false
-                                      ? const Color.fromARGB(255, 246, 123, 127)
-                                      : Colors.white,
+                                  backgroundColor:
+                                      // controller.press.value == false
+                                      controller.personExsisting.value == false
+                                          ? const Color.fromARGB(
+                                              255, 246, 123, 127)
+                                          : Colors.white,
                                 ),
                                 /////////////////////////dont work
                                 onPressed: () {
-                                  if (controller.press == false) {
-                                    controller.press.value = true;
+                                  if (controller.personExsisting.value ==
+                                      false) {
+                                    controller.personExsisting.value = true;
+                                    controller.msg.value = 'Joning';
+                                    controller.addMember.value.IdGroup =
+                                        controller.currentGroup.value.Id;
+                                    controller.addMember.value.IdUser =
+                                        controller.user.value.Id;
+                                    controller.AddMember();
                                   } else {
-                                    controller.press.value = false;
+                                    controller.personExsisting.value = false;
+                                    controller.msg.value = 'Exit';
+                                    controller.addMember.value.IdGroup =
+                                        controller.currentGroup.value.Id;
+                                    controller.addMember.value.IdUser =
+                                        controller.user.value.Id;
+                                    controller.RemoveMember();
                                   }
                                 },
                                 /////////////////////////////////////////
@@ -256,14 +272,16 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'Add Post ',
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Addpostview();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 15),
                       shape: const CircleBorder(),
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.add,
                       size: 18,
                       color: Color.fromARGB(255, 246, 123, 127),
@@ -463,31 +481,19 @@ class GroupView extends GetResponsiveView<GroupController> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            // controller.postidnew.value.Id = post.Id!;
-                            // controller.GetAllComments(post.Id!);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 248, 150, 153),
-                            shape: const CircleBorder(),
-                          ),
-                          child: const Icon(
-                            AppIconn.chat,
-                            size: 12,
-                          ),
-                        ),
-
-                        ElevatedButton(
-                          onPressed: () {
-                            // controller.userpost.value.IdUser =
-                            //     controller.userprofile.value.Id;
-                            // if (interaction) {
-                            //   controller.userpost.value.Interaction = false;
-                            //   controller.GetInterActionUser(post.Id!);
-                            // } else {
-                            //   controller.userpost.value.Interaction = true;
-                            //   controller.GetInterActionUser(post.Id!);
-                            // }
+                            controller.userpost.value.IdPost = post.Id;
+                            controller.userpost.value.post = post;
+                            controller.userpost.value.user =
+                                controller.user.value;
+                            controller.userpost.value.Id =
+                                controller.user.value.Id;
+                            if (interaction) {
+                              controller.userpost.value.Interaction = false;
+                              controller.GetInterActionUser();
+                            } else {
+                              controller.userpost.value.Interaction = false;
+                              controller.GetInterActionUser();
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
@@ -503,8 +509,36 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   : Colors.white,
                             ),
                           ),
+
+                          // ElevatedButton(
+                          //   onPressed: () {
+                          //     // controller.userpost.value.IdUser =
+                          //     //     controller.userprofile.value.Id;
+                          //     // if (interaction) {
+                          //     //   controller.userpost.value.Interaction = false;
+                          //     //   controller.GetInterActionUser(post.Id!);
+                          //     // } else {
+                          //     //   controller.userpost.value.Interaction = true;
+                          //     //   controller.GetInterActionUser(post.Id!);
+                          //     // }
+                          //   },
+                          //   style: ElevatedButton.styleFrom(
+                          //     backgroundColor:
+                          //         const Color.fromARGB(255, 248, 150, 153),
+                          //     shape: const CircleBorder(),
+                          //   ),
+                          //   child: Obx(
+                          //     () => Icon(
+                          //       AppIconn.favorite,
+                          //       size: 12,
+                          //       color: controller.click.value == true
+                          //           ? Colors.red
+                          //           : Colors.white,
+                          //     ),
+                          //   ),
+                          // )
+                          // Icon(Icons.add_alert),
                         )
-                        // Icon(Icons.add_alert),
                       ],
                     ),
                   )

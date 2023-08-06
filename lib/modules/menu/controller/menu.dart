@@ -79,6 +79,6 @@ class HomeController extends GetxController
   }
 
   Future<void> GetInterActionUser() async {
-    await homeRepo.InteractionUser(userpost.value, Iduser);
+    await homeRepo.InteractionUser(userpost.value,IdPost);
   }
 }

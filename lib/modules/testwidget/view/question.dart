@@ -16,16 +16,19 @@ class QuestionPageView extends GetResponsiveView<TestController> {
       child: Container(
         child: Column(
           children: [
-            Text('IT Test',
+            Text(controller.nowTest.value.content!.typeName.toString(),
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
                     color: Colors.blueGrey,
                     fontFamily: "Pacifico")),
-            Column(
-                children: controller.AllQustion.map((element) =>
-                    shapeQuestion(element, element.AllChose)).toList()),
+            // Column(
+            //     children: controller.AllQustion.map((element) =>
+            //         shapeQuestion(element, element.AllChose)).toList()),
+            // Column(
+            //  children: controller.nowTest.value.test.
+            // ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(

@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../../api/storage/storge_service.dart';
 import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
+import '../../../app/model/follow.dart';
 import '../../../app/model/postdto.dart';
 import '../../../app/model/user.dart';
 import '../../../app/model/userPost.dart';
@@ -25,6 +26,7 @@ class ProfileController extends GetxController {
   final Listuserpost = <PostDto>[].obs;
   final UpdateUser = User().obs;
   final auth = Get.find<AuthService>();
+  final followdelete=Follow ().obs;
   final user = User().obs;
   final ImagePicker imagepicker = ImagePicker();
   PickedFile? imagefile;
@@ -134,6 +136,10 @@ class ProfileController extends GetxController {
   Future<void> DeletPost(int idpost) async {
     var data = await profileRepo.DeletePost(idpost);
     GetPostUser();
+  }
+    Future<void> Delefolloewd(int id) async {
+    var data = await profileRepo.DelFollowed(user.value.Id!,id);
+    GetUserFollow();
   }
 
   Future<void> Updateprofile() async {

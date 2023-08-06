@@ -3,16 +3,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/writter.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/library_controller.dart';
 
-class Addbookpage extends GetResponsiveView<LibraryContrller> {
+class Addbookpage22 extends GetResponsiveView<LibraryContrller> {
   @override
   LibraryContrller controller = Get.put(LibraryContrller());
   Uint8List? image;
-
-  Addbookpage({super.key});
   @override
   Widget builder() {
     return Column(
@@ -24,6 +23,39 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
             Material(child: Imageprofile(controller)),
           ],
         )),
+        
+         Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Book Type",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,  
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.Booktype
+                          .map((element) => TextButton(
+                              onPressed: () {
+                       controller.addoneBook.value.bookType=element;
+                              },
+                              child: Text(element.bookType.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
@@ -31,7 +63,7 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
             width: 450,
             child: TextField(
               onChanged: (value) {
-                controller.addBook.value.bookName = value;
+                controller.addoneBook.value.bookName=value;
               },
               decoration: const InputDecoration(
                 labelText: 'Name Book',
@@ -46,32 +78,14 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
             ),
           )),
         ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Material(
-              child: SizedBox(
-            width: 450,
-            child: TextField(
-                decoration: InputDecoration(
-              labelText: 'Name Writter',
-              labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-              hintText: 'Name Writter',
-              prefixIcon: Icon(
-                Icons.person_2_outlined,
-                color: Color.fromARGB(255, 245, 146, 149),
-              ),
-            )),
-          )),
-        ),
-        Padding(
+             Padding(
           padding: const EdgeInsets.all(8.0),
           child: Material(
               child: SizedBox(
             width: 450,
             child: TextField(
                 onChanged: (value) {
-                  // controller.addBook.value.BookPrice=value;
+                   controller.addoneBook.value.bookPrice=int.parse(value).toInt();
                 },
                 decoration: const InputDecoration(
                   labelText: 'Price Book',
@@ -85,32 +99,77 @@ class Addbookpage extends GetResponsiveView<LibraryContrller> {
                 )),
           )),
         ),
-        SizedBox(
-          width: 450,
-          child: Material(
-            child: TextField(
-              onChanged: (value) {
-                //  controller.addBook.value.BookName=value;
-              },
-              decoration: const InputDecoration(
-                labelText: 'Descrintion About Book',
-                labelStyle: TextStyle(
-                    color: Colors.black45, fontWeight: FontWeight.bold),
-                hintText: 'Descrintion About Book',
-                prefixIcon: Icon(
-                  Icons.text_fields,
-                  color: Color.fromARGB(255, 245, 146, 149),
+
+           Tooltip(
+              message: 'Add New Book',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(126)),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 17, horizontal: 17)),
+                      onPressed: () {
+                        controller.addBookone();
+                        controller.getIdBook(controller.addoneBook.value.bookName.toString());
+                      },
+                      child: Icon(Icons.add)),
                 ),
               ),
-              keyboardType: TextInputType.multiline,
-              minLines: 1, //Normal textInputField will be displayed
-              maxLines: 5, // when user presses enter it will adapt to it
             ),
-          ),
-        ),
+            Text('Choose Writers To This Book',style: TextStyle(fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey
+            ),),
+   
+             Material(
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: GFAccordion(
+                    title: "Book Writter",
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,  
+                        color: Color.fromARGB(255, 246, 123, 127),
+                        decoration: TextDecoration.none),
+                    contentChild: Column(
+                      children: controller.AllAutour
+                          .map((element) => TextButton(
+                              onPressed: () {
+                        controller.writerBook.value.IdBook=controller.idbook.value;
+                        controller.writerBook.value.IdWriter=element.id;
+                        controller.writerBook.value.writer!.writerName=element.writerName ;
+                    controller.  addBookwritter();
+                              },
+                              child: Text(element.writerName.toString(),   style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54,
+                                            decoration: TextDecoration.none))))
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+    
         GFButton(
           color: Colors.blueGrey,
-          onPressed: () {},
+          onPressed: () {
+            controller.booklibraryAdd.value.IdBook=controller.idbook.value;
+            controller.booklibraryAdd.value.book=controller.addoneBook.value;
+            controller.booklibraryAdd.value.IdLibrary=controller.IdLibrary.value;
+            controller.addBooktolibrary();
+          },
           text: "Add Book",
         ),
       ],
