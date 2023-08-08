@@ -15,7 +15,8 @@ class splashscreenLetter extends GetResponsiveView< MenuGameController> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Center(
-          child: Column(
+          child:
+           Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InkWell(

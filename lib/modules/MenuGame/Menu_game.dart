@@ -64,7 +64,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                   'Word Test',
                   '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
                   'assets/images/4.png',
-                  const Splashscrren()),
+                  Splashscrren()),
               cardshape(
                   random,
                   'Math Test',

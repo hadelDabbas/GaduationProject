@@ -7,6 +7,8 @@ import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../Addpost/view/addpost.dart';
+import '../../MenuGame/levels.dart';
+import '../../MenuGame/view/all_games/word_game/view/define_word.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
 import '../../groups/view/group.dart';
@@ -249,7 +251,8 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                       child: InkWell(
                           onTap: () {
-                            Get.to(TestPageView());
+                            Get.to( LevelPageView());
+                            // Get.to(TestPageView());
                           },
                           child: Tooltip(
                               message: 'Show all Quiz',
@@ -291,7 +294,7 @@ class SettingPageView extends GetResponsiveView {
                 height: 30,
               ),
               Icon(data, color: const Color.fromARGB(255, 246, 123, 127)),
-              Text(name),
+              Text(name,style: TextStyle(color:Color.fromARGB(255, 42, 42, 114) ),),
             ]),
           ),
         ));
