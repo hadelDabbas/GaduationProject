@@ -20,7 +20,7 @@ class ContentPage extends GetResponsiveView<HomeController> {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   fontFamily: "Pacifico"),
             ),
           ),
@@ -32,7 +32,7 @@ class ContentPage extends GetResponsiveView<HomeController> {
             alignment: Alignment.topRight,
             child: GFButton(
               shape: GFButtonShape.pills,
-              color: Colors.blueGrey,
+              color: Color.fromARGB(255, 42, 42, 114),
               onPressed: () {
                 controller.GetAllContent();
                 Get.dialog(Align(
@@ -60,7 +60,7 @@ class ContentPage extends GetResponsiveView<HomeController> {
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
+                                      color:Color.fromARGB(255, 42, 42, 114),
                                       decoration: TextDecoration.none),
                                 ),
                               )),

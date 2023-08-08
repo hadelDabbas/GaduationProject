@@ -46,7 +46,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.none,
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           fontFamily: "Pacifico")),
                 ],
               ),
@@ -99,7 +99,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                 child: Card(
                     margin: const EdgeInsets.all(10),
                     color:Color.fromARGB(255, 248, 150, 153),
-                    shadowColor: Colors.blueGrey,
+                    shadowColor: Color.fromARGB(255, 42, 42, 114),
                     elevation: 30,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

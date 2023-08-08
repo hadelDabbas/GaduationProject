@@ -21,7 +21,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                     fontFamily: "Pacifico")),
             // Column(
             //     children: controller.AllQustion.map((element) =>
@@ -58,7 +58,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Pacifico",
-                                        color: Colors.blueGrey,
+                                        color: Color.fromARGB(255, 42, 42, 114),
                                         decoration: TextDecoration.none),
                                   ),
                                 )),
@@ -128,7 +128,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Pacifico",
-                                        color: Colors.blueGrey,
+                                        color: Color.fromARGB(255, 42, 42, 114),
                                         decoration: TextDecoration.none),
                                   ),
                                 )),
@@ -201,9 +201,9 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                         Material(
                             child: Obx(
                           () => Radio(
-                              activeColor: Colors.blueGrey,
+                              activeColor: Color.fromARGB(255, 42, 42, 114),
                               fillColor: MaterialStateProperty.all(
-                                Colors.blueGrey,
+                             Color.fromARGB(255, 42, 42, 114),
                               ),
                               value: e.toString(),
                               groupValue: controller.selectedvalue.value,

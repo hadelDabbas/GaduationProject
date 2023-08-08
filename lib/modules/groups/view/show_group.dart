@@ -39,7 +39,7 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
             // SingleChildScrollView(
@@ -121,7 +121,7 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
                 margin: EdgeInsets.all(10),
-                shadowColor: Colors.blueGrey,
+                shadowColor: Color.fromARGB(255, 42, 42, 114),
                 elevation: 30,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

@@ -18,7 +18,7 @@ class TestPageView extends GetResponsiveView<TestController> {
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   fontFamily: "Pacifico")),
               Center(
                 child: Text('Show Your Tests Do You Want',

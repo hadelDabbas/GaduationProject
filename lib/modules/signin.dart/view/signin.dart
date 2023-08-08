@@ -28,7 +28,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child:
-                      Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+                      Icon(Icons.arrow_back_ios, size: 20, color: Color.fromARGB(255, 42, 42, 114)),
                 ),
               ),
             ),
@@ -41,7 +41,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                     fontFamily: "Pacifico"),
               ),
             ),
@@ -70,12 +70,12 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                         labelText: 'Enter Email',
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Colors.blueGrey),
+                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.grey),
+                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     validator: (value) {
@@ -121,12 +121,12 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                           labelText: 'Enter Password',
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 3, color: Colors.blueGrey),
+                                width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(width: 3, color: Colors.grey),
+                                const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           )),
                       validator: (value) {
@@ -165,7 +165,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 42, 42, 114),
                     shape: RoundedRectangleBorder(
+                      
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
@@ -182,6 +184,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                   Get.rootDelegate.toNamed(Routes.signup);
                 },
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 42, 42, 114),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(

@@ -37,7 +37,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
               child: Text(
                 'Forget Password',
                 style: TextStyle(
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
                     fontFamily: "Pacifico"),
@@ -67,12 +67,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                       labelText: 'Enter Email',
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 3, color: Colors.blueGrey),
+                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
+                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       )),
                   onChanged: (value) {
@@ -117,12 +117,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                           labelText: 'Enter Password',
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 3, color: Colors.blueGrey),
+                                width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(width: 3, color: Colors.grey),
+                                const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           )),
                       validator: (value) {
@@ -164,12 +164,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         labelText: 'Confirm Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Colors.blueGrey),
+                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.grey),
+                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     validator: (value) {
@@ -222,7 +222,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 240, 230, 230),
-          border: Border.all(color: Colors.blueGrey, width: 1),
+          border: Border.all(color: Color.fromARGB(255, 42, 42, 114), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         width: 200,

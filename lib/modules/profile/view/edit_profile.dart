@@ -41,7 +41,8 @@ ProfileController controller=Get.put(ProfileController());
           Align(
             alignment: Alignment.centerLeft,
             child:            Text('Edit Profile ',
-                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,decoration: TextDecoration.none,
+                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.none,
                                color:Color.fromARGB(255, 246, 123, 127),fontFamily: "Pacifico")),
           ),
           ],),
@@ -74,11 +75,11 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.Name=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
-                    labelText: 'Enter Your New Name',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter Your New Name',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 validator: (value) {
@@ -101,12 +102,12 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.UserName=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person_outline,color: Colors.blueGrey,),
-                    labelText: 'Enter New UserName', labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter New UserName', labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                     
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                        validator: (value) {
@@ -129,12 +130,12 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.Age=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.numbers,color: Colors.blueGrey,),
-                    labelText: 'Enter Your New Age',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.numbers,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter Your New Age',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                  
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                        validator: (value) {
@@ -160,12 +161,12 @@ ProfileController controller=Get.put(ProfileController());
               },
                 controller: emailcontroller,
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email,color: Colors.blueGrey,),
-                    labelText: 'Enter New Email',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.email,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter New Email',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                    
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 validator: (value) {
@@ -193,7 +194,7 @@ ProfileController controller=Get.put(ProfileController());
                     controller:passcontroller,
                     obscureText: controller.passtoggle.value,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,color: Colors.blueGrey,),
+                        prefixIcon: Icon(Icons.lock,color: Color.fromARGB(255, 42, 42, 114),),
                         suffixIcon: InkWell(
                           onTap: () {
                          
@@ -203,7 +204,7 @@ ProfileController controller=Get.put(ProfileController());
                           child:  Icon(
                         controller.passtoggle .value   ? Icons.visibility : Icons.visibility_off,color: Color.fromARGB(255, 246, 123, 127),),
                             ),
-                        labelText: 'Enter New Password',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                        labelText: 'Enter New Password',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                         
                      
                         focusedBorder: OutlineInputBorder(
@@ -231,12 +232,12 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.Study=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.cast_for_education,color: Colors.blueGrey,),
-                    labelText: 'Enter New Education',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.cast_for_education,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter New Education',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                   
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                        validator: (value) {
@@ -260,12 +261,12 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.Address=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.location_city,color: Colors.blueGrey,),
-                    labelText: 'Enter New Adress',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.location_city,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter New Adress',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                   
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                        validator: (value) {
@@ -289,12 +290,12 @@ ProfileController controller=Get.put(ProfileController());
           controller.user.value.Paypal=val;
               },
                 decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.money,color: Colors.blueGrey,),
-                    labelText: 'Enter New PayBal',labelStyle: TextStyle(color: Colors.blueGrey,fontWeight: FontWeight.bold),
+                    prefixIcon: Icon(Icons.money,color: Color.fromARGB(255, 42, 42, 114),),
+                    labelText: 'Enter New PayBal',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                    
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                        validator: (value) {
@@ -322,7 +323,7 @@ ProfileController controller=Get.put(ProfileController());
                 //   Get.to(HomePage());
                 // }
               },
-              style: ElevatedButton.styleFrom(shadowColor: Colors.blueGrey,
+              style: ElevatedButton.styleFrom(shadowColor: Color.fromARGB(255, 42, 42, 114),
               backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),

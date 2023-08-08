@@ -45,7 +45,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Pacifico",
-                        color: Colors.blueGrey,
+                        color: Color.fromARGB(255, 42, 42, 114),
                         decoration: TextDecoration.none),
                   ),
                 )),
@@ -103,7 +103,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                       decoration: TextDecoration.none),
                                 ),
                                 Material(
@@ -140,7 +140,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                           controller.addBookType.value);
                                     },
                                     text: "Added",
-                                    color: Colors.blueGrey,
+                                    color: Color.fromARGB(255, 42, 42, 114),
                                     shape: GFButtonShape.pills,
                                   ),
                                 ),
@@ -216,7 +216,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: "Pacifico",
-                                                color: Colors.blueGrey,
+                                                color: Color.fromARGB(255, 42, 42, 114),
                                                 decoration: TextDecoration.none),
                                           ),
                                         ),
@@ -256,7 +256,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                           },
                           icon: const Icon(
                             Icons.delete,
-                            color: Colors.grey,
+                            color: Colors.red,
                             //    color: Color.fromARGB(255, 245, 74, 62),
                           )))
                 ],

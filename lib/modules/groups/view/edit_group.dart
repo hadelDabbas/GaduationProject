@@ -54,7 +54,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           decoration: TextDecoration.none),
                     ),
                   ),

@@ -37,7 +37,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           decoration: TextDecoration.none),
                     ),
                   )),
@@ -52,7 +52,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
               padding: const EdgeInsets.all(8.0),
               child: GFButton(
                 shape: GFButtonShape.pills,
-                color: Colors.blueGrey,
+                color: Color.fromARGB(255, 42, 42, 114),
                 onPressed: () {
                   Get.dialog(Align(
                       alignment: Alignment.center,
@@ -75,7 +75,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Pacifico",
-                                        color: Colors.blueGrey,
+                                        color: Color.fromARGB(255, 42, 42, 114),
                                         decoration: TextDecoration.none),
                                   ),
                                 ),
@@ -159,7 +159,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                         }
                                       },
                                       style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.blueGrey,
+                                          backgroundColor: Color.fromARGB(255, 42, 42, 114),
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(120)),

@@ -184,7 +184,7 @@ LibraryContrller controller = Get.put(LibraryContrller());
             //  ),
                
   GFButton(
-    color: Colors.blueGrey,
+    color: Color.fromARGB(255, 42, 42, 114),
     onPressed: (){
       controller.updateBooklibrary.value.IdBook=controller.currentBook.value.book!.id;
         controller.updateBooklibrary.value.IdLibrary=controller.IdLibrary.value;

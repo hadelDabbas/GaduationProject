@@ -20,7 +20,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor:Color.fromARGB(255, 42, 42, 114),
         title: Center(
           child: Text(
             controller.Newlibrary.value.libraryName.toString(),
@@ -117,7 +117,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            shadowColor: Colors.blueGrey,
+                            shadowColor: Color.fromARGB(255, 42, 42, 114),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 20),
                             shape: const CircleBorder(),
@@ -143,7 +143,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: "Pacifico",
-                                          color: Colors.blueGrey,
+                                          color: Color.fromARGB(255, 42, 42, 114),
                                           decoration: TextDecoration.none),
                                     ),
                                   ),
@@ -234,7 +234,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                         //Get.back();
                                       },
                                       text: "Input",
-                                      color: Colors.blueGrey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                       shape: GFButtonShape.pills,
                                     ),
                                   ),
@@ -252,7 +252,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          shadowColor: Colors.blueGrey,
+                          shadowColor: Color.fromARGB(255, 42, 42, 114),
                           padding: const EdgeInsets.symmetric(
                               vertical: 20, horizontal: 20),
                           shape: const CircleBorder(),
@@ -284,7 +284,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -331,7 +331,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.blueGrey, width: 3)),
+                border: Border.all(    color: Color.fromARGB(255, 42, 42, 114), width: 3)),
             width: 300,
             height: 300,
             child: SingleChildScrollView(
@@ -420,7 +420,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                       decoration: TextDecoration.none),
                                 ),
                                 Text(
@@ -442,7 +442,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                       decoration: TextDecoration.none),
                                 ),
                                 Text(price + '\$',
@@ -461,7 +461,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                       decoration: TextDecoration.none),
                                 ),
                                 Column(
@@ -472,7 +472,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
-                                                  color: Colors.blueGrey,
+                                                  color: Color.fromARGB(255, 42, 42, 114),
                                                   decoration:
                                                       TextDecoration.none),
                                             ))
@@ -488,7 +488,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       child: const Text('How Many Pices Do You Want ?',
                           style: TextStyle(
                               fontSize: 18,
-                              color: Colors.blueGrey,
+                              color: Color.fromARGB(255, 42, 42, 114),
                               decoration: TextDecoration.none,
                               fontFamily: "Pacifico")),
                     ),
@@ -594,7 +594,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
           width: 305,
           decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.blueGrey,
+                color: Color.fromARGB(255, 42, 42, 114),
                 width: 1.3,
               ),
               color: Colors.white,
@@ -622,7 +622,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
             Text(
@@ -631,7 +631,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
             Padding(
@@ -714,7 +714,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               },
                               icon: const Icon(
                                 Icons.edit,
-                                color: Colors.blueGrey,
+                                color: Color.fromARGB(255, 42, 42, 114),
                               ))),
                       Material(
                           child: IconButton(
@@ -739,7 +739,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: "Pacifico",
-                                                    color: Colors.blueGrey,
+                                                    color: Color.fromARGB(255, 42, 42, 114),
                                                     decoration:
                                                         TextDecoration.none),
                                               ),
@@ -803,7 +803,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         height: 120,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.blueGrey)),
+            border: Border.all(color: Color.fromARGB(255, 42, 42, 114))),
         child: Column(
           children: [
           Row(children:contrller.ListBookLibrary.where((p0) => p0.Id==idlibrarybook).map((e) =>
@@ -838,7 +838,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       style: const TextStyle(
                           fontSize: 18,
                           decoration: TextDecoration.none,
-                          color: Colors.blueGrey),
+                          color: Color.fromARGB(255, 42, 42, 114)),
                     ),
                     const SizedBox(
                       height: 20,
@@ -852,7 +852,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             style: TextStyle(
                                 fontSize: 18,
                                 decoration: TextDecoration.none,
-                                color: Colors.blueGrey)),
+                                color: Color.fromARGB(255, 42, 42, 114))),
                         Text(count.toString(),
                             style: const TextStyle(
                                 fontSize: 18,
@@ -909,7 +909,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                             fontFamily:
                                                                 "Pacifico",
                                                             color:
-                                                                Colors.blueGrey,
+                                                                Color.fromARGB(255, 42, 42, 114),
                                                             decoration:
                                                                 TextDecoration
                                                                     .none),
@@ -1054,7 +1054,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                     },
                                     icon: Icon(
                                       Icons.edit,
-                                      color: Colors.grey,
+                                      color: Color.fromARGB(255, 42, 42, 114),
                                     )),
                               ),
                             ),
@@ -1087,7 +1087,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                           fontFamily:
                                                               "Pacifico",
                                                           color:
-                                                              Colors.blueGrey,
+                                                           Color.fromARGB(255, 42, 42, 114),
                                                           decoration:
                                                               TextDecoration
                                                                   .none),
@@ -1198,7 +1198,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         style: TextStyle(
                             fontSize: 18,
                             decoration: TextDecoration.none,
-                            color: Colors.blueGrey)),
+                            color: Color.fromARGB(255, 42, 42, 114))),
                      Text(contrller.sum.value.toString()+'\$',
                         style: TextStyle(
                             fontSize: 18,

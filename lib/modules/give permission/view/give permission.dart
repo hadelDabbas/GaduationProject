@@ -23,22 +23,60 @@ class Givepermission extends GetResponsiveView<PermissionController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Material(
+        // Material(
+        //     child: Container(
+        //   width: 350,
+        //   height: 60,
+        //   child: TextField(
+        //       decoration: InputDecoration(
+        //     labelText: 'Administrator Name ',
+        //     labelStyle:
+        //         TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+        //     hintText: 'Enter Administrator Name ',
+        //     prefixIcon: Icon(
+        //       Icons.person_2_outlined,
+        //       color: Color.fromARGB(255, 245, 146, 149),
+        //     ),
+        //   ),
+        //   onChanged: (value){
+        //       controller.userAccssebility.value.
+        //   },
+          
+        //   ),
+        // )),
+         Material(
+          child: Padding(
+            padding: const EdgeInsets.all(6),
             child: Container(
-          width: 350,
-          height: 60,
-          child: TextField(
-              decoration: InputDecoration(
-            labelText: 'Administrator Name ',
-            labelStyle:
-                TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-            hintText: 'Enter Administrator Name ',
-            prefixIcon: Icon(
-              Icons.person_2_outlined,
-              color: Color.fromARGB(255, 245, 146, 149),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                  borderRadius: BorderRadius.circular(10)),
+              child: GFAccordion(
+                title: "Choose User",
+                textStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 246, 123, 127),
+                    decoration: TextDecoration.none),
+                contentChild: Column(
+                  children: controller.AllUser
+                      .map((element) => TextButton(
+                          onPressed: () {
+                           controller.userAccssebility.value.IdUser=element.Id; 
+                           controller.currentUser.value=element;
+                          },
+                          child: Text(element.toString(),
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                  decoration: TextDecoration.none))))
+                      .toList(),
+                ),
+              ),
             ),
-          )),
-        )),
+          ),
+        ),
         Material(
             child: Container(
           width: 350,
@@ -53,7 +91,27 @@ class Givepermission extends GetResponsiveView<PermissionController> {
               Icons.admin_panel_settings_outlined,
               color: Color.fromARGB(255, 245, 146, 149),
             ),
-          )),
+          ),
+          onChanged: (value){
+            if(controller.currentUser.value.Password!=value )  {
+               Get.snackbar(
+        'Error ',
+        "Please Sure Password",
+        //  icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Color.fromARGB(255, 246, 123, 127),
+        borderRadius: 20,
+        margin: EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: Duration(seconds: 4),
+        isDismissible: true,
+        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+            }
+          },
+          
+          ),
         )),
         Material(
           child: Padding(
@@ -70,9 +128,11 @@ class Givepermission extends GetResponsiveView<PermissionController> {
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
                 contentChild: Column(
-                  children: controller.permission
+                  children: controller.listLibrary
                       .map((element) => TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                             controller.userAccssebility.value.accessibility!.AccessibilityType=element.libraryName;   
+                          },
                           child: Text(element.toString(),
                               style: TextStyle(
                                   fontSize: 18,
@@ -129,7 +189,7 @@ class Givepermission extends GetResponsiveView<PermissionController> {
         ),
          Center(
            child: GFButton(
-            color: Colors.blueGrey,
+            color:Color.fromARGB(255, 42, 42, 114),
              onPressed: (){},
              text: "Save",textStyle: TextStyle(color: Colors.white),
            ),

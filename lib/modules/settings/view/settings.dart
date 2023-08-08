@@ -33,7 +33,7 @@ class SettingPageView extends GetResponsiveView {
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.none,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontFamily: "Pacifico")),
                   ),
                 ),
@@ -94,7 +94,7 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -280,7 +280,7 @@ class SettingPageView extends GetResponsiveView {
           width: 150,
           decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 42, 42, 114),
                 width: 1.3,
               ),
               color: Colors.white,

@@ -23,10 +23,10 @@ class HomePage extends GetResponsiveView<HomeController> {
         bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.white70,
             height: 60,
-            buttonBackgroundColor: Colors.blueGrey,
+            buttonBackgroundColor: Color.fromARGB(255, 42, 42, 114),
             animationCurve: Curves.bounceInOut,
             index: controller.page.value,
-            color: Colors.blueGrey,
+            color: Color.fromARGB(255, 42, 42, 114),
             animationDuration: const Duration(milliseconds: 300),
             onTap: (index) {
               controller.page.value = index;

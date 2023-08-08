@@ -44,7 +44,7 @@ class signupage extends GetResponsiveView<SignUpController> {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   fontFamily: "Pacifico"),
             ),
           ),
@@ -79,12 +79,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter YourName',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color:Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -115,12 +115,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter UserName',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -142,7 +142,7 @@ class signupage extends GetResponsiveView<SignUpController> {
             height: 55,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   width: 2.6,
                 ),
                 borderRadius: BorderRadius.circular(18)),
@@ -186,12 +186,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter Email',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -236,12 +236,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Colors.blueGrey),
+                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.grey),
+                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     onChanged: (value) {
@@ -271,12 +271,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter Education',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -306,12 +306,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter Adress',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color:Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -341,12 +341,12 @@ class signupage extends GetResponsiveView<SignUpController> {
                     labelText: 'Enter PayBal',
                     enabledBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.blueGrey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(width: 3, color: Colors.grey),
+                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {

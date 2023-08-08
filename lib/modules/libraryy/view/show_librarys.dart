@@ -50,7 +50,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           decoration: TextDecoration.none),
                     ),
                   ),
@@ -104,7 +104,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           decoration: TextDecoration.none),
                     ),
                     Material(
@@ -162,7 +162,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           controller.addLibrary(controller.Addlibrary.value);
                         },
                         text: "Added",
-                        color: Colors.blueGrey,
+                        color: Color.fromARGB(255, 42, 42, 114),
                         shape: GFButtonShape.pills,
                       ),
                     ),
@@ -185,7 +185,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22.0),
-                border: Border.all(color: Colors.blueGrey)),
+                border: Border.all(color: Color.fromARGB(255, 42, 42, 114))),
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
@@ -249,7 +249,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                             fontFamily:
                                                                 "Pacifico",
                                                             color:
-                                                                Colors.blueGrey,
+                                                                Color.fromARGB(255, 42, 42, 114),
                                                             decoration:
                                                                 TextDecoration
                                                                     .none),
@@ -341,7 +341,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                     GFButton(
                                                       shape:
                                                           GFButtonShape.pills,
-                                                      color: Colors.blueGrey,
+                                                      color: Color.fromARGB(255, 42, 42, 114),
                                                       onPressed: () async {
                                                         controller
                                                             .updatelibrary
@@ -453,7 +453,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                           fontFamily:
                                                               "Pacifico",
                                                           color:
-                                                              Colors.blueGrey,
+                                                             Color.fromARGB(255, 42, 42, 114),
                                                           decoration:
                                                               TextDecoration
                                                                   .none),

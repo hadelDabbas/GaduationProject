@@ -85,8 +85,8 @@ class EditPostview extends GetResponsiveView<ProfileController> {
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              shadowColor: Colors.blueGrey,
-              backgroundColor: Colors.blueGrey),
+              shadowColor: Color.fromARGB(255, 42, 42, 114),
+              backgroundColor: Color.fromARGB(255, 42, 42, 114)),
           onPressed: () {
            controller.UpdatePost();
           },

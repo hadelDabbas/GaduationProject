@@ -86,10 +86,10 @@ GroupController controller = Get.put(GroupController());
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              shadowColor: Colors.blueGrey,
+              shadowColor: Color.fromARGB(255, 42, 42, 114),
               // padding:
               //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              backgroundColor: Colors.blueGrey),
+              backgroundColor:Color.fromARGB(255, 42, 42, 114)),
           onPressed: () {
            // controller.updatepost();
          //  controller.UpdatePostUser(controller.editpost.value.Id!);

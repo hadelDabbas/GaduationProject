@@ -89,7 +89,7 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
             Column(

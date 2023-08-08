@@ -68,7 +68,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.blueGrey),
+                                color: Color.fromARGB(255, 42, 42, 114)),
                           ),
                         ),
                         // Padding(
@@ -138,7 +138,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                             message: 'Members In This Group',
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shadowColor: Colors.blueGrey,
+                                shadowColor: Color.fromARGB(255, 42, 42, 114),
                                 backgroundColor:
                                     Color.fromARGB(255, 246, 123, 127),
                               ),
@@ -204,7 +204,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                         ' Description About Group :',
                         style: TextStyle(
                             fontSize: 18,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -309,7 +309,7 @@ class GroupView extends GetResponsiveView<GroupController> {
         height: 100,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.blueGrey)),
+            border: Border.all(color: Color.fromARGB(255, 42, 42, 114))),
         child: Row(
           children: [
             Container(width: 80, height: 80, child: 
@@ -333,7 +333,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               style: TextStyle(
                   fontSize: 18,
                   decoration: TextDecoration.none,
-                  color: Colors.blueGrey),
+                  color: Color.fromARGB(255, 42, 42, 114)),
             )
           ],
         ),
@@ -422,7 +422,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Colors.blueGrey),
+                        color: Color.fromARGB(255, 42, 42, 114)),
                   ),
                   const SizedBox(
                     width: 20,

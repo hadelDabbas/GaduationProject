@@ -52,7 +52,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         style: const TextStyle(
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           fontSize: 20,
                         ),
                       ),
@@ -62,7 +62,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         Text(
                           controller.userprofile.value.UserName.toString(),
                           style: const TextStyle(
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontSize: 16,
                             decoration: TextDecoration.none,
                           ),
@@ -73,13 +73,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            shadowColor: Colors.blueGrey,
+                            shadowColor: Color.fromARGB(255, 42, 42, 114),
                             shape: const CircleBorder(),
                           ),
                           child: const Icon(
                             Icons.edit,
                             size: 14,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                           ),
                         ),
                         ElevatedButton(
@@ -123,13 +123,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            shadowColor: Colors.blueGrey,
+                            shadowColor: Color.fromARGB(255, 42, 42, 114),
                             shape: const CircleBorder(),
                           ),
                           child: const Icon(
                             Icons.group,
                             size: 14,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                           ),
                         ),
                       ],
@@ -140,7 +140,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              shadowColor: Colors.blueGrey,
+                              shadowColor: Color.fromARGB(255, 42, 42, 114),
                               backgroundColor: Colors.white,
                             ),
                             onPressed: () {
@@ -191,7 +191,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           const SizedBox(width: 3),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              shadowColor: Colors.blueGrey,
+                              shadowColor: Color.fromARGB(255, 42, 42, 114),
                               backgroundColor: Colors.white,
                             ),
                             onPressed: () {
@@ -263,7 +263,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 'About :',
                 style: TextStyle(
                     decoration: TextDecoration.none,
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                     fontSize: 20),
               )),
         ),
@@ -287,7 +287,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   controller.userprofile.value.Email.toString(),
                   //'MohmmadAhmad@gmail.com',
                   style: const TextStyle(
-                      color: Colors.blueGrey,
+                      color: Color.fromARGB(255, 42, 42, 114),
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                       decoration: TextDecoration.none),
@@ -316,7 +316,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   controller.userprofile.value.Study.toString(),
                   //  'Information Tecnology',
                   style: const TextStyle(
-                      color: Colors.blueGrey,
+                      color: Color.fromARGB(255, 42, 42, 114),
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                       decoration: TextDecoration.none),
@@ -419,7 +419,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
-                              color: Colors.blueGrey),
+                              color: Color.fromARGB(255, 42, 42, 114)),
                         )),
                   ),
                   const Icon(
@@ -448,7 +448,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Colors.blueGrey),
+                        color: Color.fromARGB(255, 42, 42, 114)),
                   ),
                   const SizedBox(
                     width: 20,
@@ -493,7 +493,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: "Pacifico",
-                                                    color: Colors.blueGrey,
+                                                    color: Color.fromARGB(255, 42, 42, 114),
                                                     decoration:
                                                         TextDecoration.none),
                                               ),
@@ -510,7 +510,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                             icon: const Icon(
                               Icons.edit,
                               size: 20,
-                              color: Colors.blueGrey,
+                              color: Color.fromARGB(255, 42, 42, 114),
                             )),
                         IconButton(
                             onPressed: () {
@@ -523,14 +523,14 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
-                                          color: Colors.blueGrey, width: 2)),
+                                          color: Color.fromARGB(255, 42, 42, 114), width: 2)),
                                   child: Column(
                                     children: [
                                       const Center(
                                         child: Text(
                                           'Are You Sure ?',
                                           style: TextStyle(
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               decoration: TextDecoration.none),
@@ -704,7 +704,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   style: const TextStyle(
                       fontSize: 18,
                       decoration: TextDecoration.none,
-                      color: Colors.blueGrey),
+                      color: Color.fromARGB(255, 42, 42, 114)),
                 ),
                 const SizedBox(
                   width: 130,

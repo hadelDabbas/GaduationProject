@@ -41,7 +41,7 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.none,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontFamily: "Pacifico")),
                   ),
                 ),
@@ -151,7 +151,7 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: "Pacifico",
-                                                color: Colors.blueGrey,
+                                                color: Color.fromARGB(255, 42, 42, 114),
                                                 decoration: TextDecoration.none),
                                           ),
                                           Padding(
