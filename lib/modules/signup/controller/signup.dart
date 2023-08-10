@@ -15,6 +15,7 @@ class SignUpController extends GetxController {
   final userRpo = SingUpRepository();
   final auth = Get.find<AuthService>();
   final user = User().obs;
+  final text='Here you can register your information in order to create an account';
   var selectedDate = DateTime.now().obs;
   final ImagePicker imagepicker = ImagePicker();
   PickedFile? imagefile;

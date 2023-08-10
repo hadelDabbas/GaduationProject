@@ -1,198 +1,203 @@
-import 'dart:async';
-
+import 'dart:html';
+import 'dart:js';
+import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../../../menu/view/HomePage.dart';
+import '../../../../Menu_game.dart';
+import '../../timer/controller/timer_controller.dart';
 import '../controller/word_controller.dart';
 import 'form_word2.dart';
 
 class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
-  FormwordPageView({super.key});
-
+  SplashScreencontroller controller = Get.put(SplashScreencontroller());
+  TimerController timerController = Get.put(TimerController());
+  List<String> stringword =["ابنية", "مدينة"];
+  List<String> emptylist = [];
   @override
   Widget build(BuildContext context) {
-    List<String> stringword = ["BUILDS", "CITY"];
-    List<String> emptylist = [];
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromARGB(255, 236, 132, 214),
-              Color.fromARGB(255, 243, 233, 198)
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            stops: [0.4, 0.7],
-            tileMode: TileMode.repeated,
-          ),
-        ),
-        child: Column(children: [
-          InkWell(
-            onTap: () {
-              Get.to(HomePage());
-            },
-            child: const Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
-              ),
+      body: SingleChildScrollView(
+        child: Container(
+          height: 800,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: const LinearGradient(
+              colors: [Color.fromARGB(255, 254, 161, 21), Color.fromARGB(255, 223, 194, 149)],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              stops: [0.4, 0.7],
+              tileMode: TileMode.repeated,
             ),
           ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 90,
+          child: Column(children: [
+            InkWell(
+              onTap: () {
+                Get.to(HomePage());
+              },
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 35,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.pinkAccent,
-                  ),
-                  child: Row(
-                    children: [
-                      Obx(() => Center(
-                            child: Text(
-                              '    ${controller.count.value}',
-                              style: const TextStyle(
-                                color: Colors.white,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 90,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 35,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color.fromARGB(255, 7, 29, 67),
+                    ),
+                    child: Row(
+                      children: [
+                        Obx(() => Center(
+                              child: Text(
+                                '    ' + controller.count.value.toString(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          )),
-                      const Text(' : Correct',
-                          style: TextStyle(color: Colors.white))
-                    ],
+                            )),
+                        Text(' : Correct', style: TextStyle(color: Colors.white))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 35,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.pinkAccent,
-                  ),
-                  child: Row(
-                    children: [
-                      Obx(() => Center(
-                            child: Text(
-                              '  ${controller.timerController.time.value}',
-                              style: const TextStyle(
-                                color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 35,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color.fromARGB(255, 7, 29, 67),
+                    ),
+                    child: Row(
+                      children: [
+                        Obx(() => Center(
+                              child: Text(
+                                '  ${timerController.time.value}',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          )),
-                      const Text(' : Timer',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 233, 227, 227)))
-                    ],
+                            )),
+                        Text(' : Timer',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 233, 227, 227)))
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const Text(
-            'Gusses The Word Accouring To Photo',
-            style: TextStyle(
-                color: Color.fromARGB(255, 221, 196, 196),
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
-            child: Container(
-                color: Colors.white, child: Image.asset('assets/images/7.png')),
-          ),
-          Obx(() => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  controller.AllWord.join(),
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              )),
-          Wrap(
-              children: controller.letters.map((e) => Lettershape(e)).toList()),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
-                child: Center(
+              ],
+            ),
+            Text(
+              'Gusses The Word Accouring To Photo',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
+              child: Container(
+                  color: Colors.white, child: Image.asset('assets/images/7.png')),
+            ),
+            Obx(() => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    controller.AllWord.join(),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )),
+            Wrap(
+                children: controller.letters.map((e) => Lettershape(e)).toList()),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
                   child: Center(
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.pink[200]),
-                        ),
-                        onPressed: () {
-                          if (controller.timerController.time.value
-                                  .toString() !=
-                              '00:01') {
-                            if (controller.count.value != 1) {
-                              if (stringword
-                                      .contains(controller.AllWord.join()) &&
-                                  !emptylist
-                                      .contains(controller.AllWord.join())) {
-                                emptylist.add(controller.AllWord.join());
-                                controller.count.value += 1;
-                                correcting();
-                                controller.AllWord.clear();
-                                ////اذا لم تكن الكلمه صحيحه والوقت لم ينتهي
+                    child: Center(
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 7, 29, 67)),
+                          ),
+                          onPressed: () {
+                            if (timerController.time.value.toString() !=
+                                '00:01') {
+                              if (controller.count.value != 1) {
+                                if (stringword
+                                        .contains(controller.AllWord.join()) &&
+                                    !emptylist
+                                        .contains(controller.AllWord.join())) {
+                                  emptylist.add(controller.AllWord.join());
+                                  controller.count.value += 1;
+                                
+                                  correcting();
+      
+                                  controller.AllWord.clear();
+                                  ////اذا لم تكن الكلمه صحيحه والوقت لم ينتهي
+                                } else {
+                                  //  Get.to(Formword2PageView());
+                                  Error('Error Word Try Again Please');
+                                  controller.AllWord.clear();
+                                }
                               } else {
-                                Error('Error Word Try Again Please');
+                                //الوثت لم بنتهي ولكن الكلمات جميعا صحيحه
+                                controller.count.value += 1;
+                                controller.score.value+=10;
+                                snak();
                                 controller.AllWord.clear();
                               }
                             } else {
-                              //الوثت لم بنتهي ولكن الكلمات جميعا صحيحه
-                              controller.count.value += 1;
-                              snak();
+                              //time off
+                              TimeOff();
                               controller.AllWord.clear();
                             }
-                          } else {
-                            //time off
-                            TimeOff();
-                            controller.AllWord.clear();
-                          }
-                        },
-                        child: const Text('Ok',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white))),
+                          },
+                          child: Text('Ok',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white))),
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
-                child: Center(
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.pink[200]),
-                      ),
-                      onPressed: () {
-                        controller.AllWord.remove(controller.AllWord.last);
-                      },
-                      child: const Icon(Icons.backspace_outlined,
-                          size: 25, color: Colors.white)),
-                ),
-              )
-            ],
-          ),
-        ]),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 15, 8, 8),
+                  child: Center(
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromARGB(255, 7, 29, 67)),
+                        ),
+                        onPressed: () {
+                          controller.AllWord.remove(
+                              controller.AllWord.value.last);
+                        },
+                        child: Icon(Icons.backspace_outlined,
+                            size: 25, color: Colors.white)),
+                  ),
+                )
+              ],
+            ),
+          ]),
+        ),
       ),
     );
   }
@@ -202,13 +207,14 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.pink[200]),
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromARGB(255, 123, 160, 222)),
           ),
           onPressed: () {
             controller.AllWord.add(letter);
           },
           child: Text(letter,
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white))),
@@ -227,19 +233,23 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
             Center(
               child: Text(
                 txt,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 20,
                     decoration: TextDecoration.none,
-                    color: Color.fromARGB(255, 204, 134, 175)),
+                    color: Color.fromARGB(255, 123, 160, 222)),
               ),
             ),
             TextButton(
                 onPressed: () {
-                  Get.to(Formword2PageView());
+                  Get.back();
                 },
-                child: const Text('yes',
-                    style:
-                        TextStyle(color: Color.fromARGB(255, 212, 80, 124)))),
+                child: Text('yes',
+                    style: TextStyle(color: Color.fromARGB(255, 7, 29, 67)))),
+                            TextButton(onPressed: (){
+                         Get.to(MenuGamePageView());
+                           }, child: Text('No',
+                         style: TextStyle(color:Color.fromARGB(255, 7, 29, 67))
+                        ))
           ],
         ),
       ),
@@ -256,17 +266,18 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
         child: Center(
           child: Row(
             children: [
-              const Text(
+              Text(
                 'Correct The Remainning is ',
                 style: TextStyle(
                     fontSize: 20,
                     decoration: TextDecoration.none,
-                    color: Color.fromARGB(255, 204, 134, 175)),
+                    color: Color.fromARGB(255, 123, 160, 222)),
               ),
               Text(
                 (2 - controller.count.value).toString(),
-                style: const TextStyle(
-                    fontSize: 20, color: Color.fromARGB(255, 230, 114, 181)),
+                style: TextStyle(
+                  decoration: TextDecoration.none,
+                    fontSize: 20, color: Color.fromARGB(255, 123, 160, 222)),
               )
             ],
           ),
@@ -279,43 +290,41 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
     return Get.defaultDialog(
         title: "Result",
         backgroundColor: Colors.white,
-        titleStyle: const TextStyle(color: Colors.pink),
-        middleTextStyle: const TextStyle(color: Colors.black),
+        titleStyle: TextStyle(color: Color.fromARGB(255, 7, 29, 67)),
+        middleTextStyle: TextStyle(color: Color.fromARGB(255, 123, 160, 222)),
         barrierDismissible: false,
         radius: 50,
         content: Column(children: [
           Text(
-            controller.res1.value.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            controller.score.value.toString(),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          const Text(
+          Text(
             'Congratulations, You Win This Level',
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 123, 160, 222)),
           ),
-          const Text(
+          Text(
             'Do You Want To Go To Next Level',
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16,color: Color.fromARGB(255, 123, 160, 222)),
           ),
           Row(
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 40,
               ),
               TextButton(
                   onPressed: () {
                     Get.to(Formword2PageView());
                   },
-                  child: const Text('yes',
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 212, 80, 124)))),
+                  child: Text('yes',
+                      style: TextStyle(color: Color.fromARGB(255, 7, 29, 67)))),
               TextButton(
                   onPressed: () {
-                    Get.back();
-                    controller.timerController.onClose();
+                   Get.to(MenuGamePageView());
+                    timerController.onClose();
                   },
-                  child: const Text('No',
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 212, 80, 124)))),
+                  child: Text('No',
+                      style: TextStyle(color: Color.fromARGB(255, 7, 29, 67)))),
             ],
           )
         ]));
@@ -326,38 +335,40 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
       alignment: Alignment.bottomCenter,
       child: Container(
         width: 500,
-        height: 40,
+        height: 100,
         color: Colors.white,
         child: Column(
           children: [
-            const Text(
-              'Time Off Do You Want To Retry ? ',
+            Text(
+              'Time Off Do You Want To countinue ? ',
               style: TextStyle(
                   fontSize: 20,
                   decoration: TextDecoration.none,
-                  color: Color.fromARGB(255, 201, 141, 183)),
+                  color: Color.fromARGB(255, 123, 160, 222)),
             ),
             Row(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 40,
                 ),
                 TextButton(
                     onPressed: () {
                       Get.back();
-                      controller.timerController.onReady();
+                    //  Get.to(Formword2PageView());
+                      timerController.onReady();
                     },
-                    child: const Text('yes',
+                    child: Text('yes',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 212, 80, 124)))),
+                            color: Color.fromARGB(255, 7, 29, 67)))),
                 TextButton(
                     onPressed: () {
-                      Get.back();
-                      controller.timerController.onClose();
+                      Get.to(MenuGamePageView());
+                      timerController.onClose();
                     },
-                    child: const Text('No',
+                    child: Text('No',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 212, 80, 124)))),
+                            color: Color.fromARGB(255, 7, 29, 67)),)),
+                            
               ],
             ),
           ],

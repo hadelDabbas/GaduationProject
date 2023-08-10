@@ -39,7 +39,18 @@ class GroupRepository implements IGroupRepository {
         .delete('https://localhost:7252/api/Group/Delete?id=$idgroup');
     return result.statusCode == 200;
   }
-
+  @override
+  Future<bool> UpdatePost(int idpost, Post post) async {
+    var result = await _dio.put(
+      'https://localhost:7252/api/Post/UpdatePost/$idpost',
+      data: post.toJson(),
+    );
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   @override
   Future<List<Group>> GetAllGroup() async {
     var result = await _dio.get('https://localhost:7252/api/Group/GetGroups');

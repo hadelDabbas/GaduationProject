@@ -85,18 +85,18 @@ class Comment extends GetResponsiveView<HomeController> {
                           hintText: "Write Your Comment",
                           labelStyle:
                               TextStyle(fontSize: 20.0, color: Colors.white),
-                          fillColor: Colors.blueGrey,
+                          fillColor: Color.fromARGB(255, 42, 42, 114),
                           border: OutlineInputBorder(
                               // borderRadius:
                               //     BorderRadius.all(Radius.zero(5.0)),
-                              borderSide: BorderSide(color: Colors.blueGrey)),
+                              borderSide: BorderSide(color: Color.fromARGB(255, 42, 42, 114))),
                         ),
                       ),
                     ),
                   ),
                   // Second child is button
                   IconButton(
-                    icon: Icon(Icons.send),
+                    icon: Icon(Icons.send,color: Color.fromARGB(255, 42, 42, 114),),
                     iconSize: 20.0,
                     onPressed: () {
                       controller.addcomment.value.IdPost=controller.IdPost;
@@ -138,7 +138,7 @@ class Comment extends GetResponsiveView<HomeController> {
                         name,
                         style: TextStyle(
                             fontSize: 18,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontWeight: FontWeight.bold),
                       ),
                     ),

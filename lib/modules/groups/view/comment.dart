@@ -86,11 +86,11 @@ GroupController hcontroller = Get.put(GroupController());
                           hintText: "Write Your Comment",
                           labelStyle:
                               TextStyle(fontSize: 20.0, color: Colors.white),
-                          fillColor: Colors.blueGrey,
+                          fillColor: Color.fromARGB(255, 42, 42, 114),
                           border: OutlineInputBorder(
                               // borderRadius:
                               //     BorderRadius.all(Radius.zero(5.0)),
-                              borderSide: BorderSide(color: Colors.blueGrey)),
+                              borderSide: BorderSide(color: Color.fromARGB(255, 42, 42, 114))),
                         ),
                       ),
                     ),
@@ -139,7 +139,7 @@ GroupController hcontroller = Get.put(GroupController());
                         name,
                         style: TextStyle(
                             fontSize: 18,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontWeight: FontWeight.bold),
                       ),
                     ),

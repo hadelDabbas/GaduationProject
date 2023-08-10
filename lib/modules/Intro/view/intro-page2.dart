@@ -43,7 +43,7 @@ SplashScreenController controller=Get.put(SplashScreenController());
            child: Row(children: [
              IconButton(onPressed: (){
               Get.back();
-             }, icon: Icon(Icons.arrow_back)),
+             }, icon: Icon(Icons.arrow_back,color: Color.fromARGB(255, 42, 42, 114),)),
              SizedBox(width:  350,),
              ElevatedButton(
               style:

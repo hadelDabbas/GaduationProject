@@ -9,9 +9,13 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Addpost/view/addpost.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../give permission/view/user-del-premission.dart';
 import '../../groups/view/group.dart';
 import '../../libraryy/view/library.dart';
 import '../../refrence/view/refrence.dart';
+import '../../signin.dart/view/signin.dart';
+import '../../signup/view/signup1.dart';
+import '../../testwidget/view/add-test.dart';
 
 class SettingPageView extends GetResponsiveView {
   SettingPageView({super.key});
@@ -33,7 +37,7 @@ class SettingPageView extends GetResponsiveView {
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.none,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontFamily: "Pacifico")),
                   ),
                 ),
@@ -94,7 +98,7 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -161,7 +165,7 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -229,7 +233,7 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Colors.blueGrey,
+                                              color: Color.fromARGB(255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -249,13 +253,79 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                       child: InkWell(
                           onTap: () {
-                            Get.to(TestPageView());
+                            Get.to(TestPageView  ());
                           },
                           child: Tooltip(
                               message: 'Show all Quiz',
                               child: CardSetting("Quiz", Icons.check_box)))),
                   CardSetting("Quiz", Icons.check_box),
-                  CardSetting("Language", Icons.language),
+                    Material(
+                      child: InkWell(
+                          onTap: () {
+                            Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller. text,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                          },
+                          child: Tooltip(
+                              message: 'Change Language ',
+                              child: CardSetting("Language", Icons.language)))),
+                  // Material(child: InkWell(
+                  //   onTap: () {
+                  //      print('trjjkkkk');
+                  //   },
+                  //   child:
+                  //    CardSetting("Language", Icons.language))),
                   CardSetting("Help", Icons.question_mark),
                   CardSetting("Logout", Icons.exit_to_app),
                   const SizedBox(
@@ -280,7 +350,7 @@ class SettingPageView extends GetResponsiveView {
           width: 150,
           decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 42, 42, 114),
                 width: 1.3,
               ),
               color: Colors.white,
@@ -291,7 +361,7 @@ class SettingPageView extends GetResponsiveView {
                 height: 30,
               ),
               Icon(data, color: const Color.fromARGB(255, 246, 123, 127)),
-              Text(name),
+              Text(name,style: TextStyle(color:Color.fromARGB(255, 42, 42, 114) ),),
             ]),
           ),
         ));

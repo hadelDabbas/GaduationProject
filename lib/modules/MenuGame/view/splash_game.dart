@@ -30,7 +30,7 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.none,
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           fontFamily: "Pacifico")),
                 ),
               ),
@@ -110,7 +110,7 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                   text: "Game Page",
                   icon: const Icon(
                     Icons.arrow_circle_right,
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                   ),
                   shape: GFButtonShape.pills,
                 ),

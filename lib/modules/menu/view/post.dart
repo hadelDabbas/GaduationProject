@@ -96,7 +96,7 @@ class postPage extends GetResponsiveView<HomeController> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
-                              color: Colors.blueGrey),
+                              color: Color.fromARGB(255, 42, 42, 114)),
                         )),
                   ),
                   Text("($post)",

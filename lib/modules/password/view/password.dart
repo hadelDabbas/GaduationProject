@@ -37,7 +37,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
               child: Text(
                 'Forget Password',
                 style: TextStyle(
-                    color: Colors.blueGrey,
+                    color: Color.fromARGB(255, 42, 42, 114),
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
                     fontFamily: "Pacifico"),
@@ -67,12 +67,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                       labelText: 'Enter Email',
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 3, color: Colors.blueGrey),
+                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 3, color: Colors.grey),
+                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       )),
                   onChanged: (value) {
@@ -117,12 +117,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                           labelText: 'Enter Password',
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 3, color: Colors.blueGrey),
+                                width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(width: 3, color: Colors.grey),
+                                const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           )),
                       validator: (value) {
@@ -164,12 +164,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         labelText: 'Confirm Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Colors.blueGrey),
+                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              const BorderSide(width: 3, color: Colors.grey),
+                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     validator: (value) {
@@ -209,6 +209,73 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
+            ),
+                      Tooltip(
+              message: 'Help About Page',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: (){
+              Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller. text,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                  }, icon: Icon(Icons.help_outline_outlined,
+                  size: 30,
+                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                ),
+              ),
             )
           ],
         ),
@@ -222,7 +289,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 240, 230, 230),
-          border: Border.all(color: Colors.blueGrey, width: 1),
+          border: Border.all(color: Color.fromARGB(255, 42, 42, 114), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         width: 200,

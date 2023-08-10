@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/groups/controller/group_controller.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
@@ -27,34 +28,67 @@ GroupController controller = Get.put(GroupController());
   Widget build(BuildContext context) {
     //TextEditingController _controller=TextEditingController(text: controller.editpost.value.Description);
     return Column(children: [
-      Material(
-          child: Obx(
-        () => Container(
-          width: 300,
-          child: DropdownButton<String>(
-              items:Contents.map<DropdownMenuItem<String>>(
-                (String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(
-                          color: Colors.black45, fontWeight: FontWeight.bold),
+      // Material(
+      //     child: Obx(
+      //   () => Container(
+      //     width: 300,
+      //     child: DropdownButton<String>(
+      //         items:Contents.map<DropdownMenuItem<String>>(
+      //           (String value) {
+      //             return DropdownMenuItem<String>(
+      //               value: value,
+      //               child: Text(
+      //                 value,
+      //                 style: TextStyle(
+      //                     color: Colors.black45, fontWeight: FontWeight.bold),
+      //               ),
+      //             );
+      //           },
+      //         ).toList(),
+      //         isExpanded: true,
+      //         value: Contents.first,
+      //         iconSize: 24,
+      //         elevation: 16,
+      //         onChanged: (String? newval) {
+      //         Contents.first = newval!;
+      //          // controller.Updatecontentpost(newval);
+      //          // controller.editpost.value.IdType=controller.newcontent.value.Id;
+      //         }),
+      //   ),
+      // )),
+       Material(
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 194, 192, 192)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GFAccordion(
+                      title: "Post Type",
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                          decoration: TextDecoration.none),
+                      contentChild: Column(
+                        children: controller.contents
+                            .map((element) => TextButton(
+                                onPressed: () {
+                              // controller.editpost.
+                                },
+                                child: Text(element.typeName.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                        decoration: TextDecoration.none))))
+                            .toList(),
+                      ),
                     ),
-                  );
-                },
-              ).toList(),
-              isExpanded: true,
-              value: Contents.first,
-              iconSize: 24,
-              elevation: 16,
-              onChanged: (String? newval) {
-              Contents.first = newval!;
-               // controller.Updatecontentpost(newval);
-               // controller.editpost.value.IdType=controller.newcontent.value.Id;
-              }),
-        ),
-      )),
+                  ),
+                ),
+              ),
       Center(
           child: Column(
         children: [
@@ -78,7 +112,7 @@ GroupController controller = Get.put(GroupController());
           ),
         ),
         onChanged: (value) {
-       //   controller.editpost.value.Description=value;
+         controller.editpost.value.Description=value;
         },
         ),
       )),
@@ -86,10 +120,10 @@ GroupController controller = Get.put(GroupController());
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              shadowColor: Colors.blueGrey,
+              shadowColor: Color.fromARGB(255, 42, 42, 114),
               // padding:
               //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              backgroundColor: Colors.blueGrey),
+              backgroundColor:Color.fromARGB(255, 42, 42, 114)),
           onPressed: () {
            // controller.updatepost();
          //  controller.UpdatePostUser(controller.editpost.value.Id!);

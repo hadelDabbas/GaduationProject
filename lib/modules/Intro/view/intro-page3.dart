@@ -50,7 +50,7 @@ class Intro3 extends StatelessWidget {
            padding: const EdgeInsets.all(8.0),
            child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.grey),
+                    backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 42, 42, 114)),
                     fixedSize:
                         MaterialStateProperty.all(const Size.fromWidth(300),
                         )),

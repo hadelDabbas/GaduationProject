@@ -25,4 +25,5 @@ abstract class  IGroupRepository {
    Future<List<Content>> GetAllContent();
     Future<bool> RemoveMember(UserGroup userGroup);
      Future<bool> exsitingMember(int Iduser);
+      Future<bool> UpdatePost(int idpost, Post post);
 }

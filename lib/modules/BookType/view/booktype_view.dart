@@ -15,143 +15,178 @@ import '../controller/booktype_controller.dart';
 
 class BookTypePageView extends GetResponsiveView<BookTypeController> {
   BookTypeController controller = Get.put(BookTypeController());
+   final _formfield = GlobalKey<FormState>();
   //  final textfield=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Material(
-              child: InkWell(
-                onTap: () => Get.back(),
-                child: const Align(
+        child: Form(
+           key: _formfield,
+          child: Column(
+            children: [
+              Material(
+                child: InkWell(
+                  onTap: () => Get.back(),
+                  child: const Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.arrow_back_ios,
+                          size: 20, color: Colors.grey),
+                    ),
+                  ),
+                ),
+              ),
+              const Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back_ios,
-                        size: 20, color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
-            const Align(
-                alignment: Alignment.topLeft,
+                    child: Text(
+                      "  BookTypes  ",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico",
+                          color: Color.fromARGB(255, 42, 42, 114),
+                          decoration: TextDecoration.none),
+                    ),
+                  )),
+                   Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "  All BookType Here ",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: "Pacifico",
+                          color: Colors.grey,
+                          decoration: TextDecoration.none),
+                    ),
+                  )),
+             
+              CardBookType('history', context, 9),
+              CardBookType('Medicine', context, 9),
+              CardBookType('Culture', context, 9),
+              CardBookType('Arabic', context, 9),
+              CardBookType('Love', context, 9),
+              CardBookType('Math', context, 9),
+              // Column(
+              //     children: controller.AllBookType.map((element) => CardBookType(
+              //             element.bookType.toString(), context, element.id!))
+              //         .toList()),
+               Tooltip(
+                message: 'Add New BookType',
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "  BookTypes  ",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Pacifico",
-                        color: Colors.blueGrey,
-                        decoration: TextDecoration.none),
-                  ),
-                )),
-                 Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "  All BookType Here ",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Pacifico",
-                        color: Colors.grey,
-                        decoration: TextDecoration.none),
-                  ),
-                )),
-           
-            CardBookType('history', context, 9),
-            CardBookType('Medicine', context, 9),
-            CardBookType('Culture', context, 9),
-            CardBookType('Arabic', context, 9),
-            CardBookType('Love', context, 9),
-            CardBookType('Math', context, 9),
-            // Column(
-            //     children: controller.AllBookType.map((element) => CardBookType(
-            //             element.bookType.toString(), context, element.id!))
-            //         .toList()),
-             Tooltip(
-              message: 'Add New BookType',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(126)),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 17, horizontal: 17)),
-                      onPressed: () {
-                        Get.dialog(Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              width: 400,
-                              height: 200,
-                              child: Column(children: [
-                                const Text(
-                                  " Add New BookType  ",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Pacifico",
-                                      color: Colors.blueGrey,
-                                      decoration: TextDecoration.none),
-                                ),
-                                Material(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: SizedBox(
-                                      width: 350,
-                                      height: 60,
-                                      child: TextFormField(
-                                        decoration: const InputDecoration(
-                                          icon: Icon(
-                                            Icons.library_books,
-                                            color: Color.fromARGB(
-                                                255, 246, 123, 127),
-                                          ),
-                                          labelText: 'Add BookTpe',
-                                          labelStyle: TextStyle(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(126)),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 17, horizontal: 17)),
+                        onPressed: () {
+                          Get.dialog(Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.blueAccent)),
+                                width: 400,
+                                height: 200,
+                                child: Column(children: [
+                                  const Text(
+                                    " Add New BookType  ",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "Pacifico",
+                                        color: Color.fromARGB(255, 42, 42, 114),
+                                        decoration: TextDecoration.none),
+                                  ),
+                                  Material(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: SizedBox(
+                                        width: 350,
+                                        height: 60,
+                                        child: TextFormField(
+                                          decoration: const InputDecoration(
+                                            icon: Icon(
+                                              Icons.library_books,
                                               color: Color.fromARGB(
                                                   255, 246, 123, 127),
-                                              fontWeight: FontWeight.bold),
+                                            ),
+                                            labelText: 'Add BookTpe',
+                                            labelStyle: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          onChanged: (value) {
+                                            controller.addBookType.value.bookType =
+                                                value;
+                                          },
+                                                                  validator: (value) {
+                  // for number
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct Name";
+                  } else {
+                    return null;
+                  }},
                                         ),
-                                        onChanged: (value) {
-                                          controller.addBookType.value.bookType =
-                                              value;
-                                        },
                                       ),
                                     ),
                                   ),
-                                ),
-                                Center(
-                                  child: GFButton(
-                                    onPressed: () {
-                                      controller.AddBookType(
-                                          controller.addBookType.value);
-                                    },
-                                    text: "Added",
-                                    color: Colors.blueGrey,
-                                    shape: GFButtonShape.pills,
+                                  Center(
+                                    child: GFButton(
+                                      onPressed: () {
+                                           if (_formfield.currentState!.validate()) {
+                  print("Data Added Successfully");
+                                        controller.AddBookType(
+                                            controller.addBookType.value);
+                                       } else{
+                                               Get.snackbar(
+                                              ' Error',
+                                              " Add New BookType ",
+                                              //  icon: Icon(Icons.person, color: Colors.white),
+                                              snackPosition: SnackPosition.BOTTOM,
+                                              backgroundColor:
+                                                  const Color.fromARGB(
+                                                      255, 209, 143, 143),
+                                              borderRadius: 20,
+                                              margin: const EdgeInsets.all(15),
+                                              colorText: Colors.white,
+                                              duration:
+                                                  const Duration(seconds: 4),
+                                              isDismissible: true,
+                                              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                              forwardAnimationCurve:
+                                                  Curves.easeOutBack,
+                                            );
+                                       }
+
+                                       },
+                                      text: "Added",
+                                      color: Color.fromARGB(255, 42, 42, 114),
+                                      shape: GFButtonShape.pills,
+                                    ),
                                   ),
-                                ),
-                              ]),
-                            )));
-                      },
-                      child: Icon(Icons.add)),
+                                ]),
+                              )));
+                        },
+                        child: Icon(Icons.add)),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -216,7 +251,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: "Pacifico",
-                                                color: Colors.blueGrey,
+                                                color: Color.fromARGB(255, 42, 42, 114),
                                                 decoration: TextDecoration.none),
                                           ),
                                         ),
@@ -256,7 +291,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                           },
                           icon: const Icon(
                             Icons.delete,
-                            color: Colors.grey,
+                            color: Colors.red,
                             //    color: Color.fromARGB(255, 245, 74, 62),
                           )))
                 ],

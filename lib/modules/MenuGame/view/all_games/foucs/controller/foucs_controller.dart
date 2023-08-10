@@ -9,6 +9,7 @@ class FoucsController extends GetxController with GetSingleTickerProviderStateMi
   var score=0.obs;
   Timer?_timer;
  int remanningsecond=1;
+ final text='In this game, a picture appears with a question that needs to be focused before answering';
  final time='00.00'.obs;
    @override
    void onInit() {

@@ -37,7 +37,7 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Pacifico",
-                  color: Colors.blueGrey,
+                  color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
             const SizedBox(
@@ -62,6 +62,73 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                   .map((e) => cardgroup(e.Image!, e.groupName.toString(), e))
                   .toList(),
             ),
+             Tooltip(
+              message: 'Help About Page',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: (){
+              Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller.textshowgroup,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                  }, icon: Icon(Icons.help_outline_outlined,
+                  size: 30,
+                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -89,8 +156,9 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
-                margin: const EdgeInsets.all(10),
-                shadowColor: Colors.blueGrey,
+                margin: EdgeInsets.all(10),
+                shadowColor: Color.fromARGB(255, 42, 42, 114),
+
                 elevation: 30,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

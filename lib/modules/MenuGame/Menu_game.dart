@@ -46,7 +46,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.none,
-                          color: Colors.blueGrey,
+                          color: Color.fromARGB(255, 42, 42, 114),
                           fontFamily: "Pacifico")),
                 ],
               ),
@@ -64,7 +64,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                   'Word Test',
                   '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
                   'assets/images/4.png',
-                  const Splashscrren()),
+                  Splashscrren()),
               cardshape(
                   random,
                   'Math Test',
@@ -83,6 +83,73 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                   'In This Test You Need To Be Speed This Test Increse Information ang experaince',
                   'assets/images/15.png',
                   PacketPageView()),
+                       Tooltip(
+              message: 'Help About Page',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: (){
+              Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller. text,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                  }, icon: Icon(Icons.help_outline_outlined,
+                  size: 30,
+                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                ),
+              ),
+            )
             ],
           ),
         ));
@@ -99,7 +166,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                 child: Card(
                     margin: const EdgeInsets.all(10),
                     color:Color.fromARGB(255, 248, 150, 153),
-                    shadowColor: Colors.blueGrey,
+                    shadowColor: Color.fromARGB(255, 42, 42, 114),
                     elevation: 30,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

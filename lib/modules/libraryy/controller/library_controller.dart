@@ -40,6 +40,7 @@ class LibraryContrller extends GetxController {
   final Booktype = <BookType>[];
   final AllAutour = <Writer>[];
   final addBook = Book().obs;
+
   final idbook = 0.obs;
   final buybook = Buybook().obs;
   final writerBook = BookWriter().obs;
@@ -57,14 +58,23 @@ class LibraryContrller extends GetxController {
   final backBuyBook = Buybook().obs;
   final listBuyBookDto = <BuyBookDto>[].obs;
   final currentLibrary = Library().obs;
+  final textshowlibrary =
+      'In this interface, all existing offices will be displayed in any region';
+  final textlibrary =
+      'In this interface you will display all the books in the library';
+  final textbook = 'In this interface include book information';
+  final addbooktext =
+      'In this interface you include all the information in order to add a book';
+  final addlibrary =
+      'In this interface include all the information for adding a library';
+  final fatorauesr =
+      'In this interface it includes all the books in addition to the books that the owner of this account has purchased';
+  final fatouralibrary =
+      'This interface includes all the people who have purchased books from this library';
+  final textupdatelibrary =
+      'In this interface we modify the library information';
+  final textupdatebook = 'In this interface we modify book information';
   final listDetailsBuyBook = <BuyBookDetailsDto>[].obs;
-  List<String> namelibrary = [
-    ' Al Tourath',
-    ' Al Arabi',
-    ' Al Quraa',
-    ' Al Hadara'
-  ];
-
   @override
   Future<void> onInit() async {
     super.onInit();

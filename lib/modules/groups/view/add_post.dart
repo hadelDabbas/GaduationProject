@@ -15,101 +15,114 @@ import '../controller/group_controller.dart';
 
 class Addpostviewas extends GetResponsiveView<GroupController> {
  GroupController controller = Get.put(GroupController());
+  final _formfield = GlobalKey<FormState>();
  Uint8List? image;
 
   // var dropdownvalue;
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-         Material(
-           child: InkWell(
-              onTap: () => Get.back(),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+    return Form(
+       key: _formfield,
+      child: Column(children: [
+           Material(
+             child: InkWell(
+                onTap: () => Get.back(),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
+                  ),
                 ),
               ),
-            ),
-         ),
-        Material(
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: GFAccordion(
-                    title: "Post Type",
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,  
-                        color: Color.fromARGB(255, 246, 123, 127),
-                        decoration: TextDecoration.none),
-                    contentChild: Column(
-                      children: controller.contents
-                          .map((element) => TextButton(
-                              onPressed: () {
-                                controller.newpost.value.content = element;
-                              },
-                              child: Text(element.typeName.toString(),   style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black54,
-                                            decoration: TextDecoration.none))))
-                          .toList(),
+           ),
+          Material(
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GFAccordion(
+                      title: "Post Type",
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,  
+                          color: Color.fromARGB(255, 246, 123, 127),
+                          decoration: TextDecoration.none),
+                      contentChild: Column(
+                        children: controller.contents
+                            .map((element) => TextButton(
+                                onPressed: () {
+                                  controller.newpost.value.content = element;
+                                },
+                                child: Text(element.typeName.toString(),   style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                              decoration: TextDecoration.none))))
+                            .toList(),
+                      ),
                     ),
                   ),
                 ),
               ),
+        Center(
+            child: Column(
+          children: [
+            SizedBox(width: 170),
+              Material(child: Imageprofile(controller)),
+          ],
+        )),
+        Material(
+            child: Container(
+          width: 300,
+          child: TextFormField(
+              decoration: InputDecoration(
+            labelText: 'Description',
+            labelStyle:
+                TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+            hintText: 'Description',
+            prefixIcon: Icon(
+              Icons.text_fields,
+              color: Color.fromARGB(255, 245, 146, 149),
             ),
-      Center(
-          child: Column(
-        children: [
-          SizedBox(width: 170),
-            Material(child: Imageprofile(controller)),
-        ],
-      )),
-      Material(
-          child: Container(
-        width: 300,
-        child: TextField(
-            decoration: InputDecoration(
-          labelText: 'Description',
-          labelStyle:
-              TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-          hintText: 'Description',
-          prefixIcon: Icon(
-            Icons.text_fields,
-            color: Color.fromARGB(255, 245, 146, 149),
           ),
-        ),
-        onChanged: (value){
-       controller.newpost.value.Description=value;
-        },
-        ),
-      )),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shadowColor: Colors.blueGrey,
-              // padding:
-              //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              backgroundColor: Colors.blueGrey),
-          onPressed: () {
-
-            controller.AddPost();
+          onChanged: (value){
+         controller.newpost.value.Description=value;
           },
-          child: Text(
-            'Save',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                            .hasMatch(value)) {
+                      return "Enter Correct Description";
+                    } else {
+                      return null;
+                    }},
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shadowColor: Color.fromARGB(255, 42, 42, 114),
+                // padding:
+                //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                backgroundColor:Color.fromARGB(255, 42, 42, 114)),
+            onPressed: () {
+           if (_formfield.currentState!.validate()) {
+                    print("Data Added Successfully");
+              controller.AddPost();
+              }  },
+            child: Text(
+              'Save',
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 
   Widget Imageprofile( GroupController controller) {

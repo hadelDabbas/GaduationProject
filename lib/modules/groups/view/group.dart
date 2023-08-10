@@ -69,7 +69,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                             style: const TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.blueGrey),
+                                color: Color.fromARGB(255, 42, 42, 114)),
                           ),
                         ),
                         // Padding(
@@ -146,7 +146,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                             message: 'Members In This Group',
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shadowColor: Colors.blueGrey,
+                                shadowColor: Color.fromARGB(255, 42, 42, 114),
                                 backgroundColor:
                                     const Color.fromARGB(255, 246, 123, 127),
                               ),
@@ -214,7 +214,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                         ' Description About Group :',
                         style: TextStyle(
                             fontSize: 18,
-                            color: Colors.blueGrey,
+                            color: Color.fromARGB(255, 42, 42, 114),
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -304,11 +304,79 @@ class GroupView extends GetResponsiveView<GroupController> {
                     element.post!.content!.typeName.toString(),
                     element.post!))
                 .toList(),
-          )
+          ),
+
           // post('Dr.Abdallah hamwe', 'The loop you can used it in flutter',
           //     'assets/images/loop.png', 'IT', controller),
           // post('Ahmad Ahmad', 'Why Flutter Uses Dart ?',
           //     'assets/images/dart.png', 'IT', controller)
+           Tooltip(
+              message: 'Help About Page',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: (){
+              Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller.textgroup,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                  }, icon: Icon(Icons.help_outline_outlined,
+                  size: 30,
+                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                ),
+              ),
+            )
         ]),
       ),
     );
@@ -322,7 +390,7 @@ class GroupView extends GetResponsiveView<GroupController> {
         height: 100,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.blueGrey)),
+            border: Border.all(color: Color.fromARGB(255, 42, 42, 114))),
         child: Row(
           children: [
             SizedBox(
@@ -345,7 +413,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               style: const TextStyle(
                   fontSize: 18,
                   decoration: TextDecoration.none,
-                  color: Colors.blueGrey),
+                  color: Color.fromARGB(255, 42, 42, 114)),
             )
           ],
         ),
@@ -433,7 +501,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Colors.blueGrey),
+                        color: Color.fromARGB(255, 42, 42, 114)),
                   ),
                   const SizedBox(
                     width: 20,
