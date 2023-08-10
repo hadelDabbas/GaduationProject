@@ -8,13 +8,6 @@ import '../../settings/view/settings.dart';
 import '../controller/library_controller.dart';
 
 class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
-  List<String> namelibrary = [
-    ' Al Tourath',
-    ' Al Arabi',
-    ' Al Quraa',
-    ' Al Hadara'
-  ];
-
   ShowLibraryspage({super.key});
 
   @override
