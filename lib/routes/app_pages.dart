@@ -12,9 +12,8 @@ import '../modules/MenuGame/view/all_games/timer/bindings/timer_binding.dart';
 import '../modules/MenuGame/view/all_games/word_game/bindings/word_game_binding.dart';
 import '../modules/content/binding/content_binding.dart';
 import '../modules/content/view/content.dart';
+import '../modules/groups/binding/group_binding.dart';
 import '../modules/libraryy/binding/library_Binding.dart';
-import '../modules/libraryy/view/invicelibrary.dart';
-import '../modules/libraryy/view/invoice.dart';
 import '../modules/libraryy/view/show_librarys.dart';
 import '../modules/menu/binding/menu_binding.dart';
 import '../modules/menu/view/HomePage.dart';
@@ -37,24 +36,25 @@ class AppPages {
   AppPages._();
 
   static final routes = [
-     GetPage(
+    GetPage(
         name: _Paths.setting,
-        page: () =>  SettingPageView(),
+        page: () => SettingPageView(),
         binding: SetteingBinding()),
-      GetPage(
+    GetPage(
         name: _Paths.refrence,
-        page: () =>  RefrencePageView(),
+        page: () => RefrencePageView(),
         binding: RefrenceBinding()),
-      GetPage(
+    GetPage(
         name: _Paths.booktype,
-        page: () =>  BookTypePageView(),
+        page: () => BookTypePageView(),
         binding: BooktypeBinding()),
-      GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
+    GetPage(name: _Paths.home, page: () => HomePage(), bindings: [
       HomeBinding(),
       ProfileBinding(),
       SearchBinding(),
       TimerBinding(),
       MenuGameBinding(),
+      GroupBinding(),
       PacketBinding(),
       FoucsBinding(),
       LetterBinding(),
@@ -74,7 +74,6 @@ class AppPages {
       page: () => MenuGamePageView(),
       bindings: const [],
     ),
-  
     GetPage(
         name: _Paths.password,
         page: () => ForgetViewPage(),

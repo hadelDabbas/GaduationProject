@@ -11,7 +11,8 @@ class ContentController extends GetxController{
         final contents = <Content>[].obs;
         final contRepo=ContentRepository();
   final addcontent = Content().obs;
-
+  final text='In this interface we display the existing content';
+  final addtext='In this interface new content can be added';
 
   @override
   Future<void> onInit() async {

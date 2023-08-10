@@ -15,6 +15,7 @@ class MathController extends GetxController {
   var score2=0.obs;
   var score3=0.obs;
   var result3 = 200.obs;
+  final text='In this game, a set of arithmetic operations will appear, and you must choose the correct answer';
   @override
   void onClose() {
     if (_timer != null) {

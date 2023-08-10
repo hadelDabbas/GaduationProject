@@ -5,6 +5,7 @@ import '../../../../app/model/Accsessbuility.dart';
 import '../../../../app/model/group.dart';
 import '../../../../app/model/library.dart';
 import '../../../../app/model/post.dart';
+import '../../../../app/model/userAccsesbuility.dart';
 
 abstract class IPremissionRepository {
   Future<List<Accessibility>> GetPermission();
@@ -13,4 +14,7 @@ abstract class IPremissionRepository {
    Future<bool>AddContent(Content content);
     Future<List<Library>> getAllLibrary();
       Future <List<Group>> GetAllGroup();
+        Future<List<UserAccessibility>> GetUserPermission(int iduser);
+         Future<bool>AddUserAccessibility(UserAccessibility user);
+           Future<bool> DelUserAccessibility(UserAccessibility user);
   }

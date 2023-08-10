@@ -13,6 +13,7 @@ import '../../genereted/sheard/util.dart';
 import '../controller/profile_controller.dart';
 class EditPostview extends GetResponsiveView<ProfileController> {
  ProfileController controller = Get.put(ProfileController());
+    final _formfield = GlobalKey<FormState>();
  Uint8List? image;
   List<String> Contents = [
     'History',
@@ -26,77 +27,159 @@ class EditPostview extends GetResponsiveView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _controller=TextEditingController(text: controller.postidnew.value.Description);
-    return Column(children: [
-      // Material(
-      //     child: Obx(
-      //   () => Container(
-      //     width: 300,
-      //     child: DropdownButton<String>(
-      //         items: controller.Contents.map<DropdownMenuItem<String>>(
-      //           (String value) {
-      //             return DropdownMenuItem<String>(
-      //               value: value,
-      //               child: Text(
-      //                 value,
-      //                 style: TextStyle(
-      //                     color: Colors.black45, fontWeight: FontWeight.bold),
-      //               ),
-      //             );
-      //           },
-      //         ).toList(),
-      //         isExpanded: true,
-      //         value: controller.Contents.first,
-      //         iconSize: 24,
-      //         elevation: 16,
-      //         onChanged: (String? newval) {
-      //           controller.updatepost.value.content!.typeName!=newval;
-      //           controller.Contents.value.first.typeName= newval!;
-      //         }),
-      //   ),
-      // )),
-      Center(
-          child: Column(
-        children: [
-          SizedBox(width: 170),
-            Material(child: Imageprofile(controller)),
-        ],
-      )),
-      Material(
-          child: Container(
-        width: 300,
-        child: TextField(
-          controller: _controller,
-            decoration: InputDecoration(
-          labelText: 'Description',
-          labelStyle:
-              TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-          hintText: 'Description',
-          prefixIcon: Icon(
-            Icons.text_fields,
-            color: Color.fromARGB(255, 245, 146, 149),
+    return Form(
+          key: _formfield,
+      child: Column(children: [
+        // Material(
+        //     child: Obx(
+        //   () => Container(
+        //     width: 300,
+        //     child: DropdownButton<String>(
+        //         items: controller.Contents.map<DropdownMenuItem<String>>(
+        //           (String value) {
+        //             return DropdownMenuItem<String>(
+        //               value: value,
+        //               child: Text(
+        //                 value,
+        //                 style: TextStyle(
+        //                     color: Colors.black45, fontWeight: FontWeight.bold),
+        //               ),
+        //             );
+        //           },
+        //         ).toList(),
+        //         isExpanded: true,
+        //         value: controller.Contents.first,
+        //         iconSize: 24,
+        //         elevation: 16,
+        //         onChanged: (String? newval) {
+        //           controller.updatepost.value.content!.typeName!=newval;
+        //           controller.Contents.value.first.typeName= newval!;
+        //         }),
+        //   ),
+        // )),
+        Center(
+            child: Column(
+          children: [
+            SizedBox(width: 170),
+              Material(child: Imageprofile(controller)),
+          ],
+        )),
+        Material(
+            child: Container(
+          width: 300,
+          child: TextFormField(
+            controller: _controller,
+              decoration: InputDecoration(
+            labelText: 'Description',
+            labelStyle:
+                TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+            hintText: 'Description',
+            prefixIcon: Icon(
+              Icons.text_fields,
+              color: Color.fromARGB(255, 245, 146, 149),
+            ),
           ),
-        ),
-        onChanged: (value) {
-          controller.postidnew.value.Description=value;
-        },
-        ),
-      )),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shadowColor: Color.fromARGB(255, 42, 42, 114),
-              backgroundColor: Color.fromARGB(255, 42, 42, 114)),
-          onPressed: () {
-           controller.UpdatePost();
+             validator: (value) {
+                      if (value!.isEmpty ||
+                          !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                              .hasMatch(value)) {
+                        return "Enter Correct Text";
+                      } else {
+                        return null;
+                      }},
+          onChanged: (value) {
+            controller.postidnew.value.Description=value;
           },
-          child: Text(
-            'Save',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shadowColor: Color.fromARGB(255, 42, 42, 114),
+                backgroundColor: Color.fromARGB(255, 42, 42, 114)),
+            onPressed: () {
+                                            if (_formfield.currentState!.validate()) {
+                    print("Data Added Successfully");
+                   
+                  }
+             controller.UpdatePost();
+            },
+            child: Text(
+              'Save',
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
-      ),
-    ]);
+             Tooltip(
+                message: 'Help About Page',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(onPressed: (){
+                Get.dialog(Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: const Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help",
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(255, 42, 42, 114),
+                                                    decoration: TextDecoration.none),
+                                              ),
+                                            )),
+                                      ),
+                                               Padding(
+                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                                 child: Column(
+                                                             children: <Widget>[
+                                                               new Text(
+                                                                 controller.texteditpost,
+                                                                 textAlign: TextAlign.left,
+                                                                 style: TextStyle(
+                                                                     fontSize: 18,
+                                                                     decoration: TextDecoration.none,
+                                                                     fontWeight: FontWeight.bold,
+                                                                     color: Colors.black87),
+                                                               ),
+                                                             ],
+                                                           ),
+                                               ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                ));
+                    }, icon: Icon(Icons.help_outline_outlined,
+                    size: 30,
+                    color:Color.fromARGB(255, 246, 123, 127) ,)),
+                  ),
+                ),
+              )
+      ]),
+    );
   }
 
   Widget Imageprofile(ProfileController controller) {

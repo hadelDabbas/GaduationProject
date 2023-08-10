@@ -20,7 +20,11 @@ class PermissionController extends GetxController{
    final  AllGroups=<Group>[].obs;
    final  AllUser=<User>[].obs;
    final currentUser=User().obs;
+   // final userAccssebility1=UserAccessibility().obs;
    final userAccssebility=UserAccessibility().obs;
+   final listuserAccssebility=<UserAccessibility>[].obs;
+   final text='In this interface, the admin gives a new authority to a user he wants';
+   final textdel='Here the main admin can remove any permission he previously granted to a specific user';
  @override
   void onInit() {
     super.onInit();
@@ -30,9 +34,14 @@ class PermissionController extends GetxController{
    Future<void> GetUser() async {
     user.value = auth.getDataFromStorage()!;
   }
-   Future <void> getAllPremission() async{
-    var data = await perRepo.GetPermission();
-   listpermissin .assignAll(data );
+  //  Future <void> getAllPremission() async{
+  //   var data = await perRepo.GetPermission();
+  //  listpermissin .assignAll(data );
+
+  // }
+     Future <void> getGetUserPermission(int iduser) async{
+    var data = await perRepo.GetUserPermission(iduser);
+   listuserAccssebility .assignAll(data );
 
   }
     Future <void> getAllGroups() async{
@@ -48,6 +57,19 @@ class PermissionController extends GetxController{
     var data = await perRepo.GetAllUser();
 AllUser.assignAll(data );
 
+  }
+    Future<void> delUserpremission(UserAccessibility u) async {
+    var res = await perRepo.DelUserAccessibility(u);
+    if (res) {
+    
+    }
+  }
+  
+  Future<void> addUserpremissiont(UserAccessibility u) async {
+    var res = await perRepo.AddUserAccessibility(u);
+    if (res) {
+      Get.back();
+    }
   }
 
 

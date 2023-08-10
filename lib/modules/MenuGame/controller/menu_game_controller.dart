@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class MenuGameController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late AnimationController ancontroller;
+  final text='In this interface, you will display all the existing games, where each game has three levels, and each level has three stages';
   late Animation<double> animation;
   static MenuGameController get find => Get.find();
   var level=''.obs;

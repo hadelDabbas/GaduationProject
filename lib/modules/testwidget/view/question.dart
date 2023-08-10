@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/Answer.dart';
 
 import '../controller/test_controller.dart';
 
@@ -16,6 +17,19 @@ class QuestionPageView extends GetResponsiveView<TestController> {
       child: Container(
         child: Column(
           children: [
+               Material(
+                child: InkWell(
+                  onTap: () => Get.back(),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.arrow_back_ios,
+                          size: 20, color: Colors.grey),
+                    ),
+                  ),
+                ),
+              ),
             Text(controller.nowTest.value.content!.typeName.toString(),
                 style: TextStyle(
                     fontSize: 30,
@@ -23,6 +37,10 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                     decoration: TextDecoration.none,
                     color: Color.fromARGB(255, 42, 42, 114),
                     fontFamily: "Pacifico")),
+                    Column(
+                      children: controller.ListTestByContent.map((e) => shapeQuestion(e.test!.test.toString(),
+                      e.answers!)).toList()
+                    ),
             // Column(
             //     children: controller.AllQustion.map((element) =>
             //         shapeQuestion(element, element.AllChose)).toList()),
@@ -81,7 +99,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                                 decoration: TextDecoration.none),
                                           ),
                                           Text(
-                                            controller.AllQustion.length.toString(),
+                                            controller.numberQustion.toString(),
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -123,7 +141,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "The Answer ",
+                                    "The Correct Answer ",
                                     style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -133,9 +151,9 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                   ),
                                 )),
                                  Column(
-                                  children: controller.AllQustion.map((element) => Padding(
+                                  children: controller.ListCorrectvalue.map((element) => Padding(
                                     padding: const EdgeInsets.all(6),
-                                    child: Text(element.cor.toString(),style: 
+                                    child: Text(element.toString(),style: 
                                      TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -169,7 +187,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
     );
   }
 
-  Widget shapeQuestion(Question Q, List<String> chose) {
+  Widget shapeQuestion(String q, List<Answer> chose) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: Container(
@@ -186,7 +204,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.all(5),
-                child: Text(Q.Qustion.toString(),
+                child: Text(q,
                     style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
@@ -196,7 +214,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
               ),
             ),
             Column(
-                children: Q.AllChose.map((e) => Row(
+                children: chose.map((e) => Row(
                       children: [
                         Material(
                             child: Obx(
@@ -205,10 +223,11 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                               fillColor: MaterialStateProperty.all(
                              Color.fromARGB(255, 42, 42, 114),
                               ),
-                              value: e.toString(),
+                              value: e.answer.toString(),
+                              // groupValue: e.answer.toString(),
                               groupValue: controller.selectedvalue.value,
                               onChanged: (value) {
-                                controller.onChangevalue(value, Q.cor);
+                                controller.onChangevalue(value, e.CorrectAnswer);
                               }),
                         )),
                         SizedBox(

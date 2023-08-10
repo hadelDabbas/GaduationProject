@@ -13,6 +13,7 @@ import '../controller/group_controller.dart';
 
 class EditGrpoup extends GetResponsiveView<GroupController> {
   GroupController controller = Get.put(GroupController());
+  final _formfield = GlobalKey<FormState>();
   Uint8List? image;
    List<String> Contents = [
     'History',
@@ -25,191 +26,239 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
   Widget builder() {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Material(
-                  child: InkWell(
-                    onTap: () => Get.back(),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 20, color: Colors.grey),
+        child: Form(
+          key: _formfield,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Material(
+                    child: InkWell(
+                      onTap: () => Get.back(),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(Icons.arrow_back_ios,
+                              size: 20, color: Colors.grey),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 100,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        " Update  Group ",
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Pacifico",
+                            color: Color.fromARGB(255, 42, 42, 114),
+                            decoration: TextDecoration.none),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Center(
+                  child: Column(
+                children: [
+                  SizedBox(width: 170),
+                  Material(child: Imageprofile(controller)),
+                ],
+              )),
+                         Material(
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GFAccordion(
+                      title: controller.currentGroup.value.content!.typeName.toString(),
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                          decoration: TextDecoration.none),
+                      contentChild: Column(
+                        children: controller.contents
+                            .map((element) => TextButton(
+                                onPressed: () {
+                                  controller.currentGroup.value.content = element;
+                                },
+                                child: Text(element.typeName.toString(),   style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                              decoration: TextDecoration.none))))
+                            .toList(),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 100,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      " Update  Group ",
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Pacifico",
-                          color: Color.fromARGB(255, 42, 42, 114),
-                          decoration: TextDecoration.none),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Center(
-                child: Column(
-              children: [
-                SizedBox(width: 170),
-                Material(child: Imageprofile(controller)),
-              ],
-            )),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: Material(
-                       child: Container(
-                     width: 450,
-                     child: TextFormField(
-                   initialValue: controller.currentGroup.value.groupName,
-                decoration: InputDecoration(
-                  
-                       labelText: 'Edit Name Group',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Name Group',
-                       prefixIcon: Icon(
-                Icons.abc_outlined,
-                color: Color.fromARGB(255, 245, 146, 149),
-                       ),
-                     ),
-                     onChanged: (value) {
-                       controller.currentGroup.value.groupName=value;
-                     },
-                     ),
-                   )),
-             ),
-                      Material(
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Color.fromARGB(255, 194, 192, 192)),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: GFAccordion(
-                    title: controller.currentGroup.value.content!.typeName.toString(),
-                    textStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 246, 123, 127),
-                        decoration: TextDecoration.none),
-                    contentChild: Column(
-                      children: controller.contents
-                          .map((element) => TextButton(
-                              onPressed: () {
-                                controller.currentGroup.value.content = element;
-                              },
-                              child: Text(element.typeName.toString(),   style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black54,
-                                            decoration: TextDecoration.none))))
-                          .toList(),
-                    ),
-                  ),
-                ),
               ),
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Material(
-            //   child: Obx(
-            //         () => Container(
-            //   width: 450,
-            //   child: DropdownButton<String>(
-            //       items: Contents.map<DropdownMenuItem<String>>(
-            //         (String value) {
-            //           return DropdownMenuItem<String>(
-            //             value: value,
-            //             child: Text(
-            //               value,
-            //               style: TextStyle(
-            //                   color: Colors.black45, fontWeight: FontWeight.bold),
-            //             ),
-            //           );
-            //         },
-            //       ).toList(),
-            //       isExpanded: true,
-            //       value: controller.dropdownvalue.value,
-            //       iconSize: 24,
-            //       elevation: 16,
-            //       onChanged: (String? newval) {
-            //         controller.dropdownvalue.value = newval!;
-            //       }),
-            //         ),
-            //       )),
-            // ),
-                Container(
-                  width: 450,
-                  child: TextFormField(
-                     initialValue: controller.currentGroup.value.Description,
-                      decoration: InputDecoration(
-                       labelText: ' Edit  Descrintion About Group',
-                       labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-                       hintText: 'Descrintion About Group',
-                       prefixIcon: Icon(
-                Icons.text_fields,
-                color: Color.fromARGB(255, 245, 146, 149),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Material(
+                         child: Container(
+                       width: 450,
+                       child: TextFormField(
+                     initialValue: controller.currentGroup.value.groupName,
+                  decoration: InputDecoration(
+                    
+                         labelText: 'Edit Name Group',
+                         labelStyle:
+                    TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+                         hintText: 'Name Group',
+                         prefixIcon: Icon(
+                  Icons.abc_outlined,
+                  color: Color.fromARGB(255, 245, 146, 149),
+                         ),
                        ),
-                     ),
-                    keyboardType: TextInputType.multiline,
-                    minLines: 1,//Normal textInputField will be displayed
-                    maxLines: 5,// when user presses enter it will adapt to it
-                    onChanged: (value) {
-                   controller.currentGroup.value.Description=value;
-                    },
-                    ),
-                ),
-                SizedBox(height: 10),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Align(
-                //     alignment: Alignment.topRight,
-                //     child: TextButton(onPressed: (){
-                //      Get.to(EditPostgroupview());
-                //     }, child: Text('Are You Want To Edit post ? ',style: TextStyle(
-                //       color: Colors.black54,
-                //       fontSize: 16,
-                //       fontWeight: FontWeight.bold
-                //     ),)),
-                //   ),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                  onPressed: () {
-                  controller.UpdateGroup();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:Color.fromARGB(255, 245, 146, 149) ,
-                      shape: RoundedRectangleBorder(
-                        //backgroundColor:Colors.accents,
-                          borderRadius: BorderRadius.circular(30)),
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
-                          ,
-                  child: const Text(
-                    'Edit Group',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                       onChanged: (value) {
+                         controller.currentGroup.value.groupName=value;
+                       },
+                           validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                            .hasMatch(value)) {
+                      return "Enter Correct Name Group";
+                    } else {
+                      return null;
+                    }},
+                       ),
+                     )),
+               ),
+             
+                  Container(
+                    width: 450,
+                    child: TextFormField(
+                       initialValue: controller.currentGroup.value.Description,
+                        decoration: InputDecoration(
+                         labelText: ' Edit  Descrintion About Group',
+                         labelStyle:
+                    TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+                         hintText: 'Descrintion About Group',
+                         prefixIcon: Icon(
+                  Icons.text_fields,
+                  color: Color.fromARGB(255, 245, 146, 149),
+                         ),
+                       ),
+                      keyboardType: TextInputType.multiline,
+                      minLines: 1,//Normal textInputField will be displayed
+                      maxLines: 5,// when user presses enter it will adapt to it
+                      onChanged: (value) {
+                     controller.currentGroup.value.Description=value;
+                      },
+                                validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                            .hasMatch(value)) {
+                      return "Enter Correct Descrption";
+                    } else {
+                      return null;
+                    }},
+                      ),
                   ),
+                  SizedBox(height: 10),
+            
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                    onPressed: () {
+                       if (_formfield.currentState!.validate()) {
+                    print("Data Added Successfully");
+                    controller.UpdateGroup();
+                     } },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:Color.fromARGB(255, 245, 146, 149) ,
+                        shape: RoundedRectangleBorder(
+                          //backgroundColor:Colors.accents,
+                            borderRadius: BorderRadius.circular(30)),
+                        padding:
+                            const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
+                            ,
+                    child: const Text(
+                      'Edit Group',
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                              ),
+                  ),
+                   Tooltip(
+                message: 'Help About Page',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(onPressed: (){
+                Get.dialog(Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: const Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help",
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(255, 42, 42, 114),
+                                                    decoration: TextDecoration.none),
+                                              ),
+                                            )),
+                                      ),
+                                               Padding(
+                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                                 child: Column(
+                                                             children: <Widget>[
+                                                               new Text(
+                                                                 controller.texteditg,
+                                                                 textAlign: TextAlign.left,
+                                                                 style: TextStyle(
+                                                                     fontSize: 18,
+                                                                     decoration: TextDecoration.none,
+                                                                     fontWeight: FontWeight.bold,
+                                                                     color: Colors.black87),
+                                                               ),
+                                                             ],
+                                                           ),
+                                               ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
+                ));
+                    }, icon: Icon(Icons.help_outline_outlined,
+                    size: 30,
+                    color:Color.fromARGB(255, 246, 123, 127) ,)),
+                  ),
                 ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -15,6 +15,7 @@ import 'updatebook.dart';
 
 class Librarypage extends GetResponsiveView<LibraryContrller> {
   LibraryContrller contrller = Get.put(LibraryContrller());
+   final _formfield = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,86 +35,235 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              child: Row(children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 450,
-                        child: TextField(
-                            decoration: InputDecoration(
-                                labelText: 'search',
-                                labelStyle: const TextStyle(
-                                    color: Color.fromARGB(255, 184, 183, 183),
-                                    fontWeight: FontWeight.bold),
-                                hintText: 'search',
-                                prefixIcon: const Icon(
-                                  Icons.search,
-                                  color: Color.fromARGB(255, 245, 146, 149),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      width: 3,
-                                      color:
-                                          Color.fromARGB(255, 245, 146, 149)),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      width: 3,
-                                      color:
-                                          Color.fromARGB(255, 245, 146, 149)),
-                                  borderRadius: BorderRadius.circular(15),
-                                )))),
+        child: Form(
+                     key: _formfield,
+          child: Column(
+            children: [
+              Container(
+                child: Row(children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                          width: 450,
+                          child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'search',
+                                  labelStyle: const TextStyle(
+                                      color: Color.fromARGB(255, 184, 183, 183),
+                                      fontWeight: FontWeight.bold),
+                                  hintText: 'search',
+                                  prefixIcon: const Icon(
+                                    Icons.search,
+                                    color: Color.fromARGB(255, 245, 146, 149),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        width: 3,
+                                        color:
+                                            Color.fromARGB(255, 245, 146, 149)),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        width: 3,
+                                        color:
+                                            Color.fromARGB(255, 245, 146, 149)),
+                                    borderRadius: BorderRadius.circular(15),
+                                  )))),
+                    ),
+                  )
+                ]),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextCategory('Authour'),
+                  TextCategory('Category'),
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Wrap(
+                  children: contrller.Booklist.map((element) => shapCard(
+                      element.writer.toString(),
+                      element.book!.bookName.toString(),
+                      element.book!.bookImage!,
+                      element.book!.bookPrice.toString(),
+                      contrller,
+                      element.Type.toString(),
+                      element)).toList()
+                  //     [
+                  //   shapCard('Ali Najm', 'بالنيابة عنهم', 'assets/images/ali1.png',
+                  //       '700\$', controller),
+                  //   shapCard('Ahmad Shokari', 'اربعون', 'assets/images/ahmad1.png',
+                  //       '1000\$', controller),
+                  //   shapCard('Ahlam Mastganmi', 'فوضى الحواس',
+                  //       'assets/images/ahlam2.png', '600\$', controller),
+                  //   shapCard('Ahlam Mastganmi', 'الاسود يليق بك',
+                  //       'assets/images/ahlam1.png', '1000\$', controller),
+                  //   shapCard('Ahmad Shokari', 'رحلتي مع غاندي',
+                  //       'assets/images/ahmad2.png', '300\$', controller),
+                  //   shapCard('Ali Najm', 'خيال', 'assets/images/ali3.png', '500\$',
+                  //       controller),
+                  //   shapCard('Ali Najm', 'زحمه حكي', 'assets/images/ali2.png',
+                  //       '900\$', controller),
+                  // ],
                   ),
-                )
-              ]),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextCategory('Authour'),
-                TextCategory('Category'),
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Wrap(
-                children: contrller.Booklist.map((element) => shapCard(
-                    element.writer.toString(),
-                    element.book!.bookName.toString(),
-                    element.book!.bookImage!,
-                    element.book!.bookPrice.toString(),
-                    contrller,
-                    element.Type.toString(),
-                    element)).toList()
-                //     [
-                //   shapCard('Ali Najm', 'بالنيابة عنهم', 'assets/images/ali1.png',
-                //       '700\$', controller),
-                //   shapCard('Ahmad Shokari', 'اربعون', 'assets/images/ahmad1.png',
-                //       '1000\$', controller),
-                //   shapCard('Ahlam Mastganmi', 'فوضى الحواس',
-                //       'assets/images/ahlam2.png', '600\$', controller),
-                //   shapCard('Ahlam Mastganmi', 'الاسود يليق بك',
-                //       'assets/images/ahlam1.png', '1000\$', controller),
-                //   shapCard('Ahmad Shokari', 'رحلتي مع غاندي',
-                //       'assets/images/ahmad2.png', '300\$', controller),
-                //   shapCard('Ali Najm', 'خيال', 'assets/images/ali3.png', '500\$',
-                //       controller),
-                //   shapCard('Ali Najm', 'زحمه حكي', 'assets/images/ali2.png',
-                //       '900\$', controller),
-                // ],
-                ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shadowColor: Color.fromARGB(255, 42, 42, 114),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 20),
+                              shape: const CircleBorder(),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 245, 146, 149)),
+                          onPressed: () {
+                            Get.dialog(Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border:
+                                          Border.all(color: Colors.blueAccent)),
+                                  width: 400,
+                                  height: 260,
+                                  child: Column(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Text(
+                                        " Input Information To Buy ",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "Pacifico",
+                                            color: Color.fromARGB(255, 42, 42, 114),
+                                            decoration: TextDecoration.none),
+                                      ),
+                                    ),
+                                    Material(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: SizedBox(
+                                          width: 350,
+                                          height: 60,
+                                          child: TextFormField(
+                      validator: (value) {
+                  if (value!.isEmpty ||
+                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                    return "Enter Correct Adress";
+                  } else {
+                    return null;
+                  }
+                },
+                                            decoration: const InputDecoration(
+                                              prefixIcon: Icon(Icons.location_on),
+                                              labelText: 'Input Location',
+                                              labelStyle: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            onChanged: (value) {
+                                              contrller.buybook.value.address =
+                                                  value;
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Material(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: SizedBox(
+                                          width: 350,
+                                          height: 60,
+                                          child: TextFormField(
+                                            decoration: const InputDecoration(
+                                              prefixIcon: Icon(Icons.money),
+                                              labelText: 'Input PayBal',
+                                              labelStyle: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            onChanged: (value) {
+                                              if (contrller.user.value.Paypal ==
+                                                  value) {
+                                                contrller.staute.value = 'A';
+                                              } else {
+                                                contrller.staute.value = 'B';
+                                              }
+                                              value;
+                                            },
+                                            validator: (value) {
+                                              if (value!.isEmpty ||
+                                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                                      .hasMatch(value)) {
+                                                return "Enter Correct Paybal";
+                                              } else {
+                                                return null;
+                                              }
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: GFButton(
+                                        onPressed: () {
+                                                                                  if (_formfield.currentState!.validate()) {
+                    print("Data Added Successfully");
+                   
+                                        
+                                          if (contrller.staute.value == 'A') {
+                                            Baket();
+                                          } else {
+                                            Get.snackbar(
+                                              'Error ',
+                                              "Sure From PayBal",
+                                              //  icon: Icon(Icons.person, color: Colors.white),
+                                              snackPosition: SnackPosition.BOTTOM,
+                                              backgroundColor: Color.fromARGB(
+                                                  255, 246, 123, 127),
+                                              borderRadius: 20,
+                                              margin: EdgeInsets.all(15),
+                                              colorText: Colors.white,
+                                              duration: Duration(seconds: 4),
+                                              isDismissible: true,
+                                              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                              forwardAnimationCurve:
+                                                  Curves.easeOutBack,
+                                            );
+                                          }
+                                                                                  }
+                                          //Get.back();
+                                        },
+                                        text: "Input",
+                                        color: Color.fromARGB(255, 42, 42, 114),
+                                        shape: GFButtonShape.pills,
+                                      ),
+                                    ),
+                                  ]),
+                                )));
+                          },
+                          child: const Icon(
+                            AppIconn.shopping_cart,
+                            color: Colors.white,
+                            size: 25,
+                          )),
+                    ),
+                  ),
+                  Align(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -125,187 +275,120 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 const Color.fromARGB(255, 245, 146, 149)),
                         onPressed: () {
                           Get.dialog(Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: 450,
+                              height: 500,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Align(
+                                        alignment: Alignment.center,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "Add Book  ",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: "Pacifico",
+                                                color: Color.fromARGB(255, 42, 42, 114),
+                                                decoration: TextDecoration.none),
+                                          ),
+                                        )),
+                                    Container(
+                                      child: Addbookpage22(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ));
+                        },
+                        child: const Icon(
+                          Icons.bookmark_add,
+                          color: Colors.white,
+                          size: 25,
+                        )),
+                  )
+                ],
+              ),
+                Tooltip(
+                message: 'Help About Page',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(onPressed: (){
+                Get.dialog(Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
                               alignment: Alignment.center,
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border:
-                                        Border.all(color: Colors.blueAccent)),
-                                width: 400,
-                                height: 260,
-                                child: Column(children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: const Text(
-                                      " Input Information To Buy ",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: "Pacifico",
-                                          color: Color.fromARGB(255, 42, 42, 114),
-                                          decoration: TextDecoration.none),
-                                    ),
-                                  ),
-                                  Material(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SizedBox(
-                                        width: 350,
-                                        height: 60,
-                                        child: TextFormField(
-                                          decoration: const InputDecoration(
-                                            prefixIcon: Icon(Icons.location_on),
-                                            labelText: 'Input Location',
-                                            labelStyle: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 246, 123, 127),
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          onChanged: (value) {
-                                            contrller.buybook.value.address =
-                                                value;
-                                          },
-                                        ),
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
                                       ),
-                                    ),
-                                  ),
-                                  Material(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SizedBox(
-                                        width: 350,
-                                        height: 60,
-                                        child: TextFormField(
-                                          decoration: const InputDecoration(
-                                            prefixIcon: Icon(Icons.money),
-                                            labelText: 'Input PayBal',
-                                            labelStyle: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 246, 123, 127),
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          onChanged: (value) {
-                                            if (contrller.user.value.Paypal ==
-                                                value) {
-                                              contrller.staute.value = 'A';
-                                            } else {
-                                              contrller.staute.value = 'B';
-                                            }
-                                            value;
-                                          },
-                                          validator: (value) {
-                                            if (value!.isEmpty ||
-                                                !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                                                    .hasMatch(value)) {
-                                              return "Enter Correct Paybal";
-                                            } else {
-                                              return null;
-                                            }
-                                          },
-                                        ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: const Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help",
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(255, 42, 42, 114),
+                                                    decoration: TextDecoration.none),
+                                              ),
+                                            )),
                                       ),
-                                    ),
+                                               Padding(
+                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                                 child: Column(
+                                                             children: <Widget>[
+                                                               new Text(
+                                                                 controller.textlibrary,
+                                                                 textAlign: TextAlign.left,
+                                                                 style: TextStyle(
+                                                                     fontSize: 18,
+                                                                     decoration: TextDecoration.none,
+                                                                     fontWeight: FontWeight.bold,
+                                                                     color: Colors.black87),
+                                                               ),
+                                                             ],
+                                                           ),
+                                               ),
+                                    ],
                                   ),
-                                  Center(
-                                    child: GFButton(
-                                      onPressed: () {
-                                        if (contrller.staute.value == 'A') {
-                                          Baket();
-                                        } else {
-                                          Get.snackbar(
-                                            'Error ',
-                                            "Sure From PayBal",
-                                            //  icon: Icon(Icons.person, color: Colors.white),
-                                            snackPosition: SnackPosition.BOTTOM,
-                                            backgroundColor: Color.fromARGB(
-                                                255, 246, 123, 127),
-                                            borderRadius: 20,
-                                            margin: EdgeInsets.all(15),
-                                            colorText: Colors.white,
-                                            duration: Duration(seconds: 4),
-                                            isDismissible: true,
-                                            //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-                                            forwardAnimationCurve:
-                                                Curves.easeOutBack,
-                                          );
-                                        }
-
-                                        //Get.back();
-                                      },
-                                      text: "Input",
-                                      color: Color.fromARGB(255, 42, 42, 114),
-                                      shape: GFButtonShape.pills,
-                                    ),
-                                  ),
-                                ]),
-                              )));
-                        },
-                        child: const Icon(
-                          AppIconn.shopping_cart,
-                          color: Colors.white,
-                          size: 25,
-                        )),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shadowColor: Color.fromARGB(255, 42, 42, 114),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
-                          shape: const CircleBorder(),
-                          backgroundColor:
-                              const Color.fromARGB(255, 245, 146, 149)),
-                      onPressed: () {
-                        Get.dialog(Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: 450,
-                            height: 500,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.blueAccent)),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "Add Book  ",
-                                          style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "Pacifico",
-                                              color: Color.fromARGB(255, 42, 42, 114),
-                                              decoration: TextDecoration.none),
-                                        ),
-                                      )),
-                                  Container(
-                                    child: Addbookpage22(),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
-                          ),
-                        ));
-                      },
-                      child: const Icon(
-                        Icons.bookmark_add,
-                        color: Colors.white,
-                        size: 25,
-                      )),
-                )
-              ],
-            ),
-          ],
+                ));
+                    }, icon: Icon(Icons.help_outline_outlined,
+                    size: 30,
+                    color:Color.fromARGB(255, 246, 123, 127) ,)),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -582,6 +665,73 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         ),
                       ),
                     ),
+                      Tooltip(
+              message: 'Help About Page',
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(onPressed: (){
+              Get.dialog(Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: Colors.blueAccent)),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Help",
+                                              style: TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(255, 42, 42, 114),
+                                                  decoration: TextDecoration.none),
+                                            ),
+                                          )),
+                                    ),
+                                             Padding(
+                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                                               child: Column(
+                                                           children: <Widget>[
+                                                             new Text(
+                                                               controller.textbook,
+                                                               textAlign: TextAlign.left,
+                                                               style: TextStyle(
+                                                                   fontSize: 18,
+                                                                   decoration: TextDecoration.none,
+                                                                   fontWeight: FontWeight.bold,
+                                                                   color: Colors.black87),
+                                                             ),
+                                                           ],
+                                                         ),
+                                             ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+              ));
+                  }, icon: Icon(Icons.help_outline_outlined,
+                  size: 30,
+                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                ),
+              ),
+            )
                   ],
                 ),
               ),

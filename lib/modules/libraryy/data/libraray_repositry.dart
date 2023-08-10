@@ -179,7 +179,7 @@ class LibraryRepository implements ILibraryRepository {
   ///////
   @override
   Future<int> BackIdBook(String namebook)async {
-      var result = await _dio.get('https://localhost:7252/api/Book/AddBook',
+      var result = await _dio.get('https://localhost:7252/api/Book/GetBookId',
         queryParameters: {'bookName':namebook});
          return int.parse(result as String).toInt();
   }

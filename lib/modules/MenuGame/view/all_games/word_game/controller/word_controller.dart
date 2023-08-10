@@ -14,7 +14,7 @@ import 'package:get/get.dart';
   var count8=0.obs;  
   var count9=0.obs;
   var score=0.obs;
-
+final text1='In this game a picture will appear and you must find out all the words that can apply to the picture';
    List <String> letters=['ح','ج','ث','ت','ب','ا','س','ز','ر','ذ','د','خ','ع','ظ','ط','ض','ص','ش','م','ل',
   'ك','ق','ف','غ','ة','ء','ي','ه','و','ن',]; 
    RxDouble width =50.0.obs;
