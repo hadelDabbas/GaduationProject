@@ -94,10 +94,10 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
-                                        const Padding(
+                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            'Groups',
+                                            'Groups'.tr,
                                             style: TextStyle(
                                                 fontSize: 24,
                                                 fontFamily: "Pacifico",
@@ -154,10 +154,10 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              'Follow',
+                                              'Follow'.tr,
                                               style: TextStyle(
                                                   fontSize: 24,
                                                   fontFamily: "Pacifico",
@@ -181,8 +181,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     )),
                               ));
                             },
-                            child: const Text(
-                              'Follow',
+                            child: Text(
+                              'Follow'.tr,
                               style: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
@@ -205,10 +205,10 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              'Followed',
+                                              'Followed'.tr,
                                               style: TextStyle(
                                                   fontSize: 24,
                                                   fontFamily: "Pacifico",
@@ -238,8 +238,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     )),
                               ));
                             },
-                            child: const Text(
-                              'Followed',
+                            child:  Text(
+                              'Followed'.tr,
                               style: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
@@ -255,12 +255,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
             const SizedBox()
           ],
         ),
-        const Padding(
+         Padding(
           padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
           child: Align(
               alignment: Alignment.topLeft,
               child: Text(
-                'About :',
+                'About:'.tr,
                 style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Color.fromARGB(255, 42, 42, 114),
@@ -483,12 +483,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        const Align(
+                                       Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Edit post : ",
+                                                "Editpost".tr,
                                                 style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -526,9 +526,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                           color: Color.fromARGB(255, 42, 42, 114), width: 2)),
                                   child: Column(
                                     children: [
-                                      const Center(
+                                       Center(
                                         child: Text(
-                                          'Are You Sure ?',
+                                          'AreSureToRemove?'.tr,
                                           style: TextStyle(
                                               color: Color.fromARGB(255, 42, 42, 114),
                                               fontSize: 18,
@@ -544,8 +544,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                               onPressed: () {
                                                 controller.DeletPost(post.Id!);
                                               },
-                                              child: const Text(
-                                                'Yes',
+                                              child:  Text(
+                                                'Yes'.tr,
                                                 style: TextStyle(
                                                     decoration:
                                                         TextDecoration.none),
@@ -554,8 +554,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                               onPressed: () {
                                                 Get.back();
                                               },
-                                              child: const Text(
-                                                'No',
+                                              child:  Text(
+                                                'No'.tr,
                                                 style: TextStyle(
                                                     decoration:
                                                         TextDecoration.none),
@@ -662,7 +662,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 ),
               ),
                    Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -685,12 +685,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -785,7 +785,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     // controller.followdelete.value.followedId=user.Id;
                     controller.Delefolloewd(user.Id!);
                     },
-                    text: "remove",
+                    text: "remove".tr,
                     textStyle: const TextStyle(color: Colors.black54),
                     icon: const Icon(
                       Icons.delete,

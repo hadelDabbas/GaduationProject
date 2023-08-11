@@ -38,10 +38,10 @@ class signupage extends GetResponsiveView<SignUpController> {
             width: 10,
             height: 25,
           ),
-          const Align(
+           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              '   Sign Up',
+              'SignUp'.tr,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
@@ -56,7 +56,7 @@ class signupage extends GetResponsiveView<SignUpController> {
           Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
               child: Text(
-                'Create Your Account',
+                'CreateYourAccount'.tr,
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.grey[600]),
               )),
@@ -77,7 +77,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.person_outline,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter YourName',
+                    labelText: 'EnterYourName'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -95,7 +95,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                   // for number
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Name";
+                    return "EnterCorrectName".tr;
                   } else {
                     return null;
                   }
@@ -113,7 +113,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.person_outline,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter UserName',
+                    labelText: 'EnterUserName'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -130,7 +130,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                 validator: (value) {
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct UserName";
+                    return "EnterCorrectUserName".tr;
                   } else {
                     return null;
                   }
@@ -153,7 +153,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                             Icons.date_range,
                             color: Color.fromARGB(255, 246, 123, 127),
                           ),
-                          labelText: 'Date Birth',
+                          labelText: 'DateBirth'.tr,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                                 width: 3,
@@ -182,7 +182,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.email,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter Email',
+                    labelText: 'EnterEmail'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -201,9 +201,9 @@ class signupage extends GetResponsiveView<SignUpController> {
                           r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(value!);
                   if (value.isEmpty) {
-                    return " Enter Email";
+                    return " EnterEmail".tr;
                   } else if (!emailvalue) {
-                    return " Enter Correct Email";
+                    return " EnterCorrectEmail".tr;
                   }
                   return null;
                 },
@@ -232,7 +232,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                               ? Icons.visibility
                               : Icons.visibility_off),
                         ),
-                        labelText: 'Enter Password',
+                        labelText: 'EnterPassword'.tr,
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               width: 3,
@@ -250,9 +250,9 @@ class signupage extends GetResponsiveView<SignUpController> {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Enter Password";
+                        return "EnterPassword".tr;
                       } else if (passcontroller.text.length < 6) {
-                        return "Password Length Should Be More Than 6 Charachters";
+                        return "PasswordLengthShouldBeMoreThan6Charachters".tr;
                       }
                       return null;
                     },
@@ -269,7 +269,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.cast_for_education,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter Education',
+                    labelText: 'EnterEducation'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -286,7 +286,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                 validator: (value) {
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Education";
+                    return "EnterCorrectEducation".tr;
                   } else {
                     return null;
                   }
@@ -304,7 +304,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.location_city,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter Adress',
+                    labelText: 'EnterAdress'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -321,7 +321,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                 validator: (value) {
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Adress";
+                    return "EnterCorrectAdress".tr;
                   } else {
                     return null;
                   }
@@ -339,7 +339,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       Icons.money,
                       color: Color.fromARGB(255, 246, 123, 127),
                     ),
-                    labelText: 'Enter PayBal',
+                    labelText: 'EnterPayBal'.tr,
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -357,7 +357,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                   if (value!.isEmpty ||
                       !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                           .hasMatch(value)) {
-                    return "Enter Correct Paybal";
+                    return "EnterCorrectPaybal".tr;
                   } else {
                     return null;
                   }
@@ -385,14 +385,14 @@ class signupage extends GetResponsiveView<SignUpController> {
                       borderRadius: BorderRadius.circular(30)),
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 50)),
-              child: const Text(
-                'Confirm',
+              child:  Text(
+                'Confirm'.tr,
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
           ),
           Tooltip(
-            message: 'Help About Page',
+            message: 'HelpAboutPage'.tr,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -414,14 +414,14 @@ class signupage extends GetResponsiveView<SignUpController> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Help",
+                                            "Help".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,
@@ -517,9 +517,9 @@ void openBottomSheet(SignUpController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+       Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePhoto'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -529,23 +529,23 @@ void openBottomSheet(SignUpController controller) {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: [
-                  FloatingActionButton(
-                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
-                    foregroundColor: Colors.white,
-                    mini: true,
-                    onPressed: () {
-                      controller.pickImageFun();
-                    },
-                    child: const Icon(Icons.camera),
-                  ),
-                  const Text('  Camera'),
-                ],
-              ),
-              const SizedBox(
-                width: 10,
-              ),
+              // Row(
+              //   children: [
+              //     FloatingActionButton(
+              //       backgroundColor: const Color.fromARGB(255, 246, 123, 127),
+              //       foregroundColor: Colors.white,
+              //       mini: true,
+              //       onPressed: () {
+              //         controller.pickImageFun();
+              //       },
+              //       child: const Icon(Icons.camera),
+              //     ),
+              //     const Text('Camera'),
+              //   ],
+              // ),
+              // const SizedBox(
+              //   width: 10,
+              // ),
               Row(
                 children: [
                   FloatingActionButton(
@@ -557,7 +557,7 @@ void openBottomSheet(SignUpController controller) {
                     },
                     child: const Icon(Icons.image),
                   ),
-                  const Text('  Gallery'),
+                   Text('Gallery'.tr),
                 ],
               )
             ],

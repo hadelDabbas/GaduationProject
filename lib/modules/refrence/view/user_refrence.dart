@@ -36,7 +36,7 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(96, 8, 8, 8),
                   child: Center(
-                    child: Text('Added Refrenceses',
+                    child: Text('AddedRefrenceses'.tr,
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
               children: controller.listAdmainrefrence.map((element) =>shapeUser( element.Admin!.Name.toString(),element)).toList()
             ),
                 Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -74,12 +74,12 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -212,8 +212,8 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                                       child: SingleChildScrollView(
                                           child: Column(
                                         children: [
-                                          const Text(
-                                            "Are Sure To Remove?",
+                                           Text(
+                                            "AreSureToRemove?".tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -236,8 +236,8 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                                                   
                                                  controller. DeleRefrence() ;
                                                       },
-                                                      child: const Text(
-                                                        'Yes',
+                                                      child:  Text(
+                                                        'Yes'.tr,
                                                         style: TextStyle(
                                                             color: Color.fromARGB(
                                                                 255,
@@ -249,8 +249,8 @@ class UserRefrencePageView extends GetResponsiveView<RerenceController> {
                                                       onPressed: () {
                                                         Get.back();
                                                       },
-                                                      child: const Text(
-                                                        'No',
+                                                      child:  Text(
+                                                        'No'.tr,
                                                         style: TextStyle(
                                                             color: Color.fromARGB(
                                                                 255,

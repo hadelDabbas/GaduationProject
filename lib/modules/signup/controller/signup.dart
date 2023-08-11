@@ -18,7 +18,7 @@ class SignUpController extends GetxController {
 
   final user = User().obs;
   final text =
-      'Here you can register your information in order to create an account';
+      'singuphelp'.tr;
 
   final ImagePicker imagepicker = ImagePicker();
   PickedFile? imagefile;

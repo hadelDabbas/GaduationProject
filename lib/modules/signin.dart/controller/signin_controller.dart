@@ -13,7 +13,7 @@ class SignIncontroller extends GetxController {
   final userSingn = User().obs;
   RxBool hidePassword = true.obs;
   final userRepo = SiginRepository();
-  final text='This is the login page if you already had an account, enter your email and password, otherwise create an accoun';
+  final text='siginhelp'.tr;
   final stroge = Get.find<StorageService>();
   final auth = Get.find<AuthService>();
   var email = ''.obs;

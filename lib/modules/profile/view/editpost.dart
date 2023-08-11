@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:graduationproject/modules/content/view/content.dart';
 import 'package:graduationproject/modules/libraryy/view/library.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,33 +31,40 @@ class EditPostview extends GetResponsiveView<ProfileController> {
     return Form(
           key: _formfield,
       child: Column(children: [
-        // Material(
-        //     child: Obx(
-        //   () => Container(
-        //     width: 300,
-        //     child: DropdownButton<String>(
-        //         items: controller.Contents.map<DropdownMenuItem<String>>(
-        //           (String value) {
-        //             return DropdownMenuItem<String>(
-        //               value: value,
-        //               child: Text(
-        //                 value,
-        //                 style: TextStyle(
-        //                     color: Colors.black45, fontWeight: FontWeight.bold),
-        //               ),
-        //             );
-        //           },
-        //         ).toList(),
-        //         isExpanded: true,
-        //         value: controller.Contents.first,
-        //         iconSize: 24,
-        //         elevation: 16,
-        //         onChanged: (String? newval) {
-        //           controller.updatepost.value.content!.typeName!=newval;
-        //           controller.Contents.value.first.typeName= newval!;
-        //         }),
-        //   ),
-        // )),
+    
+         Material(
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 194, 192, 192)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: GFAccordion(
+                      title: "PostType".tr,
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                          decoration: TextDecoration.none),
+                      contentChild: Column(
+                        children: controller.Contents
+                            .map((element) => TextButton(
+                                onPressed: () {
+                              // controller.editpost.
+                                },
+                                child: Text(element.typeName.toString(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                        decoration: TextDecoration.none))))
+                            .toList(),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
         Center(
             child: Column(
           children: [
@@ -70,10 +78,10 @@ class EditPostview extends GetResponsiveView<ProfileController> {
           child: TextFormField(
             controller: _controller,
               decoration: InputDecoration(
-            labelText: 'Description',
+            labelText: 'Description'.tr,
             labelStyle:
                 TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-            hintText: 'Description',
+            hintText: 'Description'.tr,
             prefixIcon: Icon(
               Icons.text_fields,
               color: Color.fromARGB(255, 245, 146, 149),
@@ -83,7 +91,7 @@ class EditPostview extends GetResponsiveView<ProfileController> {
                       if (value!.isEmpty ||
                           !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                               .hasMatch(value)) {
-                        return "Enter Correct Text";
+                        return "EnterCorrectText".tr;
                       } else {
                         return null;
                       }},
@@ -106,13 +114,13 @@ class EditPostview extends GetResponsiveView<ProfileController> {
              controller.UpdatePost();
             },
             child: Text(
-              'Save',
+              'Save'.tr,
               style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),
              Tooltip(
-                message: 'Help About Page',
+                message: 'HelpAboutPage'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -135,12 +143,12 @@ class EditPostview extends GetResponsiveView<ProfileController> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: const Align(
+                                        child:  Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Help",
+                                                "Help".tr,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -231,9 +239,9 @@ void openBottomSheet( ProfileController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+         Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePhoto'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -243,24 +251,6 @@ void openBottomSheet( ProfileController controller) {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: [
-               FloatingActionButton(
-                backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                foregroundColor: Colors.white,
-                mini: true,
-                onPressed: () {
-               controller.pickImageFun();
-                },
-                child: Icon(Icons.camera),
-              ),
-              Text('  Camera'),
-                ],
-              ),
-             
-                SizedBox(
-            width: 10,
-          ),
           Row(children: [
                FloatingActionButton(
                 backgroundColor: Color.fromARGB(255, 246, 123, 127),
@@ -271,7 +261,7 @@ void openBottomSheet( ProfileController controller) {
                 },
                 child: Icon(Icons.image),
               ),
-                 Text('  Gallery'),
+                 Text('Gallery'.tr),
           ],)
               
             ],

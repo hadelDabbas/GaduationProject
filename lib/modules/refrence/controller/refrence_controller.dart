@@ -14,7 +14,7 @@ class RerenceController extends GetxController{
    final listAdmainrefrence=<RefrenceDto>[].obs;
    final textuser='';
    final valuetext=''.obs;
-    final textallrefrence='In this interface, all references are displayed, and the admin can know who added this reference and can delete it';
+    final textallrefrence='refrencehelp'.tr;
   final refrences=['IT Reference','Arabic Reference',
   // 'Math Reference',
   // 'Medical Reference','Chamistry  Reference','Phaysis  Reference'

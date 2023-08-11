@@ -35,9 +35,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
             const SizedBox(
               height: 15,
             ),
-            const Center(
+             Center(
               child: Text(
-                'Welcome',
+                'welcom'.tr,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
@@ -67,7 +67,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                           Icons.email,
                           color: Color.fromARGB(255, 246, 123, 127),
                         ),
-                        labelText: 'Enter Email',
+                        labelText: 'EnterEmail'.tr,
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -83,9 +83,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                               r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(value!);
                       if (value.isEmpty) {
-                        return " Enter Email";
+                        return "EnterEmail".tr;
                       } else if (!emailvalue) {
-                        return " Enter Correct Email";
+                        return "EnterCorrectEmail".tr;
                       }
                       return null;
                     },
@@ -118,7 +118,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                                 ? Icons.visibility
                                 : Icons.visibility_off),
                           ),
-                          labelText: 'Enter Password',
+                          labelText: 'EnterPassword'.tr,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                                 width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -131,9 +131,9 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                           )),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "Enter Password";
+                          return "EnterPassword".tr;
                         } else if (passcontroller.text.length < 6) {
-                          return "Password Length Should Be More Than 6 Charachters";
+                          return "PasswordLengthShouldBeMoreThan6Charachters".tr;
                         }
                         return null;
                       },
@@ -152,7 +152,7 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                         Get.rootDelegate.toNamed(Routes.password);
                       },
                       child: Text(
-                        'Forget Your Password ?',
+                        'ForgetYourPassword'.tr,
                         style: TextStyle(color: Colors.grey[600]),
                       ))),
             ),
@@ -171,8 +171,8 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child: const Text(
-                  'Sign In',
+                child:  Text(
+                  'SignIn'.tr,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
@@ -189,14 +189,14 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child: const Text(
-                  'Sign Up',
+                child:  Text(
+                  'SignUp'.tr,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
             Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -219,12 +219,12 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
