@@ -12,11 +12,14 @@ class SignUpController extends GetxController {
   var passtoggle = true.obs;
   RxBool hidePassword = true.obs;
   final stringPickImage = ''.obs;
+  var selectedDate = DateTime.now().obs;
   final userRpo = SingUpRepository();
   final auth = Get.find<AuthService>();
+
   final user = User().obs;
-  final text='Here you can register your information in order to create an account';
-  var selectedDate = DateTime.now().obs;
+  final text =
+      'Here you can register your information in order to create an account';
+
   final ImagePicker imagepicker = ImagePicker();
   PickedFile? imagefile;
 
@@ -42,25 +45,25 @@ class SignUpController extends GetxController {
     Get.rootDelegate.toNamed(Routes.home);
   }
 
-  chooseDate() async {
-    DateTime? PickedDate = await showDatePicker(
-        context: Get.context!,
-        initialDate: selectedDate.value,
-        firstDate: DateTime(1950),
-        lastDate: DateTime(2026),
-        //  initialEntryMode: DatePickerEntryMode.input,
-        //   initialDatePickerMode: DatePickerMode.year,
-        helpText: 'select DOB',
-        cancelText: 'close',
-        confirmText: 'confirm',
-        errorFormatText: 'Enter valid date',
-        errorInvalidText: 'Enter valid date range ',
-        fieldLabelText: 'DOB',
-        fieldHintText: 'Month/Date/Year',
-        selectableDayPredicate: disableDate);
-    if (PickedDate != null && PickedDate != selectedDate.value) {
-      selectedDate.value = PickedDate;
-    }
+  Future<void> chooseDate(BuildContext context) async {
+    await showDatePicker(
+            context: context,
+            initialDate: selectedDate.value,
+            firstDate: DateTime(1950),
+            lastDate: DateTime(2026),
+            helpText: 'select DOB',
+            cancelText: 'close',
+            confirmText: 'confirm',
+            errorFormatText: 'Enter valid date',
+            errorInvalidText: 'Enter valid date range ',
+            fieldLabelText: 'DOB',
+            fieldHintText: 'Month/Date/Year')
+        .then((PickedDate) {
+      if (PickedDate != null) {
+        selectedDate.value = PickedDate;
+        print(selectedDate.value);
+      }
+    });
   }
 
   bool disableDate(DateTime day) {

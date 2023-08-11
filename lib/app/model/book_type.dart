@@ -13,6 +13,8 @@ class BookType {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
+
+    json['id'] = id ?? 0;
     json['bookType'] = bookType;
     return json;
   }

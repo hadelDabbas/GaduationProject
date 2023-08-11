@@ -37,6 +37,10 @@ class AppPages {
 
   static final routes = [
     GetPage(
+        name: _Paths.SignIn,
+        page: () => SignInViewPage(),
+        binding: SignInBinding()),
+    GetPage(
         name: _Paths.setting,
         page: () => SettingPageView(),
         binding: SetteingBinding()),
@@ -65,10 +69,6 @@ class AppPages {
         page: () => EditProfileview(),
       ),
     ]),
-    GetPage(
-        name: _Paths.SignIn,
-        page: () => SignInViewPage(),
-        binding: SignInBinding()),
     GetPage(
       name: _Paths.MenuGame,
       page: () => MenuGamePageView(),

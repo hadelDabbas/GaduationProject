@@ -1,28 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 import 'package:getwidget/components/border/gf_border.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/shape/gf_button_shape.dart';
 import 'package:getwidget/types/gf_border_type.dart';
-import 'package:graduationproject/app/model/library.dart';
-import 'package:graduationproject/modules/libraryy/view/library.dart';
 
-import '../../refrence/view/refrence.dart';
-import '../../refrence/view/user_refrence.dart';
+import '../../../app/model/book_type.dart';
 import '../controller/booktype_controller.dart';
 
 class BookTypePageView extends GetResponsiveView<BookTypeController> {
-  BookTypeController controller = Get.put(BookTypeController());
-   final _formfield = GlobalKey<FormState>();
+  final _formfield = GlobalKey<FormState>();
+
+  BookTypePageView({super.key});
   //  final textfield=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
-           key: _formfield,
+          key: _formfield,
           child: Column(
             children: [
               Material(
@@ -52,7 +48,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                           decoration: TextDecoration.none),
                     ),
                   )),
-                   Align(
+              const Align(
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
@@ -86,7 +82,8 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                     alignment: Alignment.topRight,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                            backgroundColor:
+                                const Color.fromARGB(255, 246, 123, 127),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(126)),
                             padding: const EdgeInsets.symmetric(
@@ -98,7 +95,8 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.blueAccent)),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
                                 width: 400,
                                 height: 200,
                                 child: Column(children: [
@@ -131,17 +129,19 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           onChanged: (value) {
-                                            controller.addBookType.value.bookType =
-                                                value;
+                                            controller.addBookType.value
+                                                .bookType = value;
                                           },
-                                                                  validator: (value) {
-                  // for number
-                  if (value!.isEmpty ||
-                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Name";
-                  } else {
-                    return null;
-                  }},
+                                          validator: (value) {
+                                            // for number
+                                            if (value!.isEmpty ||
+                                                !RegExp(r'^[a-z A-Z]+$')
+                                                    .hasMatch(value)) {
+                                              return "Enter Correct Name";
+                                            } else {
+                                              return null;
+                                            }
+                                          },
                                         ),
                                       ),
                                     ),
@@ -149,41 +149,42 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                   Center(
                                     child: GFButton(
                                       onPressed: () {
-                                           if (_formfield.currentState!.validate()) {
-                  print("Data Added Successfully");
-                                        controller.AddBookType(
-                                            controller.addBookType.value);
-                                       } else{
-                                               Get.snackbar(
-                                              ' Error',
-                                              " Add New BookType ",
-                                              //  icon: Icon(Icons.person, color: Colors.white),
-                                              snackPosition: SnackPosition.BOTTOM,
-                                              backgroundColor:
-                                                  const Color.fromARGB(
-                                                      255, 209, 143, 143),
-                                              borderRadius: 20,
-                                              margin: const EdgeInsets.all(15),
-                                              colorText: Colors.white,
-                                              duration:
-                                                  const Duration(seconds: 4),
-                                              isDismissible: true,
-                                              //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-                                              forwardAnimationCurve:
-                                                  Curves.easeOutBack,
-                                            );
-                                       }
-
-                                       },
+                                        if (_formfield.currentState!
+                                            .validate()) {
+                                          print("Data Added Successfully");
+                                          controller.AddBookType(
+                                              controller.addBookType.value);
+                                        } else {
+                                          Get.snackbar(
+                                            ' Error',
+                                            " Add New BookType ",
+                                            //  icon: Icon(Icons.person, color: Colors.white),
+                                            snackPosition: SnackPosition.BOTTOM,
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 209, 143, 143),
+                                            borderRadius: 20,
+                                            margin: const EdgeInsets.all(15),
+                                            colorText: Colors.white,
+                                            duration:
+                                                const Duration(seconds: 4),
+                                            isDismissible: true,
+                                            //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                            forwardAnimationCurve:
+                                                Curves.easeOutBack,
+                                          );
+                                        }
+                                      },
                                       text: "Added",
-                                      color: Color.fromARGB(255, 42, 42, 114),
+                                      color: const Color.fromARGB(
+                                          255, 42, 42, 114),
                                       shape: GFButtonShape.pills,
                                     ),
                                   ),
                                 ]),
                               )));
                         },
-                        child: Icon(Icons.add)),
+                        child: const Icon(Icons.add)),
                   ),
                 ),
               ),
@@ -264,10 +265,10 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
     );
   }
 
-  Widget CardBookType(String name, BuildContext context, int idBooktupe) {
+  Widget CardBookType(String name, BuildContext context, BookType? book) {
     return Padding(
       padding: const EdgeInsets.all(6),
-      child: Container(
+      child: SizedBox(
         width: 350,
         child: GFBorder(
           radius: const Radius.circular(20),
@@ -287,7 +288,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                   ),
                   Align(
@@ -312,8 +313,8 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(10),
-                                        border:
-                                            Border.all(color: Colors.blueAccent)),
+                                        border: Border.all(
+                                            color: Colors.blueAccent)),
                                     child: Column(
                                       children: [
                                         const Center(
@@ -323,8 +324,10 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: "Pacifico",
-                                                color: Color.fromARGB(255, 42, 42, 114),
-                                                decoration: TextDecoration.none),
+                                                color: Color.fromARGB(
+                                                    255, 42, 42, 114),
+                                                decoration:
+                                                    TextDecoration.none),
                                           ),
                                         ),
                                         const SizedBox(
@@ -338,8 +341,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                               color: const Color.fromARGB(
                                                   255, 246, 123, 127),
                                               onPressed: () {
-                                                controller
-                                                    .delBookType(idBooktupe);
+                                                controller.delBookType(book!);
                                               },
                                               text: "Delete",
                                               shape: GFButtonShape.pills,

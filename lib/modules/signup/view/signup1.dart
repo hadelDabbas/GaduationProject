@@ -1,20 +1,21 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/modules/menu/view/HomePage.dart';
 import 'package:intl/intl.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/signup.dart';
 
 class signupage extends GetResponsiveView<SignUpController> {
-  SignUpController controller = Get.put(SignUpController());
+  @override
   final _formfield = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passcontroller = TextEditingController();
+
   Uint8List? image;
+
+  signupage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +79,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter YourName',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color:Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -114,13 +115,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter UserName',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -137,40 +138,38 @@ class signupage extends GetResponsiveView<SignUpController> {
               ),
             ),
           ),
-          Container(
-            width: 450,
-            height: 55,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color.fromARGB(255, 42, 42, 114),
-                  width: 2.6,
-                ),
-                borderRadius: BorderRadius.circular(18)),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 3,
-                ),
-                InkWell(
-                    onTap: () {
-                      controller.chooseDate();
-                    },
-                    child: const Icon(
-                      Icons.date_range,
-                      color: Color.fromARGB(255, 246, 123, 127),
-                    )),
-                const SizedBox(
-                  width: 2,
-                ),
-                Obx(() => Text(
-                      DateFormat("dd.MM.yyyy")
-                          .format(controller.selectedDate.value)
-                          .toString(),
-                      style:
-                          const TextStyle(fontSize: 18, color: Colors.black54),
-                    )),
-              ],
-            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+                width: 450,
+                child: Obx(() => TextField(
+                      controller: TextEditingController(
+                        text: DateFormat("dd.MM.yyyy")
+                            .format(controller.selectedDate.value)
+                            .toString(),
+                      ),
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(
+                            Icons.date_range,
+                            color: Color.fromARGB(255, 246, 123, 127),
+                          ),
+                          labelText: 'Date Birth',
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
+                            borderRadius: BorderRadius.circular(15),
+                          )),
+                      onTap: () async {
+                        await controller.chooseDate(context);
+                      },
+                    ))),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -185,13 +184,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter Email',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -236,12 +235,14 @@ class signupage extends GetResponsiveView<SignUpController> {
                         labelText: 'Enter Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                          borderSide: const BorderSide(
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     onChanged: (value) {
@@ -270,13 +271,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter Education',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -305,13 +306,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter Adress',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color:Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -340,13 +341,13 @@ class signupage extends GetResponsiveView<SignUpController> {
                     ),
                     labelText: 'Enter PayBal',
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                      borderSide: const BorderSide(
+                          width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                       borderRadius: BorderRadius.circular(15),
                     )),
                 onChanged: (value) {
@@ -379,7 +380,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 42, 42, 114),
+                  backgroundColor: const Color.fromARGB(255, 42, 42, 114),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   padding:
@@ -390,73 +391,80 @@ class signupage extends GetResponsiveView<SignUpController> {
               ),
             ),
           ),
-           Tooltip(
-              message: 'Help About Page',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
+          Tooltip(
+            message: 'Help About Page',
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                    onPressed: () {
+                      Get.dialog(Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Align(
+                                        alignment: Alignment.center,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "Help",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: "Pacifico",
+                                                color: Color.fromARGB(
+                                                    255, 42, 42, 114),
+                                                decoration:
+                                                    TextDecoration.none),
+                                          ),
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 8, 10, 10),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text(
+                                          controller.text,
+                                          textAlign: TextAlign.left,
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              decoration: TextDecoration.none,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black87),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
-                                            ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                            controller.text  ,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
-                ),
+                        ),
+                      ));
+                    },
+                    icon: const Icon(
+                      Icons.help_outline_outlined,
+                      size: 30,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    )),
               ),
-            )
+            ),
+          )
         ]),
       ),
     ));

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/complaints/view/complaints.dart';
-import 'package:graduationproject/modules/groups/view/add_group.dart';
 import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
@@ -9,9 +8,7 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Addpost/view/addpost.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
-import '../../give permission/view/user-del-premission.dart';
 import '../../groups/view/group.dart';
-import '../../libraryy/view/library.dart';
 import '../../refrence/view/refrence.dart';
 import '../../signin.dart/view/signin.dart';
 import '../../signup/view/signup1.dart';
@@ -62,12 +59,24 @@ class SettingPageView extends GetResponsiveView {
                     child: InkWell(
                         onTap: () {
                           // Get.to(AddGrpoup());
-                          Get.to( GroupView());
+                          Get.to(GroupView());
                         },
                         child: Tooltip(
                             message: 'Add New Group',
                             child: CardSetting(
                               "Group", Icons.group_add,
+                              // Color.fromARGB(255, 63, 201, 214))
+                            ))),
+                  ),
+                  Material(
+                    child: InkWell(
+                        onTap: () {
+                          Get.rootDelegate.toNamed(Routes.booktype);
+                        },
+                        child: Tooltip(
+                            message: 'Book Type',
+                            child: CardSetting(
+                              'Book Type', Icons.content_copy_rounded,
                               // Color.fromARGB(255, 63, 201, 214))
                             ))),
                   ),
@@ -99,7 +108,8 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Color.fromARGB(255, 42, 42, 114),
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -166,7 +176,8 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Color.fromARGB(255, 42, 42, 114),
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -234,7 +245,8 @@ class SettingPageView extends GetResponsiveView {
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Color.fromARGB(255, 42, 42, 114),
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
@@ -254,69 +266,75 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                       child: InkWell(
                           onTap: () {
-                            Get.to(TestPageView  ());
+                            Get.to(TestPageView());
                           },
                           child: Tooltip(
                               message: 'Show all Quiz',
                               child: CardSetting("Quiz", Icons.check_box)))),
                   CardSetting("Quiz", Icons.check_box),
-                    Material(
+                  Material(
                       child: InkWell(
                           onTap: () {
                             Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      border:
+                                          Border.all(color: Colors.blueAccent)),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Align(
+                                              alignment: Alignment.center,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Help",
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Color.fromARGB(
+                                                          255, 42, 42, 114),
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              )),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 8, 10, 10),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                controller.text,
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    decoration:
+                                                        TextDecoration.none,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black87),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
-                                            ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller. text,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-              ));
+                            ));
                           },
                           child: Tooltip(
                               message: 'Change Language ',
@@ -357,7 +375,7 @@ class SettingPageView extends GetResponsiveView {
           width: 150,
           decoration: BoxDecoration(
               border: Border.all(
-                color: Color.fromARGB(255, 42, 42, 114),
+                color: const Color.fromARGB(255, 42, 42, 114),
                 width: 1.3,
               ),
               color: Colors.white,
@@ -368,7 +386,10 @@ class SettingPageView extends GetResponsiveView {
                 height: 30,
               ),
               Icon(data, color: const Color.fromARGB(255, 246, 123, 127)),
-              Text(name,style: TextStyle(color:Color.fromARGB(255, 42, 42, 114) ),),
+              Text(
+                name,
+                style: const TextStyle(color: Color.fromARGB(255, 42, 42, 114)),
+              ),
             ]),
           ),
         ));
