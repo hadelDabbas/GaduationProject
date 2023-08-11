@@ -15,7 +15,6 @@ import 'form_word2.dart';
 
 class Formword7PageView extends GetResponsiveView<SplashScreencontroller> {
   SplashScreencontroller controller=Get.put(SplashScreencontroller());
-  TimerController timerController=Get.put(TimerController());
    List <String> stringword=['دماغ','ناس','معلوماتية','طاقة'];
  List<String>emptylist=[];
  @override
@@ -77,7 +76,7 @@ class Formword7PageView extends GetResponsiveView<SplashScreencontroller> {
                                              ) ,
                                  child: Row(children: [
                         Obx(() => Center(
-                       child: Text('  ${timerController.time.value}',
+                       child: Text('  ${controller.time.value}',
                        style: TextStyle(
                        color: Colors.white,  ),),  )),
                          Text(' : Timer', style: TextStyle(
@@ -116,7 +115,7 @@ class Formword7PageView extends GetResponsiveView<SplashScreencontroller> {
                       child: ElevatedButton(  style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(Colors.deepOrange),),
                         onPressed: (){
-                          if(timerController.time.value.toString()!='00:01' ){
+                          if(controller.time.value.toString()!='00:01' ){
                              if(controller.count7.value!=3 ){
                                     if(stringword.contains(controller.AllWord.join())
                               &&!emptylist.contains(controller.AllWord.join())){
@@ -253,7 +252,7 @@ class Formword7PageView extends GetResponsiveView<SplashScreencontroller> {
                          style: TextStyle(color:Colors.deepOrange)
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                         timerController.onClose();
+                        controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Colors.deepOrange)
                         )),
@@ -276,12 +275,12 @@ Future  TimeOff(){
                       SizedBox(width: 40,),
                            TextButton(onPressed: (){
                              Get.back();
-                           timerController.onReady();
+                          controller.onReady();
                            }, child: Text('yes',
                          style: TextStyle(color:Colors.deepOrange)
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                         timerController.onClose();
+                        controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Colors.deepOrange)
                         )),        

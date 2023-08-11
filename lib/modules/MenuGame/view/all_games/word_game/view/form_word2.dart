@@ -9,7 +9,6 @@ import 'form_word3.dart';
 
 class Formword2PageView extends GetResponsiveView<SplashScreencontroller> {
   SplashScreencontroller controller = Get.put(SplashScreencontroller());
-  TimerController timerController = Get.put(TimerController());
   List<String> stringword = ["شعلة", "ضوء", 'فكرة'];
   List<String> emptylist = [];
   @override
@@ -91,7 +90,7 @@ class Formword2PageView extends GetResponsiveView<SplashScreencontroller> {
                         children: [
                           Obx(() => Center(
                                 child: Text(
-                                  '  ${timerController.time.value}',
+                                  '  ${controller.time.value}',
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -138,7 +137,7 @@ class Formword2PageView extends GetResponsiveView<SplashScreencontroller> {
                                   MaterialStateProperty.all(Colors.yellow),
                             ),
                             onPressed: () {
-                              if (timerController.time.value.toString() !=
+                              if (controller.time.value.toString() !=
                                   '00:01') {
                                 if (controller.count2.value != 2) {
                                   if (stringword
@@ -352,13 +351,13 @@ class Formword2PageView extends GetResponsiveView<SplashScreencontroller> {
                     onPressed: () {
                            Get.back();
                     // Get.to(Formword3PageView());
-                      timerController.onReady();
+                    controller.onReady();
                     },
                     child: Text('yes', style: TextStyle(color: Colors.yellow))),
                 TextButton(
                     onPressed: () {
                       Get.to(MenuGamePageView());
-                      timerController.onClose();
+                      controller.onClose();
                     },
                     child: Text('No', style: TextStyle(color: Colors.yellow))),
               ],

@@ -12,7 +12,7 @@ import 'form_word2.dart';
 
 class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
   SplashScreencontroller controller = Get.put(SplashScreencontroller());
-  TimerController timerController = Get.put(TimerController());
+
   List<String> stringword =["ابنية", "مدينة"];
   List<String> emptylist = [];
   @override
@@ -87,7 +87,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
                       children: [
                         Obx(() => Center(
                               child: Text(
-                                '  ${timerController.time.value}',
+                                '  ${controller.time.value}',
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -138,7 +138,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
                                 Color.fromARGB(255, 7, 29, 67)),
                           ),
                           onPressed: () {
-                            if (timerController.time.value.toString() !=
+                            if (controller.time.value.toString() !=
                                 '00:01') {
                               if (controller.count.value != 1) {
                                 if (stringword
@@ -321,7 +321,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
               TextButton(
                   onPressed: () {
                    Get.to(MenuGamePageView());
-                    timerController.onClose();
+                    controller.onClose();
                   },
                   child: Text('No',
                       style: TextStyle(color: Color.fromARGB(255, 7, 29, 67)))),
@@ -355,7 +355,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
                     onPressed: () {
                       Get.back();
                     //  Get.to(Formword2PageView());
-                      timerController.onReady();
+                      controller.onReady();
                     },
                     child: Text('yes',
                         style: TextStyle(
@@ -363,7 +363,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
                 TextButton(
                     onPressed: () {
                       Get.to(MenuGamePageView());
-                      timerController.onClose();
+                      controller.onClose();
                     },
                     child: Text('No',
                         style: TextStyle(

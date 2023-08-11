@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 
+import '../../../../../sheard/auth_service.dart';
+import '../../../../controller/menu_game_controller.dart';
+
 class MathController extends GetxController {
   Timer? _timer;
   var answer = 0.obs;
@@ -15,6 +18,7 @@ class MathController extends GetxController {
   var score2=0.obs;
   var score3=0.obs;
   var result3 = 200.obs;
+   final auth = Get.find<AuthService>();
   final text='In this game, a set of arithmetic operations will appear, and you must choose the correct answer';
   @override
   void onClose() {
@@ -22,6 +26,8 @@ class MathController extends GetxController {
       _timer!.cancel();
     }
     super.onClose();
+        auth.gameUser.Score=score.value;
+      auth.updateUserGame();
   }
 
   @override

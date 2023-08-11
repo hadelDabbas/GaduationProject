@@ -16,6 +16,7 @@ import '../../refrence/view/refrence.dart';
 import '../../signin.dart/view/signin.dart';
 import '../../signup/view/signup1.dart';
 import '../../testwidget/view/add-test.dart';
+import 'help.dart';
 
 class SettingPageView extends GetResponsiveView {
   SettingPageView({super.key});
@@ -326,7 +327,13 @@ class SettingPageView extends GetResponsiveView {
                   //   },
                   //   child:
                   //    CardSetting("Language", Icons.language))),
-                  CardSetting("Help", Icons.question_mark),
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                        Get.to(HelpPageView());
+                      },
+                      child: CardSetting("Help", Icons.question_mark)),
+                  ),
                   CardSetting("Logout", Icons.exit_to_app),
                   const SizedBox(
                     width: 100,

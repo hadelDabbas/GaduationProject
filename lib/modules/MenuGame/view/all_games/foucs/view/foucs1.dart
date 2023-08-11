@@ -160,6 +160,8 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
                                     style: TextStyle(color: Colors.grey))),
                             TextButton(
                                 onPressed: () {
+                                  controller.auth.gameUser.Score=controller.score.value;
+                                  controller.auth.updateUserGame();
                                   Get.to(MenuGamePageView());
                                   controller.onClose();
                                 },
@@ -185,7 +187,7 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                   Get.to(FoucsGameView3());
                                   controller.onReady();
                                 },
                                 child: const Text('yes',
@@ -194,6 +196,7 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
                                             255, 80, 137, 212)))),
                             TextButton(
                                 onPressed: () {
+                                  
                                   Get.to(MenuGamePageView());
                                   controller.onClose();
                                 },

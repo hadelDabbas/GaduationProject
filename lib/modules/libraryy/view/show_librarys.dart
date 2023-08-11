@@ -48,7 +48,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        " Librarays  ",
+                        "All Librarays  ",
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,

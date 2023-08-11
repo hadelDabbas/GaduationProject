@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 
 import '../../api/storage/storge_service.dart';
+import '../../app/model/game_user.dart';
 
 const String KeyData = "AuthData";
 
@@ -19,6 +20,7 @@ class AuthService {
     }
     return null;
   }
+
 
   Future<User?> logIn(String email, String password) async {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
@@ -41,5 +43,11 @@ class AuthService {
       return true;
     }
     return false;
+  }
+    @override
+  Future<bool> updateUserGame( int iduserGame,GameUser gameUser) async{
+     var result = await _dio.put('https://localhost:7252/api/GameUser/$iduserGame',
+        data: gameUser.toJson());
+    return result.statusCode == 200;
   }
 }

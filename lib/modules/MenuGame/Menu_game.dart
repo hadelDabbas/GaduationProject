@@ -6,6 +6,7 @@ import 'package:graduationproject/modules/MenuGame/view/all_games/foucs/view/def
 import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/define_math.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
+import '../../app/model/game.dart';
 import 'controller/menu_game_controller.dart';
 import 'view/all_games/foucs/view/foucs1.dart';
 import 'view/all_games/letter_game/view/define_letter.dart';
@@ -53,36 +54,40 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
               const SizedBox(
                 height: 15,
               ),
-              cardshape(
-                  random,
-                  'Letter Test',
-                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                  'assets/images/letter.png',
-                   splashscreenLetter()),
-              cardshape(
-                  random,
-                  'Word Test',
-                  '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
-                  'assets/images/4.png',
-                  Splashscrren()),
-              cardshape(
-                  random,
-                  'Math Test',
-                  ' In This Test You Need To Be Speed This Test Increse Information ',
-                  'assets/images/cubes.png',
-                  DefineMath()),
-              cardshape(
-                  random,
-                  'Foucs Test',
-                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                  'assets/images/15.png',
-                 FoucsGameView ()),
-              cardshape(
-                  random,
-                  'Packet Test',
-                  'In This Test You Need To Be Speed This Test Increse Information ang experaince',
-                  'assets/images/15.png',
-                  PacketPageView()),
+              Column(children:
+              controller.ListGameUser.map((element) => cardshape(element.Id!,random ,element.game!.GameName.toString()
+              ,element.userLevel.toString(),element.Score.toString(),element.game!)).toList()
+              ),
+              // cardshape(
+              //     random,
+              //     'Letter Test',
+              //     'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+              //     'assets/images/letter.png',
+              //      splashscreenLetter()),
+              // cardshape(
+              //     random,
+              //     'Word Test',
+              //     '  This Test Have Three Level   Make Inderstanding Very Good and  Increase Yor Word ',
+              //     'assets/images/4.png',
+              //     Splashscrren()),
+              // cardshape(
+              //     random,
+              //     'Math Test',
+              //     ' In This Test You Need To Be Speed This Test Increse Information ',
+              //     'assets/images/cubes.png',
+              //     DefineMath()),
+              // cardshape(
+              //     random,
+              //     'Foucs Test',
+              //     'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+              //     'assets/images/15.png',
+              //    FoucsGameView ()),
+              // cardshape(
+              //     random,
+              //     'Packet Test',
+              //     'In This Test You Need To Be Speed This Test Increse Information ang experaince',
+              //     'assets/images/15.png',
+              //     PacketPageView()),
                        Tooltip(
               message: 'Help About Page',
               child: Padding(
@@ -155,11 +160,19 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
         ));
   }
 
-  Widget cardshape(Random random, String nameplay, String discribtion,
-      String url, Widget n) {
+  Widget cardshape(int idgameUser,Random random, String nameplay, String level,String score,Game game
+      ) {
     return Material(
         child: InkWell(
-            onTap: () => Get.to(n),
+             onTap: () {
+              controller.auth.gameUser.IdGame=game.Id;
+              controller.auth.gameUser.game=game;
+              controller.auth.gameUser.game=game;
+                       controller.auth.gameUser.Id=idgameUser;
+              // controller.updateUserGame.value.game=game;
+              // controller.updateUserGame.value.IdGame=game.Id;
+              getGamenow(id:game.Id! );
+             } ,
             child: SizedBox(
                 width: 800,
                 height: screen.height / 2.5,
@@ -173,13 +186,13 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                         children: <Widget>[
                           Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SizedBox(
-                                    height: 40,
-                                    width: 40,
-                                    child: Image.asset(url)),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: SizedBox(
+                              //       height: 40,
+                              //       width: 40,
+                              //       child: Image.asset(url)),
+                              // ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
@@ -191,29 +204,62 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                               ),
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              'Benfit From Used This Test :',
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 230, 219, 219),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Flexible(
-                              child: Text(discribtion,
-                                  style: const TextStyle(fontSize: 18))),
+                          // const Padding(
+                          //   padding: EdgeInsets.all(8.0),
+                          //   child: Text(
+                          //     'Benfit From Used This Test :',
+                          //     style: TextStyle(
+                          //         color: Color.fromARGB(255, 230, 219, 219),
+                          //         fontSize: 18,
+                          //         fontWeight: FontWeight.bold),
+                          //   ),
+                          // ),
+                          // Flexible(
+                          //     child: Text(discribtion,
+                          //         style: const TextStyle(fontSize: 18))),
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                             'Number Level Is :'+ controller.numberlevel.value.toString(),
+                             'Number Level Is :'+ level,
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
+                             Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                             'Your Score In This Game :'+ score,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 230, 219, 219),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+
                         ])))));
   }
+  Widget getGamenow({required int id}) {
+  Widget widget;
+  switch (id) {
+    case 0:
+      widget =  splashscreenLetter();
+      break;
+    case 1:
+      widget =  Splashscrren();
+      break;
+       case 2:
+      widget =   DefineMath();
+      break;
+       case 3:
+      widget =  FoucsGameView ();
+      break;
+    default:
+      widget =   PacketPageView();
+
+      break;
+  }
+  return widget;
+}
 }

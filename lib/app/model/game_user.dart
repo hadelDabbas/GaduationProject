@@ -12,13 +12,15 @@ class GameUser {
  Game? game;
  int ?IdUser;
  User? user ;
+  int ?Score;
 GameUser( {
     this.Id,
    this.IdGame,
    this.game,
    this.IdUser,
    this.user,
-   this.userLevel
+   this.userLevel,
+   this.Score,
   });
 
 GameUser.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ game=json['game'];
 IdUser=json['IdUser'];
 user=json['user'];
 userLevel=json['userLevel'];
+Score=json['Score'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,6 +40,7 @@ userLevel=json['userLevel'];
       json['IdUser']=IdUser;
          json['user']=user;
             json['userLevel']=userLevel;
+             json['Score']=Score;
     return json;
   }
 }

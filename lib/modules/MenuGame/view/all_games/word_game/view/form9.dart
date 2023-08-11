@@ -10,7 +10,6 @@ import 'form_word1.dart';
 
 class Formword9PageView extends GetResponsiveView<SplashScreencontroller> {
   SplashScreencontroller controller=Get.put(SplashScreencontroller());
-  TimerController timerController=Get.put(TimerController());
    List <String> stringword=['علوم','فيزياء','رياضيات','عربي','معارف العلوم','موسيقا','كيمياء','رسم','تمثيل'];
  List<String>emptylist=[];
  @override
@@ -73,7 +72,7 @@ class Formword9PageView extends GetResponsiveView<SplashScreencontroller> {
                                              ) ,
                                  child: Row(children: [
                         Obx(() => Center(
-                       child: Text('  ${timerController.time.value}',
+                       child: Text('  ${controller.time.value}',
                        style: TextStyle(
                        color: Colors.white,  ),),  )),
                          Text(' : Timer', style: TextStyle(
@@ -110,7 +109,7 @@ class Formword9PageView extends GetResponsiveView<SplashScreencontroller> {
                       child: ElevatedButton(  style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 40, 131, 43))),
                         onPressed: (){
-                          if(timerController.time.value.toString()!='00:01' ){
+                          if(controller.time.value.toString()!='00:01' ){
                              if(controller.count9.value!=8  ){
                                     if(stringword.contains(controller.AllWord.join())
                               &&!emptylist.contains(controller.AllWord.join())){
@@ -271,12 +270,12 @@ Future  TimeOff(){
                       SizedBox(width: 40,),
                            TextButton(onPressed: (){
                                 Get.back();
-                          timerController.onReady();
+                        controller.onReady();
                            }, child: Text('yes',
                          style: TextStyle(color:Color.fromARGB(255, 40, 131, 43))
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                        timerController.onClose();
+                      controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Color.fromARGB(255, 40, 131, 43))
                         )),        

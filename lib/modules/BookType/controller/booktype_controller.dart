@@ -7,6 +7,7 @@ import '../data/booktype_repository.dart';
 class BookTypeController extends GetxController{
   final bookRepo= BookTypeRepository();
   final AllBookType=<BookType>[];
+  final text='In this interface we display the existing BookType';
   final addBookType=BookType().obs;
     @override
   Future<void> onInit() async {

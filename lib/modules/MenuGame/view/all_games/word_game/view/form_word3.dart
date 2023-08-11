@@ -10,7 +10,6 @@ import 'form4.dart';
 
 class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
   SplashScreencontroller controller=Get.put(SplashScreencontroller());
-  TimerController timerController=Get.put(TimerController());
    List <String> stringword=['شخص',"كروب","فكرة","اعضاء"];
  List<String>emptylist=[];
  @override
@@ -73,7 +72,7 @@ class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
                                              ) ,
                                  child: Row(children: [
                         Obx(() => Center(
-                       child: Text('  ${timerController.time.value}',
+                       child: Text('  ${controller.time.value}',
                        style: TextStyle(
                        color: Colors.white,  ),),  )),
                          Text(' : Timer', style: TextStyle(
@@ -111,7 +110,7 @@ class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
                       child: ElevatedButton(  style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(Colors.lightGreenAccent)),
                         onPressed: (){
-                          if(timerController.time.value.toString()!='00:01' ){
+                          if(controller.time.value.toString()!='00:01' ){
                              if(controller.count3.value!=3  ){
                                     if(stringword.contains(controller.AllWord.join())
                               &&!emptylist.contains(controller.AllWord.join())){
@@ -273,12 +272,12 @@ Future  TimeOff(){
                            TextButton(onPressed: (){
                                  Get.back();
                               // Get.to(MenuGamePageView());
-                          timerController.onReady();
+                         controller.onReady();
                            }, child: Text('yes',
                          style: TextStyle(color:Colors.lightBlueAccent)
                         )), TextButton(onPressed: (){
                           Get.to(MenuGamePageView());
-                        timerController.onClose();
+                      controller.onClose();
                            }, child: Text('No',
                          style: TextStyle(color:Colors.lightBlueAccent)
                         )),        

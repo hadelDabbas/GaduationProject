@@ -3,10 +3,14 @@ import 'dart:async';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 
+import '../../../../../sheard/auth_service.dart';
+import '../../../../controller/menu_game_controller.dart';
+
 class FoucsController extends GetxController with GetSingleTickerProviderStateMixin{
    late AnimationController animationController;
   var isAnimating=false.obs;
   var score=0.obs;
+  final auth = Get.find<AuthService>();
   Timer?_timer;
  int remanningsecond=1;
  final text='In this game, a picture appears with a question that needs to be focused before answering';
@@ -27,7 +31,8 @@ class FoucsController extends GetxController with GetSingleTickerProviderStateMi
       _timer!.cancel();
      }
     super.onClose();
-
+     auth.gameUser.Score=score.value;
+      auth.updateUserGame();
   }
   @override
   void onReady() {

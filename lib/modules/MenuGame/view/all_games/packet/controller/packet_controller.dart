@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:get/get.dart';
 
+import '../../../../../sheard/auth_service.dart';
+
 class PacketController extends GetxController {
   var reminning = 0.obs;
   var numberlevel = 1.obs;
@@ -9,12 +11,18 @@ class PacketController extends GetxController {
   final cardsSucc = <Packet>[].obs;
   final openCards = <Packet>[].obs;
   final listpacket = <Packet>[].obs;
+  final auth = Get.find<AuthService>();
   @override
   void onInit() {
     super.onInit();
     firstLevel();
   }
-
+  @override
+  void onClose() {
+    super.onClose();
+      //   auth.gameUser.Score=score.value;
+      // auth.updateUserGame();
+  }
   void firstLevel() {
     listpacket.clear();
     openCards.clear();
