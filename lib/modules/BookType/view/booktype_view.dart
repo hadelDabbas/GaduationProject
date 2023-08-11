@@ -70,7 +70,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
               // CardBookType('Math', context, 9),
               Column(
                   children: controller.AllBookType.map((element) => CardBookType(
-                          element.bookType.toString(), context, element.id!))
+                          element.bookType.toString(), context, element))
                       .toList()),
                   Row(
                     children: [
@@ -265,7 +265,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
     );
   }
 
-  Widget CardBookType(String name, BuildContext context, BookType? book) {
+  Widget CardBookType(String name, BuildContext context, BookType? book ) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: SizedBox(

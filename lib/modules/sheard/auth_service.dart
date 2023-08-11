@@ -10,6 +10,7 @@ import '../../app/model/game_user.dart';
 const String KeyData = "AuthData";
 
 class AuthService {
+  final gameUser=GameUser();
   final _dio = Get.find<Dio>();
   final stroge = Get.find<StorageService>();
   bool isAuth() => stroge.containsKey(KeyData);
@@ -20,7 +21,10 @@ class AuthService {
     }
     return null;
   }
-
+    
+void  SaveGameUser(){
+     stroge.saveData(KeyData, jsonEncode(gameUser.toJson()));
+ }
 
   Future<User?> logIn(String email, String password) async {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
@@ -45,7 +49,8 @@ class AuthService {
     return false;
   }
     @override
-  Future<bool> updateUserGame( int iduserGame,GameUser gameUser) async{
+  Future<bool> updateUserGame() async{
+    var iduserGame=gameUser.Id;
      var result = await _dio.put('https://localhost:7252/api/GameUser/$iduserGame',
         data: gameUser.toJson());
     return result.statusCode == 200;

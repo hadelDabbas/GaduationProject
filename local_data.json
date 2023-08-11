@@ -1,8 +1,30 @@
 {
   "en": {
-    "yes": "yes"
+    "yes": "yes",
+    "No": "No",
+    "welcom": "Welcom",
+    "WelcomToYouInInformationCity": "Welcom To You In Information City  ",
+    "Wewillhavefuntogether": "We will have fun together",
+    "Next": "Next",
+    "Thisapplicationgivesyouadditionalexperiencesthrough": "This application gives you additional experiences through",
+    "asetofscientificandentertainingtestsinaddition": "a set of scientific and entertaining tests in addition",
+    "toscientificgamesthatstrengthenperception": "to scientific games that strengthen perception",
+    "perceptionandstimulatethebrain": "perception and stimulate the brain",
+    "askyourquestionswithinaspecializedcommunity": "You also ask your questions within a specialized community ",
+    "anditallowsyoutobuythebookyouwant": "and it allows you to buy the book you want"
   },
   "ar": {
-    "yes": ""
+    "yes": "نعم",
+    "No": "لا",
+    "welcom": "' مرحباً '",
+    "WelcomToYouInInformationCity": "مرحبا بكم في مدينة المعلومات",
+    "Wewillhavefuntogether": "سوف نستمتع معا",
+    "Next": "التالي",
+    "Thisapplicationgivesyouadditionalexperiencesthrough": "يمنحك هذا التطبيق خبرات إضافية من خلال",
+    "asetofscientificandentertainingtestsinaddition": "مجموعة من الاختبارات العلمية والترفيهية بالإضافة إلى ذلك",
+    "toscientificgamesthatstrengthenperception": "للألعاب العلمية التي تقوي الإدراك",
+    "perceptionandstimulatethebrain": "الإدراك وتنشيط الدماغ",
+    "askyourquestionswithinaspecializedcommunity": "أنت أيضًا تطرح أسئلتك داخل مجتمع متخصص",
+    "anditallowsyoutobuythebookyouwant": "ويتيح لك شراء الكتاب الذي تريده"
   }
 }

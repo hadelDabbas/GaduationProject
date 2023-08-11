@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:graduationproject/modules/signin.dart/view/signin.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../controller/intro-controller.dart';
 import '../controller/splash-screen-controller.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
@@ -23,17 +22,17 @@ class IntroPageView extends GetResponsiveView< SplashScreenController> {
        Padding(
          padding: const EdgeInsets.all(8.0),
          child: Center(
-           child: Text(' Welcome ',
+           child: Text('welcom'.tr,
                         style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold,
                          color:Colors.blueGrey,fontFamily: "Pacifico")),
          ),
        ),
        Padding(
          padding: const EdgeInsets.all(8.0),
-         child: Center(child: Text('  Welcom To You In Information City You ',
+         child: Center(child: Text('WelcomToYouInInformationCity'.tr,
          style: TextStyle(fontSize: 20,color: Colors.grey),)),
        ),
-   Center(child: Text(' Will Enjou With Us',
+   Center(child: Text("Wewillhavefuntogether".tr,
        style: TextStyle(fontSize: 20,color: Colors.grey),)),
        SizedBox(height: 20,),
        Padding(
@@ -62,57 +61,11 @@ class IntroPageView extends GetResponsiveView< SplashScreenController> {
               onPressed: () { 
                 Get.to(Intro1());
                },
-             child: Text('Next'),)
+             child: Text('Next'.tr),)
            ],),
          ),
        )
      ],)
-    //  Stack(children: [
-    //   PageView( controller: controllers,
-    //   onPageChanged: (index) {
-    //     controller.onlastpage.value= (index == 1);
-    //   },
-    //     children: [
-    //   Intro1(),
-    //   Intro2(),
-    //   Intro3(),
-    //   Intro3()
-    //  ],),
-    // Container(
-    //   alignment: Alignment(0,0.75),
-    //   child:
-    //    Row(
-    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //      children: [
-    //       GestureDetector(
-    //         onTap: (){
-    //           controllers.jumpToPage(1);
-    //           controllers.previousPage(duration: Duration(microseconds: 500), curve: Curves.ease);
-    //         },
-    //         child:  Padding(
-    //           padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
-    //           child: Text("skip",style: TextStyle(color: Colors.black54,fontSize: 18),
-    //           ),
-    //         ),),
-    //        SmoothPageIndicator(controller: controllers, count: 3),
-    //        controller.onlastpage.value?
-    //         GestureDetector(
-    //         onTap: (){
-    //      Get.to(SignInViewPage());
-    //         },
-    //         child:      Text('Done') ,
-    //         ):  GestureDetector(
-    //         onTap: (){
-    //           controllers.nextPage(duration: Duration(microseconds: 500), curve: Curves.easeIn);
-    //         },
-    //         child:      Padding(
-    //           padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
-    //           child: Text('next',style: TextStyle(color: Colors.black54,fontSize: 18),),
-    //         ) ,
-    //         )
-    //      ],
-    //    ))
-    //  ],)
      
  
   );

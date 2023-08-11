@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:graduationproject/modules/signin.dart/view/signin.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../controller/intro-controller.dart';
 import '../controller/splash-screen-controller.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
@@ -23,9 +22,9 @@ SplashScreenController controller=Get.put(SplashScreenController());
        Padding(
            padding: const EdgeInsets.all(8.0),
            child: Wrap(children: [
-             Center(child: Text('You also ask your questions within a specialized community ',
+             Center(child: Text('askyourquestionswithinaspecializedcommunity'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
-         Center(child: Text('  and it allows you to buy the book you want',
+         Center(child: Text('anditallowsyoutobuythebookyouwant'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
       
          
@@ -57,7 +56,7 @@ SplashScreenController controller=Get.put(SplashScreenController());
               onPressed: () { 
                 Get.to(SignInViewPage());
                },
-             child: Text('Next'),)
+             child: Text('Next'.tr),)
            ],),
          ),
        )

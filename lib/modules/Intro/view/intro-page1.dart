@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:graduationproject/modules/signin.dart/view/signin.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../controller/intro-controller.dart';
 import '../controller/splash-screen-controller.dart';
 import 'intro-page1.dart';
 import 'intro-page2.dart';
@@ -30,13 +29,13 @@ class Intro1 extends GetResponsiveView< SplashScreenController> {
          Padding(
            padding: const EdgeInsets.all(8.0),
            child: Wrap(children: [
-             Center(child: Text('  This application gives you additional experiences through',
+             Center(child: Text('Thisapplicationgivesyouadditionalexperiencesthrough'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
-         Center(child: Text('a set of scientific and entertaining tests in addition',
+         Center(child: Text('asetofscientificandentertainingtestsinaddition'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
-         Center(child: Text('  to scientific games that strengthen perception',
+         Center(child: Text('toscientificgamesthatstrengthenperception'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
-         Center(child: Text(' perception and stimulate the brain',
+         Center(child: Text('perceptionandstimulatethebrain'.tr,
        style: TextStyle(fontSize: 18,color: Colors.grey),)),
          
            ],),
@@ -74,7 +73,7 @@ class Intro1 extends GetResponsiveView< SplashScreenController> {
               onPressed: () { 
                 Get.to(Intro2());
                },
-             child: Text('Next'),)
+             child: Text('Next'.tr),)
            ],),
          ),
        )
