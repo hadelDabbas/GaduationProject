@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/src/widgets/basic.dart';
-import 'package:graduationproject/modules/Intro/controller/intro-controller.dart';
 import 'package:graduationproject/modules/Intro/controller/splash-screen-controller.dart';
 
 class SplashScreen extends StatelessWidget {

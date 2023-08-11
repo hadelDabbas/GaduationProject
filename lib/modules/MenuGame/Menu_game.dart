@@ -2,11 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/game_user.dart';
 import 'package:graduationproject/modules/MenuGame/view/all_games/foucs/view/define_foucs.dart';
 import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/define_math.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
 import '../../app/model/game.dart';
+import '../genereted/sheard/util.dart';
 import 'controller/menu_game_controller.dart';
 import 'view/all_games/foucs/view/foucs1.dart';
 import 'view/all_games/letter_game/view/define_letter.dart';
@@ -54,10 +56,15 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
               const SizedBox(
                 height: 15,
               ),
-              Column(children:
-              controller.ListGameUser.map((element) => cardshape(element.Id!,random ,element.game!.GameName.toString()
-              ,element.userLevel.toString(),element.Score.toString(),element.game!)).toList()
+              Column(
+                children: controller.ListGameUser.map((e) =>
+                 cardshape(e.gameUser!, random, e.game!.GameName.toString(), e.game!)).toList()
               ),
+              // Column(children:
+              // controller.ListGameUser.map((element) => cardshape(
+              //   element.Id!,random ,element.game!.GameName.toString()
+              // ,element.userLevel.toString(),element.Score.toString(),element.game!)).toList()
+              // ),
               // cardshape(
               //     random,
               //     'Letter Test',
@@ -160,15 +167,14 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
         ));
   }
 
-  Widget cardshape(int idgameUser,Random random, String nameplay, String level,String score,Game game
-      ) {
+  Widget cardshape(List<GameUser> gamesUser,Random random, String nameplay,Game game ) {
     return Material(
         child: InkWell(
              onTap: () {
               controller.auth.gameUser.IdGame=game.Id;
               controller.auth.gameUser.game=game;
               controller.auth.gameUser.game=game;
-                       controller.auth.gameUser.Id=idgameUser;
+                       controller.auth.gameUser.Id=gamesUser.first.Id;
               // controller.updateUserGame.value.game=game;
               // controller.updateUserGame.value.IdGame=game.Id;
               getGamenow(id:game.Id! );
@@ -186,6 +192,16 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                         children: <Widget>[
                           Row(
                             children: [
+                               game.Image == null
+                              ? Image.asset(
+                                  'assets/images/1.png',
+                                  width: screen.width,
+                                  fit: BoxFit.fill,
+                                )
+                              : Utility.imageFromBase64String(
+                                  Utility.base64String(game.Image!),
+                                 40,
+                                  40),
                               // Padding(
                               //   padding: const EdgeInsets.all(8.0),
                               //   child: SizedBox(
@@ -204,23 +220,12 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                               ),
                             ],
                           ),
-                          // const Padding(
-                          //   padding: EdgeInsets.all(8.0),
-                          //   child: Text(
-                          //     'Benfit From Used This Test :',
-                          //     style: TextStyle(
-                          //         color: Color.fromARGB(255, 230, 219, 219),
-                          //         fontSize: 18,
-                          //         fontWeight: FontWeight.bold),
-                          //   ),
-                          // ),
-                          // Flexible(
-                          //     child: Text(discribtion,
-                          //         style: const TextStyle(fontSize: 18))),
-                          Padding(
+                          Column(children: gamesUser.map((e) => Column(
+                           children: [
+                             Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                             'Number Level Is :'+ level,
+                             'Number Level Is :'+e.userLevel.toString(),
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,
@@ -230,7 +235,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                              Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                             'Your Score In This Game :'+ score,
+                             'Your Score In This Level :'+e.Score.toString(),
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,
@@ -238,6 +243,9 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                             ),
                           ),
 
+                           ],
+                          )).toList(),),
+                       
                         ])))));
   }
   Widget getGamenow({required int id}) {

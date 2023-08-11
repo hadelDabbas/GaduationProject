@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../app/model/GameDto.dart';
 import '../../../app/model/game.dart';
 import '../../../app/model/game_user.dart';
 import '../../../app/model/user.dart';
@@ -19,7 +20,7 @@ class MenuGameController extends GetxController
   static MenuGameController get find => Get.find();
   var level=''.obs;
   var numberlevel=0.obs;
-  final ListGameUser=<GameUser>[].obs;
+  final ListGameUser=<GameDto>[].obs;
 final gamRepo=GameRepository();
   RxBool animate = false.obs;
    final auth = Get.find<AuthService>();
