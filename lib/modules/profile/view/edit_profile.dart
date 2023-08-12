@@ -40,7 +40,7 @@ ProfileController controller=Get.put(ProfileController());
          
           Align(
             alignment: Alignment.centerLeft,
-            child:            Text('Edit Profile ',
+            child:            Text('EditProfile'.tr,
                               style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
                               decoration: TextDecoration.none,
                                color:Color.fromARGB(255, 246, 123, 127),fontFamily: "Pacifico")),
@@ -54,7 +54,7 @@ ProfileController controller=Get.put(ProfileController());
           Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
               child: Text(
-                'Edit Your Account',
+                'EditYourAccount'.tr,
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.grey[400],fontWeight: FontWeight.bold),
               )),
