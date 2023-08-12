@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../../../app/model/complaints.dart';
 import '../../../app/model/user.dart';
@@ -9,48 +6,57 @@ import '../../sheard/auth_service.dart';
 import '../data/complaints_repositiory.dart';
 
 class ComplaintsController extends GetxController {
-  final comRepo= ComplaintsRepository();
-  final ListComplaintsAdmain=<Complaint>[].obs;
-  final listUser=<Complaint>[].obs;
-  final newComplaint=Complaint().obs;
-   final auth = Get.find<AuthService>();
-  final user= User().obs;
-final numtype=0.obs;
-final text='In this interface, all complaints are displayed to the admin';
-final textcuser1='In this interface, the user of this account writes the complaint and can see if the admin replied or rejected it';
-final txt=''.obs;
-     @override
+  final comRepo = ComplaintsRepository();
+  final ListComplaintsAdmain = <Complaint>[].obs;
+  final listUser = <Complaint>[].obs;
+  final newComplaint = Complaint().obs;
+  final auth = Get.find<AuthService>();
+  final user = User().obs;
+  final type = 0.obs;
+  final numtype = 0.obs;
+  final text = 'In this interface, all complaints are displayed to the admin';
+  final textcuser1 =
+      'In this interface, the user of this account writes the complaint and can see if the admin replied or rejected it';
+  final txt = ''.obs;
+  @override
   Future<void> onInit() async {
     super.onInit();
-   // dont forget test stauteuser
-  getComplaints();
-  GetUser();
+    // dont forget test stauteuser
+    getComplaints();
+    GetUser();
   }
-   Future<void> GetUser() async {
+
+  Future<void> GetUser() async {
     user.value = auth.getDataFromStorage()!;
   }
-    Future<void> getComplaints() async {
+
+  Future<void> getComplaints() async {
     var data = await comRepo.GetAllComplaint();
     ListComplaintsAdmain.assignAll(data);
   }
-    Future<void> getRefrence() async {
+
+  Future<void> getRefrence() async {
     var data = await comRepo.GetcomplaintUser(user.value.Id!);
-        listUser.assignAll(data);
-
+    listUser.assignAll(data);
   }
-   Future<void> addComplaint() async {
-    var res = await comRepo.Putcomplaints(newComplaint.value );
+
+  Future<void> addComplaint() async {
+    newComplaint.value.type = type.value;
+    newComplaint.value.IdUser = user.value.Id;
+    var res = await comRepo.Putcomplaints(newComplaint.value);
     if (res) {
       //for refresh
       Get.back();
     }
   }
+
   Future<void> UpdateComplaint(Complaint c) async {
-    var res = await comRepo.Updatecomplaint(c );
+    c.type = type.value;
+    c.IdUser = user.value.Id;
+    var res = await comRepo.Updatecomplaint(c);
     if (res) {
       //for refresh
       Get.back();
     }
   }
-
 }

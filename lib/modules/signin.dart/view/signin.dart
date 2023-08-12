@@ -27,18 +27,18 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child:
-                      Icon(Icons.arrow_back_ios, size: 20, color: Color.fromARGB(255, 42, 42, 114)),
+                  child: Icon(Icons.arrow_back_ios,
+                      size: 20, color: Color.fromARGB(255, 42, 42, 114)),
                 ),
               ),
             ),
             const SizedBox(
               height: 15,
             ),
-             Center(
+            Center(
               child: Text(
                 'welcom'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
                     color: Color.fromARGB(255, 42, 42, 114),
@@ -70,12 +70,14 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                         labelText: 'EnterEmail'.tr,
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                          borderSide: const BorderSide(
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     validator: (value) {
@@ -121,20 +123,23 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                           labelText: 'EnterPassword'.tr,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                            borderSide: const BorderSide(
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           )),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "EnterPassword".tr;
-                        } else if (passcontroller.text.length < 6) {
-                          return "PasswordLengthShouldBeMoreThan6Charachters".tr;
                         }
+                        // } else if (passcontroller.text.length < 6) {
+                        //   return "PasswordLengthShouldBeMoreThan6Charachters".tr;
+                        // }
                         return null;
                       },
                       onChanged: (value) {
@@ -165,15 +170,14 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 42, 42, 114),
+                    backgroundColor: const Color.fromARGB(255, 42, 42, 114),
                     shape: RoundedRectangleBorder(
-                      
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child:  Text(
+                child: Text(
                   'SignIn'.tr,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
@@ -184,14 +188,14 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                   Get.rootDelegate.toNamed(Routes.signup);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 42, 42, 114),
+                    backgroundColor: const Color.fromARGB(255, 42, 42, 114),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child:  Text(
+                child: Text(
                   'SignUp'.tr,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
@@ -201,10 +205,11 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
+                  child: IconButton(
+                      onPressed: () {
+                        Get.dialog(Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
                             alignment: Alignment.center,
                             child: Container(
                               decoration: BoxDecoration(
@@ -219,46 +224,52 @@ class SignInViewPage extends GetResponsiveView<SignIncontroller> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child:  Align(
+                                      child: Align(
                                           alignment: Alignment.center,
                                           child: Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               "Help".tr,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Color.fromARGB(
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
                                             ),
                                           )),
                                     ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.text,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 8, 10, 10),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            controller.text,
+                                            textAlign: TextAlign.left,
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                decoration: TextDecoration.none,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black87),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                        ));
+                      },
+                      icon: const Icon(
+                        Icons.help_outline_outlined,
+                        size: 30,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                      )),
                 ),
               ),
             )

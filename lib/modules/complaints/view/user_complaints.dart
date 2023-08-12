@@ -1,20 +1,21 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:getwidget/getwidget.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/complaints_controller.dart';
 
 class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
+  @override
   ComplaintsController controller = Get.put(ComplaintsController());
   final myController = TextEditingController();
   final _formfield = GlobalKey<FormState>();
+
+  UserComplaintspageView({super.key});
   @override
   Widget build(BuildContext context) {
+    controller.getRefrence();
     return SingleChildScrollView(
       child: Form(
         key: _formfield,
@@ -22,12 +23,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: 450,
                 child: Material(
                   child: TextFormField(
                     controller: myController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: ' Enter Your Complaints',
                       labelStyle: TextStyle(
                           color: Colors.black45, fontWeight: FontWeight.bold),
@@ -55,8 +56,25 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ),
             ),
+            Material(
+              child: Obx(() => Row(
+                    children: List.generate(
+                        5,
+                        (index) => InkWell(
+                              onTap: () {
+                                controller.type.value = index;
+                              },
+                              child: Icon(
+                                Icons.star,
+                                color: index <= controller.type.value
+                                    ? Colors.yellow
+                                    : Colors.grey,
+                              ),
+                            )),
+                  )),
+            ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
@@ -83,99 +101,42 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ),
             ),
-            Text(
-              "Prevouis Complaints",
-              style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Pacifico",
-                  color: Color.fromARGB(255, 42, 42, 114),
-                  decoration: TextDecoration.none),
-            ),
-            Column(
-                children: controller.listUser
-                    .map((e) => complaintscard(e.user!.Name.toString(),
-                        e.complaint.toString(), e.user!.Image!, context, e.type!))
-                    .toList()
-                // complaintscard('I want to remove group history ', 'assets/images/4.png',context,'A'),
-                // complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
-                // ],
-                ),
-                     Tooltip(
-              message: 'Help About Page',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
-                                            ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller. textcuser1,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
-                                ),
-                              ),
-                            ),
+            controller.auth.isAdmin()
+                ? Column(
+                    children: [
+                      const Text(
+                        "Prevouis Complaints",
+                        style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Pacifico",
+                            color: Color.fromARGB(255, 42, 42, 114),
+                            decoration: TextDecoration.none),
+                      ),
+                      Column(
+                          children: controller.listUser
+                              .map((e) => complaintscard(
+                                  e.user!.Name.toString(),
+                                  e.complaint.toString(),
+                                  e.user!.Image!,
+                                  context,
+                                  e.type!))
+                              .toList()
+                          // complaintscard('I want to remove group history ', 'assets/images/4.png',context,'A'),
+                          // complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
+                          // ],
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
-                ),
-              ),
-            )
+                    ],
+                  )
+                : const SizedBox.shrink()
           ],
         ),
       ),
     );
   }
 
-  Widget complaintscard(String name,
-      String complaints, Uint8List url, BuildContext context,int type) {
+  Widget complaintscard(String name, String complaints, Uint8List url,
+      BuildContext context, int type) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -218,8 +179,8 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                name,
-                  style: TextStyle(
+                  name,
+                  style: const TextStyle(
                     fontFamily: "Pacifico",
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -230,15 +191,14 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
               ),
             ],
           ),
-          new Container(
+          Container(
             padding: const EdgeInsets.all(10.0),
-            child: new
-             Column(
+            child: Column(
               children: <Widget>[
-                new Text(
+                Text(
                   complaints,
                   textAlign: TextAlign.left,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18,
                       decoration: TextDecoration.none,
                       fontWeight: FontWeight.bold,
@@ -246,70 +206,71 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ],
             ),
-          ), 
-        gettype(index: type)
+          ),
+          gettype(index: type)
         ]),
       ),
     );
   }
+
   Widget gettype({required int index}) {
-  Widget widget;
-  switch (index) {
-    case 0:
-      widget =   Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Accepted ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                        color: Colors.green[400],
-                      ),
-                    ),
-                  ),
-                );;
-      break;
-    case 1:
-      widget =   Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Refuses',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                );
-      break;
-    default:
-      widget =    Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Not Pross',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                );;
+    Widget widget;
+    switch (index) {
+      case 0:
+        widget = Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              'Accepted ',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                color: Colors.green[400],
+              ),
+            ),
+          ),
+        );
+        {}
+        break;
+      case 1:
+        widget = const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              'Refuses',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                color: Colors.red,
+              ),
+            ),
+          ),
+        );
+        break;
+      default:
+        widget = const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              'Not Pross',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        );
+        {}
 
-      break;
+        break;
+    }
+    return widget;
   }
-  return widget;
-}
-
- 
 }

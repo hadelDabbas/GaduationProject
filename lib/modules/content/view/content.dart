@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:graduationproject/app/model/content.dart';
 
 import '../controller/content_controller.dart';
 
@@ -16,34 +17,120 @@ class Contentpage extends GetResponsiveView<ContentController> {
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Row(
+                  children: [
+                    Material(
+                      child: InkWell(
+                        onTap: () => Get.back(),
+                        child: const Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(Icons.arrow_back_ios,
+                                size: 20, color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "  All Content  ",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Pacifico",
+                                color: Color.fromARGB(255, 42, 42, 114),
+                                decoration: TextDecoration.none),
+                          ),
+                        )),
+                  ],
+                ),
                 Material(
-                  child: InkWell(
-                    onTap: () => Get.back(),
-                    child: const Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.arrow_back_ios,
-                            size: 20, color: Colors.grey),
+                  child: Tooltip(
+                    message: 'Help About Page',
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: IconButton(
+                            onPressed: () {
+                              Get.dialog(Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                            color: Colors.blueAccent)),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          const Padding(
+                                            padding: EdgeInsets.all(8.0),
+                                            child: Align(
+                                                alignment: Alignment.center,
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    "Help",
+                                                    style: TextStyle(
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontFamily: "Pacifico",
+                                                        color: Color.fromARGB(
+                                                            255, 42, 42, 114),
+                                                        decoration:
+                                                            TextDecoration
+                                                                .none),
+                                                  ),
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                10, 8, 10, 10),
+                                            child: Column(
+                                              children: <Widget>[
+                                                Text(
+                                                  controller.text,
+                                                  textAlign: TextAlign.left,
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      decoration:
+                                                          TextDecoration.none,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black87),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ));
+                            },
+                            icon: const Icon(
+                              Icons.help_outline_outlined,
+                              size: 30,
+                              color: Color.fromARGB(255, 246, 123, 127),
+                            )),
                       ),
                     ),
                   ),
-                ),
-                const Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "  All Content  ",
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Pacifico",
-                            color: Color.fromARGB(255, 42, 42, 114),
-                            decoration: TextDecoration.none),
-                      ),
-                    )),
+                )
               ],
             ),
             const SizedBox(
@@ -55,7 +142,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                 padding: const EdgeInsets.all(8.0),
                 child: GFButton(
                   shape: GFButtonShape.pills,
-                  color: Color.fromARGB(255, 42, 42, 114),
+                  color: const Color.fromARGB(255, 42, 42, 114),
                   onPressed: () {
                     Get.dialog(Align(
                         alignment: Alignment.center,
@@ -68,20 +155,140 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                 border: Border.all(color: Colors.blueAccent)),
                             child: Column(
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      "   Add Content  ",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: "Pacifico",
-                                          color: Color.fromARGB(255, 42, 42, 114),
-                                          decoration: TextDecoration.none),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "   Add Content  ",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Material(
+                                      child: Tooltip(
+                                        message: 'Help About Page',
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  Get.dialog(Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
+                                                            border: Border.all(
+                                                                color: Colors
+                                                                    .blueAccent)),
+                                                        child:
+                                                            SingleChildScrollView(
+                                                          child: Column(
+                                                            children: [
+                                                              const SizedBox(
+                                                                height: 10,
+                                                              ),
+                                                              const Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            8.0),
+                                                                child: Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          Text(
+                                                                        "Help",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                25,
+                                                                            fontWeight: FontWeight
+                                                                                .bold,
+                                                                            fontFamily:
+                                                                                "Pacifico",
+                                                                            color: Color.fromARGB(
+                                                                                255,
+                                                                                42,
+                                                                                42,
+                                                                                114),
+                                                                            decoration:
+                                                                                TextDecoration.none),
+                                                                      ),
+                                                                    )),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .fromLTRB(
+                                                                        10,
+                                                                        8,
+                                                                        10,
+                                                                        10),
+                                                                child: Column(
+                                                                  children: <Widget>[
+                                                                    Text(
+                                                                      controller
+                                                                          .addtext,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left,
+                                                                      style: const TextStyle(
+                                                                          fontSize:
+                                                                              18,
+                                                                          decoration: TextDecoration
+                                                                              .none,
+                                                                          fontWeight: FontWeight
+                                                                              .bold,
+                                                                          color:
+                                                                              Colors.black87),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ));
+                                                },
+                                                icon: const Icon(
+                                                  Icons.help_outline_outlined,
+                                                  size: 30,
+                                                  color: Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                                )),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                                 Material(
                                   child: Padding(
@@ -96,26 +303,29 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                   255, 246, 123, 127),
                                               fontWeight: FontWeight.bold),
                                         ),
-                                            validator: (value) {
-                  // for number
-                  if (value!.isEmpty ||
-                      !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Name";
-                  } else {
-                    return null;
-                  }},
+                                        validator: (value) {
+                                          // for number
+                                          if (value!.isEmpty ||
+                                              !RegExp(r'^[a-z A-Z]+$')
+                                                  .hasMatch(value)) {
+                                            return "Enter Correct Name";
+                                          } else {
+                                            return null;
+                                          }
+                                        },
                                         onChanged: (value) {
                                           if (!controller.contents.any(
                                               (element) =>
                                                   element.typeName == value)) {
-                                            controller.addcontent.value.typeName =
-                                                value;
+                                            controller.addcontent.value
+                                                .typeName = value;
                                           } else {
                                             Get.snackbar(
                                               ' Error',
                                               " Add New content ",
                                               //  icon: Icon(Icons.person, color: Colors.white),
-                                              snackPosition: SnackPosition.BOTTOM,
+                                              snackPosition:
+                                                  SnackPosition.BOTTOM,
                                               backgroundColor:
                                                   const Color.fromARGB(
                                                       255, 209, 143, 143),
@@ -143,19 +353,23 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: ElevatedButton(
                                         onPressed: () async {
-                                            if (_formfield.currentState!.validate()) {
-                  print("Data Added Successfully");
-                                          controller.show.value = true;
-                                          if (!controller.contents.contains(
-                                              controller.addcontent.value)) {
-                                            await controller.addcontentelement(
-                                                controller.addcontent.value);}
+                                          if (_formfield.currentState!
+                                              .validate()) {
+                                            print("Data Added Successfully");
+                                            controller.show.value = true;
+                                            if (!controller.contents.contains(
+                                                controller.addcontent.value)) {
+                                              await controller
+                                                  .addcontentelement(controller
+                                                      .addcontent.value);
+                                            }
                                           } else {
                                             Get.snackbar(
                                               ' Error',
                                               " Add New content ",
                                               //  icon: Icon(Icons.person, color: Colors.white),
-                                              snackPosition: SnackPosition.BOTTOM,
+                                              snackPosition:
+                                                  SnackPosition.BOTTOM,
                                               backgroundColor:
                                                   const Color.fromARGB(
                                                       255, 209, 143, 143),
@@ -172,7 +386,9 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                           }
                                         },
                                         style: ElevatedButton.styleFrom(
-                                            backgroundColor: Color.fromARGB(255, 42, 42, 114),
+                                            backgroundColor:
+                                                const Color.fromARGB(
+                                                    255, 42, 42, 114),
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(120)),
@@ -186,76 +402,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                     ),
                                   ),
                                 ),
-                     Tooltip(
-                message: 'Help About Page',
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(onPressed: (){
-                Get.dialog(Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.blueAccent)),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: const Align(
-                                            alignment: Alignment.center,
-                                            child: Padding(
-                                              padding: EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Help",
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(255, 42, 42, 114),
-                                                    decoration: TextDecoration.none),
-                                              ),
-                                            )),
-                                      ),
-                                               Padding(
-                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                                 child: Column(
-                                                             children: <Widget>[
-                                                               new Text(
-                                                                 controller.addtext,
-                                                                 textAlign: TextAlign.left,
-                                                                 style: TextStyle(
-                                                                     fontSize: 18,
-                                                                     decoration: TextDecoration.none,
-                                                                     fontWeight: FontWeight.bold,
-                                                                     color: Colors.black87),
-                                                               ),
-                                                             ],
-                                                           ),
-                                               ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                ));
-                    }, icon: Icon(Icons.help_outline_outlined,
-                    size: 30,
-                    color:Color.fromARGB(255, 246, 123, 127) ,)),
-                  ),
-                ),
-              )
                               ],
-                            )
-                            )));
+                            ))));
                   },
                   text: "Add Content",
                   textStyle: const TextStyle(
@@ -272,83 +420,15 @@ class Contentpage extends GetResponsiveView<ContentController> {
             ),
             Obx(() => Column(
                 children: controller.contents
-                    .map((element) => CardContent(
-                        element.typeName.toString(), context, element.Id!))
+                    .map((element) => CardContent(context, element))
                     .toList())),
-                     Tooltip(
-                message: 'Help About Page',
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(onPressed: (){
-                Get.dialog(Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.blueAccent)),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: const Align(
-                                            alignment: Alignment.center,
-                                            child: Padding(
-                                              padding: EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Help",
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(255, 42, 42, 114),
-                                                    decoration: TextDecoration.none),
-                                              ),
-                                            )),
-                                      ),
-                                               Padding(
-                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                                 child: Column(
-                                                             children: <Widget>[
-                                                               new Text(
-                                                                 controller.text,
-                                                                 textAlign: TextAlign.left,
-                                                                 style: TextStyle(
-                                                                     fontSize: 18,
-                                                                     decoration: TextDecoration.none,
-                                                                     fontWeight: FontWeight.bold,
-                                                                     color: Colors.black87),
-                                                               ),
-                                                             ],
-                                                           ),
-                                               ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                ));
-                    }, icon: Icon(Icons.help_outline_outlined,
-                    size: 30,
-                    color:Color.fromARGB(255, 246, 123, 127) ,)),
-                  ),
-                ),
-              )
           ],
         ),
       ),
     );
   }
 
-  Widget CardContent(String name, BuildContext context, int idcontent) {
+  Widget CardContent(BuildContext context, Content content) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: GFBorder(
@@ -371,7 +451,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
               children: [
                 Center(
                   child: Text(
-                    name,
+                    content.typeName!,
                     style: const TextStyle(
                         fontSize: 20,
                         decoration: TextDecoration.none,
@@ -382,7 +462,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                 Material(
                     child: IconButton(
                         onPressed: () async {
-                          await controller.delcontentelement(idcontent);
+                          await controller.delcontentelement(content);
                         },
                         icon: const Icon(
                           Icons.close,

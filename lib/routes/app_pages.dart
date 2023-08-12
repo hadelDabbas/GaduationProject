@@ -10,6 +10,9 @@ import '../modules/MenuGame/view/all_games/letter_game/bindings/letter_game_bind
 import '../modules/MenuGame/view/all_games/packet/binding/packet_binding.dart';
 import '../modules/MenuGame/view/all_games/timer/bindings/timer_binding.dart';
 import '../modules/MenuGame/view/all_games/word_game/bindings/word_game_binding.dart';
+import '../modules/complaints/binding/complaints_binding.dart';
+import '../modules/complaints/view/complaints.dart';
+import '../modules/complaints/view/user_complaints.dart';
 import '../modules/content/binding/content_binding.dart';
 import '../modules/content/view/content.dart';
 import '../modules/groups/binding/group_binding.dart';
@@ -36,6 +39,18 @@ class AppPages {
   AppPages._();
 
   static final routes = [
+    GetPage(
+        name: _Paths.SignIn,
+        page: () => SignInViewPage(),
+        binding: SignInBinding()),
+    GetPage(
+        name: _Paths.complaint,
+        page: () => ComplaintspageView(),
+        binding: ComplainsBinding()),
+    GetPage(
+        name: _Paths.userComplaint,
+        page: () => UserComplaintspageView(),
+        binding: ComplainsBinding()),
     GetPage(
         name: _Paths.SignIn,
         page: () => SignInViewPage(),

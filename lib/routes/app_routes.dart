@@ -19,6 +19,8 @@ abstract class Routes {
   static const booktype = _Paths.booktype;
   static const refrence = _Paths.refrence;
   static const setting = _Paths.setting;
+  static const userComplaint = _Paths.userComplaint;
+  static const complaint = _Paths.complaint;
 }
 
 abstract class _Paths {
@@ -39,4 +41,6 @@ abstract class _Paths {
   static const booktype = '/booktype';
   static const refrence = '/refrence';
   static const setting = '/setting';
+  static const userComplaint = '/userComplaint';
+  static const complaint = '/complaint';
 }

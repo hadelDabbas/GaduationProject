@@ -1,86 +1,92 @@
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/app/model/complaints.dart';
 import 'package:graduationproject/modules/complaints/controller/complaints_controller.dart';
 
-import '../../AddBook/controller/AddBook_controller.dart';
 import '../../genereted/sheard/util.dart';
 
 class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
-  ComplaintsController controller = Get.put(ComplaintsController());
   Uint8List? image;
+
+  ComplaintspageView({super.key});
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Material(
-                child: InkWell(
-                  onTap: () => Get.back(),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.arrow_back_ios,
-                          size: 20, color: Colors.grey),
+    return Material(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Material(
+                  child: InkWell(
+                    onTap: () => Get.back(),
+                    child: const Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.arrow_back_ios,
+                            size: 20, color: Colors.grey),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Text(
-                " Complaints  ",
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Pacifico",
-                    color: Color.fromARGB(255, 42, 42, 114),
-                    decoration: TextDecoration.none),
-              ),
-              SizedBox(width: 190,),
-              // Container(
-              //   height: 80,
-              // child: Image.asset('assets/images/c2.png'),
-              // ),
-               Container(
-                height: 80,
-                width: 100,
-              child: Image.asset('assets/images/c1.png'),
-              ),
-            ],
-          ),
-          Text(
-            " Here All Complaints  ",
-            style: TextStyle(
-                fontSize: 18,
-                   fontFamily: "Pacifico",
-                color: Color.fromARGB(255, 141, 140, 140),
-                decoration: TextDecoration.none),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Column(
-            children: controller.ListComplaintsAdmain.map((element) =>
-             CardComplaints(element.user!.Name.toString(),
-             element.complaint.toString(),
-             context, element.user!.Image!,element.type!,element)).toList(),
-          ),
-               Tooltip(
+                const Text(
+                  " Complaints  ",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Pacifico",
+                      color: Color.fromARGB(255, 42, 42, 114),
+                      decoration: TextDecoration.none),
+                ),
+                const SizedBox(
+                  width: 190,
+                ),
+                // Container(
+                //   height: 80,
+                // child: Image.asset('assets/images/c2.png'),
+                // ),
+                SizedBox(
+                  height: 80,
+                  width: 100,
+                  child: Image.asset('assets/images/c1.png'),
+                ),
+              ],
+            ),
+            const Text(
+              " Here All Complaints  ",
+              style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: "Pacifico",
+                  color: Color.fromARGB(255, 141, 140, 140),
+                  decoration: TextDecoration.none),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Column(
+              children: controller.ListComplaintsAdmain.map((element) =>
+                  CardComplaints(
+                      element.user!.Name.toString(),
+                      element.complaint.toString(),
+                      context,
+                      element.user!.Image!,
+                      element.type!,
+                      element)).toList(),
+            ),
+            Tooltip(
               message: 'Help About Page',
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
+                  child: IconButton(
+                      onPressed: () {
+                        Get.dialog(Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
                             alignment: Alignment.center,
                             child: Container(
                               decoration: BoxDecoration(
@@ -93,9 +99,9 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
@@ -105,82 +111,89 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Color.fromARGB(
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
                                             ),
                                           )),
                                     ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.text,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 8, 10, 10),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            controller.text,
+                                            textAlign: TextAlign.left,
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                decoration: TextDecoration.none,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black87),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                        ));
+                      },
+                      icon: const Icon(
+                        Icons.help_outline_outlined,
+                        size: 30,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                      )),
                 ),
               ),
             )
-          // CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
-          //     context, 'assets/images/2.png'),
-          // CardComplaints(
-          //     'Hadel Dabase',
-          //     'I Will Publish Post in Group Math I wamt to apply',
-          //     context,
-          //     'assets/images/team.png'),
-          // CardComplaints(
-          //     'Haya Yosofi',
-          //     'I want to by Admain for publish question and testing',
-          //     context,
-          //     'assets/images/11.png'),
-          // CardComplaints(
-          //     'Asia Badnjki',
-          //     'I dont love Your App And I hope to improved it',
-          //     context,
-          //     'assets/images/12.png'),
-        ],
+            // CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
+            //     context, 'assets/images/2.png'),
+            // CardComplaints(
+            //     'Hadel Dabase',
+            //     'I Will Publish Post in Group Math I wamt to apply',
+            //     context,
+            //     'assets/images/team.png'),
+            // CardComplaints(
+            //     'Haya Yosofi',
+            //     'I want to by Admain for publish question and testing',
+            //     context,
+            //     'assets/images/11.png'),
+            // CardComplaints(
+            //     'Asia Badnjki',
+            //     'I dont love Your App And I hope to improved it',
+            //     context,
+            //     'assets/images/12.png'),
+          ],
+        ),
       ),
     );
   }
 
-  Widget CardComplaints(
-      String name, String Complaints, BuildContext context, Uint8List url,int type,Complaint c) {
+  Widget CardComplaints(String name, String Complaints, BuildContext context,
+      Uint8List url, int type, Complaint c) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
           children: [
-               Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: url == null
-                          ? Image.asset(
-                              'assets/images/angryimg.png',
-                              width: screen.width,
-                              fit: BoxFit.cover,
-                            )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(url), 50, 50),
-                    ),
-                  ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 40,
+                height: 40,
+                child: url == null
+                    ? Image.asset(
+                        'assets/images/angryimg.png',
+                        width: screen.width,
+                        fit: BoxFit.cover,
+                      )
+                    : Utility.imageFromBase64String(
+                        Utility.base64String(url), 50, 50),
+              ),
+            ),
             // Padding(
             //   padding: const EdgeInsets.all(8.0),
             //   child: GFImageOverlay(
@@ -203,14 +216,14 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(22.0)),
               child: Card(
-                       shape: RoundedRectangleBorder(
+                shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
                 child: Column(children: [
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Pacifico",
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -218,15 +231,15 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                       ),
                     ),
                   ),
-                  new Container(
+                  Container(
                     padding: const EdgeInsets.all(16.0),
                     width: 300,
-                    child: new Column(
+                    child: Column(
                       children: <Widget>[
-                        new Text(
+                        Text(
                           Complaints,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
@@ -239,7 +252,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 250,
                         ),
                         Align(
@@ -248,17 +261,17 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                             message: 'Not Accept',
                             child: ElevatedButton(
                               onPressed: () async {
-                             c.type=1;
-                             controller.UpdateComplaint(c); 
+                                c.type = 1;
+                                controller.UpdateComplaint(c);
                               },
-                              child: Icon(
-                                Icons.close,
-                                size: 18,
-                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
-                                    Color.fromARGB(255, 238, 106, 97),
-                                shape: CircleBorder(),
+                                    const Color.fromARGB(255, 238, 106, 97),
+                                shape: const CircleBorder(),
+                              ),
+                              child: const Icon(
+                                Icons.close,
+                                size: 18,
                               ),
                             ),
                           ),
@@ -269,16 +282,16 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                             message: ' Accept',
                             child: ElevatedButton(
                               onPressed: () async {
-                                   c.type=0;
-                             controller.UpdateComplaint(c); 
+                                c.type = 0;
+                                controller.UpdateComplaint(c);
                               },
-                              child: Icon(
-                                Icons.check,
-                                size: 18,
-                              ),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.green,
-                                shape: CircleBorder(),
+                                shape: const CircleBorder(),
+                              ),
+                              child: const Icon(
+                                Icons.check,
+                                size: 18,
                               ),
                             ),
                           ),

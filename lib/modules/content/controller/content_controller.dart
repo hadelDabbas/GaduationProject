@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
+import 'package:graduationproject/modules/sheard/auth_service.dart';
 
 import '../../../api/storage/storge_service.dart';
 import '../../../app/model/content.dart';
 import '../data/content_repositry.dart';
 
-class ContentController extends GetxController{
-  var show=false.obs;
-    static const  String KeyData="AuthData";
-      final stroge = Get.find<StorageService>();
-        final contents = <Content>[].obs;
-        final contRepo=ContentRepository();
+class ContentController extends GetxController {
+  var show = false.obs;
+  static const String KeyData = "AuthData";
+  final stroge = Get.find<StorageService>();
+  final contents = <Content>[].obs;
+  final contRepo = ContentRepository();
   final addcontent = Content().obs;
-  final text='In this interface we display the existing content';
-  final addtext='In this interface new content can be added';
+  final text = 'In this interface we display the existing content';
+  final addtext = 'In this interface new content can be added';
 
   @override
   Future<void> onInit() async {
@@ -20,20 +21,20 @@ class ContentController extends GetxController{
     await getAllContent();
   }
 
-
-  Future <void> getAllContent() async{
+  Future<void> getAllContent() async {
     var data = await contRepo.GetContent();
-    contents.assignAll(data );
-
+    contents.assignAll(data);
   }
-   Future<void> delcontentelement(int idcontent) async {
-    var res = await contRepo.DelContent(idcontent);
+
+  Future<void> delcontentelement(Content content) async {
+    var res = await contRepo.DelContent(content);
     if (res) {
       getAllContent();
     }
   }
 
   Future<void> addcontentelement(Content content) async {
+    content.IdUser = Get.find<AuthService>().getDataFromStorage()!.Id;
     var res = await contRepo.AddContent(content);
     if (res) {
       //for refresh

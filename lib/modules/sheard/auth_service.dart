@@ -5,12 +5,13 @@ import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 
 import '../../api/storage/storge_service.dart';
+import '../../app/model/accessiblity_logIn.dart';
 import '../../app/model/game_user.dart';
 
 const String KeyData = "AuthData";
 
 class AuthService {
-  final gameUser=GameUser();
+  final gameUser = GameUser();
   final _dio = Get.find<Dio>();
   final stroge = Get.find<StorageService>();
   bool isAuth() => stroge.containsKey(KeyData);
@@ -21,10 +22,14 @@ class AuthService {
     }
     return null;
   }
-    
-void  SaveGameUser(){
-     stroge.saveData(KeyData, jsonEncode(gameUser.toJson()));
- }
+
+  void SaveGameUser() {
+    stroge.saveData(KeyData, jsonEncode(gameUser.toJson()));
+  }
+
+  bool isAdmin() {
+    return bool.parse(stroge.getData('isAdmin')!);
+  }
 
   Future<User?> logIn(String email, String password) async {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
@@ -33,9 +38,41 @@ void  SaveGameUser(){
     if (result.statusCode == 200) {
       var data = User.fromJson(result.data as Map<String, dynamic>);
       stroge.saveData(KeyData, jsonEncode(data.toJson()));
+      var access = await userAccessibilites(data.Id!);
+      if (access!.isEmpty) stroge.saveData('isAdmin', 'true');
       return data;
     }
     return null;
+  }
+
+  String encode(List<AccessiblityLogIn> object) => json.encode(
+        object.map<Map<String, dynamic>>((e) => e.toJson()).toList(),
+      );
+
+  static List<AccessiblityLogIn> decodeData(String e) =>
+      (json.decode(e) as List<dynamic>)
+          .map<AccessiblityLogIn>((item) => AccessiblityLogIn.fromJson(item))
+          .toList();
+
+  Future<List<AccessiblityLogIn>?> userAccessibilites(int userId) async {
+    var list = <AccessiblityLogIn>[];
+    var result = await _dio.get(
+      'https://localhost:7252/api/UserAccessibility/GetUserAccessibilites?IdUser=$userId',
+    );
+    print(result.data);
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(AccessiblityLogIn.fromJson(item));
+      }
+      stroge.saveData('userAccess', encode(list));
+      return list;
+    }
+    return null;
+  }
+
+  List<AccessiblityLogIn> getUserLogInAccess() {
+    var data = decodeData(stroge.getData('userAccess')!);
+    return data;
   }
 
   Future<bool> signUp(User object) async {
@@ -48,10 +85,12 @@ void  SaveGameUser(){
     }
     return false;
   }
-    @override
-  Future<bool> updateUserGame() async{
-    var iduserGame=gameUser.Id;
-     var result = await _dio.put('https://localhost:7252/api/GameUser/$iduserGame',
+
+  @override
+  Future<bool> updateUserGame() async {
+    var iduserGame = gameUser.Id;
+    var result = await _dio.put(
+        'https://localhost:7252/api/GameUser/$iduserGame',
         data: gameUser.toJson());
     return result.statusCode == 200;
   }

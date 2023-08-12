@@ -20,9 +20,9 @@ class ContentRepository implements IContentRepository {
   }
 
   @override
-  Future<bool> DelContent(int id) async {
+  Future<bool> DelContent(Content content) async {
     var result = await _dio.delete(
-      'https://localhost:7252/api/Content/Delete?id=$id',
+      'https://localhost:7252/api/Content/Delete?Id=${content.Id}&typeName=${content.typeName}',
     );
     return result.statusCode == 200;
   }

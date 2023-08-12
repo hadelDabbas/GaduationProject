@@ -1,14 +1,14 @@
-class Accessibility{
+class Accessibility {
   int? id;
   String? AccessibilityType;
- Accessibility({
+  Accessibility({
     this.id,
     this.AccessibilityType,
   });
 
- Accessibility.fromJson(Map<String, dynamic> json) {
+  Accessibility.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    AccessibilityType= json['AccessibilityType'];
+    AccessibilityType = json['AccessibilityType'];
   }
 
   Map<String, dynamic> toJson() {
