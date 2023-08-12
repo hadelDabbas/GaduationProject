@@ -9,13 +9,11 @@ import 'content.dart';
 import 'group.dart';
 
 class  UserAccessibility{
- String? AdminOn;
  int? IdAccessibility;
 Accessibility? accessibility;
   int ?IdUser;
   User? user;
 UserAccessibility( {
- this. AdminOn,
     this.IdAccessibility ,
     this.accessibility,
     this.IdUser,
@@ -23,7 +21,6 @@ UserAccessibility( {
   });
 
 UserAccessibility.fromJson(Map<String, dynamic> json) {
-   AdminOn = json['AdminOn'];
 IdAccessibility=json['IdAccessibility'];
 accessibility=json['accessibility'];
  IdUser=json[' idUser'];
@@ -32,7 +29,6 @@ accessibility=json['accessibility'];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['AdminOn ']=AdminOn ;
     json[' IdAccessibility']=IdAccessibility;
     json['accessibility']=accessibility;
     json[' user']=user;

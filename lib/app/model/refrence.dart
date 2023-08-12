@@ -12,14 +12,12 @@ class  Reference {
   String?  Link;
    int ?IdContent;
    Content? content;
- DateTime? dateTime;
    Reference(
       {this.Id,
       this.referenceName,
       this. Link,
       this.IdContent,
       this.content,
-      this.dateTime,
       });
 
  Reference.fromJson(Map<String, dynamic> json) {
@@ -28,7 +26,6 @@ class  Reference {
     Link= json[' Link'];
     IdContent = json['IdContent'];
    content= json['content'];
-   dateTime = json['dateTime'];
  
   }
 
@@ -39,7 +36,6 @@ class  Reference {
     json[' Link'] =  Link;
     json['IdContent'] = IdContent;
     json['content'] = content;
-    json['dateTime'] = dateTime;
    
     return json;
   }

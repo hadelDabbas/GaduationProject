@@ -34,7 +34,6 @@ class ContentController extends GetxController {
   }
 
   Future<void> addcontentelement(Content content) async {
-    content.IdUser = Get.find<AuthService>().getDataFromStorage()!.Id;
     var res = await contRepo.AddContent(content);
     if (res) {
       //for refresh
