@@ -21,7 +21,7 @@ abstract class IGroupRepository {
   Future<bool> InteractionUser(UserPost userPost, int idpost);
   Future<List<Comments>> GetComment(int idpost);
   Future<bool> AddComment(Comments comments, int Iduser);
-  Future<bool> AddpostUser(Post post, int iduser, int idgroup);
+  Future<bool> AddpostUser(Post post);
   Future<List<Content>> GetAllContent();
   Future<bool> RemoveMember(UserGroup userGroup);
   Future<List<UserGroup>> exsitingMember();

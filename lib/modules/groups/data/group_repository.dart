@@ -155,7 +155,7 @@ class GroupRepository implements IGroupRepository {
   }
 
   @override
-  Future<bool> AddpostUser(Post post, int iduser, int idgroup) async {
+  Future<bool> AddpostUser(Post post) async {
     var result = await _dio.post('https://localhost:7252/api/Post/AddPost',
         data: post.toJson());
     print(result.data);

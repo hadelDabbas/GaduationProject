@@ -167,8 +167,11 @@ class GroupController extends GetxController {
 
   Future<void> AddPost() async {
     newpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    var data = await groupRepo.AddpostUser(
-        newpost.value, user.value.Id!, currentGroup.value.Id!);
+    newpost.value.IdGroup = currentGroup.value.Id;
+    newpost.value.IdContent = currentGroup.value.IdContent;
+    newpost.value.IdUser = user.value.Id;
+    newpost.value.dateTime = DateTime.now();
+    var data = await groupRepo.AddpostUser(newpost.value);
     if (data) {
       Get.snackbar(
         'Good',

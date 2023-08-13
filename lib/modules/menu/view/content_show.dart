@@ -25,74 +25,80 @@ class ContentPage extends GetResponsiveView<HomeController> {
             ),
           ),
         ),
-
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: GFButton(
-              shape: GFButtonShape.pills,
-              color: Color.fromARGB(255, 42, 42, 114),
-              onPressed: () {
-                controller.GetAllContent();
-                Get.dialog(Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: 200,
-                    height: 900,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.blueAccent)),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: GFButton(
+                  shape: GFButtonShape.pills,
+                  color: Color.fromARGB(255, 42, 42, 114),
+                  onPressed: () {
+                    controller.GetAllContent();
+                    Get.dialog(Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        width: 200,
+                        height: 900,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.blueAccent)),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Align(
+                                  alignment: Alignment.center,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Contents ",
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: "Pacifico",
+                                          color:
+                                              Color.fromARGB(255, 42, 42, 114),
+                                          decoration: TextDecoration.none),
+                                    ),
+                                  )),
+                              Obx(() => Wrap(
+                                    children: controller.Contents.map(
+                                        (element) => buildContent(
+                                            element.typeName.toString(),
+                                            element.Id!)).toList(),
+                                  ))
+                            ],
                           ),
-                          const Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Contents ",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Pacifico",
-                                      color:Color.fromARGB(255, 42, 42, 114),
-                                      decoration: TextDecoration.none),
-                                ),
-                              )),
-                          Obx(() => Wrap(
-                                children: controller.Contents.map((element) =>
-                                    buildContent(element.typeName.toString(),
-                                        element.Id!)).toList(),
-                              ))
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ));
-              },
-              text: "Contents",
-              textStyle: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                    ));
+                  },
+                  text: "Contents",
+                  textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
             ),
-          ),
-        ),
-                Tooltip(
+            Tooltip(
               message: 'Help About Page',
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
+                  child: IconButton(
+                      onPressed: () {
+                        Get.dialog(Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
                             alignment: Alignment.center,
                             child: Container(
                               decoration: BoxDecoration(
@@ -117,39 +123,48 @@ class ContentPage extends GetResponsiveView<HomeController> {
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Color.fromARGB(
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
                                             ),
                                           )),
                                     ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.text,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 8, 10, 10),
+                                      child: Column(
+                                        children: <Widget>[
+                                          new Text(
+                                            controller.text,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                decoration: TextDecoration.none,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black87),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                        ));
+                      },
+                      icon: Icon(
+                        Icons.help_outline_outlined,
+                        size: 30,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                      )),
                 ),
               ),
             )
+          ],
+        )
+
 //                      Container(
 //   width: 700,
 //   child: GFAnimation(

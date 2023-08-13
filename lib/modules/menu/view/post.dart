@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -68,8 +69,8 @@ class postPage extends GetResponsiveView<HomeController> {
       padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
       child: Center(
         child: Container(
-          width: 500,
-          height: 350,
+          // width: 500,
+          // height: 350,
           decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.grey,
@@ -102,11 +103,13 @@ class postPage extends GetResponsiveView<HomeController> {
                                 color: Color.fromARGB(255, 42, 42, 114)),
                           )),
                     ),
-                    Text("($post)",
-                        style: const TextStyle(
-                          color: Colors.grey,
-                        )),
-                    const Icon(Icons.arrow_forward_ios_sharp),
+                    // Text("($post)",
+                    //     style: const TextStyle(
+                    //       color: Colors.grey,
+                    //     )),
+                    GroupName != null
+                        ? Icon(Icons.arrow_forward_ios_sharp)
+                        : Container(),
                     const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: GFAvatar(
@@ -114,7 +117,7 @@ class postPage extends GetResponsiveView<HomeController> {
                         backgroundImage: AssetImage('assets/images/2.png'),
                       ),
                     ),
-                    Text(GroupName),
+                    GroupName != null ? Text(GroupName) : Text('')
                   ],
                 ),
                 ClipRRect(
