@@ -44,30 +44,30 @@ class FoucsGameView extends GetResponsiveView<FoucsController> {
               ),
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'Foucs Game',
+              'fg'.tr,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 179, 96, 154)),
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'This Game Tend To Speed And Foucs Your Brain',
+              'g8'.tr,
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
           ),
-          const Padding(
+           Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              'And The Expereins In The Rules Math',
+              'eg'.tr,
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -96,14 +96,14 @@ class FoucsGameView extends GetResponsiveView<FoucsController> {
                     controller.onReady();
                   break;
               };},
-                child: const Text('Play Now',
+                child:  Text('py'.tr,
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white))),
           ),
                   Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -126,12 +126,12 @@ class FoucsGameView extends GetResponsiveView<FoucsController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,

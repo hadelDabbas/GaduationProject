@@ -44,7 +44,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                   SizedBox(
                     width: 8,
                   ),
-                  Text('Menu Game',
+                  Text('g5'.tr,
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -96,7 +96,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
               //     'assets/images/15.png',
               //     PacketPageView()),
                        Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -119,12 +119,12 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -225,7 +225,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                              Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                             'Number Level Is :'+e.userLevel.toString(),
+                             'g6'.tr+' :'+e.userLevel.toString(),
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,
@@ -235,7 +235,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                              Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                             'Your Score In This Level :'+e.Score.toString(),
+                             'g7'.tr+e.Score.toString(),
                               style: TextStyle(
                                   color: Color.fromARGB(255, 230, 219, 219),
                                   fontSize: 18,

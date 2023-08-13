@@ -33,7 +33,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "  Invoce  ",
+                  "Invoce".tr,
                   style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                  context,element)).toList()
               ),
                 Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -71,12 +71,12 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -196,7 +196,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                   child: Row(
                     children: [
                       Text(
-                        "  Name Book :",
+                        "BookName".tr,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
@@ -223,7 +223,7 @@ class Invoicepage extends GetResponsiveView<LibraryContrller> {
                       child: Row(
                         children: [
                           Text(
-                            "  Count :",
+                            "Count".tr,
                             style: TextStyle(
                                 fontSize: 19,
                                    fontFamily: "Pacifico",

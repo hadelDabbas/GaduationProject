@@ -38,7 +38,7 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                         color: const Color.fromARGB(255, 194, 192, 192)),
                     borderRadius: BorderRadius.circular(10)),
                 child: GFAccordion(
-                  title: "Book Type",
+                  title: "BookType".tr,
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -70,17 +70,17 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                   // for number
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Name";
+                    return "EnterCorrectName".tr;
                   } else {
                     return null;
                   }
                 },
                 initialValue: controller.currentBook.value.bookName.toString(),
-                decoration: const InputDecoration(
-                  labelText: 'Name Book',
+                decoration:  InputDecoration(
+                  labelText: 'BookName'.tr,
                   labelStyle: TextStyle(
                       color: Colors.black45, fontWeight: FontWeight.bold),
-                  hintText: 'Name Book',
+                  hintText: 'BookName'.tr,
                   prefixIcon: Icon(
                     Icons.bookmark_add_outlined,
                     color: Color.fromARGB(255, 245, 146, 149),
@@ -100,11 +100,11 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
               width: 450,
               child: TextFormField(
                 initialValue: controller.currentBook.value.bookPrice.toString(),
-                decoration: const InputDecoration(
-                  labelText: 'Price Book',
+                decoration:  InputDecoration(
+                  labelText: 'BookPrice'.tr,
                   labelStyle: TextStyle(
                       color: Colors.black45, fontWeight: FontWeight.bold),
-                  hintText: 'Price Book',
+                  hintText: 'BookPrice'.tr,
                   prefixIcon: Icon(
                     Icons.price_change,
                     color: Color.fromARGB(255, 245, 146, 149),
@@ -112,7 +112,7 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                 ),
                 validator: (value) {
                   if (!price.hasMatch(value!)) {
-                    return 'Please enter price number';
+                    return 'pe'.tr;
                   }
                   return null;
                 },
@@ -124,7 +124,7 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
             )),
           ),
           Tooltip(
-            message: 'Update Info Book',
+            message: 'up'.tr,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -146,8 +146,8 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
               ),
             ),
           ),
-          const Text(
-            'Choose Writers To This Book',
+           Text(
+            'cw'.tr,
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
           ),
@@ -161,7 +161,7 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                         color: const Color.fromARGB(255, 194, 192, 192)),
                     borderRadius: BorderRadius.circular(10)),
                 child: GFAccordion(
-                  title: "Book Writter",
+                  title: "BookWritter".tr,
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -220,10 +220,10 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                     controller.IdLibrary.value;
               }
             },
-            text: "Update Info Book",
+            text: "up".tr,
           ),
           Tooltip(
-            message: 'Help About Page',
+            message: 'HelpAboutPage'.tr,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -245,14 +245,14 @@ class UpdateBook extends GetResponsiveView<LibraryContrller> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Help",
+                                            "Help".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,
@@ -359,9 +359,9 @@ void openBottomSheet(LibraryContrller controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+           Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePhoto'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -371,23 +371,7 @@ void openBottomSheet(LibraryContrller controller) {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: [
-                  FloatingActionButton(
-                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
-                    foregroundColor: Colors.white,
-                    mini: true,
-                    onPressed: () {
-                      controller.pickImageFun();
-                    },
-                    child: const Icon(Icons.camera),
-                  ),
-                  const Text('  Camera'),
-                ],
-              ),
-              const SizedBox(
-                width: 10,
-              ),
+          
               Row(
                 children: [
                   FloatingActionButton(
@@ -399,7 +383,7 @@ void openBottomSheet(LibraryContrller controller) {
                     },
                     child: const Icon(Icons.image),
                   ),
-                  const Text('  Gallery'),
+                  Text('Gallery'.tr),
                 ],
               )
             ],

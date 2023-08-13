@@ -58,21 +58,21 @@ class LibraryContrller extends GetxController {
   final listBuyBookDto = <BuyBookDto>[].obs;
   final currentLibrary = Library().obs;
   final textshowlibrary =
-      'In this interface, all existing offices will be displayed in any region';
+      'tsl'.tr;
   final textlibrary =
-      'In this interface you will display all the books in the library';
-  final textbook = 'In this interface include book information';
+      'tl'.tr;
+  final textbook = 'tb'.tr;
   final addbooktext =
-      'In this interface you include all the information in order to add a book';
+      'abt'.tr;
   final addlibrary =
-      'In this interface include all the information for adding a library';
+      'alx'.tr;
   final fatorauesr =
-      'In this interface it includes all the books in addition to the books that the owner of this account has purchased';
+      'fa';
   final fatouralibrary =
-      'This interface includes all the people who have purchased books from this library';
+      'fl'.tr;
   final textupdatelibrary =
-      'In this interface we modify the library information';
-  final textupdatebook = 'In this interface we modify book information';
+      'tx'.tr;
+  final textupdatebook = 'tbx'.tr;
   final listDetailsBuyBook = <BuyBookDetailsDto>[].obs;
   @override
   Future<void> onInit() async {

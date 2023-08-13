@@ -43,12 +43,12 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                       ),
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        "All Librarays  ",
+                        "AllLibrarays".tr,
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
             ],
           ),
           Tooltip(
-            message: 'Help About Page',
+            message: 'HelpAboutPage'.tr,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -105,14 +105,14 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Padding(
+                                  Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Help",
+                                            "Help".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,
@@ -176,8 +176,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                   width: 400,
                   height: 250,
                   child: Column(children: [
-                    const Text(
-                      " Add New Librarays  ",
+                     Text(
+                      "adlib".tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -192,12 +192,12 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           width: 350,
                           height: 60,
                           child: TextFormField(
-                            decoration: const InputDecoration(
+                            decoration:  InputDecoration(
                               icon: Icon(
                                 Icons.library_books,
                                 color: Color.fromARGB(255, 246, 123, 127),
                               ),
-                              labelText: 'Add Library Name',
+                              labelText: 'ln'.tr,
                               labelStyle: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
@@ -206,7 +206,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                               // for number
                               if (value!.isEmpty ||
                                   !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                                return "Enter Correct Name";
+                                return "EnterCorrectName".tr;
                               } else {
                                 return null;
                               }
@@ -225,12 +225,12 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                           width: 350,
                           height: 60,
                           child: TextFormField(
-                            decoration: const InputDecoration(
+                            decoration:  InputDecoration(
                               icon: Icon(
                                 Icons.location_on,
                                 color: Color.fromARGB(255, 246, 123, 127),
                               ),
-                              labelText: 'Add Library Postion',
+                              labelText: 'da'.tr,
                               labelStyle: TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
@@ -238,7 +238,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                             validator: (value) {
                               if (value!.isEmpty ||
                                   !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                                return "Enter Correct Adress";
+                                return "EnterCorrectAdress".tr;
                               } else {
                                 return null;
                               }
@@ -259,13 +259,13 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                             controller.addLibrary(controller.Addlibrary.value);
                           }
                         },
-                        text: "Added",
+                        text: "Added".tr,
                         color: const Color.fromARGB(255, 42, 42, 114),
                         shape: GFButtonShape.pills,
                       ),
                     ),
                     Tooltip(
-                      message: 'Help About Page',
+                      message: 'HelpAboutPage'.tr,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
@@ -289,7 +289,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            const Padding(
+                                             Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Align(
                                                   alignment: Alignment.center,
@@ -297,7 +297,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                     padding:
                                                         EdgeInsets.all(8.0),
                                                     child: Text(
-                                                      "Help",
+                                                      "Help".tr,
                                                       style: TextStyle(
                                                           fontSize: 25,
                                                           fontWeight:
@@ -398,7 +398,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                             children: [
                               /////// /////////////////////////////////////// ////update library
                               Tooltip(
-                                message: 'Edit Library',
+                                message: 'ul'.tr,
                                 child: IconButton(
                                     onPressed: () {
                                       Get.dialog(Align(
@@ -418,13 +418,13 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                 const SizedBox(
                                                   height: 10,
                                                 ),
-                                                const Align(
+                                                 Align(
                                                     alignment: Alignment.center,
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.all(8.0),
                                                       child: Text(
-                                                        "Update Library ",
+                                                        "ul".tr,
                                                         style: TextStyle(
                                                             fontSize: 18,
                                                             fontWeight:
@@ -562,8 +562,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                             .UpdateLibrary(
                                                                 library.Id!);
                                                         Get.snackbar(
-                                                          ' Ok ',
-                                                          "Saved Data ",
+                                                          'Ok'.tr,
+                                                          "sd".tr,
                                                           //  icon: Icon(Icons.person, color: Colors.white),
                                                           snackPosition:
                                                               SnackPosition
@@ -591,7 +591,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                   .easeOutBack,
                                                         );
                                                       },
-                                                      text: "Save",
+                                                      text: "Save".tr,
                                                       textStyle:
                                                           const TextStyle(
                                                               fontSize: 18,
@@ -604,7 +604,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                   ],
                                                 ),
                                                 Tooltip(
-                                                  message: 'Help About Page',
+                                                  message: 'HelpAboutPage'.tr,
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.all(
@@ -642,7 +642,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                           height:
                                                                               10,
                                                                         ),
-                                                                        const Padding(
+                                                                         Padding(
                                                                           padding:
                                                                               EdgeInsets.all(8.0),
                                                                           child: Align(
@@ -650,7 +650,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsets.all(8.0),
                                                                                 child: Text(
-                                                                                  "Help",
+                                                                                  "Help".tr,
                                                                                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, fontFamily: "Pacifico", color: Color.fromARGB(255, 42, 42, 114), decoration: TextDecoration.none),
                                                                                 ),
                                                                               )),
@@ -708,7 +708,7 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                               Align(
                                 alignment: Alignment.topRight,
                                 child: Tooltip(
-                                  message: 'delete Library',
+                                  message: 'dl'.tr,
                                   child: IconButton(
                                       onPressed: () {
                                         Get.dialog(Align(
@@ -727,8 +727,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                 child: SingleChildScrollView(
                                                     child: Column(
                                                   children: [
-                                                    const Text(
-                                                      "Are Sure To Remove?",
+                                                     Text(
+                                                      "AreSureToRemove".tr,
                                                       style: TextStyle(
                                                           fontSize: 18,
                                                           fontWeight:
@@ -759,8 +759,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                               .Id!);
                                                                 },
                                                                 child:
-                                                                    const Text(
-                                                                  'Yes',
+                                                                     Text(
+                                                                  'Yes'.tr,
                                                                   style: TextStyle(
                                                                       color: Color.fromARGB(
                                                                           255,
@@ -773,8 +773,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
                                                                   Get.back();
                                                                 },
                                                                 child:
-                                                                    const Text(
-                                                                  'No',
+                                                                    Text(
+                                                                  'No'.tr,
                                                                   style: TextStyle(
                                                                       color: Color.fromARGB(
                                                                           255,

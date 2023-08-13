@@ -37,10 +37,10 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
               const SizedBox(
                 height: 20,
               ),
-              const Center(
+               Center(
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text('Get Ready To Start Adventures',
+                  child: Text('gm'.tr,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -49,8 +49,8 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                       )),
                 ),
               ),
-              const Center(
-                child: Text('with many of fantictic game',
+               Center(
+                child: Text('gm1'.tr,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                         ));
                   },
                   color: const Color.fromARGB(255, 248, 150, 153),
-                  text: "Game Page",
+                  text: "gm2".tr,
                   icon: const Icon(
                     Icons.arrow_circle_right,
                     color: Color.fromARGB(255, 42, 42, 114),

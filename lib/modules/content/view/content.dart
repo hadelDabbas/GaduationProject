@@ -34,12 +34,12 @@ class Contentpage extends GetResponsiveView<ContentController> {
                         ),
                       ),
                     ),
-                    const Align(
+                     Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "  All Content  ",
+                            "alc".tr,
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -52,7 +52,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                 ),
                 Material(
                   child: Tooltip(
-                    message: 'Help About Page',
+                    message: 'HelpAboutPage'.tr,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Align(
@@ -75,14 +75,14 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                           const SizedBox(
                                             height: 10,
                                           ),
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Align(
                                                 alignment: Alignment.center,
                                                 child: Padding(
                                                   padding: EdgeInsets.all(8.0),
                                                   child: Text(
-                                                    "Help",
+                                                    "Help".tr,
                                                     style: TextStyle(
                                                         fontSize: 25,
                                                         fontWeight:
@@ -159,12 +159,12 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Padding(
+                                     Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
                                         child: Text(
-                                          "   Add Content  ",
+                                          "adc".tr,
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                     ),
                                     Material(
                                       child: Tooltip(
-                                        message: 'Help About Page',
+                                        message: 'HelpAboutPage'.tr,
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Align(
@@ -208,7 +208,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                               const SizedBox(
                                                                 height: 10,
                                                               ),
-                                                              const Padding(
+                                                               Padding(
                                                                 padding:
                                                                     EdgeInsets
                                                                         .all(
@@ -224,7 +224,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                                               8.0),
                                                                       child:
                                                                           Text(
-                                                                        "Help",
+                                                                        "Help".tr,
                                                                         style: TextStyle(
                                                                             fontSize:
                                                                                 25,
@@ -296,8 +296,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                     child: SizedBox(
                                       width: 400,
                                       child: TextFormField(
-                                        decoration: const InputDecoration(
-                                          labelText: 'Add New Content',
+                                        decoration:  InputDecoration(
+                                          labelText: 'anc'.tr,
                                           labelStyle: TextStyle(
                                               color: Color.fromARGB(
                                                   255, 246, 123, 127),
@@ -308,7 +308,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                           if (value!.isEmpty ||
                                               !RegExp(r'^[a-z A-Z]+$')
                                                   .hasMatch(value)) {
-                                            return "Enter Correct Name";
+                                            return "EnterCorrectName".tr;
                                           } else {
                                             return null;
                                           }
@@ -321,8 +321,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                 .typeName = value;
                                           } else {
                                             Get.snackbar(
-                                              ' Error',
-                                              " Add New content ",
+                                              'Error'.tr,
+                                              "anc".tr,
                                               //  icon: Icon(Icons.person, color: Colors.white),
                                               snackPosition:
                                                   SnackPosition.BOTTOM,
@@ -365,8 +365,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                             }
                                           } else {
                                             Get.snackbar(
-                                              ' Error',
-                                              " Add New content ",
+                                              'Error'.tr,
+                                              "anc".tr,
                                               //  icon: Icon(Icons.person, color: Colors.white),
                                               snackPosition:
                                                   SnackPosition.BOTTOM,
@@ -394,8 +394,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                     BorderRadius.circular(120)),
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 15, horizontal: 15)),
-                                        child: const Text(
-                                          'Save',
+                                        child:  Text(
+                                          'Save'.tr,
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),
@@ -405,7 +405,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                               ],
                             ))));
                   },
-                  text: "Add Content",
+                  text: "adc".tr,
                   textStyle: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
