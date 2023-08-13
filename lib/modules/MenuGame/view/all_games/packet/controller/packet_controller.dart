@@ -17,12 +17,19 @@ class PacketController extends GetxController {
     super.onInit();
     firstLevel();
   }
-  @override
-  void onClose() {
-    super.onClose();
-      //   auth.gameUser.Score=score.value;
-      // auth.updateUserGame();
+
+  void justOpenOnce() {
+    for (int i = 1; i < 4; i++) {
+      for (var j = 0; j < 2; j++) {
+        cardsSucc.add(Packet(
+          photo: 'assets/images/$i.png',
+          hidd: 'assets/images/hidd.png',
+          index: i,
+        ));
+      }
+    }
   }
+
   void firstLevel() {
     listpacket.clear();
     openCards.clear();
@@ -36,11 +43,11 @@ class PacketController extends GetxController {
         ));
       }
     }
+
     listpacket.shuffle(Random(10));
   }
 
   void secandLevel() {
-    
     listpacket.clear();
     openCards.clear();
     cardsSucc.clear();

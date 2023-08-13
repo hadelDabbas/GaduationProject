@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:core';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,6 @@ import '../../app/model/game_user.dart';
 const String KeyData = "AuthData";
 
 class AuthService {
-  final gameUser = GameUser();
   final _dio = Get.find<Dio>();
   final stroge = Get.find<StorageService>();
   bool isAuth() => stroge.containsKey(KeyData);
@@ -23,8 +23,16 @@ class AuthService {
     return null;
   }
 
-  void SaveGameUser() {
-    stroge.saveData(KeyData, jsonEncode(gameUser.toJson()));
+  void SaveGameUser(GameUser gameUser) {
+    stroge.saveData('game', jsonEncode(gameUser.toJson()));
+  }
+
+  GameUser? getGameUser() {
+    if (stroge.containsKey('game')) {
+      var data = jsonDecode(stroge.getData('game')!) as dynamic;
+      return GameUser.fromJson(data as Map<String, dynamic>);
+    }
+    return null;
   }
 
   bool isAdmin() => stroge.containsKey('isAdmin');
@@ -87,12 +95,15 @@ class AuthService {
     return false;
   }
 
-  @override
-  Future<bool> updateUserGame() async {
-    var iduserGame = gameUser.Id;
+  Future<bool> updateUserGame(GameUser userGame) async {
     var result = await _dio.put(
-        'https://localhost:7252/api/GameUser/$iduserGame',
-        data: gameUser.toJson());
-    return result.statusCode == 200;
+        'https://localhost:7252/api/GameUser/${userGame.Id}',
+        data: userGame.toJson());
+    if (result.statusCode == 200) {
+      stroge.deleteDataByKey('game');
+      SaveGameUser(userGame);
+      return true;
+    }
+    return false;
   }
 }
