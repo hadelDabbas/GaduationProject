@@ -17,7 +17,15 @@ class GroupView extends GetResponsiveView<GroupController> {
   GroupView({super.key});
   @override
   Widget builder() {
+    var accessGroup = controller.access
+        .where(
+            (element) => element.object!.id == controller.currentGroup.value.Id)
+        .first
+        .accessibility;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: accessGroup!.id == 1 || accessGroup.id == 2 ? () {} : null,
+          child: const Icon(Icons.add)),
       body: SingleChildScrollView(
         child: Column(children: [
           InkWell(
@@ -225,14 +233,16 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'Edit Group ',
                   child: ElevatedButton(
-                    onPressed: () {
-                      controller.currentGroup.value.content = controller
-                          .contents
-                          .where(
-                              (p0) => p0.Id == controller.currentGroup.value.Id)
-                          .first;
-                      Get.to(EditGrpoup());
-                    },
+                    onPressed: accessGroup.id == 1 || accessGroup.id == 3
+                        ? () {
+                            controller.currentGroup.value.content = controller
+                                .contents
+                                .where((p0) =>
+                                    p0.Id == controller.currentGroup.value.Id)
+                                .first;
+                            Get.to(EditGrpoup());
+                          }
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
@@ -252,9 +262,11 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'Add Post ',
                   child: ElevatedButton(
-                    onPressed: () {
-                      PostGrpoup();
-                    },
+                    onPressed: accessGroup.id == 1 || accessGroup.id == 2
+                        ? () {
+                            PostGrpoup();
+                          }
+                        : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(

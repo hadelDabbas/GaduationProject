@@ -4,6 +4,7 @@ import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../app/model/accessiblity_logIn.dart';
 import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
 import '../../../app/model/group.dart';
@@ -41,6 +42,7 @@ class GroupController extends GetxController {
   final removeMember = UserGroup().obs;
   final editpost = Post().obs;
   final listcomment = <Comments>[].obs;
+  final access = <AccessiblityLogIn>[].obs;
   PickedFile? imagefile;
   final textshowgroup =
       'In this interface, all existing microbes are displayed';
@@ -56,6 +58,10 @@ class GroupController extends GetxController {
     getAllContent();
     getAllGroups();
     user.value = auth.getDataFromStorage()!;
+    access.value = auth
+        .getUserLogInAccess()
+        .where((element) => element.type == 'Group')
+        .toList();
     ExsistingMember();
     super.onInit();
   }
