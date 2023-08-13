@@ -348,6 +348,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
               child: SingleChildScrollView(
                 child: Column(
                     children:
+                  //   controller.listpost.map((element) => postprofile(
+                  //  controller.user.value.Name.toString(),element.UserImage!,element.GroupName.toString(),
+                  //  element.GroupImage!,element.post!.Description.toString(),element.post!.Image!,
+                  //  element.Interaction!,element.post!.content!.typeName.toString(),element.post!
+                  //   ) ).toList()
                         //  [
                         //   postprofile('asia','' , "GroupName", "imageGroup", "DescriptionGroup", "imagpost", true, 'It')
                         // ]
@@ -399,18 +404,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
       String postType,
       Post post) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: Center(
         child: Container(
           width: 500,
           height: 210,
           decoration: BoxDecoration(
+            
               border: Border.all(
-                color: Colors.grey,
-                width: 1.3,
+                color: Color.fromARGB(255, 42, 42, 114),
+                width: 2,
               ),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)),
+           
+              borderRadius: BorderRadius.circular(20)),
           child: Column(
             children: [
               Row(
@@ -420,14 +426,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageuser == null
-                          ? Image.asset(
+                      child:Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imageuser), 50, 50),
+                      //  imageuser == null
+                      //     ? Image.asset(
+                      //         'assets/images/angryimg.png',
+                      //         width: screen.width,
+                      //         fit: BoxFit.fill,
+                      //       )
+                      //     : Utility.imageFromBase64String(
+                      //         Utility.base64String(imageuser), 50, 50),
                     ),
                   ),
                   Padding(
@@ -453,14 +464,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageGroup == null
-                          ? Image.asset(
+                      child: Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imageGroup), 50, 50),
+                      // imageGroup == null
+                      //     ? Image.asset(
+                      //         'assets/images/angryimg.png',
+                      //         width: screen.width,
+                      //         fit: BoxFit.fill,
+                      //       )
+                      //     : Utility.imageFromBase64String(
+                      //         Utility.base64String(imageGroup), 50, 50),
                     ),
                   ),
                   Text(

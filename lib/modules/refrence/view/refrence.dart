@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
+import '../../../app/model/content.dart';
 import '../../../app/model/refrence.dart';
 import '../controller/refrence_controller.dart';
 
@@ -58,7 +59,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
               //     children: controller.refrences.map((e) => shap22(e)).toList()),
               Obx(() => Column(
                     children:
-                        controller.ListRefrence.map((e) => shap22(e)).toList(),
+                        controller.contenst.map((e) => shap22(e)).toList(),
                   )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -464,7 +465,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
         )));
   }
 
-  Widget shap22(Reference r) {
+  Widget shap22(Content r) {
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(6),
@@ -479,21 +480,22 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                 controller.getRefrence(r.Id!);
               },
               child: GFAccordion(
-                title: r.content!.typeName!,
+                title: r.typeName!,
                 textStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
                 contentChild: Column(
-                  children: [
-                    Row(
+                  children: controller.ListRefrenceLink.map((element) => Column(
+                    children: [
+                      Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            r.referenceName.toString(),
+                            element.referenceName.toString(),
                             style: const TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
@@ -506,10 +508,10 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                       alignment: Alignment.topLeft,
                       child: InkWell(
                         onTap: () {
-                          js.context.callMethod('open', [r.Link!]);
+                          js.context.callMethod('open', [element.Link!]);
                         },
                         child: Text(
-                          r.Link.toString(),
+                         element.Link.toString(),
                           style: const TextStyle(
                               color: Colors.blue,
                               decoration: TextDecoration.none,
@@ -518,7 +520,10 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                         ),
                       ),
                     )
-                  ],
+                    ],
+                  )).toList()
+              
+                  
                 ),
               ),
             ),
