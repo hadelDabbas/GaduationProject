@@ -630,6 +630,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               color: Color.fromARGB(255, 246, 123, 127),
                             ),
                             onPressed: () {
+                              if(controller.valuepice.value<21)
                               controller.valuepice.value += 1;
                             },
                           )),

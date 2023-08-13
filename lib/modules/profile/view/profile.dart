@@ -348,26 +348,31 @@ class Profileview extends GetResponsiveView<ProfileController> {
               child: SingleChildScrollView(
                 child: Column(
                     children:
+                    controller.listpost.map((element) => postprofile(
+                   controller.user.value.Name.toString(),element.UserImage!,element.GroupName.toString(),
+                   element.GroupImage!,element.post!.Description.toString(),element.post!.Image!,
+                   element.Interaction!,element.post!.content!.typeName.toString(),element.post!
+                    ) ).toList()
                         //  [
                         //   postprofile('asia','' , "GroupName", "imageGroup", "DescriptionGroup", "imagpost", true, 'It')
                         // ]
-                        controller.ListuserpostForrNoww.map(
-                            (element) => Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Card(
-                                    child: Container(
-                                      child: Column(children: [
-                                        Row(
-                                          children: [
-                                            Text(controller.user.value.Name!),
-                                          ],
-                                        ),
-                                        Image.asset('assets/images/2.png'),
-                                        Text(element.Description!)
-                                      ]),
-                                    ),
-                                  ),
-                                )).toList()
+                        // controller.ListuserpostForrNoww.map(
+                        //     (element) => Padding(
+                        //           padding: const EdgeInsets.all(8.0),
+                        //           child: Card(
+                        //             child: Container(
+                        //               child: Column(children: [
+                        //                 Row(
+                        //                   children: [
+                        //                     Text(controller.user.value.Name!),
+                        //                   ],
+                        //                 ),
+                        //                 Image.asset('assets/images/2.png'),
+                        //                 Text(element.Description!)
+                        //               ]),
+                        //             ),
+                        //           ),
+                        //         )).toList()
                     // controller.Listuserpost.map((element) => postprofile(
                     //     element.UserName.toString(),
                     //     element.UserImage!,
@@ -421,14 +426,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageuser == null
-                          ? Image.asset(
+                      child:Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imageuser), 50, 50),
+                      //  imageuser == null
+                      //     ? Image.asset(
+                      //         'assets/images/angryimg.png',
+                      //         width: screen.width,
+                      //         fit: BoxFit.fill,
+                      //       )
+                      //     : Utility.imageFromBase64String(
+                      //         Utility.base64String(imageuser), 50, 50),
                     ),
                   ),
                   Padding(
@@ -454,14 +464,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageGroup == null
-                          ? Image.asset(
+                      child: Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imageGroup), 50, 50),
+                      // imageGroup == null
+                      //     ? Image.asset(
+                      //         'assets/images/angryimg.png',
+                      //         width: screen.width,
+                      //         fit: BoxFit.fill,
+                      //       )
+                      //     : Utility.imageFromBase64String(
+                      //         Utility.base64String(imageGroup), 50, 50),
                     ),
                   ),
                   Text(

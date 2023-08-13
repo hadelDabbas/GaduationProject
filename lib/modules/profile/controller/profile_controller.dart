@@ -44,6 +44,7 @@ class ProfileController extends GetxController {
   final FollowUser = <User>[].obs;
   final userfollowGroups = <Group>[].obs;
   final currentGroup = Group().obs;
+  final listpost=<PostDto>[];
   final texteditprofile =
       'In this interface, you can modify any information you have';
   final texteditpost =
@@ -55,7 +56,8 @@ class ProfileController extends GetxController {
   void onInit() {
     super.onInit();
     GetUser();
-    GetUserPostForrrJustNowwww();
+    Getusepost();
+    // GetUserPostForrrJustNowwww();
     //GetPostUser();
   }
 
@@ -186,5 +188,9 @@ class ProfileController extends GetxController {
   Future<void> GetuserGroup() async {
     var data = await profileRepo.GetUserGroups(user.value.Id!);
     userfollowGroups.assignAll(data);
+  }
+  Future<void> Getusepost() async {
+    var data = await profileRepo.GetUserPost(user.value.Id!);
+   listpost .assignAll(data);
   }
 }
