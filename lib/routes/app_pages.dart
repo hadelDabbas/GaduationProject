@@ -16,6 +16,7 @@ import '../modules/complaints/view/user_complaints.dart';
 import '../modules/content/binding/content_binding.dart';
 import '../modules/content/view/content.dart';
 import '../modules/groups/binding/group_binding.dart';
+import '../modules/groups/view/show_group.dart';
 import '../modules/libraryy/binding/library_Binding.dart';
 import '../modules/libraryy/view/show_librarys.dart';
 import '../modules/menu/binding/menu_binding.dart';
@@ -82,6 +83,10 @@ class AppPages {
       GetPage(
         name: _Paths.editProfile,
         page: () => EditProfileview(),
+      ),
+      GetPage(
+        name: _Paths.group,
+        page: () => ShowGroupPageView(),
       ),
     ]),
     GetPage(

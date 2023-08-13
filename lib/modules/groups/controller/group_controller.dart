@@ -44,18 +44,15 @@ class GroupController extends GetxController {
   final listcomment = <Comments>[].obs;
   final access = <AccessiblityLogIn>[].obs;
   PickedFile? imagefile;
-  final textshowgroup =
-      'ac'.tr;
+  final textshowgroup = 'ac'.tr;
   final textaddgroup = 'ae'.tr;
   final texteditg = 'af'.tr;
-  final textgroup =
-      'ag'.tr;
+  final textgroup = 'ag'.tr;
 
   //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global'];
 
   @override
   void onInit() {
-    getAllContent();
     getAllGroups();
     user.value = auth.getDataFromStorage()!;
     access.value = auth
@@ -77,6 +74,7 @@ class GroupController extends GetxController {
   }
 
   Future<void> getAllGroups() async {
+    await getAllContent();
     var data = await groupRepo.GetAllGroup();
     for (var element in data) {
       element.content =

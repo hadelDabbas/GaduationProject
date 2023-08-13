@@ -4,7 +4,6 @@ import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/modules/MenuGame/controller/menu_game_controller.dart';
 
 import '../Menu_game.dart';
-import '../levels.dart';
 
 class SplashGame extends GetResponsiveView<MenuGameController> {
   SplashGame({super.key});
@@ -87,24 +86,25 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
               Center(
                 child: GFButton(
                   onPressed: () {
-                     Get.dialog(Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: 400,
-                            height: 400,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.blueAccent)),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Container(child: LevelPageView()),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ));
+                    Get.to(MenuGamePageView());
+                    // Get.dialog(Align(
+                    //   alignment: Alignment.center,
+                    //   child: Container(
+                    //     width: 400,
+                    //     height: 400,
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.white,
+                    //         borderRadius: BorderRadius.circular(10),
+                    //         border: Border.all(color: Colors.blueAccent)),
+                    //     child: SingleChildScrollView(
+                    //       child: Column(
+                    //         children: [
+                    //           Container(child: LevelPageView()),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ));
                   },
                   color: const Color.fromARGB(255, 248, 150, 153),
                   text: "Game Page",

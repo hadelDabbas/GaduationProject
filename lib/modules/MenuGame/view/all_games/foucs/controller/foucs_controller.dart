@@ -4,56 +4,56 @@ import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 
 import '../../../../../sheard/auth_service.dart';
-import '../../../../controller/menu_game_controller.dart';
 
-class FoucsController extends GetxController with GetSingleTickerProviderStateMixin{
-   late AnimationController animationController;
-  var isAnimating=false.obs;
-  var score=0.obs;
+class FoucsController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  var isAnimating = false.obs;
+  var score = 0.obs;
   final auth = Get.find<AuthService>();
-  Timer?_timer;
- int remanningsecond=1;
- final text='In this game, a picture appears with a question that needs to be focused before answering';
- final time='00.00'.obs;
-   @override
-   void onInit() {
+  Timer? _timer;
+  int remanningsecond = 1;
+  final text =
+      'In this game, a picture appears with a question that needs to be focused before answering';
+  final time = '00.00'.obs;
+  @override
+  void onInit() {
     super.onInit();
-    score.value=0;
-     animationController = AnimationController(vsync: this,duration:
-     Duration(milliseconds: 5000)
-      );
-    
-   
-}
+    score.value = 0;
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 5000));
+  }
+
   @override
   void onClose() {
-     if(_timer!=null){
+    if (_timer != null) {
       _timer!.cancel();
-     }
+    }
     super.onClose();
-     auth.gameUser.Score=score.value;
-      auth.updateUserGame();
+    var guser = auth.getGameUser();
+    guser!.Score = score.value;
+    auth.updateUserGame(guser);
   }
+
   @override
   void onReady() {
-     _startimer(50);
+    _startimer(50);
     super.onReady();
-
   }
 
-   void _startimer(int seconds) {
-   const duration=Duration(seconds: 1);
-   remanningsecond=seconds;
-   _timer=Timer.periodic(duration, ( Timer timer) { 
-    if(remanningsecond==0){
-      timer.cancel();}
-      else{
-     int minutes=(remanningsecond~/60);
-    int seconds=(remanningsecond%60);
-    time.value=minutes.toString().padLeft(2,'0')+':'+
-    seconds.toString().padLeft(2,'0');
-    remanningsecond--;
-  
-      }});
-    } 
+  void _startimer(int seconds) {
+    const duration = Duration(seconds: 1);
+    remanningsecond = seconds;
+    _timer = Timer.periodic(duration, (Timer timer) {
+      if (remanningsecond == 0) {
+        timer.cancel();
+      } else {
+        int minutes = (remanningsecond ~/ 60);
+        int seconds = (remanningsecond % 60);
+        time.value =
+            '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+        remanningsecond--;
+      }
+    });
+  }
 }

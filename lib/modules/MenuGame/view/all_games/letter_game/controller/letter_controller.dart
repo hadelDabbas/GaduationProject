@@ -17,13 +17,14 @@ class LetterController extends GetxController {
   var resulting8 = 8.obs;
   var correct = 0.obs;
   var score = 0.obs;
-  final text='In this game a group of letters will appear and all the words that can be formed from these letters must be found';
+  final text =
+      'In this game a group of letters will appear and all the words that can be formed from these letters must be found';
   Timer? _timer;
   int remanningsecond = 1;
-   final widget=MenuGameController();
+  final widget = MenuGameController();
   final time = '00.00'.obs;
   var letters = <String>[''].obs;
-   final auth = Get.find<AuthService>();
+  final auth = Get.find<AuthService>();
   @override
   void onInit() {
     super.onInit();
@@ -36,8 +37,9 @@ class LetterController extends GetxController {
       _timer!.cancel();
     }
     super.onClose();
-      auth.gameUser.Score=score.value;
-      auth.updateUserGame();
+    var guser = auth.getGameUser();
+    guser!.Score = score.value;
+    auth.updateUserGame(guser);
   }
 
   @override

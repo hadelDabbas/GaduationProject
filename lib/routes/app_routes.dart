@@ -21,6 +21,7 @@ abstract class Routes {
   static const setting = _Paths.setting;
   static const userComplaint = _Paths.userComplaint;
   static const complaint = _Paths.complaint;
+  static const group = _Paths.group;
 }
 
 abstract class _Paths {
@@ -43,4 +44,5 @@ abstract class _Paths {
   static const setting = '/setting';
   static const userComplaint = '/userComplaint';
   static const complaint = '/complaint';
+  static const group = '/group';
 }
