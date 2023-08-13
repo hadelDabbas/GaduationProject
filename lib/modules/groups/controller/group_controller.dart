@@ -52,8 +52,11 @@ class GroupController extends GetxController {
   //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global'];
 
   @override
-  Future<void> onInit() async {
-    await getAllGroups();
+  void onInit() {
+    getAllContent();
+    getAllGroups();
+    user.value = auth.getDataFromStorage()!;
+    ExsistingMember();
     super.onInit();
   }
 
@@ -69,6 +72,10 @@ class GroupController extends GetxController {
 
   Future<void> getAllGroups() async {
     var data = await groupRepo.GetAllGroup();
+    for (var element in data) {
+      element.content =
+          contents.where((p0) => p0.Id == element.IdContent).first;
+    }
     allGroups.assignAll(data);
   }
 
@@ -190,7 +197,7 @@ class GroupController extends GetxController {
   }
 
   Future<void> AddMember() async {
-    // var res = await groupRepo.AddMember(addMember.value);
+    var res = await groupRepo.AddMember(addMember.value);
   }
 
   Future<void> RemoveMember() async {
@@ -198,6 +205,9 @@ class GroupController extends GetxController {
   }
 
   Future<void> ExsistingMember() async {
-    personExsisting.value = await groupRepo.exsitingMember(user.value.Id!);
+    var data = await groupRepo.exsitingMember();
+    personExsisting.value = data.any((element) =>
+        element.IdUser == user.value.Id &&
+        element.IdGroup == currentGroup.value.Id);
   }
 }

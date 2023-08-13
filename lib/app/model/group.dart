@@ -30,9 +30,9 @@ class Group {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
-    json['id'] = Id;
+    json['id'] = Id ?? 0;
     json['description'] = Description;
-    json['groupName '] = groupName;
+    json['groupName'] = groupName;
     json['idContent'] = IdContent;
     return json;
   }

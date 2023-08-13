@@ -55,9 +55,11 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
             const SizedBox(
               height: 8,
             ),
-            Obx(() => Column(
-                  children:
-                      controller.allGroups.map((e) => cardgroup(e)).toList(),
+            Obx(() => SingleChildScrollView(
+                  child: Column(
+                    children:
+                        controller.allGroups.map((e) => cardgroup(e)).toList(),
+                  ),
                 )),
             Material(
               child: Tooltip(
@@ -151,6 +153,7 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
           onTap: () async {
             await controller.getGroup(g.Id!);
             await controller.getPosts();
+            await controller.ExsistingMember();
             Get.to(GroupView());
           },
           child: Container(
@@ -161,7 +164,6 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                 ),
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(22.0)),
-            height: screen.height / 4.6,
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
@@ -255,30 +257,31 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                                   ))),
                         ),
                       ),
-                      Row(
-                        children: [
-                          g.Image == null
-                              ? Image.asset(
-                                  'assets/images/1.png',
-                                  width: 150,
-                                  height: 150,
-                                  fit: BoxFit.fill,
-                                )
-                              : Utility.imageFromBase64String(
-                                  Utility.base64String(g.Image!),
-                                  screen.width,
-                                  null),
-                          const SizedBox(
-                            width: 23,
-                          ),
-                          Text(
-                            g.groupName ?? '',
-                            style: const TextStyle(
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black54),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Row(
+                          children: [
+                            g.Image == null
+                                ? const Icon(
+                                    Icons.groups_2_sharp,
+                                    size: 50,
+                                  )
+                                : Utility.imageFromBase64String(
+                                    Utility.base64String(g.Image!),
+                                    screen.width,
+                                    null),
+                            const SizedBox(
+                              width: 23,
+                            ),
+                            Text(
+                              g.groupName ?? '',
+                              style: const TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54),
+                            ),
+                          ],
+                        ),
                       )
                       // Flexible(
                       //      child: new Text(discribtion,style: TextStyle(fontSize: 18))),

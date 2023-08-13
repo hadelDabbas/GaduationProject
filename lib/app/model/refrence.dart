@@ -1,42 +1,34 @@
-
-import 'dart:typed_data';
-
-import 'package:graduationproject/app/model/post.dart';
-
-import 'comment.dart';
 import 'content.dart';
 
-class  Reference {
+class Reference {
   int? Id;
-  String?referenceName;
-  String?  Link;
-   int ?IdContent;
-   Content? content;
-   Reference(
-      {this.Id,
-      this.referenceName,
-      this. Link,
-      this.IdContent,
-      this.content,
-      });
+  String? referenceName;
+  String? Link;
+  int? IdContent;
+  Content? content;
+  Reference({
+    this.Id,
+    this.referenceName,
+    this.Link,
+    this.IdContent,
+    this.content,
+  });
 
- Reference.fromJson(Map<String, dynamic> json) {
+  Reference.fromJson(Map<String, dynamic> json) {
     Id = json['id'];
-   referenceName = json['referenceName'];
-    Link= json[' Link'];
-    IdContent = json['IdContent'];
-   content= json['content'];
- 
+    referenceName = json['referenceName'];
+    Link = json['link'];
+    IdContent = json['idContent'];
+    content = json['content'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
+    final Map<String, dynamic> json = <String, dynamic>{};
     json['id'] = Id;
     json['referenceName'] = referenceName;
-    json[' Link'] =  Link;
-    json['IdContent'] = IdContent;
-    json['content'] = content;
-   
+    json['link'] = Link;
+    json['idContent'] = IdContent;
+
     return json;
   }
 }

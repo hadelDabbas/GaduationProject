@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
+import 'package:graduationproject/modules/groups/view/post_Group.dart';
 
 import '../../../app/model/postdto.dart';
 import '../../genereted/sheard/util.dart';
@@ -30,25 +30,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               ),
             ),
           ),
-          // controller.currentGroup.value.Image == null
-          //     ? Image.asset(
-          //         'assets/images/It.png',
-          //         width: double.infinity,
-          //         height: 200,
-          //         fit: BoxFit.fill,
-          //       )
-          //     : Utility.imageFromBase64String(
-          //         Utility.base64String(controller.currentGroup.value.Image!),
-          //         double.infinity,
-          //         null),
-          // Container(
-          //   height: 200,
-          //   child: Image.asset(
-          //       width: double.infinity,
-          //       fit: BoxFit.fill,
 
-          //       ),
-          // ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -72,16 +54,6 @@ class GroupView extends GetResponsiveView<GroupController> {
                                 color: Color.fromARGB(255, 42, 42, 114)),
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Text(
-                        //     '(IT)',
-                        //     style: TextStyle(
-                        //         fontSize: 20,
-                        //         fontWeight: FontWeight.bold,
-                        //         color: Colors.grey),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -129,9 +101,9 @@ class GroupView extends GetResponsiveView<GroupController> {
                                 },
                                 /////////////////////////////////////////
                                 child: Text(
-                                  'Joining',
+                                  controller.msg.value,
                                   style: TextStyle(
-                                      color: controller.press.value == false
+                                      color: !controller.personExsisting.value
                                           ? Colors.white
                                           : const Color.fromARGB(
                                               255, 246, 123, 127),
@@ -151,12 +123,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                                 backgroundColor:
                                     const Color.fromARGB(255, 246, 123, 127),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                await controller.getMembers();
                                 Get.dialog(Align(
                                   alignment: Alignment.topRight,
                                   child: Container(
+                                      height: Get.height - 100,
                                       width: 300,
-                                      height: 700,
                                       color: Colors.white,
                                       child: SingleChildScrollView(
                                         child: Column(
@@ -174,14 +147,15 @@ class GroupView extends GetResponsiveView<GroupController> {
                                                         TextDecoration.none),
                                               ),
                                             ),
-                                            Column(
-                                              children: controller.members
-                                                  .map((element) =>
-                                                      shapFolloword(
-                                                          element.Name
-                                                              .toString(),
-                                                          element.Image!))
-                                                  .toList(),
+                                            Obx(
+                                              () => Column(
+                                                children: controller.members
+                                                    .map((element) =>
+                                                        shapFolloword(
+                                                            element.Name!,
+                                                            element.Image))
+                                                    .toList(),
+                                              ),
                                             )
                                             // shapFolloword('ASIA Badnjki',
                                             //     'assets/images/girl.gif'),
@@ -252,6 +226,11 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'Edit Group ',
                   child: ElevatedButton(
                     onPressed: () {
+                      controller.currentGroup.value.content = controller
+                          .contents
+                          .where(
+                              (p0) => p0.Id == controller.currentGroup.value.Id)
+                          .first;
                       Get.to(EditGrpoup());
                     },
                     style: ElevatedButton.styleFrom(
@@ -274,7 +253,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'Add Post ',
                   child: ElevatedButton(
                     onPressed: () {
-                      Addpostview();
+                      PostGrpoup();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -381,12 +360,11 @@ class GroupView extends GetResponsiveView<GroupController> {
     );
   }
 
-  Widget shapFolloword(String name, Uint8List url) {
+  Widget shapFolloword(String? name, Uint8List? url) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 250,
-        height: 100,
+        width: 300,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: const Color.fromARGB(255, 42, 42, 114))),
@@ -397,7 +375,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               height: 80,
               child: url == null
                   ? Image.asset(
-                      'assets/images/1.png',
+                      'assets/images/girl.gif',
                       width: screen.width,
                       fit: BoxFit.fill,
                     )
@@ -408,9 +386,9 @@ class GroupView extends GetResponsiveView<GroupController> {
               width: 30,
             ),
             Text(
-              name,
+              name ?? '',
               style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 14,
                   decoration: TextDecoration.none,
                   color: Color.fromARGB(255, 42, 42, 114)),
             )
@@ -426,7 +404,6 @@ class GroupView extends GetResponsiveView<GroupController> {
         child: Center(
           child: Container(
             width: 500,
-            height: 210,
             decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.grey,
@@ -434,83 +411,94 @@ class GroupView extends GetResponsiveView<GroupController> {
                 ),
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15)),
-            child: Column(children: [
-              Row(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: dto.UserImage == null
-                          ? Image.asset(
-                              'assets/images/angryimg.png',
-                              width: screen.width,
-                              fit: BoxFit.fill,
-                            )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(dto.UserImage!), 50, 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: dto.UserImage == null
+                                    ? Image.asset(
+                                        'assets/images/girl.gif',
+                                        width: screen.width,
+                                        fit: BoxFit.fill,
+                                      )
+                                    : Utility.imageFromBase64String(
+                                        Utility.base64String(dto.UserImage!),
+                                        50,
+                                        50),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    // 'Asia',
+                                    dto.UserName ?? '',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        color: Colors.blueGrey),
+                                  )),
+                            ),
+
+                            // Text("(${dto.post!.content!.typeName})",
+                            //     style: const TextStyle(
+                            //       color: Colors.grey,
+                            //     )),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: dto.GroupImage == null
+                                    ? const Icon(
+                                        Icons.groups_2_rounded,
+                                        size: 40,
+                                      )
+                                    : Utility.imageFromBase64String(
+                                        Utility.base64String(dto.GroupImage!),
+                                        50,
+                                        50),
+                              ),
+                            ),
+                            Text(
+                              dto.GroupName ?? '',
+                              //  nameuser,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 42, 42, 114)),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          // 'Asia',
-                          dto.UserName ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.blueGrey),
-                        )),
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    size: 12,
-                    color: Colors.black87,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: dto.GroupImage == null
-                          ? Image.asset(
-                              'assets/images/angryimg.png',
-                              width: screen.width,
-                              fit: BoxFit.fill,
-                            )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(dto.GroupImage!), 50, 50),
-                    ),
-                  ),
-                  Text(
-                    dto.GroupName ?? '',
-                    //  nameuser,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 42, 42, 114)),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text("(${dto.post!.content!.typeName})",
-                      style: const TextStyle(
-                        color: Colors.grey,
-                      )),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20), // Image border
                     child: SizedBox(
                       width: 450,
-                      height: 120,
+                      height: 180,
                       child: SizedBox.fromSize(
                           size: const Size.fromRadius(48), // Image radius
                           child: dto.post!.Image == null
                               ? Image.asset(
-                                  'assets/images/1.png',
-                                  width: screen.width,
+                                  'assets/images/gabal.png',
                                   fit: BoxFit.fill,
                                 )
                               : Utility.imageFromBase64String(
@@ -530,79 +518,41 @@ class GroupView extends GetResponsiveView<GroupController> {
                     height: 3,
                   ),
                   Align(
-                    alignment: Alignment.bottomRight,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        const SizedBox(
-                          width: 350,
+                      alignment: Alignment.bottomRight,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.userpost.value.IdPost = dto.post!.Id;
+                          controller.userpost.value.post = dto.post;
+                          controller.userpost.value.user =
+                              controller.user.value;
+                          controller.userpost.value.Id =
+                              controller.user.value.Id;
+                          if (dto.Interaction!) {
+                            controller.userpost.value.Interaction = false;
+                            controller.GetInterActionUser();
+                          } else {
+                            controller.userpost.value.Interaction = false;
+                            controller.GetInterActionUser();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 248, 150, 153),
+                          shape: const CircleBorder(),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            controller.userpost.value.IdPost = dto.post!.Id;
-                            controller.userpost.value.post = dto.post;
-                            controller.userpost.value.user =
-                                controller.user.value;
-                            controller.userpost.value.Id =
-                                controller.user.value.Id;
-                            if (dto.Interaction!) {
-                              controller.userpost.value.Interaction = false;
-                              controller.GetInterActionUser();
-                            } else {
-                              controller.userpost.value.Interaction = false;
-                              controller.GetInterActionUser();
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 248, 150, 153),
-                            shape: const CircleBorder(),
+                        child: Obx(
+                          () => Icon(
+                            AppIconn.favorite,
+                            size: 12,
+                            color: controller.click.value == true
+                                ? Colors.red
+                                : Colors.white,
                           ),
-                          child: Obx(
-                            () => Icon(
-                              AppIconn.favorite,
-                              size: 12,
-                              color: controller.click.value == true
-                                  ? Colors.red
-                                  : Colors.white,
-                            ),
-                          ),
-
-                          // ElevatedButton(
-                          //   onPressed: () {
-                          //     // controller.userpost.value.IdUser =
-                          //     //     controller.userprofile.value.Id;
-                          //     // if (interaction) {
-                          //     //   controller.userpost.value.Interaction = false;
-                          //     //   controller.GetInterActionUser(post.Id!);
-                          //     // } else {
-                          //     //   controller.userpost.value.Interaction = true;
-                          //     //   controller.GetInterActionUser(post.Id!);
-                          //     // }
-                          //   },
-                          //   style: ElevatedButton.styleFrom(
-                          //     backgroundColor:
-                          //         const Color.fromARGB(255, 248, 150, 153),
-                          //     shape: const CircleBorder(),
-                          //   ),
-                          //   child: Obx(
-                          //     () => Icon(
-                          //       AppIconn.favorite,
-                          //       size: 12,
-                          //       color: controller.click.value == true
-                          //           ? Colors.red
-                          //           : Colors.white,
-                          //     ),
-                          //   ),
-                          // )
-                          // Icon(Icons.add_alert),
-                        )
-                      ],
-                    ),
-                  )
+                        ),
+                      ))
                 ],
               ),
-            ]),
+            ),
           ),
         ));
   }

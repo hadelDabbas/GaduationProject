@@ -1,49 +1,50 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
+import 'dart:js' as js;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:graduationproject/app/model/content.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/model/refrence.dart';
 import '../controller/refrence_controller.dart';
 
 class RefrencePageView extends GetResponsiveView<RerenceController> {
+  @override
   RerenceController controller = Get.put(RerenceController());
-   final _formfield = GlobalKey<FormState>();
+  final _formfield = GlobalKey<FormState>();
+
+  RefrencePageView({super.key});
   @override
   Widget builder() {
-    return Container(
+    return SizedBox(
         height: 600,
         child: SingleChildScrollView(
             child: Form(
-              key: _formfield,
-              child: Column(
-                      children: [
+          key: _formfield,
+          child: Column(
+            children: [
               Row(
                 children: [
                   Material(
                     child: InkWell(
                       onTap: () => Get.back(),
-                      child: Align(
+                      child: const Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0),
                           child: Icon(Icons.arrow_back_ios,
                               size: 17, color: Colors.grey),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 18,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(96, 8, 8, 8),
                     child: Center(
                       child: Text('AllRefrenceses'.tr,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.none,
@@ -55,10 +56,10 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
               ),
               // Column(
               //     children: controller.refrences.map((e) => shap22(e)).toList()),
-              Column(
-                children: controller.ListRefrence.map(
-                    (e) => shap22(e.typeName.toString(), e)).toList(),
-              ),
+              Obx(() => Column(
+                    children:
+                        controller.ListRefrence.map((e) => shap22(e)).toList(),
+                  )),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -70,7 +71,8 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                         alignment: Alignment.topRight,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 246, 123, 127),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(126)),
                               padding: const EdgeInsets.symmetric(
@@ -92,11 +94,12 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           "AddToRefrence".tr,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
-                                              color: Color.fromARGB(255, 42, 42, 114),
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
                                               decoration: TextDecoration.none),
                                         ),
                                       ),
@@ -106,13 +109,13 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 border: Border.all(
-                                                    color: Color.fromARGB(
+                                                    color: const Color.fromARGB(
                                                         255, 194, 192, 192)),
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                             child: GFAccordion(
                                                 title: "TypeRefrence".tr,
-                                                textStyle: TextStyle(
+                                                textStyle: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20,
                                                     color: Color.fromARGB(
@@ -120,39 +123,47 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                                     decoration:
                                                         TextDecoration.none),
                                                 contentChild: Column(
-                                                  children: controller.ListRefrence
-                                                      .map((element) => Container(
-                                                          decoration: BoxDecoration(
-                                                              border: Border.all(
-                                                                  color: Color
-                                                                      .fromARGB(
+                                                  children: controller.contenst
+                                                      .map((element) =>
+                                                          Container(
+                                                              decoration: BoxDecoration(
+                                                                  border: Border.all(
+                                                                      color: const Color
+                                                                              .fromARGB(
                                                                           255,
                                                                           194,
                                                                           192,
                                                                           192)),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10)),
-                                                          child: TextButton(
-                                                            onPressed: () {
-                                                              controller.Addrefrence.value.content=element;
-                                                            },
-                                                            child: Text(
-                                                              element.typeName
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize: 18,
-                                                                  color: Colors
-                                                                      .black54,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .none),
-                                                            ),
-                                                          ))).toList(),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10)),
+                                                              child: TextButton(
+                                                                onPressed: () {
+                                                                  controller
+                                                                          .Addrefrence
+                                                                          .value
+                                                                          .content =
+                                                                      element;
+                                                                },
+                                                                child: Text(
+                                                                  element
+                                                                      .typeName!
+                                                                      .toString(),
+                                                                  style: const TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontSize:
+                                                                          18,
+                                                                      color: Colors
+                                                                          .black54,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .none),
+                                                                ),
+                                                              )))
+                                                      .toList(),
                                                 )),
                                           ),
                                         ),
@@ -164,25 +175,26 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                             width: 350,
                                             height: 60,
                                             child: TextFormField(
-                                              decoration:  InputDecoration(
+                                              decoration: InputDecoration(
                                                 labelText: 'AddNameRefrence'.tr,
-                                                labelStyle: TextStyle(
+                                                labelStyle: const TextStyle(
                                                     color: Color.fromARGB(
                                                         255, 246, 123, 127),
-                                                    fontWeight: FontWeight.bold),
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
-                                                                                                       
-                      validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                            .hasMatch(value)) {
-                      return "EnterCorrectText".tr;
-                    } else {
-                      return null;
-                    }},
-                  
+                                              validator: (value) {
+                                                if (value!.isEmpty ||
+                                                    !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                                        .hasMatch(value)) {
+                                                  return "EnterCorrectText".tr;
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
                                               onChanged: (value) {
-                                              controller.Addrefrence.value.referenceName=value;   
+                                                controller.Addrefrence.value
+                                                    .referenceName = value;
                                                 // controller.addBookType.value.bookType =
                                                 //     value;
                                               },
@@ -191,57 +203,59 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                         ),
                                       ),
                                       Material(
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 350,
                                           height: 60,
                                           child: TextFormField(
-                                                                                                     
-                      validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                            .hasMatch(value)) {
-                      return "EnterCorrectText".tr;
-                    } else {
-                      return null;
-                    }},
-                  
+                                            validator: (value) {
+                                              if (value!.isEmpty ||
+                                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                                      .hasMatch(value)) {
+                                                return "EnterCorrectText".tr;
+                                              } else {
+                                                return null;
+                                              }
+                                            },
+
                                             decoration: InputDecoration(
                                               labelText: 'AddLink'.tr,
-                                              labelStyle: TextStyle(
+                                              labelStyle: const TextStyle(
                                                   color: Colors.black45,
                                                   fontWeight: FontWeight.bold),
-                                              prefixIcon: Icon(
+                                              prefixIcon: const Icon(
                                                 Icons.text_fields,
                                                 color: Color.fromARGB(
                                                     255, 245, 146, 149),
                                               ),
                                             ),
-                                            
-                                            keyboardType: TextInputType.multiline,
+
+                                            keyboardType:
+                                                TextInputType.multiline,
                                             minLines:
                                                 1, //Normal textInputField will be displayed
                                             maxLines:
                                                 5, // when user presses enter it will adapt to it
                                             onChanged: (value) {
-                                               controller.Addrefrence.value.Link=value;   
+                                              controller.Addrefrence.value
+                                                  .Link = value;
                                             },
-                                            
                                           ),
                                         ),
                                       ),
                                       Center(
                                         child: GFButton(
                                           onPressed: () {
-                                                 if (_formfield.currentState!.validate()) {
-                    print("Data Added Successfully");
-                   
-                  }
+                                            if (_formfield.currentState!
+                                                .validate()) {
+                                              print("Data Added Successfully");
+                                            }
                                             controller.AddRefrence();
                                             // controller.AddBookType(
                                             //     controller.addBookType.value);
                                           },
                                           text: "Added".tr,
-                                          color: Color.fromARGB(255, 42, 42, 114),
+                                          color: const Color.fromARGB(
+                                              255, 42, 42, 114),
                                           shape: GFButtonShape.pills,
                                         ),
                                       ),
@@ -249,7 +263,9 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   ),
                                 )));
                           },
-                          child: Text( "AddToRefrence".tr,),
+                          child: Text(
+                            "AddToRefrence".tr,
+                          ),
                         ),
                       ),
                     ),
@@ -262,7 +278,8 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                         alignment: Alignment.topRight,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 246, 123, 127),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(126)),
                               padding: const EdgeInsets.symmetric(
@@ -279,13 +296,14 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   width: 400,
                                   height: 200,
                                   child: Column(children: [
-                                     Text(
+                                    Text(
                                       'AddNewRefrence'.tr,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: "Pacifico",
-                                          color: Color.fromARGB(255, 42, 42, 114),
+                                          color:
+                                              Color.fromARGB(255, 42, 42, 114),
                                           decoration: TextDecoration.none),
                                     ),
                                     Material(
@@ -295,16 +313,18 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                           width: 350,
                                           height: 60,
                                           child: TextFormField(
-                                            decoration:  InputDecoration(
+                                            decoration: InputDecoration(
                                               labelText: 'AddRefrence'.tr,
-                                              labelStyle: TextStyle(
+                                              labelStyle: const TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 246, 123, 127),
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             onChanged: (value) {
-                                              controller.valuetext.value=value;
-                                              controller.Addrefrence.value.content!.typeName=value;
+                                              controller.valuetext.value =
+                                                  value;
+                                              controller.Addrefrence.value
+                                                  .content!.typeName = value;
                                               // controller.addBookType.value.bookType =
                                               //     value;
                                             },
@@ -315,31 +335,37 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                     Center(
                                       child: GFButton(
                                         onPressed: () {
-                                          if(controller.valuetext.value==null){
-                                               Get.snackbar(
-        'Error'.tr,
-        "PleaseInputValue".tr,
-        icon: const Icon(Icons.person, color: Colors.white),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: const Color.fromARGB(255, 246, 123, 127),
-        borderRadius: 20,
-        margin: const EdgeInsets.all(15),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 4),
-        isDismissible: true,
-        forwardAnimationCurve: Curves.easeOutBack,
-      );
+                                          if (controller.valuetext.value ==
+                                              null) {
+                                            Get.snackbar(
+                                              'Error'.tr,
+                                              "PleaseInputValue".tr,
+                                              icon: const Icon(Icons.person,
+                                                  color: Colors.white),
+                                              snackPosition:
+                                                  SnackPosition.BOTTOM,
+                                              backgroundColor:
+                                                  const Color.fromARGB(
+                                                      255, 246, 123, 127),
+                                              borderRadius: 20,
+                                              margin: const EdgeInsets.all(15),
+                                              colorText: Colors.white,
+                                              duration:
+                                                  const Duration(seconds: 4),
+                                              isDismissible: true,
+                                              forwardAnimationCurve:
+                                                  Curves.easeOutBack,
+                                            );
+                                          } else {
+                                            controller.AddRefrence();
                                           }
-                                          else{
-                              controller.AddRefrence();
-                                          }
-                                         
 
                                           // controller.AddBookType(
                                           //     controller.addBookType.value);
                                         },
                                         text: "Added".tr,
-                                        color: Color.fromARGB(255, 42, 42, 114),
+                                        color: const Color.fromARGB(
+                                            255, 42, 42, 114),
                                         shape: GFButtonShape.pills,
                                       ),
                                     ),
@@ -353,132 +379,147 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                   )
                 ],
               ),
-                Tooltip(
-                message: 'HelpAboutPage'.tr,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(onPressed: (){
-                Get.dialog(Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.blueAccent)),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child:  Align(
-                                            alignment: Alignment.center,
-                                            child: Padding(
-                                              padding: EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Help".tr,
-                                                style: TextStyle(
-                                                    fontSize: 25,
+              Material(
+                child: Tooltip(
+                  message: 'HelpAboutPage'.tr,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.dialog(Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      border:
+                                          Border.all(color: Colors.blueAccent)),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Align(
+                                              alignment: Alignment.center,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Help".tr,
+                                                  style: const TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Color.fromARGB(
+                                                          255, 42, 42, 114),
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              )),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 8, 10, 10),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                controller.textallrefrence,
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    decoration:
+                                                        TextDecoration.none,
                                                     fontWeight: FontWeight.bold,
-                                                    fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(255, 42, 42, 114),
-                                                    decoration: TextDecoration.none),
+                                                    color: Colors.black87),
                                               ),
-                                            )),
-                                      ),
-                                               Padding(
-                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                                 child: Column(
-                                                             children: <Widget>[
-                                                               new Text(
-                                                                 controller.textallrefrence,
-                                                                 textAlign: TextAlign.left,
-                                                                 style: TextStyle(
-                                                                     fontSize: 18,
-                                                                     decoration: TextDecoration.none,
-                                                                     fontWeight: FontWeight.bold,
-                                                                     color: Colors.black87),
-                                                               ),
-                                                             ],
-                                                           ),
-                                               ),
-                                    ],
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                ));
-                    }, icon: Icon(Icons.help_outline_outlined,
-                    size: 30,
-                    color:Color.fromARGB(255, 246, 123, 127) ,)),
+                            ));
+                          },
+                          icon: const Icon(
+                            Icons.help_outline_outlined,
+                            size: 30,
+                            color: Color.fromARGB(255, 246, 123, 127),
+                          )),
+                    ),
                   ),
                 ),
               )
-                      ],
-                    ),
-            )
-        ));
+            ],
+          ),
+        )));
   }
 
-  Widget shap22(String title, Content e) {
+  Widget shap22(Reference r) {
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(6),
         child: Container(
           decoration: BoxDecoration(
-              border: Border.all(color: Color.fromARGB(255, 194, 192, 192)),
+              border:
+                  Border.all(color: const Color.fromARGB(255, 194, 192, 192)),
               borderRadius: BorderRadius.circular(10)),
           child: Material(
             child: InkWell(
               onTap: () {
-             controller.   getRefrence(e.Id!);
+                controller.getRefrence(r.Id!);
               },
               child: GFAccordion(
-                title: title,
-                textStyle: TextStyle(
+                title: r.content!.typeName!,
+                textStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
                 contentChild: Column(
-                    children: controller.ListRefrenceLink.map(
-                  (e) => Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              e.referenceName.toString(),
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54),
-                            ),
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            r.referenceName.toString(),
+                            style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54),
                           ),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
+                        ),
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: InkWell(
+                        onTap: () {
+                          js.context.callMethod('open', [r.Link!]);
+                        },
                         child: Text(
-                          e.Link.toString(),
-                          style: TextStyle(
+                          r.Link.toString(),
+                          style: const TextStyle(
                               color: Colors.blue,
                               decoration: TextDecoration.none,
                               fontSize: 17,
                               fontWeight: FontWeight.bold),
                         ),
-                      )
-                    ],
-                  ),
-                ).toList()),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -486,5 +527,4 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
       ),
     );
   }
-
 }

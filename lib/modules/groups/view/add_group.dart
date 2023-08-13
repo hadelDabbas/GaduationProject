@@ -3,15 +3,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
-import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/group_controller.dart';
+import 'post_Group.dart';
 
 class AddGrpoup extends GetResponsiveView<GroupController> {
   @override
   GroupController controller = Get.put(GroupController());
-   final _formfield = GlobalKey<FormState>();
+  final _formfield = GlobalKey<FormState>();
   Uint8List? image;
   List<String> Contents = [
     'History',
@@ -27,7 +27,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
-                key: _formfield,
+          key: _formfield,
           child: Column(
             children: [
               Row(
@@ -71,7 +71,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   Material(child: Imageprofile(controller)),
                 ],
               )),
-           Material(
+              Material(
                 child: Padding(
                   padding: const EdgeInsets.all(6),
                   child: Container(
@@ -90,7 +90,8 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                         children: controller.contents
                             .map((element) => TextButton(
                                 onPressed: () {
-                                  controller.addnewGroup.value.content = element;
+                                  controller.addnewGroup.value.content =
+                                      element;
                                 },
                                 child: Text(element.typeName.toString(),
                                     style: const TextStyle(
@@ -104,7 +105,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   ),
                 ),
               ),
-        
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Material(
@@ -121,21 +122,22 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                         color: Color.fromARGB(255, 245, 146, 149),
                       ),
                     ),
-                        validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                            .hasMatch(value)) {
-                      return "Enter Correct Text";
-                    } else {
-                      return null;
-                    }},
+                    validator: (value) {
+                      if (value!.isEmpty ||
+                          !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                              .hasMatch(value)) {
+                        return "Enter Correct Text";
+                      } else {
+                        return null;
+                      }
+                    },
                     onChanged: (value) {
                       controller.addnewGroup.value.groupName = value;
                     },
                   ),
                 )),
               ),
-           
+
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
               //   child: Material(
@@ -184,17 +186,18 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   onChanged: (value) {
                     controller.addnewGroup.value.Description = value;
                   },
-                           validator: (value) {
+                  validator: (value) {
                     if (value!.isEmpty ||
                         !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                             .hasMatch(value)) {
                       return "Enter Correct Text";
                     } else {
                       return null;
-                    }},
+                    }
+                  },
                 ),
               ),
-        
+
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -233,7 +236,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                                         ),
                                       )),
                                   Container(
-                                    child: Addpostview(),
+                                    child: PostGrpoup(),
                                   ),
                                 ],
                               ),
@@ -250,7 +253,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                       )),
                 ),
               ),
-        
+
               // SizedBox(height: 10),
               // Padding(
               //   padding: const EdgeInsets.all(8.0),
@@ -307,16 +310,17 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
               //         )),
               //   ),
               // ),
-        
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                                                    if (_formfield.currentState!.validate()) {
-                    print("Data Added Successfully");
-                   
-                    controller.AddGroup();
-                      }    },
+                    if (_formfield.currentState!.validate()) {
+                      print("Data Added Successfully");
+
+                      controller.AddGroup();
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 245, 146, 149),
                       shape: RoundedRectangleBorder(
@@ -330,31 +334,33 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   ),
                 ),
               ),
-               Tooltip(
+              Tooltip(
                 message: 'Help About Page',
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                     alignment: Alignment.bottomRight,
-                    child: IconButton(onPressed: (){
-                Get.dialog(Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
+                    child: IconButton(
+                        onPressed: () {
+                          Get.dialog(Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
                               alignment: Alignment.center,
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.blueAccent)),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
                                 child: SingleChildScrollView(
                                   child: Column(
                                     children: [
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: const Align(
+                                      const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
@@ -364,36 +370,43 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(255, 42, 42, 114),
-                                                    decoration: TextDecoration.none),
+                                                    color: Color.fromARGB(
+                                                        255, 42, 42, 114),
+                                                    decoration:
+                                                        TextDecoration.none),
                                               ),
                                             )),
                                       ),
-                                               Padding(
-                                                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                                 child: Column(
-                                                             children: <Widget>[
-                                                               new Text(
-                                                                 controller.textaddgroup,
-                                                                 textAlign: TextAlign.left,
-                                                                 style: TextStyle(
-                                                                     fontSize: 18,
-                                                                     decoration: TextDecoration.none,
-                                                                     fontWeight: FontWeight.bold,
-                                                                     color: Colors.black87),
-                                                               ),
-                                                             ],
-                                                           ),
-                                               ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 8, 10, 10),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text(
+                                              controller.textaddgroup,
+                                              textAlign: TextAlign.left,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  decoration:
+                                                      TextDecoration.none,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black87),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-                ));
-                    }, icon: Icon(Icons.help_outline_outlined,
-                    size: 30,
-                    color:Color.fromARGB(255, 246, 123, 127) ,)),
+                          ));
+                        },
+                        icon: const Icon(
+                          Icons.help_outline_outlined,
+                          size: 30,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                        )),
                   ),
                 ),
               )

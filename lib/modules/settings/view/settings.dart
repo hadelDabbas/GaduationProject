@@ -4,9 +4,9 @@ import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
-import '../../Addpost/view/addpost.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../groups/view/post_Group.dart';
 import '../../groups/view/show_group.dart';
 import '../../refrence/view/refrence.dart';
 import '../../sheard/auth_service.dart';
@@ -112,7 +112,7 @@ class SettingPageView extends GetResponsiveView {
                                         ),
                                       )),
                                   Container(
-                                    child: Addpostview(),
+                                    child: PostGrpoup(),
                                   ),
                                 ],
                               ),

@@ -1,36 +1,31 @@
-
-import 'dart:typed_data';
-
-import 'package:graduationproject/app/model/library.dart';
 import 'package:graduationproject/app/model/user.dart';
 
-import 'content.dart';
 import 'group.dart';
 
-class  UserGroup{
+class UserGroup {
   int? IdGroup;
-  Group? group ;
-  int ?IdUser;
+  Group? group;
+  int? IdUser;
   User? user;
-UserGroup( {
- this. IdGroup,
-    this.group ,
+  UserGroup({
+    this.IdGroup,
+    this.group,
     this.IdUser,
     this.user,
   });
 
-UserGroup.fromJson(Map<String, dynamic> json) {
-   IdGroup = json['IdGroup'];
-group =json['group '];
- IdUser=json[' idUser'];
- user=json[' user'];
+  UserGroup.fromJson(Map<String, dynamic> json) {
+    IdGroup = json['idGroup'];
+    group = json['group '];
+    IdUser = json['idUser'];
+    user = json[' user'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['group ']=group ;
-    json[' idUser']=IdUser;
-    json[' user']=user;
+    final Map<String, dynamic> json = <String, dynamic>{};
+    json['idGroup'] = IdGroup;
+    json['idUser'] = IdUser;
+    json['id'] = 0;
     return json;
   }
 }
