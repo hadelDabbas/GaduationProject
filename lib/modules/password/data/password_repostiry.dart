@@ -10,7 +10,7 @@ class PasswordRepository implements IPasswordRepository {
   Future<bool> resetPassuser(String email, String newPassword) async {
     var result = await _dio.put(
         'https://localhost:7252/api/User/ChangePassword',
-        queryParameters: {"email": email, "password": newPassword});
+        queryParameters: {"ai".tr: email, "ss".tr: newPassword});
     if (result.statusCode == 200) {
       return true;
     } else {

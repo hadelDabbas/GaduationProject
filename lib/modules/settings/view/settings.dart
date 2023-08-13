@@ -25,10 +25,10 @@ class SettingPageView extends GetResponsiveView {
           children: [
             Row(
               children: [
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.fromLTRB(85, 8, 8, 8),
                   child: Center(
-                    child: Text('Settings',
+                    child: Text('Settings'.tr,
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -60,9 +60,9 @@ class SettingPageView extends GetResponsiveView {
                           Get.to(ShowGroupPageView());
                         },
                         child: Tooltip(
-                            message: 'Add New Group',
+                            message: 'add'.tr,
                             child: CardSetting(
-                              "Group", Icons.group_add,
+                              "Group".tr, Icons.group_add,
                               // Color.fromARGB(255, 63, 201, 214))
                             ))),
                   ),
@@ -72,9 +72,9 @@ class SettingPageView extends GetResponsiveView {
                           Get.rootDelegate.toNamed(Routes.booktype);
                         },
                         child: Tooltip(
-                            message: 'Book Type',
+                            message: 'bo'.tr,
                             child: CardSetting(
-                              'Book Type', Icons.content_copy_rounded,
+                              'bo'.tr, Icons.content_copy_rounded,
                               // Color.fromARGB(255, 63, 201, 214))
                             ))),
                   ),
@@ -96,12 +96,12 @@ class SettingPageView extends GetResponsiveView {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Align(
+                                   Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          "Add post : ",
+                                          "ad".tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
@@ -121,8 +121,8 @@ class SettingPageView extends GetResponsiveView {
                         ));
                       },
                       child: Tooltip(
-                          message: 'Add Post',
-                          child: CardSetting("Post", Icons.post_add)),
+                          message: 'addp',
+                          child: CardSetting("po".tr, Icons.post_add)),
                     ),
                   ),
                   Material(
@@ -131,8 +131,8 @@ class SettingPageView extends GetResponsiveView {
                         Get.rootDelegate.toNamed(Routes.content);
                       },
                       child: Tooltip(
-                          message: 'Show content & Add & Delete',
-                          child: CardSetting("Content", Icons.edit_calendar)),
+                          message: 'sh'.tr,
+                          child: CardSetting("co".tr, Icons.edit_calendar)),
                     ),
                   ),
                   Material(
@@ -142,8 +142,8 @@ class SettingPageView extends GetResponsiveView {
                         Get.to(ShowLibraryspage());
                       },
                       child: Tooltip(
-                          message: 'Show Library & Add & Delete & update ',
-                          child: CardSetting("Library", Icons.library_books)),
+                          message: 'sho'.tr,
+                          child: CardSetting("li".tr, Icons.library_books)),
                     ),
                   ),
                   Material(
@@ -164,12 +164,12 @@ class SettingPageView extends GetResponsiveView {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Align(
+                                   Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          "Give permission ",
+                                          "gi".tr,
                                           style: TextStyle(
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
@@ -189,9 +189,9 @@ class SettingPageView extends GetResponsiveView {
                         ));
                       },
                       child: Tooltip(
-                          message: 'Add Permission',
+                          message: 'ap'.tr,
                           child: CardSetting(
-                              "permission", Icons.workspace_premium_sharp)),
+                              "permission".tr, Icons.workspace_premium_sharp)),
                     ),
                   ),
                   auth.isAdmin()
@@ -201,8 +201,8 @@ class SettingPageView extends GetResponsiveView {
                               Get.rootDelegate.toNamed(Routes.complaint);
                             },
                             child: Tooltip(
-                                message: 'Add Complaints',
-                                child: CardSetting("Complaints",
+                                message: 'AddComplaints'.tr,
+                                child: CardSetting("com".tr,
                                     Icons.account_balance_wallet_rounded)),
                           ),
                         )
@@ -213,8 +213,8 @@ class SettingPageView extends GetResponsiveView {
                         Get.to(RefrencePageView());
                       },
                       child: Tooltip(
-                          message: 'Show Refrences',
-                          child: CardSetting(" Refrences", Icons.location_on)),
+                          message: 'ShowRefrences'.tr,
+                          child: CardSetting(" Refrences".tr, Icons.location_on)),
                     ),
                   ),
                   Material(
@@ -242,12 +242,12 @@ class SettingPageView extends GetResponsiveView {
                                       const SizedBox(
                                         width: 1,
                                       ),
-                                      const Align(
+                                       Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "User Complaints ",
+                                              "UserComplaints".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -260,7 +260,7 @@ class SettingPageView extends GetResponsiveView {
                                           )),
                                       Material(
                                         child: Tooltip(
-                                          message: 'Help About Page',
+                                          message: 'lp'.tr,
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Align(
@@ -292,7 +292,7 @@ class SettingPageView extends GetResponsiveView {
                                                                 const SizedBox(
                                                                   height: 10,
                                                                 ),
-                                                                const Padding(
+                                                                 Padding(
                                                                   padding:
                                                                       EdgeInsets
                                                                           .all(
@@ -307,7 +307,7 @@ class SettingPageView extends GetResponsiveView {
                                                                             EdgeInsets.all(8.0),
                                                                         child:
                                                                             Text(
-                                                                          "Help",
+                                                                          "el".tr,
                                                                           style: TextStyle(
                                                                               fontSize: 25,
                                                                               fontWeight: FontWeight.bold,
@@ -370,8 +370,8 @@ class SettingPageView extends GetResponsiveView {
                         ));
                       },
                       child: Tooltip(
-                          message: 'User Complaints',
-                          child: CardSetting(" User Complaints",
+                          message: 'UserComplaints'.tr,
+                          child: CardSetting("UserComplaints".tr,
                               Icons.account_balance_wallet_rounded)),
                     ),
                   ),
@@ -381,9 +381,9 @@ class SettingPageView extends GetResponsiveView {
                             Get.to(TestPageView());
                           },
                           child: Tooltip(
-                              message: 'Show all Quiz',
-                              child: CardSetting("Quiz", Icons.check_box)))),
-                  CardSetting("Quiz", Icons.check_box),
+                              message: 'ShowallQuiz'.tr,
+                              child: CardSetting("Quiz".tr, Icons.check_box)))),
+                  CardSetting("Quiz".tr, Icons.check_box),
                   Material(
                       child: InkWell(
                           onTap: () {
@@ -403,14 +403,14 @@ class SettingPageView extends GetResponsiveView {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Help",
+                                                  "el".tr,
                                                   style: TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
@@ -449,8 +449,8 @@ class SettingPageView extends GetResponsiveView {
                             ));
                           },
                           child: Tooltip(
-                              message: 'Change Language ',
-                              child: CardSetting("Language", Icons.language)))),
+                              message: 'ChangeLanguage'.tr,
+                              child: CardSetting("Language".tr, Icons.language)))),
                   // Material(child: InkWell(
                   //   onTap: () {
                   //      print('trjjkkkk');
@@ -462,9 +462,9 @@ class SettingPageView extends GetResponsiveView {
                         onTap: () {
                           Get.to(HelpPageView());
                         },
-                        child: CardSetting("Help", Icons.question_mark)),
+                        child: CardSetting("el".tr, Icons.question_mark)),
                   ),
-                  CardSetting("Logout", Icons.exit_to_app),
+                  CardSetting("Logout".tr, Icons.exit_to_app),
                   const SizedBox(
                     width: 100,
                     height: 100,

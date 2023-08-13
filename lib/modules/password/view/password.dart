@@ -33,9 +33,9 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
             const SizedBox(
               height: 30,
             ),
-            const Center(
+             Center(
               child: Text(
-                'Forget Password',
+                'fo'.tr,
                 style: TextStyle(
                     color: Color.fromARGB(255, 42, 42, 114),
                     fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         Icons.email,
                         color: Color.fromARGB(255, 246, 123, 127),
                       ),
-                      labelText: 'Enter Email',
+                      labelText: 'en'.tr,
                       enabledBorder: OutlineInputBorder(
                         borderSide:
                             const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -83,9 +83,9 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                             r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                         .hasMatch(value!);
                     if (value.isEmpty) {
-                      return " Enter Email";
+                      return "en".tr;
                     } else if (!emailvalue) {
-                      return " Enter Correct Email";
+                      return "enc".tr;
                     }
                     return null;
                   },
@@ -114,7 +114,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                                 ? Icons.visibility
                                 : Icons.visibility_off),
                           ),
-                          labelText: 'Enter Password',
+                          labelText: 'enp'.tr,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                                 width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -127,9 +127,9 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                           )),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "Enter Password";
+                          return "enp".tr;
                         } else if (passcontroller.text.length < 6) {
-                          return "Password Length Should Be More Than 6 Charachters";
+                          return "pcha".tr;
                         }
                         return null;
                       },
@@ -161,7 +161,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                               ? Icons.visibility
                               : Icons.visibility_off),
                         ),
-                        labelText: 'Confirm Password',
+                        labelText: 'con'.tr,
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
                               width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -174,9 +174,9 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         )),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Confirm Password";
+                        return "con".tr;
                       } else if (Confirmpasscontroller.text.length < 6) {
-                        return "Password Length Should Be More Than 6 Charachters";
+                        return "pcha".tr;
                       }
                       return null;
                     },
@@ -196,7 +196,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                       controller.confirmPassword();
                     }
                   } else {
-                    diolg('Confirm from fields');
+                    diolg('Confirmfromfields'.tr);
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -204,14 +204,14 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child: const Text(
-                  'Confirm',
+                child:  Text(
+                  'conf'.tr,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
                       Tooltip(
-              message: 'Help About Page',
+              message: 'lp'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -234,12 +234,12 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "el".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,

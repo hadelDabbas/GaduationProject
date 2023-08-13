@@ -29,8 +29,8 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                 ),
               ),
             ),
-            const Text(
-              " All Groups ",
+             Text(
+              " al ".tr,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -41,15 +41,15 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
             const SizedBox(
               height: 8,
             ),
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(8.0),
               child: SizedBox(
                   width: 500,
                   child: Material(
                       child: SearchTextFeild(
-                    hintText: 'search',
+                    hintText: 'search'.tr,
                     value: '',
-                    label: 'Search',
+                    label: 'search'.tr,
                   ))),
             ),
             const SizedBox(
@@ -63,7 +63,7 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                 )),
             Material(
               child: Tooltip(
-                message: 'Help About Page',
+                message: 'hl'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -86,14 +86,14 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      const Padding(
+                                       Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Help",
+                                                "el".tr,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -194,8 +194,8 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                                             child: SingleChildScrollView(
                                                 child: Column(
                                               children: [
-                                                const Text(
-                                                  "Are Sure To Remove?",
+                                                 Text(
+                                                  "aresure".tr,
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       fontWeight:
@@ -220,8 +220,8 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                                                                   .delGroup(
                                                                       g.Id!);
                                                             },
-                                                            child: const Text(
-                                                              'Yes',
+                                                            child:  Text(
+                                                              'mm'.tr,
                                                               style: TextStyle(
                                                                   color: Color
                                                                       .fromARGB(
@@ -234,8 +234,8 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                                                             onPressed: () {
                                                               Get.back();
                                                             },
-                                                            child: const Text(
-                                                              'No',
+                                                            child:  Text(
+                                                              'nn'.tr,
                                                               style: TextStyle(
                                                                   color: Color
                                                                       .fromARGB(

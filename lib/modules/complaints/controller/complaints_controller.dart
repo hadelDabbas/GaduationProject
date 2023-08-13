@@ -13,9 +13,9 @@ class ComplaintsController extends GetxController {
   final auth = Get.find<AuthService>();
   final user = User().obs;
   final numtype = 0.obs;
-  final text = 'In this interface, all complaints are displayed to the admin';
+  final text = 'inthis'.tr;
   final textcuser1 =
-      'In this interface, the user of this account writes the complaint and can see if the admin replied or rejected it';
+      'to'.tr;
   final txt = ''.obs;
   @override
   Future<void> onInit() async {

@@ -83,7 +83,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   if (controller.personExsisting.value ==
                                       false) {
                                     controller.personExsisting.value = true;
-                                    controller.msg.value = 'Joning';
+                                    controller.msg.value = 'z'.tr;
                                     controller.addMember.value.IdGroup =
                                         controller.currentGroup.value.Id;
                                     controller.addMember.value.IdUser =
@@ -91,7 +91,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                                     controller.AddMember();
                                   } else {
                                     controller.personExsisting.value = false;
-                                    controller.msg.value = 'Exit';
+                                    controller.msg.value = 'w'.tr;
                                     controller.addMember.value.IdGroup =
                                         controller.currentGroup.value.Id;
                                     controller.addMember.value.IdUser =
@@ -115,7 +115,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                           ),
                           const SizedBox(width: 5),
                           Tooltip(
-                            message: 'Members In This Group',
+                            message: 'wa'.tr,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shadowColor:
@@ -134,10 +134,10 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       child: SingleChildScrollView(
                                         child: Column(
                                           children: [
-                                            const Padding(
+                                             Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                'Members',
+                                                'Members'.tr,
                                                 style: TextStyle(
                                                     fontSize: 24,
                                                     fontFamily: "Pacifico",
@@ -168,8 +168,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       )),
                                 ));
                               },
-                              child: const Text(
-                                'Members',
+                              child:  Text(
+                                'Members'.tr,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -181,12 +181,12 @@ class GroupView extends GetResponsiveView<GroupController> {
                       ),
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        ' Description About Group :',
+                        ' zz'.tr,
                         style: TextStyle(
                             fontSize: 18,
                             color: Color.fromARGB(255, 42, 42, 114),
@@ -223,7 +223,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               Align(
                 alignment: Alignment.topRight,
                 child: Tooltip(
-                  message: 'Edit Group ',
+                  message: 'EditGroup '.tr,
                   child: ElevatedButton(
                     onPressed: () {
                       controller.currentGroup.value.content = controller
@@ -250,7 +250,7 @@ class GroupView extends GetResponsiveView<GroupController> {
               Align(
                 alignment: Alignment.topRight,
                 child: Tooltip(
-                  message: 'Add Post ',
+                  message: 'll '.tr,
                   child: ElevatedButton(
                     onPressed: () {
                       PostGrpoup();
@@ -282,7 +282,7 @@ class GroupView extends GetResponsiveView<GroupController> {
           // post('Ahmad Ahmad', 'Why Flutter Uses Dart ?',
           //     'assets/images/dart.png', 'IT', controller)
           Tooltip(
-            message: 'Help About Page',
+            message: 'hl'.tr,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -304,14 +304,14 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Padding(
+                                  Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Help",
+                                            "el".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,

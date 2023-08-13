@@ -43,11 +43,11 @@ class GroupController extends GetxController {
   final listcomment = <Comments>[].obs;
   PickedFile? imagefile;
   final textshowgroup =
-      'In this interface, all existing microbes are displayed';
-  final textaddgroup = 'In this interface, a new cherub can be added';
-  final texteditg = 'In this interface, the group information can be modified';
+      'ac'.tr;
+  final textaddgroup = 'ae'.tr;
+  final texteditg = 'af'.tr;
   final textgroup =
-      'In this interface, all the information of this group is displayed';
+      'ag'.tr;
 
   //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global'];
 
@@ -165,8 +165,8 @@ class GroupController extends GetxController {
         newpost.value, user.value.Id!, currentGroup.value.Id!);
     if (data) {
       Get.snackbar(
-        'Good',
-        "  Add New Post Succsful ",
+        'ah'.tr,
+        " aj".tr,
         //  icon: Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: const Color.fromARGB(255, 246, 123, 127),
@@ -180,8 +180,8 @@ class GroupController extends GetxController {
       );
     } else {
       Get.snackbar(
-        'Error ',
-        "The new post dont added",
+        'Errore'.tr,
+        "ak".tr,
         //  icon: Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: const Color.fromARGB(255, 246, 123, 127),

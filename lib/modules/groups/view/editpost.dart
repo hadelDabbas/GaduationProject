@@ -16,11 +16,11 @@ class EditPostgroupview extends GetResponsiveView<GroupController> {
 GroupController controller = Get.put(GroupController());
  Uint8List? image;
   List<String> Contents = [
-    'History',
-    'Math',
-    'Arabic',
-    'English',
-    'Diversified'
+    'hi'.tr,
+    'ma'.tr,
+    'ar'.tr,
+    'eng'.tr,
+    'div'.tr
   ];
 
   // var dropdownvalue;
@@ -65,7 +65,7 @@ GroupController controller = Get.put(GroupController());
                             color: const Color.fromARGB(255, 194, 192, 192)),
                         borderRadius: BorderRadius.circular(10)),
                     child: GFAccordion(
-                      title: "Post Type",
+                      title: "PostType".tr,
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -102,10 +102,10 @@ GroupController controller = Get.put(GroupController());
         child: TextField(
          // controller: _controller,
             decoration: InputDecoration(
-          labelText: 'Description',
+          labelText: 'des'.tr,
           labelStyle:
               TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-          hintText: 'Description',
+          hintText: 'des'.tr,
           prefixIcon: Icon(
             Icons.text_fields,
             color: Color.fromARGB(255, 245, 146, 149),
@@ -129,7 +129,7 @@ GroupController controller = Get.put(GroupController());
          //  controller.UpdatePostUser(controller.editpost.value.Id!);
           },
           child: Text(
-            'Save',
+            'Save'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
@@ -186,9 +186,9 @@ void openBottomSheet( ) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+           Center(
             child: Text(
-              'Choose Post Photo',
+              'Choose'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -209,7 +209,7 @@ void openBottomSheet( ) {
                 },
                 child: Icon(Icons.camera),
               ),
-              Text('  Camera'),
+              Text(' Camera'.tr),
                 ],
               ),
              
@@ -226,7 +226,7 @@ void openBottomSheet( ) {
                 },
                 child: Icon(Icons.image),
               ),
-                 Text('  Gallery'),
+                 Text('  Galleryy'.tr),
           ],)
               
             ],

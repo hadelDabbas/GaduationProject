@@ -10,7 +10,7 @@ class passwordController extends GetxController {
   RxBool hidePassword = true.obs;
   var newPassword = ''.obs;
   var confirmpassword = ''.obs;
-  final text='In this interface you can change the password';
+  final text='this'.tr;
   final pass = PasswordRepository();
   final auth = Get.find<AuthService>();
   var email = ''.obs;
@@ -20,8 +20,8 @@ class passwordController extends GetxController {
     if (data) {
       await auth.logIn(email.value, newPassword.value);
       Get.snackbar(
-        'Good',
-        "Add New Password Succfuly",
+        'Good'.tr,
+        "suc".tr,
         icon: const Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: const Color.fromARGB(255, 246, 123, 127),
@@ -35,8 +35,8 @@ class passwordController extends GetxController {
       Get.rootDelegate.toNamed(Routes.home);
     } else {
       Get.snackbar(
-        'Error',
-        "Sure From Email Or Passwoprd",
+        'Errore'.tr,
+        "sure".tr,
         icon: const Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: const Color.fromARGB(255, 246, 123, 127),

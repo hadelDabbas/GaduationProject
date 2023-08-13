@@ -46,7 +46,7 @@ class HelpPageView extends GetResponsiveView <SettingController>{
                         Padding(
                     padding:  EdgeInsets.all(8),
                     child: Center(
-                      child: Text('All Help',
+                      child: Text('AllHelp'.tr,
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
@@ -57,24 +57,24 @@ class HelpPageView extends GetResponsiveView <SettingController>{
                   ),
                   Column(
                     children: [
-                      CardHelp(SignInViewPage(),'SingIn', 'This is the login page if you already had an account, enter your email and password, otherwise create an accoun'),
- CardHelp(signupage(),'SigUp', 'Here you can register your information in order to create an account'),
-    CardHelp(HomePage(),'Home Page', 'In this interface, all the posts of the people you have followed will appear'),
-         CardHelp(Profileview(),'Profile', 'In this interface, your personal information and all the posts that you have published will appear And You Can Update & Add & Delete Your Post'),
-          CardHelp(EditProfileview (),'Edit Profile ', 'In this interface, you can modify any information you have'),
-                        CardHelp(  ForgetViewPage(),'Forget Password', 'In this interface you can change the password'),
-                          CardHelp(SplashGame(),'Menu Game', 'In this interface, you will display all the existing games, where each game has three levels, and each level has three stages'),
-                      CardHelp(ShowGroupPageView(),'All Groups', 'In this interface, all existing microbes are displayed'),
+                      CardHelp(SignInViewPage(),'SingIn'.tr, 'k'.tr),
+ CardHelp(signupage(),'SigUp'.tr, 'a'.tr),
+    CardHelp(HomePage(),'HomePage'.tr, 'b'.tr),
+         CardHelp(Profileview(),'Profile'.tr, 'c'.tr),
+          CardHelp(EditProfileview (),'EditProfile'.tr, 'd'.tr),
+                        CardHelp(  ForgetViewPage(),'ForgetPassword'.tr, 'e'.tr),
+                          CardHelp(SplashGame(),'MenuGame'.tr, 'f'.tr),
+                      CardHelp(ShowGroupPageView(),'AllGroups'.tr, 'g'.tr),
                       //  CardHelp(GroupView(),'Group', 'In this interface, all the information of this group is displayed'),
-                       CardHelp(ShowLibraryspage(),'All Librarays ', 'In this interface, all existing offices will be displayed in any region'),
+                       CardHelp(ShowLibraryspage(),'AllLibrarays'.tr, 'h'.tr),
                     //  CardHelp('Library', 'In this interface you will display all the books in the library And You Can Buy Book From Icon Bascket'),
-                     CardHelp(Contentpage(),"Content",'In this interface we display the existing content' ),
-                      CardHelp(UserComplaintspageView (),'Complaints','In this interface, the user of this account writes the complaint and can see if the admin replied or rejected it'),
-                  CardHelp(RefrencePageView(),'All Refrence', 'In this interface, all references are displayed'),
+                     CardHelp(Contentpage(),"Content".tr,'i'.tr ),
+                      CardHelp(UserComplaintspageView (),'Complaints'.tr,'j'.tr),
+                  CardHelp(RefrencePageView(),'AllRefrence'.tr, 'l'.tr),
                   
                   
-                       CardHelp(TestPageView(),'Tests','This interface displays all the tests that this account can perform'),
-                    CardHelp(BookTypePageView(),'BookType', 'In this interface we display the existing BookType'),
+                       CardHelp(TestPageView(),'Tests'.tr,'m'.tr),
+                    CardHelp(BookTypePageView(),'BookType'.tr, 'n'.tr),
                     
                  
                 
@@ -143,10 +143,10 @@ class HelpPageView extends GetResponsiveView <SettingController>{
                                                child: Align(
                                                 alignment: Alignment.bottomRight,
                                                  child: Tooltip(
-                                                  message: 'Open This Page',
+                                                  message: 'open'.tr,
                                                    child: TextButton(onPressed: (){
                                                     Get.to(w);
-                                                   }, child: Text('view page',
+                                                   }, child: Text('view'.tr,
                                                     style: TextStyle(
                                                           fontSize: 20,
                                                           fontWeight: FontWeight.bold,

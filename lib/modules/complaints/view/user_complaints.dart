@@ -25,11 +25,11 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 child: Material(
                   child: TextFormField(
                     controller: myController,
-                    decoration: const InputDecoration(
-                      labelText: ' Enter Your Complaints',
+                    decoration:  InputDecoration(
+                      labelText: ' EnterYourComplaints'.tr,
                       labelStyle: TextStyle(
                           color: Colors.black45, fontWeight: FontWeight.bold),
-                      hintText: 'Enter Your Complaints',
+                      hintText: 'EnterYourComplaints'.tr,
                       prefixIcon: Icon(
                         Icons.read_more_sharp,
                         color: Color.fromARGB(255, 245, 146, 149),
@@ -44,7 +44,7 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     validator: (value) {
                       if (value!.isEmpty ||
                           !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                        return "Enter Correct Name";
+                        return "x".tr;
                       } else {
                         return null;
                       }
@@ -74,8 +74,8 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                           borderRadius: BorderRadius.circular(30)),
                       padding: const EdgeInsets.symmetric(
                           vertical: 0, horizontal: 0)),
-                  child: const Text(
-                    'Send',
+                  child: Text(
+                    'Send'.tr,
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
@@ -83,8 +83,8 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
             ),
             Column(
               children: [
-                const Text(
-                  "Prevouis Complaints",
+                 Text(
+                  "PrevouisComplaints".tr,
                   style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
@@ -187,7 +187,7 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
-              'Accepted ',
+              'Accepted'.tr,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -200,12 +200,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
         {}
         break;
       case 1:
-        widget = const Padding(
+        widget = Padding(
           padding: EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
-              'Refuses',
+              'Refuses'.tr,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -217,12 +217,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
         );
         break;
       default:
-        widget = const Padding(
+        widget =  Padding(
           padding: EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
-              'Not Pross',
+              'NotPross'.tr,
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

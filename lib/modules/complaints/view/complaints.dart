@@ -30,8 +30,8 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     ),
                   ),
                 ),
-                const Text(
-                  " Complaints  ",
+                 Text(
+                  "com".tr,
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -57,8 +57,8 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                const Text(
-                  " Here All Complaints  ",
+                 Text(
+                  "hereall".tr,
                   style: TextStyle(
                       fontSize: 18,
                       fontFamily: "Pacifico",
@@ -66,7 +66,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                       decoration: TextDecoration.none),
                 ),
                 Tooltip(
-                  message: 'Help About Page',
+                  message: 'hl'.tr,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
@@ -89,14 +89,14 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        const Padding(
+                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Help",
+                                                  "el".tr,
                                                   style: TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
@@ -258,7 +258,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                         Align(
                           alignment: Alignment.bottomRight,
                           child: Tooltip(
-                            message: 'Not Accept',
+                            message: 'NotAccept'.tr,
                             child: ElevatedButton(
                               onPressed: () async {
                                 c.type = 1;
@@ -280,7 +280,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                         Align(
                           alignment: Alignment.bottomRight,
                           child: Tooltip(
-                            message: ' Accept',
+                            message: 'Accept'.tr,
                             child: ElevatedButton(
                               onPressed: () async {
                                 c.type = 0;
