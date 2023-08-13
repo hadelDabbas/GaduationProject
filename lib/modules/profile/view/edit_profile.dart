@@ -103,7 +103,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter New UserName', labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterNewUserName'.tr, labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                     
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -112,7 +112,7 @@ ProfileController controller=Get.put(ProfileController());
                     )),
                        validator: (value) {
                   if (value!.isEmpty ||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct UserName";
+                    return "EnterCorrectUserName".tr;
                   } else {
                     return null;
                   }
@@ -131,7 +131,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.numbers,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter Your New Age',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterYourNewAge'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                  
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -141,7 +141,7 @@ ProfileController controller=Get.put(ProfileController());
                        validator: (value) {
                   if (value!.isEmpty 
                      || !RegExp(r'^[1-9]{1}+$').hasMatch(value)) {
-                    return "Enter Correct Age";
+                    return 'EnterYourNewAge'.tr;
                   } else {
                     return null;
                   }
@@ -162,7 +162,7 @@ ProfileController controller=Get.put(ProfileController());
                 controller: emailcontroller,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter New Email',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterNewEmail'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                    
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -174,9 +174,9 @@ ProfileController controller=Get.put(ProfileController());
                           r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(value!);
                   if (value.isEmpty) {
-                    return " Enter Email";
+                    return 'EnterNewEmail'.tr;
                   } else if (!emailvalue) {
-                    return " Enter Correct Email";
+                    return "EnterCorrectEmail".tr;
                   }
                 },
               ),
@@ -204,7 +204,7 @@ ProfileController controller=Get.put(ProfileController());
                           child:  Icon(
                         controller.passtoggle .value   ? Icons.visibility : Icons.visibility_off,color: Color.fromARGB(255, 246, 123, 127),),
                             ),
-                        labelText: 'Enter New Password',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                        labelText: 'EnterNewPassword'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                         
                      
                         focusedBorder: OutlineInputBorder(
@@ -214,9 +214,9 @@ ProfileController controller=Get.put(ProfileController());
                         )),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Enter Password";
+                        return "EnterPassword".tr;
                       } else if (passcontroller.text.length < 6) {
-                        return "Password Length Should Be More Than 6 Charachters";
+                        return "PasswordLengthShouldBeMoreThan6Charachters".tr;
                       }
                     },
                   ),
@@ -233,7 +233,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.cast_for_education,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter New Education',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterNewEducation'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                   
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -243,7 +243,7 @@ ProfileController controller=Get.put(ProfileController());
                        validator: (value) {
                   if (value!.isEmpty ||
                       !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Education";
+                    return "EnterCorrectEducation".tr;
                   } else {
                     return null;
                   }
@@ -262,7 +262,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.location_city,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter New Adress',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterNewAdress'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                   
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -272,7 +272,7 @@ ProfileController controller=Get.put(ProfileController());
                        validator: (value) {
                   if (value!.isEmpty 
                    ||   !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Adress";
+                    return "EnterCorrectAdress".tr;
                   } else {
                     return null;
                   }
@@ -291,7 +291,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.money,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter New PayBal',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'EnterNewPayBal'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                    
                     focusedBorder: OutlineInputBorder(
                       borderSide:
@@ -301,7 +301,7 @@ ProfileController controller=Get.put(ProfileController());
                        validator: (value) {
                   if (value!.isEmpty 
                  ||     !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]").hasMatch(value)) {
-                    return "Enter Correct Paybal";
+                    return "EnterCorrectPaybal".tr;
                   } else {
                     return null;
                   }
@@ -317,8 +317,8 @@ ProfileController controller=Get.put(ProfileController());
                   passcontroller.clear();
                   controller.Updateprofile();
                                                              Get.snackbar(
-        'Finish',
-        "Updating Values",
+        'Finish'.tr,
+        "UpdatingValues".tr,
         icon: const Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: const Color.fromARGB(255, 246, 123, 127),
@@ -343,14 +343,14 @@ ProfileController controller=Get.put(ProfileController());
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 50))
                       ,
-              child: const Text(
-                'Update Profile',
+              child:  Text(
+                'UpdateProfile'.tr,
                 style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 246, 123, 127),fontWeight: FontWeight.bold),
               ),
             ),
           ),
                Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -373,12 +373,12 @@ ProfileController controller=Get.put(ProfileController());
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -473,9 +473,9 @@ void openBottomSheet( ProfileController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+           Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePhoto'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -485,24 +485,7 @@ void openBottomSheet( ProfileController controller) {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: [
-               FloatingActionButton(
-                backgroundColor: Color.fromARGB(255, 246, 123, 127),
-                foregroundColor: Colors.white,
-                mini: true,
-                onPressed: () {
-               controller.pickImageFun();
-                },
-                child: Icon(Icons.camera),
-              ),
-              Text('  Camera'),
-                ],
-              ),
-             
-                SizedBox(
-            width: 10,
-          ),
+            
           Row(children: [
                FloatingActionButton(
                 backgroundColor: Color.fromARGB(255, 246, 123, 127),
@@ -513,7 +496,7 @@ void openBottomSheet( ProfileController controller) {
                 },
                 child: Icon(Icons.image),
               ),
-                 Text('  Gallery'),
+                 Text('Gallery'.tr),
           ],)
               
             ],

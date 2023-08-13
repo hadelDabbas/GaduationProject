@@ -1,11 +1,9 @@
 class Content {
   int? Id;
   String? typeName;
-  int? IdUser;
   Content({
     this.Id,
     this.typeName,
-    this.IdUser,
   });
 
   Content.fromJson(Map<String, dynamic> json) {

@@ -51,7 +51,22 @@
     "PleaseInputValue": "Please Input Value",
     "refrencehelp": "In this interface, all references are displayed, and the admin can know who added this reference and can delete it",
     "AddedRefrenceses": "Added Refrenceses",
-    "AreSureToRemove?": "Are Sure To Remove?"
+    "AreSureToRemove?": "Are Sure To Remove?",
+    "EnterNewUserName": "Enter Correct UserName",
+    "EnterYourNewAge": "Enter Your New Age",
+    "EnterNewEmail": "Enter New Email",
+    "EnterNewPassword": "Enter New Password",
+    "EnterNewEducation": "Enter New Education",
+    "EnterNewAdress": "Enter New Adress",
+    "EnterNewPayBal": "EnterNewPayBal",
+    "Finish": "Finish",
+    "UpdatingValues": "Values have been modified",
+    "UpdateProfile": "Update Profile",
+    "Comments": "Comments",
+    "WriteYourComment": "Write Your Comment",
+    "editprofile": "In this interface, you can modify any information you have",
+    "editpost": "In this interface, it is possible to modify the information that needs to be modified, whether an image or text",
+    "textprofile": "In this interface, your personal information and all the posts that you have published will appear"
   },
   "ar": {
     "yes": "نعم",
@@ -105,6 +120,21 @@
     "PleaseInputValue": "الرجاء إدخال القيمة",
     "refrencehelp": "في هذه الواجهة ، يتم عرض جميع المراجع ، ويمكن للمسؤول معرفة من أضاف هذا المرجع ويمكنه حذفه",
     "AddedRefrenceses": "المراجع المضافة",
-    "AreSureToRemove?": "هل أنت متأكد من الإزالة؟"
+    "AreSureToRemove?": "هل أنت متأكد من الإزالة؟",
+    "EnterNewUserName": "أدخل اسم المستخدم الصحيح",
+    "EnterYourNewAge": "ادخل عمرك  الصحيح",
+    "EnterNewEmail": "أدخل بريد إلكتروني جديد",
+    "EnterNewPassword": "أدخل كلمة مرور جديدة",
+    "EnterNewEducation": "أدخل التعليم الجديد",
+    "EnterNewAdress": "ادخل العنوان الجديد",
+    "EnterNewPayBal": "ادخل  paBal الجديد",
+    "Finish": "انتهيت",
+    "UpdatingValues": "تم تعديل القيم",
+    "UpdateProfile": "تحديث الملف الشخصي",
+    "Comments": "تعليقات",
+    "WriteYourComment": "اكتب تعليقك",
+    "editprofile": "في هذه الواجهة ، يمكنك تعديل أي معلومات لديك",
+    "editpost": "في هذه الواجهة ، من الممكن تعديل المعلومات التي يجب تعديلها ، سواء كانت صورة أو نص",
+    "textprofile": "في هذه الواجهة ، ستظهر معلوماتك الشخصية وجميع المنشورات التي نشرتها"
   }
 }

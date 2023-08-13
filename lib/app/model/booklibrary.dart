@@ -5,6 +5,8 @@ class BookLibrary {
   int? Id;
   int ?IdBook ;
    Book? book;
+   //////
+   bool?IsDeleted;
    int? IdLibrary;
   Library? library; 
   String? libraryAddress;
