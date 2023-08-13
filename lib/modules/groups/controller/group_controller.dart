@@ -4,6 +4,7 @@ import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../app/model/accessiblity_logIn.dart';
 import '../../../app/model/comment.dart';
 import '../../../app/model/content.dart';
 import '../../../app/model/group.dart';
@@ -41,6 +42,7 @@ class GroupController extends GetxController {
   final removeMember = UserGroup().obs;
   final editpost = Post().obs;
   final listcomment = <Comments>[].obs;
+  final access = <AccessiblityLogIn>[].obs;
   PickedFile? imagefile;
   final textshowgroup =
       'ac'.tr;
@@ -56,6 +58,10 @@ class GroupController extends GetxController {
     getAllContent();
     getAllGroups();
     user.value = auth.getDataFromStorage()!;
+    access.value = auth
+        .getUserLogInAccess()
+        .where((element) => element.type == 'Group')
+        .toList();
     ExsistingMember();
     super.onInit();
   }
@@ -161,8 +167,11 @@ class GroupController extends GetxController {
 
   Future<void> AddPost() async {
     newpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    var data = await groupRepo.AddpostUser(
-        newpost.value, user.value.Id!, currentGroup.value.Id!);
+    newpost.value.IdGroup = currentGroup.value.Id;
+    newpost.value.IdContent = currentGroup.value.IdContent;
+    newpost.value.IdUser = user.value.Id;
+    newpost.value.dateTime = DateTime.now();
+    var data = await groupRepo.AddpostUser(newpost.value);
     if (data) {
       Get.snackbar(
         'ah'.tr,
