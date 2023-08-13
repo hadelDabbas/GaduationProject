@@ -6,7 +6,6 @@ import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/userPost.dart';
 
 import '../../../app/model/content.dart';
-import '../../../app/model/follow.dart';
 import '../../../app/model/post.dart';
 import '../../../app/model/postdto.dart';
 import 'adapter/profile_adapter.dart';
@@ -30,8 +29,8 @@ class ProfileRepository implements IProfileRepository {
   //
   @override
   Future<List<PostDto>> GetUserPost(int iduser) async {
-    var result = await _dio.get('https://localhost:7252/api/Profile/GetPosts',
-        queryParameters: {"id": iduser});
+    var result = await _dio
+        .get('https://localhost:7252/api/Profile/GetPosts?IdUser=$iduser');
     var list = <PostDto>[];
     if (result.statusCode == 200) {
       for (var item in result.data) {
@@ -162,11 +161,11 @@ class ProfileRepository implements IProfileRepository {
     }
     return list;
   }
-  
+
   @override
-  Future<bool> DelFollowed(int iduser,int iddelete)async {
-   var result = await _dio.delete('https://localhost:7252/api/Follow/$iduser',
-    queryParameters: {"id":iddelete });
+  Future<bool> DelFollowed(int iduser, int iddelete) async {
+    var result = await _dio.delete('https://localhost:7252/api/Follow/$iduser',
+        queryParameters: {"id": iddelete});
     if (result.statusCode == 200) {
       return true;
     } else {

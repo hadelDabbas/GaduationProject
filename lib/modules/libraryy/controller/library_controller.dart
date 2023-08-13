@@ -8,7 +8,6 @@ import 'package:graduationproject/app/model/library.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../api/storage/storge_service.dart';
-import '../../../app/model/BookDetalites.dart';
 import '../../../app/model/booklibrary.dart';
 import '../../../app/model/buybookDetailsDto.dart';
 import '../../../app/model/buybookDto.dart';
@@ -26,13 +25,13 @@ class LibraryContrller extends GetxController {
   late AnimationController controller;
   late Animation<double> animation;
   final stroge = Get.find<StorageService>();
-  final Booklist = <BookDetailsDto>[].obs;
+  final Booklist = <Book>[].obs;
   final libraryRepo = LibraryRepository();
   final ImagePicker imagepicker = ImagePicker();
   final stringPickImage = ''.obs;
   PickedFile? imagefile;
   final listLibrary = <Library>[].obs;
-  final currentBook = BookDetailsDto().obs;
+  final currentBook = Book().obs;
   final Addlibrary = Library().obs;
   final updatelibrary = Library().obs;
   final IdLibrary = 0.obs;
@@ -79,6 +78,7 @@ class LibraryContrller extends GetxController {
   Future<void> onInit() async {
     super.onInit();
     getAllLibrary();
+
     GetUser();
   }
 

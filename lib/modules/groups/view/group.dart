@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:graduationproject/modules/Addpost/view/addpost.dart';
 import 'package:graduationproject/modules/groups/view/edit_group.dart';
 
-import '../../../app/model/post.dart';
+import '../../../app/model/postdto.dart';
 import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
 import '../controller/group_controller.dart';
@@ -30,17 +30,17 @@ class GroupView extends GetResponsiveView<GroupController> {
               ),
             ),
           ),
-          controller.currentGroup.value.Image == null
-              ? Image.asset(
-                  'assets/images/It.png',
-                  width: double.infinity,
-                  height: 200,
-                  fit: BoxFit.fill,
-                )
-              : Utility.imageFromBase64String(
-                  Utility.base64String(controller.currentGroup.value.Image!),
-                  double.infinity,
-                  null),
+          // controller.currentGroup.value.Image == null
+          //     ? Image.asset(
+          //         'assets/images/It.png',
+          //         width: double.infinity,
+          //         height: 200,
+          //         fit: BoxFit.fill,
+          //       )
+          //     : Utility.imageFromBase64String(
+          //         Utility.base64String(controller.currentGroup.value.Image!),
+          //         double.infinity,
+          //         null),
           // Container(
           //   height: 200,
           //   child: Image.asset(
@@ -146,7 +146,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                             message: 'Members In This Group',
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shadowColor: Color.fromARGB(255, 42, 42, 114),
+                                shadowColor:
+                                    const Color.fromARGB(255, 42, 42, 114),
                                 backgroundColor:
                                     const Color.fromARGB(255, 246, 123, 127),
                               ),
@@ -281,7 +282,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                           vertical: 15, horizontal: 15),
                       shape: const CircleBorder(),
                     ),
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                       size: 18,
                       color: Color.fromARGB(255, 246, 123, 127),
@@ -291,92 +292,90 @@ class GroupView extends GetResponsiveView<GroupController> {
               ),
             ],
           ),
-          Column(
-            children: controller.postsList
-                .map((element) => postprofile(
-                    element.UserName.toString(),
-                    element.UserImage!,
-                    element.GroupName.toString(),
-                    element.GroupImage!,
-                    element.post!.Description.toString(),
-                    element.post!.Image!,
-                    element.Interaction!,
-                    element.post!.content!.typeName.toString(),
-                    element.post!))
-                .toList(),
-          ),
+          Obx(() => Column(
+                children: controller.postsList
+                    .map((element) => postprofile(element))
+                    .toList(),
+              )),
 
           // post('Dr.Abdallah hamwe', 'The loop you can used it in flutter',
           //     'assets/images/loop.png', 'IT', controller),
           // post('Ahmad Ahmad', 'Why Flutter Uses Dart ?',
           //     'assets/images/dart.png', 'IT', controller)
-           Tooltip(
-              message: 'Help About Page',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
+          Tooltip(
+            message: 'Help About Page',
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                    onPressed: () {
+                      Get.dialog(Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.blueAccent)),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Align(
+                                        alignment: Alignment.center,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "Help",
+                                            style: TextStyle(
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: "Pacifico",
+                                                color: Color.fromARGB(
+                                                    255, 42, 42, 114),
+                                                decoration:
+                                                    TextDecoration.none),
+                                          ),
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 8, 10, 10),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text(
+                                          controller.textgroup,
+                                          textAlign: TextAlign.left,
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              decoration: TextDecoration.none,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black87),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
-                                            ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.textgroup,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
-                ),
+                        ),
+                      ));
+                    },
+                    icon: const Icon(
+                      Icons.help_outline_outlined,
+                      size: 30,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    )),
               ),
-            )
+            ),
+          )
         ]),
       ),
     );
@@ -390,7 +389,7 @@ class GroupView extends GetResponsiveView<GroupController> {
         height: 100,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Color.fromARGB(255, 42, 42, 114))),
+            border: Border.all(color: const Color.fromARGB(255, 42, 42, 114))),
         child: Row(
           children: [
             SizedBox(
@@ -421,16 +420,7 @@ class GroupView extends GetResponsiveView<GroupController> {
     );
   }
 
-  Widget postprofile(
-      String nameuser,
-      Uint8List imageuser,
-      String GroupName,
-      Uint8List imageGroup,
-      String Descriptionpost,
-      Uint8List imagpost,
-      bool interaction,
-      String postType,
-      Post post) {
+  Widget postprofile(PostDto dto) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
         child: Center(
@@ -452,14 +442,14 @@ class GroupView extends GetResponsiveView<GroupController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageuser == null
+                      child: dto.UserImage == null
                           ? Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
                           : Utility.imageFromBase64String(
-                              Utility.base64String(imageuser), 50, 50),
+                              Utility.base64String(dto.UserImage!), 50, 50),
                     ),
                   ),
                   Padding(
@@ -468,7 +458,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                         alignment: Alignment.topLeft,
                         child: Text(
                           // 'Asia',
-                          nameuser,
+                          dto.UserName ?? '',
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -485,18 +475,18 @@ class GroupView extends GetResponsiveView<GroupController> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: imageGroup == null
+                      child: dto.GroupImage == null
                           ? Image.asset(
                               'assets/images/angryimg.png',
                               width: screen.width,
                               fit: BoxFit.fill,
                             )
                           : Utility.imageFromBase64String(
-                              Utility.base64String(imageGroup), 50, 50),
+                              Utility.base64String(dto.GroupImage!), 50, 50),
                     ),
                   ),
                   Text(
-                    GroupName,
+                    dto.GroupName ?? '',
                     //  nameuser,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -506,7 +496,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                   const SizedBox(
                     width: 20,
                   ),
-                  Text("($postType)",
+                  Text("(${dto.post!.content!.typeName})",
                       style: const TextStyle(
                         color: Colors.grey,
                       )),
@@ -517,14 +507,14 @@ class GroupView extends GetResponsiveView<GroupController> {
                       height: 120,
                       child: SizedBox.fromSize(
                           size: const Size.fromRadius(48), // Image radius
-                          child: imagpost == null
+                          child: dto.post!.Image == null
                               ? Image.asset(
                                   'assets/images/1.png',
                                   width: screen.width,
                                   fit: BoxFit.fill,
                                 )
                               : Utility.imageFromBase64String(
-                                  Utility.base64String(imagpost),
+                                  Utility.base64String(dto.post!.Image!),
                                   screen.width,
                                   null)),
                     ),
@@ -532,7 +522,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      Descriptionpost,
+                      dto.post!.Description ?? '',
                       style: const TextStyle(fontSize: 12),
                     ),
                   ),
@@ -549,13 +539,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            controller.userpost.value.IdPost = post.Id;
-                            controller.userpost.value.post = post;
+                            controller.userpost.value.IdPost = dto.post!.Id;
+                            controller.userpost.value.post = dto.post;
                             controller.userpost.value.user =
                                 controller.user.value;
                             controller.userpost.value.Id =
                                 controller.user.value.Id;
-                            if (interaction) {
+                            if (dto.Interaction!) {
                               controller.userpost.value.Interaction = false;
                               controller.GetInterActionUser();
                             } else {

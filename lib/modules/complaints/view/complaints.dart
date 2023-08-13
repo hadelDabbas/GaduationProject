@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:graduationproject/app/model/complaints.dart';
 import 'package:graduationproject/modules/complaints/controller/complaints_controller.dart';
 
-import '../../genereted/sheard/util.dart';
-
 class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
   Uint8List? image;
 
@@ -55,101 +53,105 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ],
             ),
-            const Text(
-              " Here All Complaints  ",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: "Pacifico",
-                  color: Color.fromARGB(255, 141, 140, 140),
-                  decoration: TextDecoration.none),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(),
+                const Text(
+                  " Here All Complaints  ",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontFamily: "Pacifico",
+                      color: Color.fromARGB(255, 141, 140, 140),
+                      decoration: TextDecoration.none),
+                ),
+                Tooltip(
+                  message: 'Help About Page',
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: IconButton(
+                          onPressed: () {
+                            Get.dialog(Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      border:
+                                          Border.all(color: Colors.blueAccent)),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Align(
+                                              alignment: Alignment.center,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "Help",
+                                                  style: TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Color.fromARGB(
+                                                          255, 42, 42, 114),
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              )),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 8, 10, 10),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                controller.text,
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    decoration:
+                                                        TextDecoration.none,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black87),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ));
+                          },
+                          icon: const Icon(
+                            Icons.help_outline_outlined,
+                            size: 30,
+                            color: Color.fromARGB(255, 246, 123, 127),
+                          )),
+                    ),
+                  ),
+                )
+              ],
             ),
             const SizedBox(
               height: 20,
             ),
-            Column(
-              children: controller.ListComplaintsAdmain.map((element) =>
-                  CardComplaints(
-                      element.user!.Name.toString(),
-                      element.complaint.toString(),
-                      context,
-                      element.user!.Image!,
-                      element.type!,
-                      element)).toList(),
-            ),
-            Tooltip(
-              message: 'Help About Page',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                      onPressed: () {
-                        Get.dialog(Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(
-                                                      255, 42, 42, 114),
-                                                  decoration:
-                                                      TextDecoration.none),
-                                            ),
-                                          )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 8, 10, 10),
-                                      child: Column(
-                                        children: <Widget>[
-                                          Text(
-                                            controller.text,
-                                            textAlign: TextAlign.left,
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                decoration: TextDecoration.none,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black87),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ));
-                      },
-                      icon: const Icon(
-                        Icons.help_outline_outlined,
-                        size: 30,
-                        color: Color.fromARGB(255, 246, 123, 127),
-                      )),
-                ),
-              ),
-            )
+            Obx(() => Column(
+                  children: controller.ListComplaintsAdmain.map(
+                      (element) => CardComplaints(element)).toList(),
+                )),
+
             // CardComplaints('Maya Ahmad', 'I Want To By Admain for group IT',
             //     context, 'assets/images/2.png'),
             // CardComplaints(
@@ -173,27 +175,26 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
     );
   }
 
-  Widget CardComplaints(String name, String Complaints, BuildContext context,
-      Uint8List url, int type, Complaint c) {
+  Widget CardComplaints(Complaint c) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 40,
-                height: 40,
-                child: url == null
-                    ? Image.asset(
-                        'assets/images/angryimg.png',
-                        width: screen.width,
-                        fit: BoxFit.cover,
-                      )
-                    : Utility.imageFromBase64String(
-                        Utility.base64String(url), 50, 50),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: SizedBox(
+            //     width: 40,
+            //     height: 40,
+            //     child: url == null
+            //         ? Image.asset(
+            //             'assets/images/angryimg.png',
+            //             width: screen.width,
+            //             fit: BoxFit.cover,
+            //           )
+            //         : Utility.imageFromBase64String(
+            //             Utility.base64String(url), 50, 50),
+            //   ),
+            // ),
             // Padding(
             //   padding: const EdgeInsets.all(8.0),
             //   child: GFImageOverlay(
@@ -206,7 +207,6 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
             //   ),
             // ),
             Container(
-              width: MediaQuery.of(context).size.width / 1.2,
               // height: MediaQuery.of(context).size.height / 4,
               decoration: BoxDecoration(
                   border: Border.all(
@@ -222,7 +222,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      name,
+                      c.user!.Name ?? '',
                       style: const TextStyle(
                         fontFamily: "Pacifico",
                         fontSize: 20,
@@ -237,7 +237,7 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          Complaints,
+                          c.complaint ?? '',
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               fontSize: 18,
@@ -265,8 +265,9 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                 controller.UpdateComplaint(c);
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 238, 106, 97),
+                                backgroundColor: c.type == 1
+                                    ? const Color.fromARGB(255, 238, 106, 97)
+                                    : Colors.grey,
                                 shape: const CircleBorder(),
                               ),
                               child: const Icon(
@@ -286,7 +287,8 @@ class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
                                 controller.UpdateComplaint(c);
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
+                                backgroundColor:
+                                    c.type == 0 ? Colors.green : Colors.grey,
                                 shape: const CircleBorder(),
                               ),
                               child: const Icon(

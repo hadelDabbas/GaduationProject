@@ -39,14 +39,16 @@ class GroupController extends GetxController {
   final IdPost = 0;
   final addMember = UserGroup().obs;
   final removeMember = UserGroup().obs;
-  final editpost=Post().obs;
+  final editpost = Post().obs;
   final listcomment = <Comments>[].obs;
   PickedFile? imagefile;
-  final textshowgroup='In this interface, all existing microbes are displayed';
-  final textaddgroup='In this interface, a new cherub can be added';
-  final texteditg='In this interface, the group information can be modified';
-  final textgroup='In this interface, all the information of this group is displayed';
-  
+  final textshowgroup =
+      'In this interface, all existing microbes are displayed';
+  final textaddgroup = 'In this interface, a new cherub can be added';
+  final texteditg = 'In this interface, the group information can be modified';
+  final textgroup =
+      'In this interface, all the information of this group is displayed';
+
   //List <String> Content=['History ','IT','Culture','Senice','Math','Medical','Global'];
 
   @override
@@ -115,12 +117,11 @@ class GroupController extends GetxController {
       Get.back();
     }
   }
-    Future<void> UpdatePost() async {
-    editpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    var data =
-        await groupRepo.UpdatePost(  editpost.value.Id!,   editpost.value);
-  }
 
+  Future<void> UpdatePost() async {
+    editpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
+    var data = await groupRepo.UpdatePost(editpost.value.Id!, editpost.value);
+  }
 
   Future<void> GetInterActionUser() async {
     await groupRepo.InteractionUser(userpost.value, IdPost);
