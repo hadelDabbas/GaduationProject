@@ -56,8 +56,8 @@ class ProfileController extends GetxController {
   void onInit() {
     super.onInit();
     GetUser();
-    Getusepost();
-    // GetUserPostForrrJustNowwww();
+    // Getusepost();
+    GetUserPostForrrJustNowwww();
     //GetPostUser();
   }
 
