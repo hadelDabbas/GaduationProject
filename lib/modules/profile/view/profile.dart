@@ -399,18 +399,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
       String postType,
       Post post) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: Center(
         child: Container(
           width: 500,
           height: 210,
           decoration: BoxDecoration(
+            
               border: Border.all(
-                color: Colors.grey,
-                width: 1.3,
+                color: Color.fromARGB(255, 42, 42, 114),
+                width: 2,
               ),
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)),
+           
+              borderRadius: BorderRadius.circular(20)),
           child: Column(
             children: [
               Row(
