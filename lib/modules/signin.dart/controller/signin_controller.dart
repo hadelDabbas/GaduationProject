@@ -1,3 +1,5 @@
+import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/routes/app_pages.dart';
@@ -13,14 +15,30 @@ class SignIncontroller extends GetxController {
   final userSingn = User().obs;
   RxBool hidePassword = true.obs;
   final userRepo = SiginRepository();
-  final text='siginhelp'.tr;
+  final text = 'siginhelp'.tr;
   final stroge = Get.find<StorageService>();
   final auth = Get.find<AuthService>();
   var email = ''.obs;
   //  var useruses=userUsed().obs;
   var password = ''.obs;
   Future<void> SignIn() async {
-    await auth.logIn(email.value, password.value);
-    Get.rootDelegate.toNamed(Routes.home);
+    var d = await auth.logIn(email.value, password.value);
+    if (d == null) {
+      Get.snackbar(
+        ' Error',
+        " Add New content ",
+        //  icon: Icon(Icons.person, color: Colors.white),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color.fromARGB(255, 209, 143, 143),
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+        isDismissible: true,
+        //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
+    } else
+      Get.rootDelegate.toNamed(Routes.home);
   }
 }
