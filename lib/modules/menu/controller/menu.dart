@@ -24,12 +24,16 @@ class HomeController extends GetxController
   final idcontent = 0.obs;
   final homeRepo = HomeRepository();
   final auth = Get.find<AuthService>();
+  final interActive = [
+    {0: true}
+  ].obs;
   final user = User().obs;
   final Iduser = 0;
   final IdPost = 0;
   final addcomment = Comments().obs;
   final userpost = UserPost().obs;
-  final text='In this interface, all the posts of the people you have followed will appear';
+  final text =
+      'In this interface, all the posts of the people you have followed will appear';
 //  @override
 // dispose() {
 //  ancontroller.dispose(); // you need this
@@ -80,6 +84,6 @@ class HomeController extends GetxController
   }
 
   Future<void> GetInterActionUser() async {
-    await homeRepo.InteractionUser(userpost.value,IdPost);
+    await homeRepo.InteractionUser(userpost.value, IdPost);
   }
 }

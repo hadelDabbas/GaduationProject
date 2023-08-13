@@ -1,4 +1,3 @@
-
 import 'dart:typed_data';
 
 import 'package:graduationproject/app/model/post.dart';
@@ -10,8 +9,9 @@ class PostDto {
   String? UserName;
   String? GroupName;
   bool? Interaction;
-  Post?post;
- // Double? NumberLike;
+  int? numberLike;
+  Post? post;
+  // Double? NumberLike;
   Comments? comment;
   Uint8List? UserImage;
   Uint8List? GroupImage;
@@ -20,27 +20,26 @@ class PostDto {
       this.UserName,
       this.GroupName,
       this.Interaction,
-    //  this.NumberLike,
+      this.numberLike,
       this.comment,
       this.UserImage,
       this.GroupImage,
-      this.post
-      });
+      this.post});
 
   PostDto.fromJson(Map<String, dynamic> json) {
     Id = json['id'];
     UserName = json['userName'];
     GroupName = json['groupName'];
     Interaction = json['interaction'];
-    //NumberLike = json['numberLike'];
     comment = json['comment'];
-    UserImage = json['userImage'];
-    GroupImage = json[' groupImage'];
-post = json[' post'];
+    // UserImage = json['userImage'];
+    // GroupImage = json['groupImage'];
+    numberLike = json['numberLike'];
+    post = Post.fromJson(json['post'] as Map<String, dynamic>);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> json = new Map<String, dynamic>();
+    final Map<String, dynamic> json = <String, dynamic>{};
     json['id'] = Id;
     json['userName'] = UserName;
     json['groupName'] = GroupName;
@@ -49,7 +48,7 @@ post = json[' post'];
     json['comment'] = comment;
     json['userImage'] = UserImage;
     json[' groupImage'] = GroupImage;
-        json[' post'] = post;
+    json[' post'] = post;
     return json;
   }
 }

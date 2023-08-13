@@ -73,7 +73,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            shadowColor: Color.fromARGB(255, 42, 42, 114),
+                            shadowColor: const Color.fromARGB(255, 42, 42, 114),
                             shape: const CircleBorder(),
                           ),
                           child: const Icon(
@@ -94,11 +94,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
-                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             'Groups'.tr,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 24,
                                                 fontFamily: "Pacifico",
                                                 color: Color.fromARGB(
@@ -123,7 +123,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            shadowColor: Color.fromARGB(255, 42, 42, 114),
+                            shadowColor: const Color.fromARGB(255, 42, 42, 114),
                             shape: const CircleBorder(),
                           ),
                           child: const Icon(
@@ -140,7 +140,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         children: [
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              shadowColor: Color.fromARGB(255, 42, 42, 114),
+                              shadowColor:
+                                  const Color.fromARGB(255, 42, 42, 114),
                               backgroundColor: Colors.white,
                             ),
                             onPressed: () {
@@ -154,11 +155,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               'Follow'.tr,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 24,
                                                   fontFamily: "Pacifico",
                                                   color: Color.fromARGB(
@@ -183,7 +184,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                             },
                             child: Text(
                               'Follow'.tr,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
                             ),
@@ -191,7 +192,8 @@ class Profileview extends GetResponsiveView<ProfileController> {
                           const SizedBox(width: 3),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              shadowColor: Color.fromARGB(255, 42, 42, 114),
+                              shadowColor:
+                                  const Color.fromARGB(255, 42, 42, 114),
                               backgroundColor: Colors.white,
                             ),
                             onPressed: () {
@@ -205,11 +207,11 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: [
-                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               'Followed'.tr,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 24,
                                                   fontFamily: "Pacifico",
                                                   color: Color.fromARGB(
@@ -238,9 +240,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                     )),
                               ));
                             },
-                            child:  Text(
+                            child: Text(
                               'Followed'.tr,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color.fromARGB(255, 246, 123, 127),
                                   fontWeight: FontWeight.bold),
                             ),
@@ -255,13 +257,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
             const SizedBox()
           ],
         ),
-         Padding(
-          padding: EdgeInsets.fromLTRB(20, 8, 8, 8),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 8, 8, 8),
           child: Align(
               alignment: Alignment.topLeft,
               child: Text(
                 'About:'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                     decoration: TextDecoration.none,
                     color: Color.fromARGB(255, 42, 42, 114),
                     fontSize: 20),
@@ -335,7 +337,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Container(
-              height: MediaQuery.of(context).size.height / 2.14,
+              height: 400,
               width: 500,
               margin: const EdgeInsets.only(top: 5),
               decoration: const BoxDecoration(
@@ -349,16 +351,35 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         //  [
                         //   postprofile('asia','' , "GroupName", "imageGroup", "DescriptionGroup", "imagpost", true, 'It')
                         // ]
-                        controller.Listuserpost.map((element) => postprofile(
-                            element.UserName.toString(),
-                            element.UserImage!,
-                            element.GroupName.toString(),
-                            element.GroupImage!,
-                            element.post!.Description.toString(),
-                            element.post!.Image!,
-                            element.Interaction!,
-                            element.post!.content!.typeName.toString(),
-                            element.post!)).toList()),
+                        controller.ListuserpostForrNoww.map(
+                            (element) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Card(
+                                    child: Container(
+                                      child: Column(children: [
+                                        Row(
+                                          children: [
+                                            Text(controller.user.value.Name!),
+                                          ],
+                                        ),
+                                        Image.asset('assets/images/2.png'),
+                                        Text(element.Description!)
+                                      ]),
+                                    ),
+                                  ),
+                                )).toList()
+                    // controller.Listuserpost.map((element) => postprofile(
+                    //     element.UserName.toString(),
+                    //     element.UserImage!,
+                    //     element.GroupName.toString(),
+                    //     element.GroupImage!,
+                    //     element.post!.Description.toString(),
+                    //     element.post!.Image!,
+                    //     element.Interaction!,
+                    //     element.post!.content!.typeName.toString(),
+                    //     element.post!)).toList()
+
+                    ),
               ),
             ),
           ),
@@ -483,17 +504,19 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                       Align(
+                                        Align(
                                             alignment: Alignment.center,
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 "Editpost".tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(255, 42, 42, 114),
+                                                    color: Color.fromARGB(
+                                                        255, 42, 42, 114),
                                                     decoration:
                                                         TextDecoration.none),
                                               ),
@@ -523,14 +546,17 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
-                                          color: Color.fromARGB(255, 42, 42, 114), width: 2)),
+                                          color: const Color.fromARGB(
+                                              255, 42, 42, 114),
+                                          width: 2)),
                                   child: Column(
                                     children: [
-                                       Center(
+                                      Center(
                                         child: Text(
                                           'AreSureToRemove?'.tr,
-                                          style: TextStyle(
-                                              color: Color.fromARGB(255, 42, 42, 114),
+                                          style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               decoration: TextDecoration.none),
@@ -544,9 +570,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                               onPressed: () {
                                                 controller.DeletPost(post.Id!);
                                               },
-                                              child:  Text(
+                                              child: Text(
                                                 'Yes'.tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     decoration:
                                                         TextDecoration.none),
                                               )),
@@ -554,9 +580,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                               onPressed: () {
                                                 Get.back();
                                               },
-                                              child:  Text(
+                                              child: Text(
                                                 'No'.tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     decoration:
                                                         TextDecoration.none),
                                               ))
@@ -661,73 +687,83 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   ],
                 ),
               ),
-                   Tooltip(
-              message: 'HelpAboutPage'.tr,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child:  Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help".tr,
-                                              style: TextStyle(
-                                                  fontSize: 25,
+              Tooltip(
+                message: 'HelpAboutPage'.tr,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.dialog(Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help".tr,
+                                                style: const TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(
+                                                        255, 42, 42, 114),
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              ),
+                                            )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 8, 10, 10),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text(
+                                              controller.textprofile,
+                                              textAlign: TextAlign.left,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  decoration:
+                                                      TextDecoration.none,
                                                   fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Colors.black87),
                                             ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.textprofile,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                          ));
+                        },
+                        icon: const Icon(
+                          Icons.help_outline_outlined,
+                          size: 30,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                        )),
+                  ),
                 ),
-              ),
-            )
+              )
             ],
           ),
         ),
@@ -781,9 +817,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   child: GFButton(
                     onPressed: () {
                       ////sure here
-                    // controller.followdelete.value.followId=controller.user.value.Id;
-                    // controller.followdelete.value.followedId=user.Id;
-                    controller.Delefolloewd(user.Id!);
+                      // controller.followdelete.value.followId=controller.user.value.Id;
+                      // controller.followdelete.value.followedId=user.Id;
+                      controller.Delefolloewd(user.Id!);
                     },
                     text: "remove".tr,
                     textStyle: const TextStyle(color: Colors.black54),

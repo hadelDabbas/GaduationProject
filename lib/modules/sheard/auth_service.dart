@@ -27,9 +27,7 @@ class AuthService {
     stroge.saveData(KeyData, jsonEncode(gameUser.toJson()));
   }
 
-  bool isAdmin() {
-    return bool.parse(stroge.getData('isAdmin')!);
-  }
+  bool isAdmin() => stroge.containsKey('isAdmin');
 
   Future<User?> logIn(String email, String password) async {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
@@ -39,7 +37,10 @@ class AuthService {
       var data = User.fromJson(result.data as Map<String, dynamic>);
       stroge.saveData(KeyData, jsonEncode(data.toJson()));
       var access = await userAccessibilites(data.Id!);
-      if (access!.isEmpty) stroge.saveData('isAdmin', 'true');
+      if (access!.isEmpty && data.Name == 'Admin') {
+        stroge.saveData('isAdmin', 'true');
+      }
+
       return data;
     }
     return null;

@@ -7,8 +7,9 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Addpost/view/addpost.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
-import '../../groups/view/group.dart';
+import '../../groups/view/show_group.dart';
 import '../../refrence/view/refrence.dart';
+import '../../sheard/auth_service.dart';
 import 'help.dart';
 
 class SettingPageView extends GetResponsiveView {
@@ -16,6 +17,7 @@ class SettingPageView extends GetResponsiveView {
 
   @override
   Widget builder() {
+    final auth = Get.find<AuthService>();
     return Container(
       child: SingleChildScrollView(
         child: Column(
@@ -55,7 +57,7 @@ class SettingPageView extends GetResponsiveView {
                     child: InkWell(
                         onTap: () {
                           // Get.to(AddGrpoup());
-                          Get.to(GroupView());
+                          Get.to(ShowGroupPageView());
                         },
                         child: Tooltip(
                             message: 'Add New Group',
@@ -192,17 +194,19 @@ class SettingPageView extends GetResponsiveView {
                               "permission", Icons.workspace_premium_sharp)),
                     ),
                   ),
-                  Material(
-                    child: InkWell(
-                      onTap: () {
-                        Get.rootDelegate.toNamed(Routes.complaint);
-                      },
-                      child: Tooltip(
-                          message: 'Add Complaints',
-                          child: CardSetting("Complaints",
-                              Icons.account_balance_wallet_rounded)),
-                    ),
-                  ),
+                  auth.isAdmin()
+                      ? Material(
+                          child: InkWell(
+                            onTap: () {
+                              Get.rootDelegate.toNamed(Routes.complaint);
+                            },
+                            child: Tooltip(
+                                message: 'Add Complaints',
+                                child: CardSetting("Complaints",
+                                    Icons.account_balance_wallet_rounded)),
+                          ),
+                        )
+                      : const SizedBox(),
                   Material(
                     child: InkWell(
                       onTap: () {

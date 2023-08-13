@@ -44,6 +44,10 @@ class AppPages {
         page: () => SignInViewPage(),
         binding: SignInBinding()),
     GetPage(
+        name: _Paths.setting,
+        page: () => SettingPageView(),
+        binding: SetteingBinding()),
+    GetPage(
         name: _Paths.complaint,
         page: () => ComplaintspageView(),
         binding: ComplainsBinding()),
@@ -55,10 +59,6 @@ class AppPages {
         name: _Paths.SignIn,
         page: () => SignInViewPage(),
         binding: SignInBinding()),
-    GetPage(
-        name: _Paths.setting,
-        page: () => SettingPageView(),
-        binding: SetteingBinding()),
     GetPage(
         name: _Paths.refrence,
         page: () => RefrencePageView(),

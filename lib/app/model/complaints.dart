@@ -11,7 +11,7 @@ class Complaint {
   Complaint.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     complaint = json['complaint'];
-    type = json['   type'];
+    type = json['type'];
     IdUser = json['IdUser'];
     user = json['user'];
   }

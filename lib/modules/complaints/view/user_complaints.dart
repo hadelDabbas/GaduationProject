@@ -1,9 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../genereted/sheard/util.dart';
+import '../../../app/model/complaints.dart';
 import '../controller/complaints_controller.dart';
 
 class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
@@ -15,7 +13,6 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
   UserComplaintspageView({super.key});
   @override
   Widget build(BuildContext context) {
-    controller.getRefrence();
     return SingleChildScrollView(
       child: Form(
         key: _formfield,
@@ -56,23 +53,6 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ),
             ),
-            Material(
-              child: Obx(() => Row(
-                    children: List.generate(
-                        5,
-                        (index) => InkWell(
-                              onTap: () {
-                                controller.type.value = index;
-                              },
-                              child: Icon(
-                                Icons.star,
-                                color: index <= controller.type.value
-                                    ? Colors.yellow
-                                    : Colors.grey,
-                              ),
-                            )),
-                  )),
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Align(
@@ -101,114 +81,99 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 ),
               ),
             ),
-            controller.auth.isAdmin()
-                ? Column(
-                    children: [
-                      const Text(
-                        "Prevouis Complaints",
-                        style: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Pacifico",
-                            color: Color.fromARGB(255, 42, 42, 114),
-                            decoration: TextDecoration.none),
-                      ),
-                      Column(
-                          children: controller.listUser
-                              .map((e) => complaintscard(
-                                  e.user!.Name.toString(),
-                                  e.complaint.toString(),
-                                  e.user!.Image!,
-                                  context,
-                                  e.type!))
-                              .toList()
-                          // complaintscard('I want to remove group history ', 'assets/images/4.png',context,'A'),
-                          // complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
-                          // ],
-                          ),
-                    ],
-                  )
-                : const SizedBox.shrink()
+            Column(
+              children: [
+                const Text(
+                  "Prevouis Complaints",
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Pacifico",
+                      color: Color.fromARGB(255, 42, 42, 114),
+                      decoration: TextDecoration.none),
+                ),
+                Obx(() => Column(
+                    children: controller.listUser
+                        .map((e) => complaintscard(e))
+                        .toList()
+                    // complaintscard(
+                    //     Complaint(complaint: 'too', user: User(Name: 'lama'))),
+                    // complaintscard('I want to Be Admain For Post ', 'assets/images/4.png',context,'R')
+                    //   ],
+                    )),
+              ],
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget complaintscard(String name, String complaints, Uint8List url,
-      BuildContext context, int type) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        width: MediaQuery.of(context).size.width / 0.1,
-        decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.grey,
-              width: 1.3,
-            ),
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0)),
-        child: Column(children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: url == null
-                      ? Image.asset(
-                          'assets/images/angryimg.png',
-                          width: screen.width,
-                          fit: BoxFit.cover,
-                        )
-                      : Utility.imageFromBase64String(
-                          Utility.base64String(url), 50, 50),
-                ),
+  Widget complaintscard(Complaint c) {
+    return Material(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          //  width: Get.width / 0.1,
+          decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 1.3,
               ),
-              //                       Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: GFImageOverlay(
-              //     height: 40,
-              //     width: 40,
-              //     shape: BoxShape.circle,
-              //     image: AssetImage(url),
-              //     boxFit: BoxFit.cover,
-              //   ),
-              // ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontFamily: "Pacifico",
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.none,
-                    color: Color.fromARGB(255, 246, 123, 127),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                Text(
-                  complaints,
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      decoration: TextDecoration.none,
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0)),
+          child: Column(children: [
+            Row(
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: SizedBox(
+                //     width: 40,
+                //     height: 40,
+                //     child: c.user!.Image == null
+                //         ? Image.asset(
+                //             'assets/images/angryimg.png',
+                //             width: screen.width,
+                //             fit: BoxFit.cover,
+                //           )
+                //         : Utility.imageFromBase64String(
+                //             Utility.base64String(c.user!.Image!), 50, 50),
+                //   ),
+                // ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    c.user!.Name ?? '',
+                    style: const TextStyle(
+                      fontFamily: "Pacifico",
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black54),
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 246, 123, 127),
+                    ),
+                  ),
                 ),
               ],
             ),
-          ),
-          gettype(index: type)
-        ]),
+            Container(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    c.complaint ?? "",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        decoration: TextDecoration.none,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54),
+                  ),
+                ],
+              ),
+            ),
+            gettype(index: c.type ?? 5)
+          ]),
+        ),
       ),
     );
   }

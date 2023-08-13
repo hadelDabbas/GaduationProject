@@ -39,6 +39,7 @@ class GroupRepository implements IGroupRepository {
         .delete('https://localhost:7252/api/Group/Delete?id=$idgroup');
     return result.statusCode == 200;
   }
+
   @override
   Future<bool> UpdatePost(int idpost, Post post) async {
     var result = await _dio.put(
@@ -51,6 +52,7 @@ class GroupRepository implements IGroupRepository {
       return false;
     }
   }
+
   @override
   Future<List<Group>> GetAllGroup() async {
     var result = await _dio.get('https://localhost:7252/api/Group/GetGroups');
@@ -78,7 +80,7 @@ class GroupRepository implements IGroupRepository {
   @override
   Future<Group?> GetGroup(int idgroup) async {
     var result =
-        await _dio.get('https://localhost:7192/api/Group/Get/$idgroup');
+        await _dio.get('https://localhost:7252/api/Group/Get/$idgroup');
     if (result.statusCode == 200) {
       var data = Group.fromJson(result.data as Map<String, dynamic>);
       return data;

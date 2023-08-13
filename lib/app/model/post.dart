@@ -16,50 +16,49 @@ class Post {
   Post(
       {this.Id,
       this.Description,
-   this.content,
+      this.content,
       this.IdUser,
-      this. Image,
+      this.Image,
       this.dateTime,
       this.IdContent,
       this.IdGroup,
       this.group,
-      this.user
-     });
+      this.user});
 
   int? Id;
   String? Description;
   DateTime? dateTime;
   Uint8List? Image;
-  int?IdUser;
+  int? IdUser;
   int? IdContent;
-   Content? content;
-   int? IdGroup;
-    Group? group;
-    User? user ;
+  Content? content;
+  int? IdGroup;
+  Group? group;
+  User? user;
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-      Id: json["id"],
-      user:json['user'],
-      content: json['content'],
-        IdContent: json['  IdContent'],
-        IdGroup: json['IdGroup'],
-        group:json[' group'],
-     Description: json["description"],
-      dateTime: DateTime.parse(json["dateTime"].toString()),
-      IdUser: json[" idUser"],
-      Image: json['image'] == null
-          ? null
-          : Uint8List.fromList(
-              List<int>.from(json['image']! as List<dynamic>)));
+        Id: json["id"],
+        content: json['content'],
+        IdContent: json['idContent'],
+        IdGroup: json['idGroup'],
+        group: json['group'],
+        Description: json["description"],
+        dateTime: DateTime.parse(json["dateTime"].toString()),
+        IdUser: json["idUser"],
+        // Image: json['image'] == null
+        //     ? null
+        //     : Uint8List.fromList(
+        //         List<int>.from(json['image']! as List<dynamic>))
+      );
 
   Map<String, dynamic> toJson() => {
-        "id": Id == null ? 0 : Id,
+        "id": Id ?? 0,
         "description": Description,
         "dateTime": dateTime == null ? null : dateTime!.toIso8601String(),
-            "IdGroup":  IdGroup == null ? null : IdGroup,
-            "content":content,
-            'group':group,
-            'user':user,
-        "idUser":  IdUser == null ? null :  IdUser,
+        "IdGroup": IdGroup,
+        "content": content,
+        'group': group,
+        'user': user,
+        "idUser": IdUser,
         "image": Image == null ? null : Uint8List.fromList(Image!),
       };
 }

@@ -62,7 +62,8 @@ class HomeRepository implements IHomeRepository {
 
   @override
   Future<List<Comments>> GetComment(int idpost) async {
-    var data = await _dio.get('https://localhost:7252/api/Comment/$idpost');
+    var data = await _dio
+        .get('https://localhost:7252/api/Comments/PostComment?IdPost=$idpost');
     var list = <Comments>[];
     for (var item in data.data) {
       list.add(Comments.fromJson(item));

@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/modules/groups/controller/group_controller.dart';
@@ -57,75 +55,85 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
             const SizedBox(
               height: 8,
             ),
-            Column(
-              children: controller.allGroups
-                  .map((e) => cardgroup(e.Image!, e.groupName.toString(), e))
-                  .toList(),
-            ),
-             Tooltip(
-              message: 'Help About Page',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
-                                          alignment: Alignment.center,
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Text(
-                                              "Help",
-                                              style: TextStyle(
-                                                  fontSize: 25,
+            Obx(() => Column(
+                  children:
+                      controller.allGroups.map((e) => cardgroup(e)).toList(),
+                )),
+            Material(
+              child: Tooltip(
+                message: 'Help About Page',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.dialog(Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help",
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(
+                                                        255, 42, 42, 114),
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              ),
+                                            )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 8, 10, 10),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text(
+                                              controller.textshowgroup,
+                                              textAlign: TextAlign.left,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  decoration:
+                                                      TextDecoration.none,
                                                   fontWeight: FontWeight.bold,
-                                                  fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Colors.black87),
                                             ),
-                                          )),
-                                    ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller.textshowgroup,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
-                                  ],
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                          ));
+                        },
+                        icon: const Icon(
+                          Icons.help_outline_outlined,
+                          size: 30,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                        )),
+                  ),
                 ),
               ),
             )
@@ -135,13 +143,14 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
     );
   }
 
-  Widget cardgroup(Uint8List? url, String name, Group g) {
+  Widget cardgroup(Group g) {
     return Padding(
       padding: const EdgeInsets.all(2),
       child: Material(
         child: InkWell(
-          onTap: () {
-            controller.getGroup(g.Id!);
+          onTap: () async {
+            await controller.getGroup(g.Id!);
+            await controller.getPosts();
             Get.to(GroupView());
           },
           child: Container(
@@ -156,9 +165,8 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
             child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(22.0)),
-                margin: EdgeInsets.all(10),
-                shadowColor: Color.fromARGB(255, 42, 42, 114),
-
+                margin: const EdgeInsets.all(10),
+                shadowColor: const Color.fromARGB(255, 42, 42, 114),
                 elevation: 30,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,21 +257,22 @@ class ShowGroupPageView extends GetResponsiveWidget<GroupController> {
                       ),
                       Row(
                         children: [
-                          url == null
+                          g.Image == null
                               ? Image.asset(
                                   'assets/images/1.png',
-                                  width: screen.width,
+                                  width: 150,
+                                  height: 150,
                                   fit: BoxFit.fill,
                                 )
                               : Utility.imageFromBase64String(
-                                  Utility.base64String(url),
+                                  Utility.base64String(g.Image!),
                                   screen.width,
                                   null),
                           const SizedBox(
                             width: 23,
                           ),
                           Text(
-                            name,
+                            g.groupName ?? '',
                             style: const TextStyle(
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold,
