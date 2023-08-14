@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 
 import '../../../app/model/content.dart';
-import '../../../app/model/refrence.dart';
 import '../controller/refrence_controller.dart';
 
 class RefrencePageView extends GetResponsiveView<RerenceController> {
@@ -65,230 +64,6 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Tooltip(
-                    message: 'AddToRefrence'.tr,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 246, 123, 127),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(126)),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 17, horizontal: 17)),
-                          onPressed: () {
-                            Get.dialog(Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border:
-                                          Border.all(color: Colors.blueAccent)),
-                                  width: 400,
-                                  height: 330,
-                                  child: SingleChildScrollView(
-                                    child: Column(children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "AddToRefrence".tr,
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "Pacifico",
-                                              color: Color.fromARGB(
-                                                  255, 42, 42, 114),
-                                              decoration: TextDecoration.none),
-                                        ),
-                                      ),
-                                      Material(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(6),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: const Color.fromARGB(
-                                                        255, 194, 192, 192)),
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
-                                            child: GFAccordion(
-                                                title: "TypeRefrence".tr,
-                                                textStyle: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20,
-                                                    color: Color.fromARGB(
-                                                        255, 246, 123, 127),
-                                                    decoration:
-                                                        TextDecoration.none),
-                                                contentChild: Column(
-                                                  children: controller.contenst
-                                                      .map(
-                                                        (element) => Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .fromLTRB(
-                                                                  8, 8, 8, 8),
-                                                          child: ElevatedButton(
-                                                            onPressed: () {
-                                                              controller
-                                                                      .Addrefrence
-                                                                      .value
-                                                                      .content =
-                                                                  element;
-                                                            },
-                                                            style: ElevatedButton.styleFrom(
-                                                                backgroundColor:
-                                                                    const Color
-                                                                            .fromARGB(
-                                                                        255,
-                                                                        42,
-                                                                        42,
-                                                                        114),
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            30)),
-                                                                padding: const EdgeInsets
-                                                                        .symmetric(
-                                                                    vertical:
-                                                                        20,
-                                                                    horizontal:
-                                                                        50)),
-                                                            child: Text(
-                                                              element.typeName!
-                                                                  .toString(),
-                                                              style: const TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  fontSize: 18,
-                                                                  color: Colors
-                                                                      .white,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .none),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        // child: TextButton(
-                                                        //   onPressed: () {
-
-                                                        //   },
-                                                        //   child:
-
-                                                        // )
-                                                      )
-                                                      .toList(),
-                                                )),
-                                          ),
-                                        ),
-                                      ),
-                                      Material(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SizedBox(
-                                            width: 350,
-                                            height: 60,
-                                            child: TextFormField(
-                                              decoration: InputDecoration(
-                                                labelText: 'AddNameRefrence'.tr,
-                                                labelStyle: const TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 246, 123, 127),
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              validator: (value) {
-                                                if (value!.isEmpty ||
-                                                    !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                                                        .hasMatch(value)) {
-                                                  return "EnterCorrectText".tr;
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              onChanged: (value) {
-                                                controller.Addrefrence.value
-                                                    .referenceName = value;
-                                                // controller.addBookType.value.bookType =
-                                                //     value;
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Material(
-                                        child: SizedBox(
-                                          width: 350,
-                                          height: 60,
-                                          child: TextFormField(
-                                            validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                                                      .hasMatch(value)) {
-                                                return "EnterCorrectText".tr;
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-
-                                            decoration: InputDecoration(
-                                              labelText: 'AddLink'.tr,
-                                              labelStyle: const TextStyle(
-                                                  color: Colors.black45,
-                                                  fontWeight: FontWeight.bold),
-                                              prefixIcon: const Icon(
-                                                Icons.text_fields,
-                                                color: Color.fromARGB(
-                                                    255, 245, 146, 149),
-                                              ),
-                                            ),
-
-                                            keyboardType:
-                                                TextInputType.multiline,
-                                            minLines:
-                                                1, //Normal textInputField will be displayed
-                                            maxLines:
-                                                5, // when user presses enter it will adapt to it
-                                            onChanged: (value) {
-                                              controller.Addrefrence.value
-                                                  .Link = value;
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: GFButton(
-                                          onPressed: () {
-                                            if (_formfield.currentState!
-                                                .validate()) {
-                                              print("Data Added Successfully");
-                                            }
-                                            controller.AddRefrence();
-                                            // controller.AddBookType(
-                                            //     controller.addBookType.value);
-                                          },
-                                          text: "Added".tr,
-                                          color: const Color.fromARGB(
-                                              255, 42, 42, 114),
-                                          shape: GFButtonShape.pills,
-                                        ),
-                                      ),
-                                    ]),
-                                  ),
-                                )));
-                          },
-                          child: Text(
-                            "AddToRefrence".tr,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Tooltip(
                     message: 'AddNewRefrence'.tr,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -312,82 +87,147 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                       border:
                                           Border.all(color: Colors.blueAccent)),
                                   width: 400,
-                                  height: 200,
-                                  child: Column(children: [
-                                    Text(
-                                      'AddNewRefrence'.tr,
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: "Pacifico",
-                                          color:
-                                              Color.fromARGB(255, 42, 42, 114),
-                                          decoration: TextDecoration.none),
-                                    ),
-                                    Material(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SizedBox(
-                                          width: 350,
-                                          height: 60,
-                                          child: TextFormField(
-                                            decoration: InputDecoration(
-                                              labelText: 'AddRefrence'.tr,
-                                              labelStyle: const TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            onChanged: (value) {
-                                              controller.valuetext.value =
-                                                  value;
-                                              controller.Addrefrence.value
-                                                  .content!.typeName = value;
-                                              // controller.addBookType.value.bookType =
-                                              //     value;
-                                            },
+                                  height: 350,
+                                  child: SingleChildScrollView(
+                                    child: Column(children: [
+                                      Text(
+                                        'AddNewRefrence'.tr,
+                                        style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: "Pacifico",
+                                            color: Color.fromARGB(
+                                                255, 42, 42, 114),
+                                            decoration: TextDecoration.none),
+                                      ),
+                                      Material(
+                                        child: GFAccordion(
+                                          title: "GroupType".tr,
+                                          textStyle: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 246, 123, 127),
+                                              decoration: TextDecoration.none),
+                                          contentChild: Column(
+                                            children: controller.contenst
+                                                .map((element) => TextButton(
+                                                    onPressed: () {
+                                                      controller.Addrefrence
+                                                              .value.IdContent =
+                                                          element.Id;
+                                                    },
+                                                    child: Text(
+                                                        element.typeName
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Colors.black54,
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none))))
+                                                .toList(),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Center(
-                                      child: GFButton(
-                                        onPressed: () {
-                                          if (controller.valuetext.value ==
-                                              null) {
-                                            Get.snackbar(
-                                              'Error'.tr,
-                                              "PleaseInputValue".tr,
-                                              icon: const Icon(Icons.person,
-                                                  color: Colors.white),
-                                              snackPosition:
-                                                  SnackPosition.BOTTOM,
-                                              backgroundColor:
-                                                  const Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                              borderRadius: 20,
-                                              margin: const EdgeInsets.all(15),
-                                              colorText: Colors.white,
-                                              duration:
-                                                  const Duration(seconds: 4),
-                                              isDismissible: true,
-                                              forwardAnimationCurve:
-                                                  Curves.easeOutBack,
-                                            );
-                                          } else {
-                                            controller.AddRefrence();
-                                          }
-
-                                          // controller.AddBookType(
-                                          //     controller.addBookType.value);
-                                        },
-                                        text: "Added".tr,
-                                        color: const Color.fromARGB(
-                                            255, 42, 42, 114),
-                                        shape: GFButtonShape.pills,
+                                      Material(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            width: 350,
+                                            height: 60,
+                                            child: TextFormField(
+                                              decoration: InputDecoration(
+                                                labelText: 'AddRefrence'.tr,
+                                                labelStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              onChanged: (value) {
+                                                controller.valuetext.value =
+                                                    value;
+                                                // controller.addBookType.value.bookType =
+                                                //     value;
+                                              },
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ]),
+                                      Material(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            width: 350,
+                                            height: 60,
+                                            child: TextFormField(
+                                              decoration: InputDecoration(
+                                                labelText: 'Name Refreanc'.tr,
+                                                labelStyle: const TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              onChanged: (value) {
+                                                controller.Addrefrence.value
+                                                    .referenceName = value;
+                                                // controller.addBookType.value.bookType =
+                                                //     value;
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: GFButton(
+                                          onPressed: () {
+                                            if (controller
+                                                .valuetext.value.isEmpty) {
+                                              Get.snackbar(
+                                                'Error'.tr,
+                                                "PleaseInputValue".tr,
+                                                icon: const Icon(Icons.person,
+                                                    color: Colors.white),
+                                                snackPosition:
+                                                    SnackPosition.BOTTOM,
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                borderRadius: 20,
+                                                margin:
+                                                    const EdgeInsets.all(15),
+                                                colorText: Colors.white,
+                                                duration:
+                                                    const Duration(seconds: 4),
+                                                isDismissible: true,
+                                                forwardAnimationCurve:
+                                                    Curves.easeOutBack,
+                                              );
+                                            } else {
+                                              controller
+                                                      .Addrefrence.value.Link =
+                                                  controller.valuetext.value;
+                                              controller.AddRefrence();
+                                              Get.back();
+                                              controller.getAllRefrence();
+                                            }
+
+                                            // controller.AddBookType(
+                                            //     controller.addBookType.value);
+                                          },
+                                          text: "Added".tr,
+                                          color: const Color.fromARGB(
+                                              255, 42, 42, 114),
+                                          shape: GFButtonShape.pills,
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
                                 )));
                           },
                           child: Text('AddRefrence'.tr),
@@ -503,9 +343,10 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                     fontSize: 20,
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
-                contentChild: Column(
-                    children:
-                        controller.ListRefrenceLink.map((element) => Column(
+                contentChild: Obx(() => Column(
+                    children: controller.ListRefrence.where(
+                            (p0) => p0.IdContent == r.Id)
+                        .map((element) => Column(
                               children: [
                                 Row(
                                   mainAxisAlignment:
@@ -515,8 +356,9 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                       alignment: Alignment.topLeft,
                                       child: Text(
                                         element.referenceName.toString(),
+                                        softWrap: true,
                                         style: const TextStyle(
-                                            fontSize: 17,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black54),
                                       ),
@@ -527,8 +369,8 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   alignment: Alignment.topLeft,
                                   child: InkWell(
                                     onTap: () {
-                                      js.context
-                                          .callMethod('openn'.tr, [element.Link!]);
+                                      js.context.callMethod(
+                                          'openn'.tr, [element.Link!]);
                                     },
                                     child: Text(
                                       element.Link.toString(),
@@ -541,7 +383,8 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   ),
                                 )
                               ],
-                            )).toList()),
+                            ))
+                        .toList())),
               ),
             ),
           ),

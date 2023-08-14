@@ -17,7 +17,8 @@ class ShowLibraryspage extends GetResponsiveView<LibraryContrller> {
   ];
 
   ShowLibraryspage({super.key});
-
+  @override
+  LibraryContrller controller = Get.put(LibraryContrller());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -5,8 +5,10 @@ import 'package:graduationproject/modules/icons/Icon.dart';
 import 'package:graduationproject/modules/libraryy/controller/library_controller.dart';
 
 import '../../../app/model/book.dart';
+import '../../../app/model/booklibrary.dart';
 import '../../../app/model/buy_book.dart';
 import '../../genereted/sheard/util.dart';
+import '../../sheard/text_feild_GP.dart';
 import 'AddBook.dart';
 import 'updatebook.dart';
 
@@ -152,72 +154,62 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: SizedBox(
-                                          width: 350,
-                                          height: 60,
-                                          child: TextFormField(
-                                            validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  !RegExp(r'^[a-z A-Z]+$')
-                                                      .hasMatch(value)) {
-                                                return "EnterCorrectAdress".tr;
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                            decoration: InputDecoration(
-                                              prefixIcon:
-                                                  const Icon(Icons.location_on),
-                                              labelText: 'InputLocation'.tr,
-                                              labelStyle: const TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            onChanged: (value) {
-                                              controller.buybook.value.address =
-                                                  value;
-                                            },
-                                          ),
-                                        ),
+                                            width: 350,
+                                            height: 60,
+                                            child: TextFieldGPWidget(
+                                              obscureText: false,
+                                              type: TextInputType.text,
+                                              label: 'InputLocation'.tr,
+                                              validator: (value) {
+                                                if (value!.isEmpty ||
+                                                    !RegExp(r'^[a-z A-Z]+$')
+                                                        .hasMatch(value)) {
+                                                  return "EnterCorrectAdress"
+                                                      .tr;
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              prefIcon: Icons.location_on,
+                                              onChanged: (value) {
+                                                controller.buybook.value
+                                                    .address = value;
+                                              },
+                                            )),
                                       ),
                                     ),
                                     Material(
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: SizedBox(
-                                          width: 350,
-                                          height: 60,
-                                          child: TextFormField(
-                                            decoration: InputDecoration(
-                                              prefixIcon:
-                                                  const Icon(Icons.money),
-                                              labelText: 'InputPayBal'.tr,
-                                              labelStyle: const TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            onChanged: (value) {
-                                              if (controller
-                                                      .user.value.Paypal ==
-                                                  value) {
-                                                controller.staute.value = 'A';
-                                              } else {
-                                                controller.staute.value = 'B';
-                                              }
-                                              value;
-                                            },
-                                            validator: (value) {
-                                              if (value!.isEmpty ||
-                                                  !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                                                      .hasMatch(value)) {
-                                                return "EnterCorrectPaybal".tr;
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                          ),
-                                        ),
+                                            width: 350,
+                                            height: 60,
+                                            child: TextFieldGPWidget(
+                                              obscureText: false,
+                                              type: TextInputType.text,
+                                              label: 'InputPayBal'.tr,
+                                              validator: (value) {
+                                                if (value!.isEmpty ||
+                                                    !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                                        .hasMatch(value)) {
+                                                  return "EnterCorrectPaybal"
+                                                      .tr;
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              prefIcon: Icons.money,
+                                              onChanged: (value) {
+                                                if (controller
+                                                        .user.value.Paypal ==
+                                                    value) {
+                                                  controller.staute.value = 'A';
+                                                } else {
+                                                  controller.staute.value = 'B';
+                                                }
+                                                value;
+                                              },
+                                            )),
                                       ),
                                     ),
                                     Center(
@@ -229,6 +221,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
 
                                             if (controller.staute.value ==
                                                 'A') {
+                                              Get.back();
                                               Baket();
                                             } else {
                                               Get.snackbar(
@@ -488,8 +481,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: InkWell(
         onTap: () {
-          //store book and library in object booklibrary
-          controller.getIdBookLibrary(d.id!, controller.IdLibrary.value);
+          // controller.getIdBookLibrary(d.id!, controller.IdLibrary.value);
           Get.dialog(Align(
             alignment: Alignment.center,
             child: Container(
@@ -508,22 +500,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     ),
                     Row(
                       children: [
-                        // d.book!.bookImage == null
-                        //     ? Image.asset(
-                        //         'assets/images/It.png',
-                        //         width: 160,
-                        //         height: 160,
-                        //         // fit: BoxFit.fill,
-                        //       )
-                        //     : Utility.imageFromBase64String(
-                        //         Utility.base64String(d.book!.bookImage!),
-                        //         160,
-                        //         160),
-                        // SizedBox(
-                        //     width: 160, height: 160, child:
-
-                        //     Image.asset(url)
-                        //     ),
                         Column(
                           children: [
                             Row(
@@ -573,33 +549,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                         decoration: TextDecoration.none)),
                               ],
                             ),
-                            // Row(
-                            //   children: [
-                            //     const Text(
-                            //       'Authors Names :   ',
-                            //       style: TextStyle(
-                            //           fontSize: 18,
-                            //           fontWeight: FontWeight.bold,
-                            //           fontFamily: "Pacifico",
-                            //           color: Color.fromARGB(255, 42, 42, 114),
-                            //           decoration: TextDecoration.none),
-                            //     ),
-                            //     Column(
-                            //         children: d.writer!
-                            //             .map((element) => Text(
-                            //                   element,
-                            //                   style: const TextStyle(
-                            //                       fontSize: 18,
-                            //                       fontWeight: FontWeight.bold,
-                            //                       fontFamily: "Pacifico",
-                            //                       color: Color.fromARGB(
-                            //                           255, 42, 42, 114),
-                            //                       decoration:
-                            //                           TextDecoration.none),
-                            //                 ))
-                            //             .toList())
-                            //   ],
-                            // ),
                           ],
                         )
                       ],
@@ -677,23 +626,20 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton(
                           onPressed: () {
-                            controller.getIdBookLibrary(
-                                d.id!, controller.IdLibrary.value);
-                            controller.idBookLibrary.value =
-                                controller.buybook.value.IdBookLibrary!;
+                            var price =
+                                (d.bookPrice! * controller.valuepice.value);
                             controller.buybook.value.Count =
                                 controller.valuepice.value;
-                            controller.buybook.value.user =
-                                controller.user.value;
-                            controller.buybook.value.idUser =
-                                controller.user.value.Id;
-
                             controller.buybook.value.price =
-                                int.parse(d.bookPrice!.toString()).toDouble();
+                                double.parse(price.toString());
+                            controller.buybook.value.bookLibrary = BookLibrary(
+                              IdBook: d.id,
+                              book: d,
+                              IdLibrary: controller.IdLibrary.value,
+                            );
                             controller.AddToBuyBooktempority(
                                 controller.buybook.value);
-                                ////////////
-                                 controller.valuepice.value = 0;
+                            Get.back();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
@@ -820,22 +766,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(3)),
           child: Column(children: [
-            // d.book!.bookImage == null
-            //     ? Image.asset(
-            //         'assets/images/It.png',
-            //         width: 330,
-            //         height: 200,
-            //         fit: BoxFit.fill,
-            //       )
-            //     : Utility.imageFromBase64String(
-            //         Utility.base64String(d.book!.bookImage!), 330, 200),
-            // SizedBox(
-            //     width: 330,
-            //     height: 200,
-            //     child: Image.asset(
-            //       url,
-            //       fit: BoxFit.fill,
-            //     )),
             Text(
               d.bookName ?? '',
               style: const TextStyle(
@@ -845,7 +775,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                   color: Color.fromARGB(255, 42, 42, 114),
                   decoration: TextDecoration.none),
             ),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -853,17 +782,6 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 children: [
                   Row(
                     children: [
-                      // Padding(
-                      //   padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                      //   child: Text(
-                      //     name,
-                      //     style: const TextStyle(
-                      //         fontSize: 16,
-                      //         fontWeight: FontWeight.bold,
-                      //         color: Color.fromARGB(255, 246, 123, 127),
-                      //         decoration: TextDecoration.none),
-                      //   ),
-                      // ),
                       const SizedBox(
                         width: 10,
                       ),
@@ -1379,8 +1297,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                             127),
                                                                         onPressed:
                                                                             () {
-                                                                          controller.ArrayBuyBook.remove(
-                                                                              m);
+                                                                          controller
+                                                                              .wishListBuyBook
+                                                                              .remove(m);
                                                                         },
                                                                         text: "Delete"
                                                                             .tr,
@@ -1433,6 +1352,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
   }
 
   Future Baket() {
+    for (var element in controller.wishListBuyBook) {
+      controller.sum.value += element.price!;
+    }
+
     return Get.dialog(Align(
       alignment: Alignment.topRight,
       child: Container(
@@ -1454,19 +1377,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                   ),
                 ),
                 Column(
-                    children: controller.ArrayBuyBook.map((element) => shapPice(
+                    children: controller.wishListBuyBook
+                        .map((element) => shapPice(
                             element.IdBookLibrary!, element.Count!, element))
                         .toList()),
-                //  Column(
-                //           children: controller.ArrayBuyBook.map((e) =>shapPice(e., url, count))
-                //               .toList(),
-                //         ),
-                // shapPice('بالنيابة عنهم', 'assets/images/ali1.png', '3'),
-                // shapPice('الاسود يليق بك', 'assets/images/ahlam1.png', '2'),
-                // shapPice('اربعون', 'assets/images/ahmad1.png', '4'),
-                // shapPice('فوضى الحواس', 'assets/images/ahlam2.png', '1'),
-                // shapPice('رحلتي مع غاندي', 'assets/images/ahmad2.png', '3'),
-                // shapPice('خيال', 'assets/images/ali3.png', '1'),
                 Row(
                   children: [
                     const SizedBox(
@@ -1487,7 +1401,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            for (var element in controller.wishListBuyBook) {
+                              controller.AddToBuyBookback(element);
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 const Color.fromARGB(255, 246, 123, 127),

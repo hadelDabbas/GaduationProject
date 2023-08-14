@@ -33,10 +33,12 @@ class RerenceController extends GetxController {
     super.onInit();
     getAllRefrence();
   }
-    Future<void>getcontent() async{
-        var data = await refrenceRepo.GetARefrenceConternt();
-   contenst.assignAll(data);
-    }
+
+  Future<void> getcontent() async {
+    var data = await refrenceRepo.GetARefrenceConternt();
+    contenst.assignAll(data);
+  }
+
   Future<void> getAllRefrence() async {
     var data = await refrenceRepo.GetAllRefrence();
     var dataContent = await GroupRepository().GetContent();
