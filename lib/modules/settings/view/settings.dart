@@ -4,15 +4,18 @@ import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
+import '../../Intro/view/intro.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give_user_permission.dart';
 import '../../groups/view/add_group.dart';
 import '../../groups/view/post_Group.dart';
 import '../../refrence/view/refrence.dart';
 import '../../sheard/auth_service.dart';
+import '../controller/setting_controller.dart';
 import 'help.dart';
 
-class SettingPageView extends GetResponsiveView {
+class SettingPageView extends GetResponsiveView<SettingController> {
+  SettingController controller = Get.put(SettingController());
   SettingPageView({super.key});
 
   @override
@@ -293,8 +296,10 @@ class SettingPageView extends GetResponsiveView {
                                                                   child: Column(
                                                                     children: <Widget>[
                                                                       Text(
-                                                                        controller
-                                                                            .textcuser1,
+                                                                        ''
+                                                                        // controller
+                                                                        //     .textcuser1
+                                                                        ,
                                                                         textAlign:
                                                                             TextAlign.left,
                                                                         style: const TextStyle(
@@ -348,71 +353,34 @@ class SettingPageView extends GetResponsiveView {
                           child: Tooltip(
                               message: 'ShowallQuiz'.tr,
                               child: CardSetting("Quiz".tr, Icons.check_box)))),
-                  CardSetting("Quiz".tr, Icons.check_box),
+                  Material(
+                    child: InkWell(
+                        onTap: () {
+                          controller.DelUser();
+                          Get.to(IntroPageView());
+                        },
+                        child: CardSetting(
+                            "Delete Account", Icons.delete_forever_outlined)),
+                  ),
                   Material(
                       child: InkWell(
                           onTap: () {
-                            Get.dialog(Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                      border:
-                                          Border.all(color: Colors.blueAccent)),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Align(
-                                              alignment: Alignment.center,
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  "el".tr,
-                                                  style: const TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: "Pacifico",
-                                                      color: Color.fromARGB(
-                                                          255, 42, 42, 114),
-                                                      decoration:
-                                                          TextDecoration.none),
-                                                ),
-                                              )),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              10, 8, 10, 10),
-                                          child: Column(
-                                            children: <Widget>[
-                                              Text(
-                                                controller.text,
-                                                textAlign: TextAlign.left,
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    decoration:
-                                                        TextDecoration.none,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black87),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ));
+                            if (controller.test.value == false) {
+                              controller.test.value = true;
+                              Get.updateLocale(Locale("ar"));
+                            } else {
+                              controller.test.value = false;
+                              Get.updateLocale(Locale("en"));
+                            }
+
+                            // Get.dialog(Container(
+                            //   child: Column(
+                            //     children: [
+                            //       IconButton(
+                            //           onPressed: () {}, icon: Icon(Icons.abc))
+                            //     ],
+                            //   ),
+                            // ));
                           },
                           child: Tooltip(
                               message: 'ChangeLanguage'.tr,

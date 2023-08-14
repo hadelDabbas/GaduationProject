@@ -5,9 +5,11 @@ import '../controller/test_controller.dart';
 import 'add-test.dart';
 import 'question.dart';
 
-class TestPageView extends GetResponsiveView<TestController> {
+class TestPageView extends GetResponsiveView {
   @override
   TestController controller = Get.put(TestController());
+
+  TestPageView({super.key});
   @override
   Widget builder() {
     return Container(
@@ -129,53 +131,56 @@ class TestPageView extends GetResponsiveView<TestController> {
           const SizedBox(
             height: 40,
           ),
-          Center(
-            child: Column(
-                children: controller.ListTestContent.map(
-                    (e) => shap(e.typeName.toString(), e.Id!)).toList()),
+          Column(
+            children: controller. Listtsst.map((e) => shap(e)).toList()
           ),
-          Row(
-            children: [
-              Tooltip(
-                message: 'AddNewTest'.tr,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 246, 123, 127),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(126)),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 17, horizontal: 17)),
-                      onPressed: () {
-                        Get.dialog(Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border:
-                                        Border.all(color: Colors.blueAccent)),
-                                width: 400,
-                                height: 400,
-                                child: AddTestPageView())));
-                      },
-                      child: Text('AddTest'.tr),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Center(
+          //   child: Column(
+          //       children: controller.ListTestContent.map(
+          //           (e) => shap(e.typeName.toString(), e.Id!)).toList()),
+          // ),
+          // Row(
+          //   children: [
+          //     Tooltip(
+          //       message: 'AddNewTest'.tr,
+          //       child: Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Align(
+          //           alignment: Alignment.topRight,
+          //           child: ElevatedButton(
+          //             style: ElevatedButton.styleFrom(
+          //                 backgroundColor:
+          //                     const Color.fromARGB(255, 246, 123, 127),
+          //                 shape: RoundedRectangleBorder(
+          //                     borderRadius: BorderRadius.circular(126)),
+          //                 padding: const EdgeInsets.symmetric(
+          //                     vertical: 17, horizontal: 17)),
+          //             onPressed: () {
+          //               Get.dialog(Align(
+          //                   alignment: Alignment.center,
+          //                   child: Container(
+          //                       decoration: BoxDecoration(
+          //                           color: Colors.white,
+          //                           borderRadius: BorderRadius.circular(10),
+          //                           border:
+          //                               Border.all(color: Colors.blueAccent)),
+          //                       width: 400,
+          //                       height: 400,
+          //                       child: AddTestPageView())));
+          //             },
+          //             child: Text('AddTest'.tr),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ]),
       ),
     );
   }
 
-  Widget shap(String title, int id
+  Widget shap(String title
       // IconData iconData
       ) {
     return Padding(
@@ -183,8 +188,9 @@ class TestPageView extends GetResponsiveView<TestController> {
       child: Material(
         child: InkWell(
           onTap: () async {
-            await controller.getTestForContent(id);
-            Get.to(QuestionPageView());
+            controller.type.value=title;
+            // await controller.getTestForContent(id);
+            // Get.to(QuestionPageView());
           },
           child: Container(
             height: 75,
@@ -219,8 +225,8 @@ class TestPageView extends GetResponsiveView<TestController> {
                   //         ),
                   //       ),
                   //  ),
-                  const SizedBox(
-                    width: 4,
+                   SizedBox(
+                    width: 20,
                   ),
                   Center(
                     child: Text(title,
