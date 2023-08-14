@@ -24,12 +24,12 @@ class SignIncontroller extends GetxController {
   Future<void> SignIn() async {
     var d = await auth.logIn(email.value, password.value);
     if (d == null) {
-      Get.snackbar(
+      await Get.snackbar(
         ' Error',
-        " Add New content ",
+        " Please Check of fields ",
         //  icon: Icon(Icons.person, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: const Color.fromARGB(255, 209, 143, 143),
+        backgroundColor: Color.fromARGB(255, 246, 123, 127),
         borderRadius: 20,
         margin: const EdgeInsets.all(15),
         colorText: Colors.white,

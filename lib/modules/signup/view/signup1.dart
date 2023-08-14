@@ -38,7 +38,7 @@ class signupage extends GetResponsiveView<SignUpController> {
             width: 10,
             height: 25,
           ),
-           Align(
+          Align(
             alignment: Alignment.centerLeft,
             child: Text(
               'SignUp'.tr,
@@ -251,7 +251,8 @@ class signupage extends GetResponsiveView<SignUpController> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "EnterPassword".tr;
-                      } else if (passcontroller.text.length < 6) {
+                      } else if (passcontroller.text.length < 6 &&
+                          passcontroller.text.length > 15) {
                         return "PasswordLengthShouldBeMoreThan6Charachters".tr;
                       }
                       return null;
@@ -385,7 +386,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                       borderRadius: BorderRadius.circular(30)),
                   padding:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 50)),
-              child:  Text(
+              child: Text(
                 'Confirm'.tr,
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
@@ -414,7 +415,7 @@ class signupage extends GetResponsiveView<SignUpController> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                   Padding(
+                                  Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
@@ -517,7 +518,7 @@ void openBottomSheet(SignUpController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-       Center(
+          Center(
             child: Text(
               'ChoosePhoto'.tr,
               style: TextStyle(fontSize: 18),
@@ -557,7 +558,7 @@ void openBottomSheet(SignUpController controller) {
                     },
                     child: const Icon(Icons.image),
                   ),
-                   Text('Gallery'.tr),
+                  Text('Gallery'.tr),
                 ],
               )
             ],
