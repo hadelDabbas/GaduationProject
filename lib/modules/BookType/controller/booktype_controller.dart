@@ -3,12 +3,12 @@ import 'package:graduationproject/app/model/book_type.dart';
 
 import '../data/booktype_repository.dart';
 
-class BookTypeController extends GetxController{
-  final bookRepo= BookTypeRepository();
-  final AllBookType=<BookType>[];
-  final text='tanc'.tr;
-  final addBookType=BookType().obs;
-    @override
+class BookTypeController extends GetxController {
+  final bookRepo = BookTypeRepository();
+  final AllBookType = <BookType>[].obs;
+  final text = 'tanc'.tr;
+  final addBookType = BookType().obs;
+  @override
   Future<void> onInit() async {
     super.onInit();
     await getAllBookType();
