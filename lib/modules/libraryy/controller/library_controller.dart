@@ -8,6 +8,7 @@ import 'package:graduationproject/app/model/library.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../api/storage/storge_service.dart';
+import '../../../app/model/accessiblity_logIn.dart';
 import '../../../app/model/booklibrary.dart';
 import '../../../app/model/buybookDetailsDto.dart';
 import '../../../app/model/buybookDto.dart';
@@ -57,29 +58,26 @@ class LibraryContrller extends GetxController {
   final backBuyBook = Buybook().obs;
   final listBuyBookDto = <BuyBookDto>[].obs;
   final currentLibrary = Library().obs;
-  final textshowlibrary =
-      'tsl'.tr;
-  final textlibrary =
-      'tl'.tr;
+  final textshowlibrary = 'tsl'.tr;
+  final textlibrary = 'tl'.tr;
   final textbook = 'tb'.tr;
-  final addbooktext =
-      'abt'.tr;
-  final addlibrary =
-      'alx'.tr;
-  final fatorauesr =
-      'fa';
-  final fatouralibrary =
-      'fl'.tr;
-  final textupdatelibrary =
-      'tx'.tr;
+  final addbooktext = 'abt'.tr;
+  final addlibrary = 'alx'.tr;
+  final fatorauesr = 'fa';
+  final fatouralibrary = 'fl'.tr;
+  final textupdatelibrary = 'tx'.tr;
   final textupdatebook = 'tbx'.tr;
   final listDetailsBuyBook = <BuyBookDetailsDto>[].obs;
+  final access = <AccessiblityLogIn>[].obs;
   @override
   Future<void> onInit() async {
     super.onInit();
     getAllLibrary();
-
     GetUser();
+    access.value = auth
+        .getUserLogInAccess()
+        .where((element) => element.type == 'Library')
+        .toList();
   }
 
   Future pickImageFun() async {

@@ -1,10 +1,11 @@
 import 'package:graduationproject/app/model/Accsessbuility.dart';
+import 'package:graduationproject/app/model/user.dart';
 
 class AccessiblityLogIn {
   Accessibility? accessibility;
+  User? user;
   Object? object;
   String? type;
-
   AccessiblityLogIn({this.accessibility, this.object, this.type});
 
   AccessiblityLogIn.fromJson(Map<String, dynamic> json) {
