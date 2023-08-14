@@ -24,7 +24,7 @@ class Reference {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
-    json['id'] = Id;
+    json['id'] = Id ?? 0;
     json['referenceName'] = referenceName;
     json['link'] = Link;
     json['idContent'] = IdContent;

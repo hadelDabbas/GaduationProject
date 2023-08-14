@@ -59,10 +59,10 @@ class RefrenceRepository implements IRefrenceRepository {
     }
     return list;
   }
-  
+
   @override
-  Future<List<Content>> GetARefrenceConternt()async {
-      var result = await _dio.get(
+  Future<List<Content>> GetARefrenceConternt() async {
+    var result = await _dio.get(
       'https://localhost:7252/api/Reference/GetReferenceContent',
     );
     var list = <Content>[];
