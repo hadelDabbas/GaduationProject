@@ -17,7 +17,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
       child: Container(
           child: SingleChildScrollView(
               child: Column(children: [
-        const Text('Add New Test',
+         Text('AddNewTest'.tr,
             style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                       color: const Color.fromARGB(255, 194, 192, 192)),
                   borderRadius: BorderRadius.circular(10)),
               child: GFAccordion(
-                title: "Choose Type Test",
+                title: "ChooseTypeTest".tr,
                 textStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -62,8 +62,8 @@ class AddTestPageView extends GetResponsiveView<TestController> {
               width: 350,
               height: 60,
               child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Add Question',
+                decoration: InputDecoration(
+                  labelText: 'AddQuestion'.tr,
                   labelStyle: TextStyle(
                       color: Color.fromARGB(255, 246, 123, 127),
                       fontWeight: FontWeight.bold),
@@ -72,7 +72,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                   if (value!.isEmpty ||
                       !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                           .hasMatch(value)) {
-                    return "Enter Correct Text";
+                    return "EnterCorrectText".tr;
                   } else {
                     return null;
                   }
@@ -95,8 +95,8 @@ class AddTestPageView extends GetResponsiveView<TestController> {
               width: 350,
               height: 60,
               child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Add Correct Answer',
+                decoration:  InputDecoration(
+                  labelText: 'AddCorrectAnswer'.tr,
                   labelStyle: TextStyle(
                       color: Color.fromARGB(255, 246, 123, 127),
                       fontWeight: FontWeight.bold),
@@ -105,7 +105,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                   if (value!.isEmpty ||
                       !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                           .hasMatch(value)) {
-                    return "Enter Correct Text";
+                    return "EnterCorrectText".tr;
                   } else {
                     return null;
                   }
@@ -125,8 +125,8 @@ class AddTestPageView extends GetResponsiveView<TestController> {
               width: 350,
               height: 60,
               child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Add First Choose',
+                decoration:  InputDecoration(
+                  labelText: 'AddFirstChoose'.tr,
                   labelStyle: TextStyle(
                       color: Color.fromARGB(255, 246, 123, 127),
                       fontWeight: FontWeight.bold),
@@ -146,8 +146,8 @@ class AddTestPageView extends GetResponsiveView<TestController> {
               width: 350,
               height: 60,
               child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Add Second Choose',
+                decoration:  InputDecoration(
+                  labelText: 'AddSecondChoose'.tr,
                   labelStyle: TextStyle(
                       color: Color.fromARGB(255, 246, 123, 127),
                       fontWeight: FontWeight.bold),
@@ -156,7 +156,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                   if (value!.isEmpty ||
                       !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                           .hasMatch(value)) {
-                    return "Enter Correct Text";
+                    return "EnterCorrectText".tr;
                   } else {
                     return null;
                   }
@@ -176,8 +176,8 @@ class AddTestPageView extends GetResponsiveView<TestController> {
               width: 350,
               height: 60,
               child: TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Add Thired Choose',
+                decoration:  InputDecoration(
+                  labelText: 'AddThiredChoose'.tr,
                   labelStyle: TextStyle(
                       color: Color.fromARGB(255, 246, 123, 127),
                       fontWeight: FontWeight.bold),
@@ -186,7 +186,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                   if (value!.isEmpty ||
                       !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                           .hasMatch(value)) {
-                    return "Enter Correct Text";
+                    return "EnterCorrectText".tr;
                   } else {
                     return null;
                   }
@@ -200,7 +200,7 @@ class AddTestPageView extends GetResponsiveView<TestController> {
           ),
         ),
         Tooltip(
-          message: 'Save Test',
+          message: 'SaveTest'.tr,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Align(
@@ -228,16 +228,16 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                     controller.answer4.value.IdTest = idTest;
                     await controller.addAnswer(controller.answer4.value);
 
-                    print("Data Added Successfully");
+                    print("DataAdded".tr);
                   }
                 },
-                child: const Text('Save'),
+                child:  Text('Save'.tr),
               ),
             ),
           ),
         ),
         Tooltip(
-          message: 'Help About Page',
+          message: 'lp'.tr,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Align(
@@ -260,14 +260,14 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Help",
+                                            "el".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,

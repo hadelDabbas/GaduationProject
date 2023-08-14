@@ -15,9 +15,9 @@ class TestController extends GetxController {
   var result = 0.obs;
   final idtest = 0.obs;
   final textadd =
-      'Here, the responsible admin selects a test type and adds a new question attached to the correct answer and the wrong answers';
+      'yyy'.tr;
   final text =
-      'This interface displays all the tests that this account can perform';
+      'zzz'.tr;
   final testRepo = TestRepository();
   final Addtest = Test().obs;
   final ListTestContent = <Content>[];

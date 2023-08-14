@@ -32,7 +32,7 @@ class TestPageView extends GetResponsiveView {
                 ),
               ),
               Tooltip(
-                message: 'Help About Page',
+                message: 'lp'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -56,14 +56,14 @@ class TestPageView extends GetResponsiveView {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        const Padding(
+                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Help",
+                                                  "el".tr,
                                                   style: TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
@@ -112,15 +112,15 @@ class TestPageView extends GetResponsiveView {
               )
             ],
           ),
-          const Text('Tests',
+           Text('Tests'.tr,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
                   color: Color.fromARGB(255, 42, 42, 114),
                   fontFamily: "Pacifico")),
-          const Center(
-            child: Text('Show Your Tests Do You Want',
+          Center(
+            child: Text('ShowYourTestsDoYouWant'.tr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class TestPageView extends GetResponsiveView {
           Row(
             children: [
               Tooltip(
-                message: 'Add New Test',
+                message: 'AddNewTest'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -165,7 +165,7 @@ class TestPageView extends GetResponsiveView {
                                 height: 400,
                                 child: AddTestPageView())));
                       },
-                      child: const Text('Add Test'),
+                      child:  Text('AddTest'.tr),
                     ),
                   ),
                 ),

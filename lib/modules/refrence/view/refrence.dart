@@ -528,7 +528,7 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                   child: InkWell(
                                     onTap: () {
                                       js.context
-                                          .callMethod('open', [element.Link!]);
+                                          .callMethod('openn'.tr, [element.Link!]);
                                     },
                                     child: Text(
                                       element.Link.toString(),

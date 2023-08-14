@@ -49,8 +49,8 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
-                                  'Correct Answer :',
+                                 Text(
+                                  'CorrectAnswerr'.tr,
                                   style: TextStyle(
                                       color: Colors.white,
                                       decoration: TextDecoration.none,
@@ -83,27 +83,27 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                           controller.numberlevel.value = 3;
                         } else if (controller.numberlevel.value == 3) {
                           Get.defaultDialog(
-                            title: 'Congratulations',
-                            middleText: 'You Passed All Level In This Game',
+                            title: 'Congratulations'.tr,
+                            middleText: 'youpass'.tr,
                           );
                         }
                       } else {
                         Get.defaultDialog(
-                          middleText: 'you should Flip All Card',
+                          middleText: 'yousho'.tr,
                         );
                       }
                     },
-                    child: const Text('NEXT Level'))
+                    child:  Text('NEXTLevel'.tr))
               ],
             ),
             Obx(() => controller.isMessage.value
                 ? Container(
                     color: Colors.green.shade300,
-                    child: const Center(
+                    child:  Center(
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          'Congratulations, ',
+                          'Congratulations'.tr,
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ),

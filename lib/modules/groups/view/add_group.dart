@@ -14,11 +14,11 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
   final _formfield = GlobalKey<FormState>();
   Uint8List? image;
   List<String> Contents = [
-    'History',
-    'Math',
-    'Arabic',
-    'English',
-    'Diversified'
+    'hi'.tr,
+    'ma'.tr,
+    'ar'.tr,
+    'eng'.tr,
+    'div'.tr
   ];
 
   AddGrpoup({super.key});
@@ -48,11 +48,11 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                   const SizedBox(
                     width: 100,
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Center(
                       child: Text(
-                        " Add New  Group ",
+                        " add ".tr,
                         style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                             color: const Color.fromARGB(255, 194, 192, 192)),
                         borderRadius: BorderRadius.circular(10)),
                     child: GFAccordion(
-                      title: "GroupType",
+                      title: "GroupType".tr,
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -112,11 +112,11 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                     child: SizedBox(
                   width: 450,
                   child: TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Name Group',
+                    decoration:  InputDecoration(
+                      labelText: 'NameGroup'.tr,
                       labelStyle: TextStyle(
                           color: Colors.black45, fontWeight: FontWeight.bold),
-                      hintText: 'Name Group',
+                      hintText: 'NameGroup'.tr,
                       prefixIcon: Icon(
                         Icons.abc_outlined,
                         color: Color.fromARGB(255, 245, 146, 149),
@@ -126,7 +126,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                       if (value!.isEmpty ||
                           !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                               .hasMatch(value)) {
-                        return "Enter Correct Text";
+                        return "EnterCorrectText".tr;
                       } else {
                         return null;
                       }
@@ -170,11 +170,11 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
               SizedBox(
                 width: 450,
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Descrintion About Group',
+                  decoration:  InputDecoration(
+                    labelText: 'DescrintionAbout'.tr,
                     labelStyle: TextStyle(
                         color: Colors.black45, fontWeight: FontWeight.bold),
-                    hintText: 'Descrintion About Group',
+                    hintText: 'DescrintionAbout'.tr,
                     prefixIcon: Icon(
                       Icons.text_fields,
                       color: Color.fromARGB(255, 245, 146, 149),
@@ -190,7 +190,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                     if (value!.isEmpty ||
                         !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                             .hasMatch(value)) {
-                      return "Enter Correct Text";
+                      return "EnterCorrectText".tr;
                     } else {
                       return null;
                     }
@@ -220,13 +220,13 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                  const Align(
+                                   Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         //////////////////////////////////////////
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          "Add post : ",
+                                          "Addposttt".tr,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
@@ -244,8 +244,8 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                           ),
                         ));
                       },
-                      child: const Text(
-                        'Are You Want To Add post ? ',
+                      child:  Text(
+                        'areyou '.tr,
                         style: TextStyle(
                             color: Colors.black54,
                             fontSize: 16,
@@ -316,7 +316,7 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formfield.currentState!.validate()) {
-                      print("Data Added Successfully");
+                      print("DataAdded".tr);
 
                       controller.AddGroup();
                     }
@@ -328,14 +328,14 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                           borderRadius: BorderRadius.circular(30)),
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 50)),
-                  child: const Text(
-                    'Add Group',
+                  child:  Text(
+                    'AddGroup'.tr,
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
               ),
               Tooltip(
-                message: 'Help About Page',
+                message: 'lp'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -358,14 +358,14 @@ class AddGrpoup extends GetResponsiveView<GroupController> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      const Padding(
+                                       Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Help",
+                                                "el".tr,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -475,9 +475,9 @@ void openBottomSheet(GroupController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+           Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePostt'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -498,7 +498,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: const Icon(Icons.camera),
                   ),
-                  const Text('  Camera'),
+                  Text('Camera'.tr),
                 ],
               ),
               const SizedBox(
@@ -515,7 +515,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: const Icon(Icons.image),
                   ),
-                  const Text('  Gallery'),
+                   Text('Gallery'.tr),
                 ],
               )
             ],
