@@ -18,6 +18,8 @@ class GroupView extends GetResponsiveView<GroupController> {
   GroupView({super.key});
   @override
   Widget builder() {
+    if (controller.access.any(
+        (element) => element.object!.id == controller.currentGroup.value.Id)) {}
     var accessGroup = controller.access
         .where(
             (element) => element.object!.id == controller.currentGroup.value.Id)

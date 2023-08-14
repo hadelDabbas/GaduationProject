@@ -1,10 +1,8 @@
 class BookType {
   int? id;
+  bool? isDel;
   String? bookType;
-  BookType({
-    this.id,
-    this.bookType,
-  });
+  BookType({this.id, this.bookType, this.isDel});
 
   BookType.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -16,6 +14,7 @@ class BookType {
 
     json['id'] = id ?? 0;
     json['bookType'] = bookType;
+    json['isDeleted'] = isDel ?? false;
     return json;
   }
 }

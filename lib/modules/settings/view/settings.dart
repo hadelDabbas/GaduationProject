@@ -7,9 +7,8 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Intro/view/intro.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
-import '../../give permission/view/give_user_permission.dart';
+import '../../groups/view/add_group.dart';
 import '../../groups/view/post_Group.dart';
-import '../../groups/view/show_group.dart';
 import '../../refrence/view/refrence.dart';
 import '../../sheard/auth_service.dart';
 import '../controller/setting_controller.dart';
@@ -57,19 +56,21 @@ class SettingPageView extends GetResponsiveView<SettingController> {
               padding: const EdgeInsets.all(8.0),
               child: Wrap(
                 children: [
-                  Material(
-                    child: InkWell(
-                        onTap: () {
-                          // Get.to(AddGrpoup());
-                          //  Get.to(ShowGroupPageView());
-                        },
-                        child: Tooltip(
-                            message: 'add'.tr,
-                            child: CardSetting(
-                              "Group".tr, Icons.group_add,
-                              // Color.fromARGB(255, 63, 201, 214))
-                            ))),
-                  ),
+                  auth.isAdmin()
+                      ? Material(
+                          child: InkWell(
+                              onTap: () {
+                                Get.to(AddGrpoup());
+                                //  Get.to(ShowGroupPageView());
+                              },
+                              child: Tooltip(
+                                  message: 'add'.tr,
+                                  child: CardSetting(
+                                    "Group".tr, Icons.group_add,
+                                    // Color.fromARGB(255, 63, 201, 214))
+                                  ))),
+                        )
+                      : const SizedBox.shrink(),
                   Material(
                     child: InkWell(
                         onTap: () {
@@ -171,10 +172,10 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                   Align(
                                       alignment: Alignment.center,
                                       child: Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           "gi".tr,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 25,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
@@ -331,8 +332,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                           10,
                                                                           10),
                                                                   child: Column(
-                                                                    children: <
-                                                                        Widget>[
+                                                                    children: <Widget>[
                                                                       Text(
                                                                         ''
                                                                         // controller
