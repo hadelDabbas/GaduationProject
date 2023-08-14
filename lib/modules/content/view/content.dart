@@ -358,7 +358,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                           if (_formfield.currentState!
                                               .validate()) {
                                             print("Data Added Successfully");
-                                            controller.show.value = true;
+                                            // controller.show.value = true;
                                             if (!controller.contents.contains(
                                                 controller.addcontent.value)) {
                                               await controller
