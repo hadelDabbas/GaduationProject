@@ -17,8 +17,7 @@ class SignUpController extends GetxController {
   final auth = Get.find<AuthService>();
 
   final user = User().obs;
-  final text =
-      'singuphelp'.tr;
+  final text = 'singuphelp'.tr;
 
   final ImagePicker imagepicker = ImagePicker();
   PickedFile? imagefile;

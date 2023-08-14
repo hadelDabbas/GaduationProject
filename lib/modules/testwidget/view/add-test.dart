@@ -40,8 +40,9 @@ class AddTestPageView extends GetResponsiveView<TestController> {
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
                 contentChild: Column(
-                    children: controller.ListTestContent.map(
-                        (e) => shap(e.typeName.toString(), e.Id!)).toList()
+                    children: controller.contents
+                        .map((e) => shap(e.typeName.toString(), e.Id!))
+                        .toList()
                     //    [
                     //       shap('IT  Test',Icons.integration_instructions_outlined ),
                     // shap('Arabic Test',Icons.abc_sharp),

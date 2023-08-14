@@ -41,7 +41,7 @@ class AuthService {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
         queryParameters: {"email": email, "password": password});
     print(result.data);
-    if (result.statusCode == 200) {
+    if (result.statusCode == 200 && !(result.data is List<dynamic>)) {
       var data = User.fromJson(result.data as Map<String, dynamic>);
       stroge.saveData(KeyData, jsonEncode(data.toJson()));
       var access = await userAccessibilites(data.Id!);

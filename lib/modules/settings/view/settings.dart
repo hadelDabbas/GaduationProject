@@ -5,7 +5,7 @@ import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../complaints/view/user_complaints.dart';
-import '../../give permission/view/give permission.dart';
+import '../../give permission/view/give_user_permission.dart';
 import '../../groups/view/post_Group.dart';
 import '../../groups/view/show_group.dart';
 import '../../refrence/view/refrence.dart';
@@ -25,11 +25,11 @@ class SettingPageView extends GetResponsiveView {
           children: [
             Row(
               children: [
-                 Padding(
-                  padding: EdgeInsets.fromLTRB(85, 8, 8, 8),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(85, 8, 8, 8),
                   child: Center(
                     child: Text('Settings'.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.none,
@@ -57,7 +57,7 @@ class SettingPageView extends GetResponsiveView {
                     child: InkWell(
                         onTap: () {
                           // Get.to(AddGrpoup());
-                          Get.to(ShowGroupPageView());
+                          //  Get.to(ShowGroupPageView());
                         },
                         child: Tooltip(
                             message: 'add'.tr,
@@ -96,13 +96,13 @@ class SettingPageView extends GetResponsiveView {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                   Align(
+                                  Align(
                                       alignment: Alignment.center,
                                       child: Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           "ad".tr,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: "Pacifico",
@@ -164,7 +164,7 @@ class SettingPageView extends GetResponsiveView {
                                   const SizedBox(
                                     height: 10,
                                   ),
-                                   Align(
+                                  Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
@@ -179,9 +179,9 @@ class SettingPageView extends GetResponsiveView {
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
-                                  Container(
-                                    child: Givepermission(),
-                                  ),
+                                  // Container(
+                                  //   child: Givepermission(),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -214,7 +214,8 @@ class SettingPageView extends GetResponsiveView {
                       },
                       child: Tooltip(
                           message: 'ShowRefrences'.tr,
-                          child: CardSetting(" Refrences".tr, Icons.location_on)),
+                          child:
+                              CardSetting(" Refrences".tr, Icons.location_on)),
                     ),
                   ),
                   Material(
@@ -242,13 +243,13 @@ class SettingPageView extends GetResponsiveView {
                                       const SizedBox(
                                         width: 1,
                                       ),
-                                       Align(
+                                      Align(
                                           alignment: Alignment.center,
                                           child: Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               "UserComplaints".tr,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
@@ -292,11 +293,11 @@ class SettingPageView extends GetResponsiveView {
                                                                 const SizedBox(
                                                                   height: 10,
                                                                 ),
-                                                                 Padding(
+                                                                Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              8.0),
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
                                                                   child: Align(
                                                                       alignment:
                                                                           Alignment
@@ -304,11 +305,11 @@ class SettingPageView extends GetResponsiveView {
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            EdgeInsets.all(8.0),
+                                                                            const EdgeInsets.all(8.0),
                                                                         child:
                                                                             Text(
                                                                           "el".tr,
-                                                                          style: TextStyle(
+                                                                          style: const TextStyle(
                                                                               fontSize: 25,
                                                                               fontWeight: FontWeight.bold,
                                                                               fontFamily: "Pacifico",
@@ -326,7 +327,8 @@ class SettingPageView extends GetResponsiveView {
                                                                           10,
                                                                           10),
                                                                   child: Column(
-                                                                    children: <Widget>[
+                                                                    children: <
+                                                                        Widget>[
                                                                       Text(
                                                                         controller
                                                                             .textcuser1,
@@ -404,14 +406,15 @@ class SettingPageView extends GetResponsiveView {
                                           height: 10,
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: Text(
                                                   "el".tr,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -450,7 +453,8 @@ class SettingPageView extends GetResponsiveView {
                           },
                           child: Tooltip(
                               message: 'ChangeLanguage'.tr,
-                              child: CardSetting("Language".tr, Icons.language)))),
+                              child:
+                                  CardSetting("Language".tr, Icons.language)))),
                   // Material(child: InkWell(
                   //   onTap: () {
                   //      print('trjjkkkk');

@@ -34,7 +34,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                         ),
                       ),
                     ),
-                     Align(
+                    Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
@@ -75,7 +75,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                           const SizedBox(
                                             height: 10,
                                           ),
-                                           Padding(
+                                          Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Align(
                                                 alignment: Alignment.center,
@@ -159,7 +159,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                     Padding(
+                                    Padding(
                                       padding: EdgeInsets.all(10.0),
                                       child: Align(
                                         alignment: Alignment.topLeft,
@@ -208,7 +208,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                               const SizedBox(
                                                                 height: 10,
                                                               ),
-                                                               Padding(
+                                                              Padding(
                                                                 padding:
                                                                     EdgeInsets
                                                                         .all(
@@ -224,7 +224,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                                               8.0),
                                                                       child:
                                                                           Text(
-                                                                        "Help".tr,
+                                                                        "Help"
+                                                                            .tr,
                                                                         style: TextStyle(
                                                                             fontSize:
                                                                                 25,
@@ -251,7 +252,8 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                                         10,
                                                                         10),
                                                                 child: Column(
-                                                                  children: <Widget>[
+                                                                  children: <
+                                                                      Widget>[
                                                                     Text(
                                                                       controller
                                                                           .addtext,
@@ -296,7 +298,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                     child: SizedBox(
                                       width: 400,
                                       child: TextFormField(
-                                        decoration:  InputDecoration(
+                                        decoration: InputDecoration(
                                           labelText: 'anc'.tr,
                                           labelStyle: TextStyle(
                                               color: Color.fromARGB(
@@ -362,9 +364,28 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                               await controller
                                                   .addcontentelement(controller
                                                       .addcontent.value);
+                                              await Get.snackbar(
+                                                ' Added',
+                                                " The Content Is Added",
+                                                //  icon: Icon(Icons.person, color: Colors.white),
+                                                snackPosition:
+                                                    SnackPosition.BOTTOM,
+                                                backgroundColor: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                borderRadius: 20,
+                                                margin:
+                                                    const EdgeInsets.all(15),
+                                                colorText: Colors.white,
+                                                duration:
+                                                    const Duration(seconds: 4),
+                                                isDismissible: true,
+                                                //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                                forwardAnimationCurve:
+                                                    Curves.easeOutBack,
+                                              );
                                             }
                                           } else {
-                                            Get.snackbar(
+                                            await Get.snackbar(
                                               'Error'.tr,
                                               "anc".tr,
                                               //  icon: Icon(Icons.person, color: Colors.white),
@@ -394,7 +415,7 @@ class Contentpage extends GetResponsiveView<ContentController> {
                                                     BorderRadius.circular(120)),
                                             padding: const EdgeInsets.symmetric(
                                                 vertical: 15, horizontal: 15)),
-                                        child:  Text(
+                                        child: Text(
                                           'Save'.tr,
                                           style: TextStyle(color: Colors.white),
                                         ),
