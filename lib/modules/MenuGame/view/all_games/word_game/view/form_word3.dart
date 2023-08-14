@@ -91,7 +91,7 @@ class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
                        child: Container(width: 70,height: 70,
                          color: Colors.white,
                                 child: 
-                               Image.asset('assets/images/groupsss.png')
+                               Image.asset('assets/images/group1.png')
                              ),
                                 ),
                             Obx(() => Padding(

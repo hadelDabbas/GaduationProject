@@ -184,15 +184,6 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
                             const SizedBox(
                               width: 40,
                             ),
-                            // TextButton(
-                            //     onPressed: () {
-                            //       Get.back();
-                            //       controller.onReady();
-                            //     },
-                            //     child: const Text('yes',
-                            //         style: TextStyle(
-                            //             color: Color.fromARGB(
-                            //                 255, 80, 137, 212)))),
                             TextButton(
                                 onPressed: () {
                                   Get.to(MenuGamePageView());
@@ -222,8 +213,8 @@ class FoucsGameView2 extends GetResponsiveView<FoucsController> {
             controller.score.value.toString(),
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          const Text(
-            'Congratulations, You Win Second Level',
+         Text(
+            'Congratulations, You Win Second Level'+controller.score.value.toString(),
             style: TextStyle(fontSize: 16),
           ),
           // const Text(

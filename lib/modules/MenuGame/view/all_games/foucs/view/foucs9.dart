@@ -60,7 +60,7 @@ class FoucsGameView9 extends GetResponsiveView<FoucsController> {
               padding: EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  '  How Mny triangle In This Photo ?',
+                  '  How Many triangle In This Photo ?',
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -141,8 +141,8 @@ class FoucsGameView9 extends GetResponsiveView<FoucsController> {
               child: txt == 'T'
                   ? Column(
                       children: [
-                        const Text(
-                          'Time Off Do You Want To Retry ? ',
+                         Text(
+                          'Time Off With score  '+controller.score.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -173,8 +173,8 @@ class FoucsGameView9 extends GetResponsiveView<FoucsController> {
                     )
                   : Column(
                       children: [
-                        const Text(
-                          'Error Value Do You Want Retry ?',
+                         Text(
+                          'Error Value With Score '+controller.score.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -187,7 +187,8 @@ class FoucsGameView9 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                
+                                     Get.to(MenuGamePageView());
                                   controller.onReady();
                                 },
                                 child: const Text('yes',
@@ -223,8 +224,8 @@ class FoucsGameView9 extends GetResponsiveView<FoucsController> {
             controller.score.value.toString(),
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          const Text(
-            'Congratulations, You Win Last Level',
+         Text(
+            'Congratulations, You Win Last Level'+controller.score.value.toString(),
             style: TextStyle(fontSize: 16),
           ),
           const Text(

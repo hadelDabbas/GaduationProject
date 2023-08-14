@@ -189,7 +189,7 @@ class FoucsGameView5 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                  Get.to(FoucsGameView6());
                                   controller.onReady();
                                 },
                                 child: const Text('yes',

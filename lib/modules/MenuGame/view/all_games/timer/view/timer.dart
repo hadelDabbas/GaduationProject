@@ -8,9 +8,9 @@ class TimerPageView extends GetResponsiveView<TimerController> {
   Widget builder() {
     return Container(
       child: Row(children: [
-        const SizedBox(
-          width: 180,
-        ),
+        // const SizedBox(
+        //   width: 180,
+        // ),
         const SizedBox(
           width: 8,
         ),

@@ -112,7 +112,7 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                   controller.score.value += 10;
                   Get.to(FoucsGameView9());
                 } else {
-                  Result('E');
+                   Get.to(FoucsGameView9());
                 }
               } else {
                 Result('T');
@@ -153,8 +153,9 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                                 
                                   controller.onReady();
+                                    Get.to(FoucsGameView9());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),
@@ -185,8 +186,9 @@ class FoucsGameView8 extends GetResponsiveView<FoucsController> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Get.back();
+                               
                                   controller.onReady();
+                                    Get.to(FoucsGameView9());
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(

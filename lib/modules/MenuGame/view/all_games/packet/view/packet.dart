@@ -33,7 +33,7 @@ class PacketPageView extends GetResponsiveView<PacketController> {
                     ),
                   ),
                 ),
-                const SizedBox(),
+                // const SizedBox(),
                 Row(
                   children: [
                     TimerPageView(),

@@ -144,7 +144,7 @@ class FoucsGameView3 extends GetResponsiveView<FoucsController> {
                   ? Column(
                       children: [
                          Text(
-                          'Time Off Do You With Score ? '+controller.score.value.toString(),
+                          'Time Off Do You With Score  '+controller.score.value.toString(),
                           style: TextStyle(
                               fontSize: 20,
                               decoration: TextDecoration.none,
@@ -224,8 +224,8 @@ class FoucsGameView3 extends GetResponsiveView<FoucsController> {
             controller.score.value.toString(),
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
-          const Text(
-            'Congratulations, You Win First Level',
+           Text(
+            'Congratulations, You Win First Level'+controller.score.value.toString(),
             style: TextStyle(fontSize: 16),
           ),
           // const Text(
