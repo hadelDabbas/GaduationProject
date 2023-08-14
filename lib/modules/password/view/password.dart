@@ -33,7 +33,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
             const SizedBox(
               height: 30,
             ),
-             Center(
+            Center(
               child: Text(
                 'fo'.tr,
                 style: TextStyle(
@@ -66,13 +66,13 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                       ),
                       labelText: 'en'.tr,
                       enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                        borderSide: const BorderSide(
+                            width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                        borderSide: const BorderSide(
+                            width: 3, color: Color.fromARGB(255, 42, 42, 114)),
                         borderRadius: BorderRadius.circular(15),
                       )),
                   onChanged: (value) {
@@ -117,12 +117,14 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                           labelText: 'enp'.tr,
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                            borderSide: const BorderSide(
+                                width: 3,
+                                color: Color.fromARGB(255, 42, 42, 114)),
                             borderRadius: BorderRadius.circular(15),
                           )),
                       validator: (value) {
@@ -164,12 +166,14 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         labelText: 'con'.tr,
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
+                          borderSide: const BorderSide(
+                              width: 3,
+                              color: Color.fromARGB(255, 42, 42, 114)),
                           borderRadius: BorderRadius.circular(15),
                         )),
                     validator: (value) {
@@ -194,9 +198,23 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                   if (Confirmpasscontroller.text == passcontroller.text) {
                     if (_formfield.currentState!.validate()) {
                       controller.confirmPassword();
+                      Get.snackbar(
+                        'Good'.tr,
+                        "suc".tr,
+                        icon: const Icon(Icons.person, color: Colors.white),
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor:
+                            const Color.fromARGB(255, 246, 123, 127),
+                        borderRadius: 20,
+                        margin: const EdgeInsets.all(15),
+                        colorText: Colors.white,
+                        duration: const Duration(seconds: 4),
+                        isDismissible: true,
+                        forwardAnimationCurve: Curves.easeOutBack,
+                      );
                     }
                   } else {
-                    diolg('Confirmfromfields'.tr);
+                    controller.confirmPassword();
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -204,22 +222,23 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child:  Text(
+                child: Text(
                   'conf'.tr,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),
-                      Tooltip(
+            Tooltip(
               message: 'lp'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.bottomRight,
-                  child: IconButton(onPressed: (){
-              Get.dialog(Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
+                  child: IconButton(
+                      onPressed: () {
+                        Get.dialog(Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
                             alignment: Alignment.center,
                             child: Container(
                               decoration: BoxDecoration(
@@ -234,7 +253,7 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child:  Align(
+                                      child: Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
@@ -244,36 +263,42 @@ class ForgetViewPage extends GetResponsiveView<passwordController> {
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
                                                   fontFamily: "Pacifico",
-                                                  color: Color.fromARGB(255, 42, 42, 114),
-                                                  decoration: TextDecoration.none),
+                                                  color: Color.fromARGB(
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
                                             ),
                                           )),
                                     ),
-                                             Padding(
-                                               padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                               child: Column(
-                                                           children: <Widget>[
-                                                             new Text(
-                                                               controller. text,
-                                                               textAlign: TextAlign.left,
-                                                               style: TextStyle(
-                                                                   fontSize: 18,
-                                                                   decoration: TextDecoration.none,
-                                                                   fontWeight: FontWeight.bold,
-                                                                   color: Colors.black87),
-                                                             ),
-                                                           ],
-                                                         ),
-                                             ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 8, 10, 10),
+                                      child: Column(
+                                        children: <Widget>[
+                                          new Text(
+                                            controller.text,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                decoration: TextDecoration.none,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black87),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-              ));
-                  }, icon: Icon(Icons.help_outline_outlined,
-                  size: 30,
-                  color:Color.fromARGB(255, 246, 123, 127) ,)),
+                        ));
+                      },
+                      icon: Icon(
+                        Icons.help_outline_outlined,
+                        size: 30,
+                        color: Color.fromARGB(255, 246, 123, 127),
+                      )),
                 ),
               ),
             )

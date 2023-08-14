@@ -28,12 +28,12 @@ class HomeController extends GetxController
     {0: true}
   ].obs;
   final user = User().obs;
+  final sta = false.obs;
   final Iduser = 0;
   final IdPost = 0;
   final addcomment = Comments().obs;
   final userpost = UserPost().obs;
-  final text =
-      'th'.tr;
+  final text = 'th'.tr;
 //  @override
 // dispose() {
 //  ancontroller.dispose(); // you need this
@@ -84,6 +84,6 @@ class HomeController extends GetxController
   }
 
   Future<void> GetInterActionUser() async {
-    await homeRepo.InteractionUser(userpost.value, IdPost);
+    await homeRepo.InteractionUser(userpost.value);
   }
 }
