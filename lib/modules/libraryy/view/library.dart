@@ -17,6 +17,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
 
   @override
   Widget build(BuildContext context) {
+    var accessLib = controller.access
+        .where((element) => element.object!.id == controller.IdLibrary.value)
+        .first
+        .accessibility;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 42, 42, 114),
@@ -131,11 +135,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                   width: 400,
                                   height: 260,
                                   child: Column(children: [
-                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         "infobuy".tr,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: "Pacifico",
@@ -160,11 +164,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                 return null;
                                               }
                                             },
-                                            decoration:  InputDecoration(
+                                            decoration: InputDecoration(
                                               prefixIcon:
-                                                  Icon(Icons.location_on),
+                                                  const Icon(Icons.location_on),
                                               labelText: 'InputLocation'.tr,
-                                              labelStyle: TextStyle(
+                                              labelStyle: const TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 246, 123, 127),
                                                   fontWeight: FontWeight.bold),
@@ -184,10 +188,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           width: 350,
                                           height: 60,
                                           child: TextFormField(
-                                            decoration:  InputDecoration(
-                                              prefixIcon: Icon(Icons.money),
+                                            decoration: InputDecoration(
+                                              prefixIcon:
+                                                  const Icon(Icons.money),
                                               labelText: 'InputPayBal'.tr,
-                                              labelStyle: TextStyle(
+                                              labelStyle: const TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 246, 123, 127),
                                                   fontWeight: FontWeight.bold),
@@ -276,47 +281,52 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             shape: const CircleBorder(),
                             backgroundColor:
                                 const Color.fromARGB(255, 245, 146, 149)),
-                        onPressed: () {
-                          Get.dialog(Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              width: 450,
-                              height: 500,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.blueAccent)),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                     Align(
-                                        alignment: Alignment.center,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "AddBook".tr,
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: "Pacifico",
-                                                color: Color.fromARGB(
-                                                    255, 42, 42, 114),
-                                                decoration:
-                                                    TextDecoration.none),
+                        onPressed: accessLib!.id == 1 || accessLib.id == 2
+                            ? () {
+                                Get.dialog(Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    width: 450,
+                                    height: 500,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.blueAccent)),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
                                           ),
-                                        )),
-                                    Container(
-                                      child: Addbookpage22(),
+                                          Align(
+                                              alignment: Alignment.center,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "AddBook".tr,
+                                                  style: const TextStyle(
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Color.fromARGB(
+                                                          255, 42, 42, 114),
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              )),
+                                          Container(
+                                            child: Addbookpage22(),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ));
-                        },
+                                  ),
+                                ));
+                              }
+                            : null,
                         child: const Icon(
                           Icons.bookmark_add,
                           color: Colors.white,
@@ -349,15 +359,16 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                    Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
                                         child: Align(
                                             alignment: Alignment.center,
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 "Help".tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
                                                     fontFamily: "Pacifico",
@@ -469,6 +480,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
 
   //  }
   Widget shapCard(Book d) {
+    var accessLib = controller.access
+        .where((element) => element.object!.id == controller.IdLibrary.value)
+        .first
+        .accessibility;
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: InkWell(
@@ -513,9 +528,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           children: [
                             Row(
                               children: [
-                               Text(
+                                Text(
                                   'NameBook'.tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
@@ -535,9 +550,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                             Row(
                               children: [
-                                 Text(
+                                Text(
                                   'Price'.tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: "Pacifico",
@@ -583,10 +598,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         )
                       ],
                     ),
-                   Padding(
-                      padding: EdgeInsets.all(8.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text('nu'.tr,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
                               color: Color.fromARGB(255, 42, 42, 114),
                               decoration: TextDecoration.none,
@@ -609,8 +624,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                           )),
                         ),
-                         Text('pice'.tr,
-                            style: TextStyle(
+                        Text('pice'.tr,
+                            style: const TextStyle(
                               fontSize: 18,
                               color: Colors.black54,
                               decoration: TextDecoration.none,
@@ -630,8 +645,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               color: Color.fromARGB(255, 246, 123, 127),
                             ),
                             onPressed: () {
-                              if(controller.valuepice.value<21)
-                              controller.valuepice.value += 1;
+                              if (controller.valuepice.value < 21) {
+                                controller.valuepice.value += 1;
+                              }
                             },
                           )),
                           Material(
@@ -712,23 +728,29 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               const SizedBox(
                                                 height: 10,
                                               ),
-                                               Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: Align(
                                                     alignment: Alignment.center,
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(8.0),
+                                                          const EdgeInsets.all(
+                                                              8.0),
                                                       child: Text(
                                                         "Help".tr,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             fontSize: 25,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontFamily:
                                                                 "Pacifico",
-                                                            color: Color.fromARGB(
-                                                                255, 42, 42, 114),
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    42,
+                                                                    42,
+                                                                    114),
                                                             decoration:
                                                                 TextDecoration
                                                                     .none),
@@ -747,10 +769,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                       style: const TextStyle(
                                                           fontSize: 18,
                                                           decoration:
-                                                              TextDecoration.none,
+                                                              TextDecoration
+                                                                  .none,
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          color: Colors.black87),
+                                                          color:
+                                                              Colors.black87),
                                                     ),
                                                   ],
                                                 ),
@@ -849,118 +873,139 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       /////Update book info
                       Material(
                           child: IconButton(
-                              onPressed: () {
-                                controller.currentBook.value = d;
-                                controller.getIdBookWritter(
-                                    controller.currentBook.value.id!);
-                                Get.dialog(Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    width: 350,
-                                    height: 500,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: Colors.blueAccent)),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                           Align(
-                                              alignment: Alignment.center,
-                                              child: Padding(
-                                                padding: EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  "up".tr,
-                                                  style: TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontFamily: "Pacifico",
-                                                      color: Colors.blueGrey,
-                                                      decoration:
-                                                          TextDecoration.none),
+                              onPressed: accessLib!.id == 1 || accessLib.id == 3
+                                  ? () {
+                                      controller.currentBook.value = d;
+                                      controller.getIdBookWritter(
+                                          controller.currentBook.value.id!);
+                                      Get.dialog(Align(
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          width: 350,
+                                          height: 500,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                  color: Colors.blueAccent)),
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 10,
                                                 ),
-                                              )),
-                                          Container(child: UpdateBook()),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ));
-                              },
+                                                Align(
+                                                    alignment: Alignment.center,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        "up".tr,
+                                                        style: const TextStyle(
+                                                            fontSize: 25,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontFamily:
+                                                                "Pacifico",
+                                                            color:
+                                                                Colors.blueGrey,
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none),
+                                                      ),
+                                                    )),
+                                                Container(child: UpdateBook()),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ));
+                                    }
+                                  : null,
                               icon: const Icon(
                                 Icons.edit,
                                 color: Color.fromARGB(255, 42, 42, 114),
                               ))),
                       Material(
                           child: IconButton(
-                              onPressed: () {
-                                Get.dialog(Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                        width: 280,
-                                        height: 120,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.blueAccent)),
-                                        child: Column(
-                                          children: [
-                                             Center(
-                                              child: Text(
-                                                'AreSureToRemove'.tr,
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(
-                                                        255, 42, 42, 114),
-                                                    decoration:
-                                                        TextDecoration.none),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                GFButton(
-                                                  color: const Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  onPressed: () {
-                                                    controller.dellBookLibrary(
-                                                        controller
-                                                            .IdLibrary.value,
-                                                        d.id!);
-                                                  },
-                                                  text: "Delete".tr,
-                                                  shape: GFButtonShape.pills,
-                                                ),
-                                                const SizedBox(
-                                                  width: 2,
-                                                ),
-                                                GFButton(
-                                                  color: const Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                  onPressed: () {
-                                                    Get.back();
-                                                  },
-                                                  text: "Cancle".tr,
-                                                  shape: GFButtonShape.pills,
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ))));
-                              },
+                              onPressed: accessLib.id == 1 || accessLib.id == 4
+                                  ? () {
+                                      Get.dialog(Align(
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                              width: 280,
+                                              height: 120,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  border: Border.all(
+                                                      color:
+                                                          Colors.blueAccent)),
+                                              child: Column(
+                                                children: [
+                                                  Center(
+                                                    child: Text(
+                                                      'AreSureToRemove'.tr,
+                                                      style: const TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              "Pacifico",
+                                                          color: Color.fromARGB(
+                                                              255, 42, 42, 114),
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 20,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      GFButton(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            255, 246, 123, 127),
+                                                        onPressed: () {
+                                                          controller
+                                                              .dellBookLibrary(
+                                                                  controller
+                                                                      .IdLibrary
+                                                                      .value,
+                                                                  d.id!);
+                                                        },
+                                                        text: "Delete".tr,
+                                                        shape:
+                                                            GFButtonShape.pills,
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 2,
+                                                      ),
+                                                      GFButton(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            255, 246, 123, 127),
+                                                        onPressed: () {
+                                                          Get.back();
+                                                        },
+                                                        text: "Cancle".tr,
+                                                        shape:
+                                                            GFButtonShape.pills,
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ))));
+                                    }
+                                  : null,
                               icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
@@ -1036,8 +1081,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                         const SizedBox(
                                           width: 50,
                                         ),
-                                         Text('count'.tr,
-                                            style: TextStyle(
+                                        Text('count'.tr,
+                                            style: const TextStyle(
                                                 fontSize: 18,
                                                 decoration: TextDecoration.none,
                                                 color: Color.fromARGB(
@@ -1094,16 +1139,17 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           .blueAccent)),
                                                               child: Column(
                                                                 children: [
-                                                                   Center(
+                                                                  Center(
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          EdgeInsets.all(
+                                                                          const EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(
-                                                                        'UpdateCount'.tr,
-                                                                        style: TextStyle(
+                                                                        'UpdateCount'
+                                                                            .tr,
+                                                                        style: const TextStyle(
                                                                             fontSize:
                                                                                 18,
                                                                             fontWeight: FontWeight
@@ -1125,7 +1171,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                         const EdgeInsets.all(
                                                                             8.0),
                                                                     child: Text(
-                                                                      'p'.tr +"  $count",
+                                                                      "${'p'.tr}  $count",
                                                                       style: const TextStyle(
                                                                           fontSize:
                                                                               18,
@@ -1137,13 +1183,14 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                               TextDecoration.none),
                                                                     ),
                                                                   ),
-                                                                   Padding(
+                                                                  Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child: Text(
-                                                                      'NewCount'.tr,
-                                                                      style: TextStyle(
+                                                                      'NewCount'
+                                                                          .tr,
+                                                                      style: const TextStyle(
                                                                           fontSize:
                                                                               18,
                                                                           fontWeight: FontWeight
@@ -1237,8 +1284,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           //  (e.book!.bookPrice! * count).toDouble();
                                                                           // contrller.UpdateBuyBook(m);
                                                                         },
-                                                                        text:
-                                                                            "Save".tr,
+                                                                        text: "Save"
+                                                                            .tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1288,10 +1335,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           .blueAccent)),
                                                               child: Column(
                                                                 children: [
-                                                                   Center(
+                                                                  Center(
                                                                     child: Text(
-                                                                      'AreYouSureRemove'.tr,
-                                                                      style: TextStyle(
+                                                                      'AreYouSureRemove'
+                                                                          .tr,
+                                                                      style: const TextStyle(
                                                                           fontSize:
                                                                               18,
                                                                           fontWeight: FontWeight
@@ -1326,8 +1374,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           controller.ArrayBuyBook.remove(
                                                                               m);
                                                                         },
-                                                                        text:
-                                                                            "Delete".tr,
+                                                                        text: "Delete"
+                                                                            .tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1345,8 +1393,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                             () {
                                                                           Get.back();
                                                                         },
-                                                                        text:
-                                                                            "Cancle".tr,
+                                                                        text: "Cancle"
+                                                                            .tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1386,11 +1434,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Basket'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 24,
                         fontFamily: "Pacifico",
                         color: Color.fromARGB(255, 246, 123, 127),
@@ -1416,8 +1464,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     const SizedBox(
                       width: 160,
                     ),
-                     Text('t'.tr,
-                        style: TextStyle(
+                    Text('t'.tr,
+                        style: const TextStyle(
                             fontSize: 18,
                             decoration: TextDecoration.none,
                             color: Color.fromARGB(255, 42, 42, 114))),

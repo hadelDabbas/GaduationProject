@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/Answer.dart';
+import 'package:graduationproject/modules/groups/data/group_repository.dart';
 
 import '../../../app/model/content.dart';
 import '../../../app/model/test.dart';
@@ -21,6 +22,7 @@ class TestController extends GetxController {
   final testRepo = TestRepository();
   final Addtest = Test().obs;
   final ListTestContent = <Content>[];
+  final contents = <Content>[];
   final ListTestByContent = <TestDto>[];
   final ListCorrectvalue = <String>[];
   final nowTest = Test().obs;
@@ -35,6 +37,7 @@ class TestController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    getContent();
     getAllTestKind();
     // fullInfo();
     // getUser();
@@ -56,6 +59,11 @@ class TestController extends GetxController {
       Question('Wireless Communication Technologies ?', "ZigBee", "IEEE", "LAN",
           "ZigBee"),
     );
+  }
+
+  Future<void> getContent() async {
+    var data = await GroupRepository().GetAllContent();
+    contents.assignAll(data);
   }
 
   void onChangevalue(var select, var correct) {
