@@ -132,6 +132,17 @@ class GroupRepository implements IGroupRepository {
     return false;
   }
 
+  Future<bool> addUserPost(UserPost userPost) async {
+    var data = await _dio.post('https://localhost:7252/api/UserPost',
+        data: userPost.toJson());
+    if (data.statusCode == 200) {
+      return true;
+    } else {
+      print(data.statusMessage);
+    }
+    return false;
+  }
+
   @override
   Future<List<Comments>> GetComment(int idpost) async {
     var data = await _dio.get('https://localhost:7252/api/Comment/$idpost');

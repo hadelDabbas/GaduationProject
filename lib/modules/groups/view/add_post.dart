@@ -1,22 +1,18 @@
-import 'dart:io';
-import 'dart:js';
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/accordion/gf_accordion.dart';
-import 'package:graduationproject/modules/content/view/content.dart';
-import 'package:graduationproject/modules/libraryy/view/library.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../genereted/sheard/util.dart';
 import '../controller/group_controller.dart';
 
 class Addpostviewas extends GetResponsiveView<GroupController> {
+  @override
   GroupController controller = Get.put(GroupController());
   final _formfield = GlobalKey<FormState>();
   Uint8List? image;
+
+  Addpostviewas({super.key});
 
   // var dropdownvalue;
   @override
@@ -27,10 +23,10 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
         Material(
           child: InkWell(
             onTap: () => Get.back(),
-            child: Align(
+            child: const Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.grey),
               ),
             ),
@@ -39,20 +35,20 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
         Center(
             child: Column(
           children: [
-            SizedBox(width: 170),
+            const SizedBox(width: 170),
             Material(child: Imageprofile(controller)),
           ],
         )),
         Material(
-            child: Container(
+            child: SizedBox(
           width: 300,
           child: TextFormField(
             decoration: InputDecoration(
               labelText: 'des'.tr,
-              labelStyle:
-                  TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+              labelStyle: const TextStyle(
+                  color: Colors.black45, fontWeight: FontWeight.bold),
               hintText: 'des'.tr,
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 Icons.text_fields,
                 color: Color.fromARGB(255, 245, 146, 149),
               ),
@@ -75,20 +71,20 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                shadowColor: Color.fromARGB(255, 42, 42, 114),
+                shadowColor: const Color.fromARGB(255, 42, 42, 114),
                 // padding:
                 //         const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                backgroundColor: Color.fromARGB(255, 42, 42, 114)),
+                backgroundColor: const Color.fromARGB(255, 42, 42, 114)),
             onPressed: () {
               if (_formfield.currentState!.validate()) {
                 print("DataAdded".tr);
-                controller.AddPost();
+                controller.AddPost(true);
               }
             },
             child: Text(
               'Save'.tr,
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -122,7 +118,7 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
                 onTap: () async {
                   openBottomSheet(controller);
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.camera_alt,
                   color: Color.fromARGB(255, 245, 146, 149),
                   size: 28.0,
@@ -139,17 +135,17 @@ void openBottomSheet(GroupController controller) {
     Container(
       height: 120.0,
       width: 500,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Column(
         children: [
           const SizedBox(height: 20),
           Center(
             child: Text(
               'Choose'.tr,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -158,30 +154,30 @@ void openBottomSheet(GroupController controller) {
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.camera),
+                    child: const Icon(Icons.camera),
                   ),
                   Text('Camera'.tr),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color.fromARGB(255, 246, 123, 127),
+                    backgroundColor: const Color.fromARGB(255, 246, 123, 127),
                     foregroundColor: Colors.white,
                     mini: true,
                     onPressed: () {
                       controller.pickImageFun();
                     },
-                    child: Icon(Icons.image),
+                    child: const Icon(Icons.image),
                   ),
                   Text('Gallery'.tr),
                 ],

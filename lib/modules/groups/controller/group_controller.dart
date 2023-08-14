@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/user_Group.dart';
+import 'package:graduationproject/modules/profile/data/profile_repositry.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../app/model/accessiblity_logIn.dart';
@@ -134,6 +135,13 @@ class GroupController extends GetxController {
     var data = await groupRepo.UpdatePost(editpost.value.Id!, editpost.value);
   }
 
+  Future<void> addUserPost() async {
+    var id = auth.getDataFromStorage()!.Id;
+    var allPost = await ProfileRepository().GetUserPost(id!);
+    var data = await groupRepo.addUserPost(UserPost(
+        Id: 0, Interaction: false, IdPost: allPost.last.post!.Id, IdUser: id));
+  }
+
   Future<void> GetInterActionUser() async {
     await groupRepo.InteractionUser(userpost.value, IdPost);
   }
@@ -163,10 +171,11 @@ class GroupController extends GetxController {
     contents.assignAll(data);
   }
 
-  Future<void> AddPost() async {
-    newpost.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    newpost.value.IdGroup = currentGroup.value.Id;
-    newpost.value.IdContent = currentGroup.value.IdContent;
+  Future<void> AddPost(bool fromGroup) async {
+    if (fromGroup) {
+      newpost.value.IdGroup = currentGroup.value.Id;
+    } else {}
+
     newpost.value.IdUser = user.value.Id;
     newpost.value.dateTime = DateTime.now();
     var data = await groupRepo.AddpostUser(newpost.value);

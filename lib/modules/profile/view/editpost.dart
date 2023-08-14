@@ -9,158 +9,168 @@ import '../../sheard/text_feild_GP.dart';
 import '../controller/profile_controller.dart';
 
 class EditPostview extends GetResponsiveView<ProfileController> {
+  @override
   ProfileController controller = Get.put(ProfileController());
   final _formfield = GlobalKey<FormState>();
   Uint8List? image;
   List<String> Contents = ['hi'.tr, 'ma'.tr, 'ar'.tr, 'eng'.tr, 'div'.tr];
+
+  EditPostview({super.key});
   // var dropdownvalue;
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
         padding: const EdgeInsets.all(6),
-        child: Container(
-          decoration: BoxDecoration(
-              border:
-                  Border.all(color: const Color.fromARGB(255, 194, 192, 192)),
-              borderRadius: BorderRadius.circular(10)),
-          child: GFAccordion(
-            title: "PostType".tr,
-            textStyle: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Color.fromARGB(255, 246, 123, 127),
-                decoration: TextDecoration.none),
-            contentChild: Obx(() => Column(
-                  children: controller.Contents.map((element) => TextButton(
-                      onPressed: () {
-                        controller.postidnew.value.IdContent = element.Id;
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 194, 192, 192)),
+                  borderRadius: BorderRadius.circular(10)),
+              child: GFAccordion(
+                title: "PostType".tr,
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 246, 123, 127),
+                    decoration: TextDecoration.none),
+                contentChild: Obx(() => Column(
+                      children: controller.Contents.map((element) => TextButton(
+                          onPressed: () {
+                            controller.postidnew.value.IdContent = element.Id;
+                          },
+                          child: Text(element.typeName.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                  decoration: TextDecoration.none)))).toList(),
+                    )),
+              ),
+            ),
+            Material(
+                child: SizedBox(
+                    width: 300,
+                    child: TextFieldGPWidget(
+                      obscureText: false,
+                      type: TextInputType.text,
+                      label: 'Description'.tr,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
+                                .hasMatch(value)) {
+                          return "EnterCorrectText".tr;
+                        } else {
+                          return null;
+                        }
                       },
-                      child: Text(element.typeName.toString(),
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54,
-                              decoration: TextDecoration.none)))).toList(),
-                )),
-          ),
-        ),
-      ),
-    );
-    Material(
-        child: SizedBox(
-            width: 300,
-            child: TextFieldGPWidget(
-              obscureText: false,
-              type: TextInputType.text,
-              label: 'Description'.tr,
-              validator: (value) {
-                if (value!.isEmpty ||
-                    !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
-                        .hasMatch(value)) {
-                  return "EnterCorrectText".tr;
-                } else {
-                  return null;
-                }
-              },
-              dufaltText: '',
-              prefIcon: Icons.text_fields,
-              onChanged: (value) {
-                controller.postidnew.value.Description = value;
-              },
-            )));
-
-    Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            shadowColor: const Color.fromARGB(255, 42, 42, 114),
-            backgroundColor: const Color.fromARGB(255, 42, 42, 114)),
-        onPressed: () {
-          if (_formfield.currentState!.validate()) {
-            print("Data Added Successfully");
-          }
-          controller.UpdatePost();
-        },
-        child: Text(
-          'Save'.tr,
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-    Material(
-      child: Tooltip(
-        message: 'HelpAboutPage'.tr,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: Alignment.bottomRight,
-            child: IconButton(
+                      dufaltText: '',
+                      prefIcon: Icons.text_fields,
+                      onChanged: (value) {
+                        controller.postidnew.value.Description = value;
+                      },
+                    ))),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shadowColor: const Color.fromARGB(255, 42, 42, 114),
+                    backgroundColor: const Color.fromARGB(255, 42, 42, 114)),
                 onPressed: () {
-                  Get.dialog(Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.blueAccent)),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Help".tr,
-                                        style: const TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Pacifico",
-                                            color: Color.fromARGB(
-                                                255, 42, 42, 114),
-                                            decoration: TextDecoration.none),
+                  if (_formfield.currentState!.validate()) {
+                    print("Data Added Successfully");
+                  }
+                  controller.UpdatePost();
+                },
+                child: Text(
+                  'Save'.tr,
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Material(
+              child: Tooltip(
+                message: 'HelpAboutPage'.tr,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.dialog(Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      const SizedBox(
+                                        height: 10,
                                       ),
-                                    )),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      controller.texteditpost,
-                                      textAlign: TextAlign.left,
-                                      style: const TextStyle(
-                                          fontSize: 18,
-                                          decoration: TextDecoration.none,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black87),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Align(
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Help".tr,
+                                                style: const TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Pacifico",
+                                                    color: Color.fromARGB(
+                                                        255, 42, 42, 114),
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              ),
+                                            )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 8, 10, 10),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text(
+                                              controller.texteditpost,
+                                              textAlign: TextAlign.left,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  decoration:
+                                                      TextDecoration.none,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black87),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ));
-                },
-                icon: const Icon(
-                  Icons.help_outline_outlined,
-                  size: 30,
-                  color: Color.fromARGB(255, 246, 123, 127),
-                )),
-          ),
+                            ),
+                          ));
+                        },
+                        icon: const Icon(
+                          Icons.help_outline_outlined,
+                          size: 30,
+                          color: Color.fromARGB(255, 246, 123, 127),
+                        )),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

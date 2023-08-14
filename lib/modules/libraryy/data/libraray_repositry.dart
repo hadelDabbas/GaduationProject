@@ -120,8 +120,8 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<List<Writer>> GetAllAuthourlibrary(int idlibrary) async {
-    var result =
-        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    var result = await _dio.get('https://localhost:7252/api/BookWriter');
+
     print(result);
     var list = <Writer>[];
     for (var item in result.data) {
@@ -132,8 +132,8 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<List<BookType>> GetAllTypeBooklibrary(int library) async {
-    var result =
-        await _dio.get('https://localhost:7192/api/CompanyContent/{1}');
+    var result = await _dio.get(
+        'https://localhost:7252/api/Library/GetLibraryBookType?IdLibrary=$library');
     print(result);
     var list = <BookType>[];
     for (var item in result.data) {
@@ -262,7 +262,7 @@ class LibraryRepository implements ILibraryRepository {
   @override
   Future<bool> AddToBuyBook(Buybook n) async {
     var result = await _dio.post(
-        'https://localhost:7252/api/BuyBook/AddBuyBook',
+        'https://localhost:7252/api/Buybook/AddBuybook',
         data: n.toJson());
     if (result.statusCode == 200) {
       return true;

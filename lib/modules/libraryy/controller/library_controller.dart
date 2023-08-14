@@ -48,7 +48,7 @@ class LibraryContrller extends GetxController {
   final updateBooklibrary = BookLibrary().obs;
   final user = User().obs;
   final auth = Get.find<AuthService>();
-  final ArrayBuyBook = <Buybook>[].obs;
+  final wishListBuyBook = <Buybook>[].obs;
   final staute = ''.obs;
   final idBookLibrary = 0.obs;
   final ListBookLibrary = <BookLibrary>[].obs;
@@ -157,7 +157,6 @@ class LibraryContrller extends GetxController {
     var data = await libraryRepo.getbookLibrary(IdLibrary.value);
     Booklist.assignAll(data);
     getAllBookType();
-    getAllWriter();
   }
 
   Future<void> addBooktolibrary() async {
@@ -205,7 +204,7 @@ class LibraryContrller extends GetxController {
   }
 
   Future<void> AddToBuyBooktempority(Buybook buyBook) async {
-    ArrayBuyBook.add(buyBook);
+    wishListBuyBook.add(buyBook);
   }
 
   Future<void> AddToBuyBookback(Buybook buyBook) async {

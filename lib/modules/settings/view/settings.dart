@@ -5,7 +5,7 @@ import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../complaints/view/user_complaints.dart';
-import '../../give permission/view/give permission.dart';
+import '../../give permission/view/give_user_permission.dart';
 import '../../groups/view/add_group.dart';
 import '../../groups/view/post_Group.dart';
 import '../../refrence/view/refrence.dart';
@@ -140,7 +140,6 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                     child: InkWell(
                       onTap: () {
-                        Get.rootDelegate.toNamed(Routes.libery);
                         Get.to(ShowLibraryspage());
                       },
                       child: Tooltip(
@@ -151,44 +150,7 @@ class SettingPageView extends GetResponsiveView {
                   Material(
                     child: InkWell(
                       onTap: () {
-                        Get.dialog(Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: 400,
-                            height: 400,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.blueAccent)),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "gi".tr,
-                                          style: const TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "Pacifico",
-                                              color: Color.fromARGB(
-                                                  255, 42, 42, 114),
-                                              decoration: TextDecoration.none),
-                                        ),
-                                      )),
-                                  Container(
-                                    child: Givepermission(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ));
+                        Get.to(GiveUserPermission());
                       },
                       child: Tooltip(
                           message: 'ap'.tr,
