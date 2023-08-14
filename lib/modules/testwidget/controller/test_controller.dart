@@ -7,6 +7,7 @@ import '../../../app/model/test.dart';
 import '../../../app/model/testDto.dart';
 import '../data/test_repositry.dart';
 import '../view/question.dart';
+import '../view/test.dart';
 
 class TestController extends GetxController {
   var selectedvalue = "".obs;
@@ -27,22 +28,42 @@ class TestController extends GetxController {
   final ListCorrectvalue = <String>[];
   final nowTest = Test().obs;
   final numberQustion = 0.obs;
-
+final type=''.obs;
   final answer1 = Answer().obs;
   final answer2 = Answer().obs;
   final answer3 = Answer().obs;
   final answer4 = Answer().obs;
   final idTest = 0.obs;
-final Listtsst=['It Test ','Arabic Test','History Test','Sport Test'];
+   var AllArabic = <Question>[].obs;
+   var SportList=<Question>[].obs;
+   var EnglishList=<Question>[].obs;
+   var scienceList=<Question>[].obs;
+final Listtsst=['It Test ','Scenice Test','English Test','Sport Test'];
   @override
   void onInit() {
     super.onInit();
     getContent();
     getAllTestKind();
-    // fullInfo();
+     fullInfo();
     // getUser();
   }
-
+  void test(){
+      switch(type.value){
+                  case 'It Test ' :
+                    
+                    Get.to(QuestionPageView());
+                    break;
+                     case 'Scenice Test':
+                     Get.to(TestPageView ());
+                    break;
+                         case 'English Test':
+               
+                    break;
+                   default:
+                  
+                    break;
+                };
+  }
   void fullInfo() {
     AllQustion.add(
       Question('which Mwmory is the basic in java ?', "Heap", "Immortal", "LTM",
@@ -60,7 +81,53 @@ final Listtsst=['It Test ','Arabic Test','History Test','Sport Test'];
           "ZigBee"),
     );
   }
-
+  void Sport(){
+   SportList.add(
+      Question('When Was The Sport Invented ?', "70000bc ", "80000bc", "70000bc ",
+          "50000bc"),
+    );
+    SportList.add(
+      Question('What Is The First Sport ?', "wrestling ", "wrestling", "football",
+          "bascketboll"),
+    );
+      SportList.add(
+      Question('Which Country Invented Sports?', "Graeece ", "Aleppo", "Graeece ",
+          "China"),
+    );
+      SportList.add(
+      Question('What Is The Sport That Is Considered King Of Sports ?', "football ", "football", "volley ball ",
+          "Swmming"),
+    );
+  }
+  void Englisg(){
+        EnglishList.add(
+      Question('i do not like her new film at all .', "do not you? ", "does not you?", " did not you ? ",
+          "do not you?"),  
+    );
+      EnglishList.add(
+      Question('he can not drive  .', "can not he? ", "can he?", " can not he? ",
+          "could not he?"),);
+           EnglishList.add(
+      Question(' i went to that new restaurant last night .', "did you ", "do you", " did you ",
+          "dose you"),);
+               EnglishList.add(
+      Question(' i think i am going to stay at home this weekend.', "are you ", "are you", " do you ",
+          "going you"),);
+  }
+ void science(){
+  scienceList.add(
+      Question(' How Many Bones Are In The Human Boday?', "206", "204", " 206 ",
+          "205"),);
+           scienceList.add(
+      Question(' Humans and chimpanzees share roughly how much DNA?', "98 per cent", "98 per cent", " 99 per cent",
+          "100 per cent"),);
+           scienceList.add(
+      Question(' Which is the main gas that makes up the Earths atmosphere?', "N2", "H2", " O2",
+          "N2"),);
+            scienceList.add(
+      Question(' What is the biggest planet in our solar system?', "Jupiter", "Uranus", " Jupiter",
+          "Earth"),);
+ }
   Future<void> getContent() async {
     var data = await GroupRepository().GetAllContent();
     contents.assignAll(data);
@@ -68,14 +135,14 @@ final Listtsst=['It Test ','Arabic Test','History Test','Sport Test'];
 
   void onChangevalue(var select, var correct) {
     selectedvalue.value = select;
-    if (correctvalue.value == true) {
-      result.value++;
-      print('succses');
-    }
-    //  if(select==correct){
+    // if (correctvalue.value == true) {
     //   result.value++;
-    //     print('succses');
-    //  }
+    //   print('succses');
+    // }
+     if(select==correct){
+      result.value++;
+        print('succses');
+     }
   }
 
   Future<void> getAllTestKind() async {

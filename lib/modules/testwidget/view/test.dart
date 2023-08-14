@@ -139,42 +139,42 @@ class TestPageView extends GetResponsiveView {
           //       children: controller.ListTestContent.map(
           //           (e) => shap(e.typeName.toString(), e.Id!)).toList()),
           // ),
-          Row(
-            children: [
-              Tooltip(
-                message: 'AddNewTest'.tr,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 246, 123, 127),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(126)),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 17, horizontal: 17)),
-                      onPressed: () {
-                        Get.dialog(Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border:
-                                        Border.all(color: Colors.blueAccent)),
-                                width: 400,
-                                height: 400,
-                                child: AddTestPageView())));
-                      },
-                      child: Text('AddTest'.tr),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Tooltip(
+          //       message: 'AddNewTest'.tr,
+          //       child: Padding(
+          //         padding: const EdgeInsets.all(8.0),
+          //         child: Align(
+          //           alignment: Alignment.topRight,
+          //           child: ElevatedButton(
+          //             style: ElevatedButton.styleFrom(
+          //                 backgroundColor:
+          //                     const Color.fromARGB(255, 246, 123, 127),
+          //                 shape: RoundedRectangleBorder(
+          //                     borderRadius: BorderRadius.circular(126)),
+          //                 padding: const EdgeInsets.symmetric(
+          //                     vertical: 17, horizontal: 17)),
+          //             onPressed: () {
+          //               Get.dialog(Align(
+          //                   alignment: Alignment.center,
+          //                   child: Container(
+          //                       decoration: BoxDecoration(
+          //                           color: Colors.white,
+          //                           borderRadius: BorderRadius.circular(10),
+          //                           border:
+          //                               Border.all(color: Colors.blueAccent)),
+          //                       width: 400,
+          //                       height: 400,
+          //                       child: AddTestPageView())));
+          //             },
+          //             child: Text('AddTest'.tr),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ]),
       ),
     );
@@ -188,8 +188,9 @@ class TestPageView extends GetResponsiveView {
       child: Material(
         child: InkWell(
           onTap: () async {
+            controller.type.value=title;
             // await controller.getTestForContent(id);
-            Get.to(QuestionPageView());
+            // Get.to(QuestionPageView());
           },
           child: Container(
             height: 75,
@@ -224,8 +225,8 @@ class TestPageView extends GetResponsiveView {
                   //         ),
                   //       ),
                   //  ),
-                  const SizedBox(
-                    width: 4,
+                   SizedBox(
+                    width: 20,
                   ),
                   Center(
                     child: Text(title,

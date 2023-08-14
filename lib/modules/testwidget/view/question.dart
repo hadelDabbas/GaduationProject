@@ -30,17 +30,20 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                 ),
               ),
             ),
-            Text(controller.nowTest.value.content!.typeName.toString(),
-                style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.none,
-                    color: Color.fromARGB(255, 42, 42, 114),
-                    fontFamily: "Pacifico")),
-            Column(
-                children: controller.ListTestByContent.map((e) =>
-                        shapeQuestion(e.test!.test.toString(), e.answers!))
-                    .toList()),
+            // Text(controller.nowTest.value.content!.typeName.toString(),
+            //     style: const TextStyle(
+            //         fontSize: 30,
+            //         fontWeight: FontWeight.bold,
+            //         decoration: TextDecoration.none,
+            //         color: Color.fromARGB(255, 42, 42, 114),
+            //         fontFamily: "Pacifico")),
+            // Column(
+            //     children: controller.ListTestByContent.map((e) =>
+            //             shapeQuestion(e.test!.test.toString(), e.answers!))
+            //         .toList()),
+            Column(children:
+             controller.AllQustion.map((element) => shapeQuestion(element.Qustion.toString(),element.AllChose)).toList()
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
@@ -192,7 +195,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
     );
   }
 
-  Widget shapeQuestion(String q, List<Answer> chose) {
+  Widget shapeQuestion(String q, List<String> chose) {
     return Padding(
       padding: const EdgeInsets.all(6),
       child: Container(
@@ -230,12 +233,13 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                   fillColor: MaterialStateProperty.all(
                                     const Color.fromARGB(255, 42, 42, 114),
                                   ),
-                                  value: e.answer.toString(),
-                                  // groupValue: e.answer.toString(),
+                                  // value: q.toString(),
+                                value:controller.selectedvalue.value,
                                   groupValue: controller.selectedvalue.value,
                                   onChanged: (value) {
-                                    controller.onChangevalue(
-                                        value, e.CorrectAnswer);
+                                    // controller.selectedvalue.value=value;
+                                    // controller.onChangevalue(
+                                    //     value, e.CorrectAnswer);
                                   }),
                             )),
                             const SizedBox(
