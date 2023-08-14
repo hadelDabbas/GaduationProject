@@ -72,8 +72,8 @@ class HomeRepository implements IHomeRepository {
   }
 
   @override
-  Future<bool> InteractionUser(UserPost userPost, int idpost) async {
-    var data = await _dio.put('https://localhost:7252/api/UserPost/$idpost',
+  Future<bool> InteractionUser(UserPost userPost) async {
+    var data = await _dio.put('https://localhost:7252/api/UserPost',
         data: userPost.toJson());
     if (data.statusCode == 200) {
       return true;

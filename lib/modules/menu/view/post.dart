@@ -110,14 +110,15 @@ class postPage extends GetResponsiveView<HomeController> {
                     GroupName != null
                         ? Icon(Icons.arrow_forward_ios_sharp)
                         : Container(),
-                   Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: 
-                      GroupName != null
-                        ?  GFAvatar(
-                        size: 20,
-                        backgroundImage: AssetImage('assets/images/2.png'),
-                      ):Container(),
+                      child: GroupName != null
+                          ? GFAvatar(
+                              size: 20,
+                              backgroundImage:
+                                  AssetImage('assets/images/2.png'),
+                            )
+                          : Container(),
                     ),
                     GroupName != null ? Text(GroupName) : Text('')
                   ],
@@ -174,32 +175,38 @@ class postPage extends GetResponsiveView<HomeController> {
 
                       ElevatedButton(
                           onPressed: () {
-                            if (controller.interActive.any((element) =>
-                                    element.keys.first == idpost) &&
-                                controller.interActive
-                                    .where((element) =>
-                                        element.keys.first == idpost)
-                                    .first
-                                    .values
-                                    .first) {
-                              controller.interActive.add({idpost: false});
+                            if (controller.sta.value == false) {
+                              controller.sta.value = true;
                             } else {
-                              controller.interActive.add({idpost: true});
+                              controller.sta.value = false;
                             }
-                            controller.interActive.add({idpost: true});
-                            controller.userpost.value.IdPost = idpost;
-                            controller.userpost.value.post = posts;
-                            controller.userpost.value.user =
-                                controller.user.value;
-                            controller.userpost.value.Id =
-                                controller.user.value.Id;
-                            if (interaction) {
-                              controller.userpost.value.Interaction = false;
-                              controller.GetInterActionUser();
-                            } else {
-                              controller.userpost.value.Interaction = true;
-                              controller.GetInterActionUser();
-                            }
+                            // controller.click.value = interaction;
+                            // if (controller.interActive.any((element) =>
+                            //         element.keys.first == idpost) &&
+                            //     controller.interActive
+                            //         .where((element) =>
+                            //             element.keys.first == idpost)
+                            //         .first
+                            //         .values
+                            //         .first) {
+                            //   controller.interActive.add({idpost: false});
+                            // } else {
+                            //   controller.interActive.add({idpost: true});
+                            // }
+                            // controller.interActive.add({idpost: true});
+                            // controller.userpost.value.IdPost = idpost;
+                            // controller.userpost.value.post = posts;
+                            // controller.userpost.value.user =
+                            //     controller.user.value;
+                            // controller.userpost.value.Id =
+                            //     controller.user.value.Id;
+                            // if (interaction) {
+                            //   controller.userpost.value.Interaction = false;
+                            //   controller.GetInterActionUser();
+                            // } else {
+                            //   controller.userpost.value.Interaction = true;
+                            //   controller.GetInterActionUser();
+                            // }
                             // if (controller.click == false) {
                             //   controller.click.value = true;
                             // } else {
@@ -211,21 +218,24 @@ class postPage extends GetResponsiveView<HomeController> {
                                 const Color.fromARGB(255, 248, 150, 153),
                             shape: const CircleBorder(),
                           ),
-                          child: Icon(
-                            AppIconn.favorite,
-                            size: 14,
-                            color: controller.interActive.any(
-                                    (element) => element.keys.first == idpost)
-                                ? controller.interActive
-                                        .where((element) =>
-                                            element.keys.first == idpost)
-                                        .first
-                                        .values
-                                        .first
-                                    ? Colors.red
-                                    : Colors.white
-                                : Colors.grey,
-                          ))
+                          child: Icon(AppIconn.favorite,
+                              size: 14,
+                              color: controller.sta.value == true
+                                  ? Colors.red
+                                  : Colors.white
+                              // controller.interActive.any(
+                              //         (element) => element.keys.first == idpost)
+                              //     ? controller.interActive
+                              //             .where((element) =>
+                              //                 element.keys.first == idpost)
+                              //             .first
+                              //             .values
+                              //             .first
+                              //         ? Colors.red
+                              //         : Colors.white
+                              //     : Colors.grey,
+                              ))
+
                       // Icon(Icons.add_alert),
                     ],
                   ),
