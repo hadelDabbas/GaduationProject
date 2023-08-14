@@ -132,8 +132,10 @@ class ProfileRepository implements IProfileRepository {
         queryParameters: {"id": iduser});
     print(result);
     var list = <User>[];
-    for (var item in result.data) {
-      list.add(User.fromJson(item));
+    if (result.statusCode == 200) {
+      for (var item in result.data) {
+        list.add(User.fromJson(item));
+      }
     }
     return list;
   }

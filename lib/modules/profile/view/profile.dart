@@ -8,6 +8,7 @@ import 'package:graduationproject/modules/profile/view/editpost.dart';
 
 import '../../../app/model/group.dart';
 import '../../../app/model/post.dart';
+import '../../../app/model/user.dart';
 import '../../../app/model/user_Group.dart';
 import '../../genereted/sheard/util.dart';
 import 'edit_profile.dart';
@@ -166,12 +167,13 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                       TextDecoration.none),
                                             ),
                                           ),
-                                          Column(
-                                            children: controller.UserFollow.map(
-                                                (e) => shapFolloword(controller
-                                                    .currentGroup
-                                                    .value)).toList(),
-                                          )
+                                          Obx(() => Column(
+                                                children:
+                                                    controller.FollowUser.map(
+                                                            (e) =>
+                                                                shapFollow(e))
+                                                        .toList(),
+                                              ))
                                         ],
                                       ),
                                     )),
@@ -552,6 +554,71 @@ class Profileview extends GetResponsiveView<ProfileController> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget shapFollow(User u) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 250,
+        height: 100,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.blueGrey)),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 80,
+              height: 80,
+              child: u.Image == null
+                  ? const Icon(
+                      Icons.groups_2,
+                      size: 35,
+                    )
+                  : Utility.imageFromBase64String(
+                      Utility.base64String(u.Image!), 80, 80),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Column(
+              children: [
+                const SizedBox(
+                  height: 27,
+                ),
+                Text(
+                  u.Name ?? '',
+                  style: const TextStyle(
+                      fontSize: 15,
+                      decoration: TextDecoration.none,
+                      color: Color.fromARGB(255, 42, 42, 114)),
+                ),
+                const SizedBox(
+                  width: 130,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: GFButton(
+                    onPressed: () async {
+                      // await controller.DelefolloewdGroup(UserGroup(
+                      //     IdUser: controller.user.value.Id, IdGroup: group.Id));
+                      // await controller.GetuserGroup();
+                    },
+                    text: "remove".tr,
+                    textStyle: const TextStyle(color: Colors.black54),
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    type: GFButtonType.transparent,
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

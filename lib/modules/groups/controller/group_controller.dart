@@ -216,5 +216,6 @@ class GroupController extends GetxController {
     personExsisting.value = data.any((element) =>
         element.IdUser == user.value.Id &&
         element.IdGroup == currentGroup.value.Id);
+    msg.value = personExsisting.value ? 'z'.tr : 'w'.tr;
   }
 }

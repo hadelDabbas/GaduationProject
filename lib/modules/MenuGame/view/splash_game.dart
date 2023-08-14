@@ -36,11 +36,11 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
               const SizedBox(
                 height: 20,
               ),
-               Center(
+              Center(
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Text('gm'.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
@@ -48,9 +48,9 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                       )),
                 ),
               ),
-               Center(
+              Center(
                 child: Text('gm1'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.none,
@@ -87,24 +87,6 @@ class SplashGame extends GetResponsiveView<MenuGameController> {
                 child: GFButton(
                   onPressed: () {
                     Get.to(MenuGamePageView());
-                    // Get.dialog(Align(
-                    //   alignment: Alignment.center,
-                    //   child: Container(
-                    //     width: 400,
-                    //     height: 400,
-                    //     decoration: BoxDecoration(
-                    //         color: Colors.white,
-                    //         borderRadius: BorderRadius.circular(10),
-                    //         border: Border.all(color: Colors.blueAccent)),
-                    //     child: SingleChildScrollView(
-                    //       child: Column(
-                    //         children: [
-                    //           Container(child: LevelPageView()),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ));
                   },
                   color: const Color.fromARGB(255, 248, 150, 153),
                   text: "gm2".tr,

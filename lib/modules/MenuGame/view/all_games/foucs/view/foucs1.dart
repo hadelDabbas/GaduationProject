@@ -154,14 +154,16 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
                                 onPressed: () {
                                   controller.onReady();
                                   Get.to(FoucsGameView3());
-                                  
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),
                             TextButton(
                                 onPressed: () {
-                                  var guser = controller.auth.getGameUser();
-                                  guser!.Score = controller.score.value;
+                                  var guser = controller.auth
+                                      .getGameUser()!
+                                      .where((element) => element.IdGame == 4)
+                                      .first;
+                                  guser.Score = controller.score.value;
                                   controller.auth.updateUserGame(guser);
                                   Get.to(MenuGamePageView());
                                   controller.onClose();

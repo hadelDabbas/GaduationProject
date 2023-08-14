@@ -20,6 +20,7 @@ class BookTypeController extends GetxController {
   }
 
   Future<void> delBookType(BookType book) async {
+    book.isDel = true;
     var res = await bookRepo.DelBookType(book);
     if (res) {
       getAllBookType();

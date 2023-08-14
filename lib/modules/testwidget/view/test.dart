@@ -56,7 +56,7 @@ class TestPageView extends GetResponsiveView {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                         Padding(
+                                        Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
@@ -112,7 +112,7 @@ class TestPageView extends GetResponsiveView {
               )
             ],
           ),
-           Text('Tests'.tr,
+          Text('Tests'.tr,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -168,7 +168,7 @@ class TestPageView extends GetResponsiveView {
                                 height: 400,
                                 child: AddTestPageView())));
                       },
-                      child:  Text('AddTest'.tr),
+                      child: Text('AddTest'.tr),
                     ),
                   ),
                 ),
