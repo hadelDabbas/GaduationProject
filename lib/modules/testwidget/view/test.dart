@@ -5,11 +5,9 @@ import '../controller/test_controller.dart';
 import 'add-test.dart';
 import 'question.dart';
 
-class TestPageView extends GetResponsiveView {
+class TestPageView extends GetResponsiveView<TestController> {
   @override
   TestController controller = Get.put(TestController());
-
-  TestPageView({super.key});
   @override
   Widget builder() {
     return Container(
@@ -56,7 +54,7 @@ class TestPageView extends GetResponsiveView {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                         Padding(
+                                        Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
@@ -112,7 +110,7 @@ class TestPageView extends GetResponsiveView {
               )
             ],
           ),
-           Text('Tests'.tr,
+          Text('Tests'.tr,
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -165,7 +163,7 @@ class TestPageView extends GetResponsiveView {
                                 height: 400,
                                 child: AddTestPageView())));
                       },
-                      child:  Text('AddTest'.tr),
+                      child: Text('AddTest'.tr),
                     ),
                   ),
                 ),

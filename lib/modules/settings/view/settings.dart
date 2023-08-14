@@ -5,6 +5,7 @@ import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../complaints/view/user_complaints.dart';
+import '../../give permission/view/give permission.dart';
 import '../../give permission/view/give_user_permission.dart';
 import '../../groups/view/post_Group.dart';
 import '../../groups/view/show_group.dart';
@@ -179,9 +180,9 @@ class SettingPageView extends GetResponsiveView {
                                               decoration: TextDecoration.none),
                                         ),
                                       )),
-                                  // Container(
-                                  //   child: Givepermission(),
-                                  // ),
+                                  Container(
+                                    child: Givepermission(),
+                                  ),
                                 ],
                               ),
                             ),
