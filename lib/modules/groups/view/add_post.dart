@@ -48,10 +48,10 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
           width: 300,
           child: TextFormField(
             decoration: InputDecoration(
-              labelText: 'Description',
+              labelText: 'des'.tr,
               labelStyle:
                   TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
-              hintText: 'Description',
+              hintText: 'des'.tr,
               prefixIcon: Icon(
                 Icons.text_fields,
                 color: Color.fromARGB(255, 245, 146, 149),
@@ -64,7 +64,7 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
               if (value!.isEmpty ||
                   !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                       .hasMatch(value)) {
-                return "Enter Correct Description";
+                return "EnterCorrectt".tr;
               } else {
                 return null;
               }
@@ -81,12 +81,12 @@ class Addpostviewas extends GetResponsiveView<GroupController> {
                 backgroundColor: Color.fromARGB(255, 42, 42, 114)),
             onPressed: () {
               if (_formfield.currentState!.validate()) {
-                print("Data Added Successfully");
+                print("DataAdded".tr);
                 controller.AddPost();
               }
             },
             child: Text(
-              'Save',
+              'Save'.tr,
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
@@ -143,9 +143,9 @@ void openBottomSheet(GroupController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+          Center(
             child: Text(
-              'Choose Post Photo',
+              'Choose'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -166,7 +166,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: Icon(Icons.camera),
                   ),
-                  Text('  Camera'),
+                  Text('Camera'.tr),
                 ],
               ),
               SizedBox(
@@ -183,7 +183,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: Icon(Icons.image),
                   ),
-                  Text('  Gallery'),
+                  Text('Gallery'.tr),
                 ],
               )
             ],

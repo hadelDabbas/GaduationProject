@@ -39,11 +39,11 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   const SizedBox(
                     width: 100,
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Center(
                       child: Text(
-                        " Update  Group ",
+                        " UpdateGroup".tr,
                         style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.bold,
@@ -107,11 +107,11 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                   width: 450,
                   child: TextFormField(
                     initialValue: controller.currentGroup.value.groupName,
-                    decoration: const InputDecoration(
-                      labelText: 'Edit Name Group',
+                    decoration:  InputDecoration(
+                      labelText: 'EditNameGroup'.tr,
                       labelStyle: TextStyle(
                           color: Colors.black45, fontWeight: FontWeight.bold),
-                      hintText: 'Name Group',
+                      hintText: 'NameGroup'.tr,
                       prefixIcon: Icon(
                         Icons.abc_outlined,
                         color: Color.fromARGB(255, 245, 146, 149),
@@ -124,7 +124,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                       if (value!.isEmpty ||
                           !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                               .hasMatch(value)) {
-                        return "Enter Correct Name Group";
+                        return "EnterCorrect".tr;
                       } else {
                         return null;
                       }
@@ -136,11 +136,11 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                 width: 450,
                 child: TextFormField(
                   initialValue: controller.currentGroup.value.Description,
-                  decoration: const InputDecoration(
-                    labelText: ' Edit  Descrintion About Group',
+                  decoration:  InputDecoration(
+                    labelText: ' EditDescrintiona'.tr,
                     labelStyle: TextStyle(
                         color: Colors.black45, fontWeight: FontWeight.bold),
-                    hintText: 'Descrintion About Group',
+                    hintText: 'DescrintionAbout'.tr,
                     prefixIcon: Icon(
                       Icons.text_fields,
                       color: Color.fromARGB(255, 245, 146, 149),
@@ -156,7 +156,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                     if (value!.isEmpty ||
                         !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                             .hasMatch(value)) {
-                      return "Enter Correct Descrption";
+                      return "EnterCorrectt".tr;
                     } else {
                       return null;
                     }
@@ -169,7 +169,7 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formfield.currentState!.validate()) {
-                      print("Data Added Successfully");
+                      print("DataAdded".tr);
                       controller.UpdateGroup();
                     }
                   },
@@ -180,15 +180,15 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                           borderRadius: BorderRadius.circular(30)),
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 50)),
-                  child: const Text(
-                    'Edit Group',
+                  child: Text(
+                    'EditGroupp'.tr,
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
               ),
               Material(
                 child: Tooltip(
-                  message: 'Help About Page',
+                  message: 'lp'.tr,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Align(
@@ -211,14 +211,14 @@ class EditGrpoup extends GetResponsiveView<GroupController> {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        const Padding(
+                                         Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Help",
+                                                  "el".tr,
                                                   style: TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
@@ -330,9 +330,9 @@ void openBottomSheet(GroupController controller) {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const Center(
+           Center(
             child: Text(
-              'Choose Post Photo',
+              'ChoosePostt'.tr,
               style: TextStyle(fontSize: 18),
             ),
           ),
@@ -353,7 +353,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: const Icon(Icons.camera),
                   ),
-                  const Text('  Camera'),
+                   Text('Camera'.tr),
                 ],
               ),
               const SizedBox(
@@ -370,7 +370,7 @@ void openBottomSheet(GroupController controller) {
                     },
                     child: const Icon(Icons.image),
                   ),
-                  const Text('  Gallery'),
+                   Text('Galleryy'.tr),
                 ],
               )
             ],

@@ -14,7 +14,7 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
         Padding(
           padding: EdgeInsets.fromLTRB(85, 8, 8, 8),
           child: Center(
-            child: Text('Search',
+            child: Text('Search'.tr,
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -34,11 +34,11 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
                     onChanged: (value) async =>
                         await controller.searchBy(value),
                     decoration: InputDecoration(
-                        labelText: 'search',
+                        labelText: 'Search'.tr,
                         labelStyle: const TextStyle(
                             color: Color.fromARGB(255, 184, 183, 183),
                             fontWeight: FontWeight.bold),
-                        hintText: 'search',
+                        hintText: 'Search'.tr,
                         prefixIcon: const Icon(
                           Icons.search,
                           color: Color.fromARGB(255, 245, 146, 149),

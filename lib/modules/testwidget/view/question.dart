@@ -60,12 +60,12 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                             const SizedBox(
                               height: 10,
                             ),
-                            const Align(
+                             Align(
                                 alignment: Alignment.center,
                                 child: Padding(
                                   padding: EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Result ",
+                                    "Result".tr,
                                     style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -84,8 +84,8 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          const Text(
-                                            "Number Question Is ",
+                                           Text(
+                                            "NumberQuestionIs".tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -113,8 +113,8 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          const Text(
-                                            "Correct Value Is : ",
+                                           Text(
+                                            "CorrectValueIs".tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -136,12 +136,12 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       ),
                                     ),
                                   ),
-                                  const Align(
+                                   Align(
                                       alignment: Alignment.center,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          "The Correct Answer ",
+                                          "TheCorrectAnswer".tr,
                                           style: TextStyle(
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold,
@@ -180,8 +180,8 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                         borderRadius: BorderRadius.circular(30)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 50)),
-                child: const Text(
-                  'Result',
+                child:  Text(
+                  'Result'.tr,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),

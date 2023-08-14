@@ -31,7 +31,7 @@ class TimerPageView extends GetResponsiveView<TimerController> {
                       ),
                     ),
                   )),
-              const Text(' : Timer', style: TextStyle(color: Colors.white))
+              const Text(' :Timer', style: TextStyle(color: Colors.white))
             ],
           ),
         ),

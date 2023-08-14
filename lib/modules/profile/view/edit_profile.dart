@@ -76,7 +76,7 @@ ProfileController controller=Get.put(ProfileController());
               },
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person_outline,color: Color.fromARGB(255, 42, 42, 114),),
-                    labelText: 'Enter Your New Name',labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
+                    labelText: 'ent'.tr,labelStyle: TextStyle(color: Color.fromARGB(255, 42, 42, 114),fontWeight: FontWeight.bold),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
                           const BorderSide(width: 3, color: Color.fromARGB(255, 42, 42, 114)),
@@ -84,7 +84,7 @@ ProfileController controller=Get.put(ProfileController());
                     )),
                 validator: (value) {
                   if (value!.isEmpty||!RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                    return "Enter Correct Name";
+                    return "EnterCorrectName".tr;
                   } else {
                     return null;
                   }

@@ -37,11 +37,11 @@ class DefineMath extends GetResponsiveView<MenuGameController> {
                     ),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.fromLTRB(8, 80, 8, 8),
                   child: Center(
                       child: Text(
-                    'Math Game',
+                    'MathGame'.tr,
                     style: TextStyle(
                         fontSize: 30,
                         fontFamily: "Pacifico",
@@ -90,10 +90,10 @@ class DefineMath extends GetResponsiveView<MenuGameController> {
                         border: Border.all(
                             color: const Color.fromARGB(255, 62, 153, 65),
                             width: 2)),
-                    child: const Padding(
+                    child:  Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
-                        'Are You Want To Start ?',
+                        'areyouu'.tr,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -103,7 +103,7 @@ class DefineMath extends GetResponsiveView<MenuGameController> {
                   ),
                 ),
                 Tooltip(
-              message: 'Help About Page',
+              message: 'lp'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -126,12 +126,12 @@ class DefineMath extends GetResponsiveView<MenuGameController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "el".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,

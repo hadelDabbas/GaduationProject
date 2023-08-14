@@ -43,7 +43,7 @@ GroupController hcontroller = Get.put(GroupController());
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
-                      'Comments',
+                      'Comments'.tr,
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ GroupController hcontroller = Get.put(GroupController());
                         autocorrect: false,
                         decoration: new InputDecoration(
                           // labelText: "Write Your Comment",
-                          hintText: "Write Your Comment",
+                          hintText: "WriteYourr".tr,
                           labelStyle:
                               TextStyle(fontSize: 20.0, color: Colors.white),
                           fillColor: Color.fromARGB(255, 42, 42, 114),

@@ -17,11 +17,11 @@ class EditPostview extends GetResponsiveView<ProfileController> {
     final _formfield = GlobalKey<FormState>();
  Uint8List? image;
   List<String> Contents = [
-    'History',
-    'Math',
-    'Arabic',
-    'English',
-    'Diversified'
+    'hi'.tr,
+    'ma'.tr,
+    'ar'.tr,
+    'eng'.tr,
+    'div'.tr
   ];
 
   // var dropdownvalue;

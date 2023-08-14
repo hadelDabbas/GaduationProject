@@ -39,11 +39,11 @@ class CommentPageView extends GetResponsiveView<CommentController> {
                   const SizedBox(
                     width: 130,
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Center(
                       child: Text(
-                        'Comments',
+                        'Comments'.tr,
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -73,9 +73,9 @@ class CommentPageView extends GetResponsiveView<CommentController> {
                             controller.textfieldd.value = val;
                           },
                           autocorrect: false,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             // labelText: "Write Your Comment",
-                            hintText: "Write Your Comment",
+                            hintText: "WriteYourr".tr,
                             labelStyle:
                                 TextStyle(fontSize: 20.0, color: Colors.white),
                             fillColor: Colors.blueGrey,

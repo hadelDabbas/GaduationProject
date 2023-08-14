@@ -61,10 +61,10 @@ class Splashscrren extends GetView<MenuGameController> {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                       color:  Colors.pink, width: 2)),
-              child: const Padding(
+              child:  Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  'Welcom to Word Play ',
+                  'WelcomtoWordPlay'.tr,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -74,7 +74,7 @@ class Splashscrren extends GetView<MenuGameController> {
             ),
           ),
           Tooltip(
-              message: 'Help About Page',
+              message: 'lp'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -97,12 +97,12 @@ class Splashscrren extends GetView<MenuGameController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "el".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,

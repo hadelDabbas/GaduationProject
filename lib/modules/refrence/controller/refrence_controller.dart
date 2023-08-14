@@ -18,7 +18,7 @@ class RerenceController extends GetxController {
   final textallrefrence = 'refrencehelp'.tr;
   final contenst = <Content>[].obs;
   final refrences = [
-    'IT Reference', 'Arabic Reference',
+    'it'.tr, 'ara'.tr,
     // 'Math Reference',
     // 'Medical Reference','Chamistry  Reference','Phaysis  Reference'
   ];

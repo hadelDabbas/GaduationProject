@@ -16,9 +16,9 @@ class IntroPage extends StatelessWidget {
               child: PageView.builder(
                 itemBuilder: (context, index) => IntroPageContent(
                   image: "assets/images/1.png",
-                  title: "welcome to our socity",
+                  title: "we".tr,
                   description:
-                      "a app where you can find the intertament yhe information of all kinds in very easy way",
+                      "kk".tr,
                 ),
               ),
             ),

@@ -61,10 +61,10 @@ LetterController t=Get.put(LetterController());
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                         color: const Color.fromARGB(255, 62, 153, 65), width: 2)),
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Welcom to Letter Play ',
+                    'WelcomtoLetterPlay'.tr,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -75,7 +75,7 @@ LetterController t=Get.put(LetterController());
                      ),
                      Container(height: 160,),
                      Tooltip(
-                message: 'Help About Page',
+                message: 'lp'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -98,12 +98,12 @@ LetterController t=Get.put(LetterController());
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: const Align(
+                                        child:  Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Help",
+                                                "el".tr,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
