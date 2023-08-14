@@ -25,7 +25,15 @@ class GroupView extends GetResponsiveView<GroupController> {
         .accessibility;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: accessGroup!.id == 1 || accessGroup.id == 2 ? () {} : null,
+          onPressed: accessGroup!.id == 1 || accessGroup.id == 2
+              ? () {}
+              : () {
+                  Get.showSnackbar(const GetSnackBar(
+                    duration: Duration(seconds: 2),
+                    title: 'Access',
+                    message: 'You Dont Have Permission',
+                  ));
+                },
           child: const Icon(Icons.add)),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -82,7 +90,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   shadowColor: Colors.blueGrey,
                                   backgroundColor:
                                       // controller.press.value == false
-                                      controller.personExsisting.value == false
+                                      !controller.personExsisting.value
                                           ? const Color.fromARGB(
                                               255, 246, 123, 127)
                                           : Colors.white,
@@ -113,7 +121,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                                   controller.msg.value,
                                   style: TextStyle(
                                       color: !controller.personExsisting.value
-                                          ? Colors.grey
+                                          ? Colors.white
                                           : const Color.fromARGB(
                                               255, 246, 123, 127),
                                       fontWeight: FontWeight.bold,
@@ -143,11 +151,12 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       child: SingleChildScrollView(
                                         child: Column(
                                           children: [
-                                             Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 'Members'.tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 24,
                                                     fontFamily: "Pacifico",
                                                     color: Color.fromARGB(
@@ -177,9 +186,9 @@ class GroupView extends GetResponsiveView<GroupController> {
                                       )),
                                 ));
                               },
-                              child:  Text(
+                              child: Text(
                                 'Members'.tr,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20),
@@ -190,13 +199,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                       ),
                     ),
                   ),
-                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         ' zz'.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 18,
                             color: Color.fromARGB(255, 42, 42, 114),
                             fontWeight: FontWeight.bold),
@@ -243,7 +252,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                                 .first;
                             Get.to(EditGrpoup());
                           }
-                        : null,
+                        : () {
+                            Get.showSnackbar(const GetSnackBar(
+                              duration: Duration(seconds: 2),
+                              title: 'Access',
+                              message: 'You Dont Have Permission',
+                            ));
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
@@ -306,7 +321,13 @@ class GroupView extends GetResponsiveView<GroupController> {
                               ),
                             ));
                           }
-                        : null,
+                        : () {
+                            Get.showSnackbar(const GetSnackBar(
+                              duration: Duration(seconds: 2),
+                              title: 'Access',
+                              message: 'You Dont Have Permission',
+                            ));
+                          },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(
@@ -357,14 +378,14 @@ class GroupView extends GetResponsiveView<GroupController> {
                                     height: 10,
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Align(
                                         alignment: Alignment.center,
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             "el".tr,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: "Pacifico",

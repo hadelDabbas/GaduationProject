@@ -124,7 +124,7 @@ class SearchPageContrller extends GetxController {
   }
 
   Future<void> searchComp(String text) async {
-    final id = Get.find<AuthService>().getDataFromStorage();
+    final id = Get.find<AuthService>().getDataFromStorage()!.Id!;
     var result = await _dio.get(
       'https://localhost:7252/api/Search/SearchComplaint?search=$text&IdUser=$id',
     );
@@ -182,10 +182,14 @@ class SearchPageContrller extends GetxController {
         return 'name';
       case 'group':
         return 'groupName';
-      case 'refreance':
+      case 'referance':
         return 'referenceName';
       case 'library':
         return 'libraryName';
+      case 'content':
+        return 'typeName';
+      case 'complaint':
+        return 'complaint';
     }
     return '';
   }
