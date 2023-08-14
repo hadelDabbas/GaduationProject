@@ -32,10 +32,6 @@ class ComplaintsController extends GetxController {
 
   Future<void> getComplaints() async {
     var data = await comRepo.GetAllComplaint();
-
-    for (var element in data) {
-      element.user = auth.getDataFromStorage();
-    }
     ListComplaintsAdmain.assignAll(data);
   }
 

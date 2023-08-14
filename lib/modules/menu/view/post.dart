@@ -47,7 +47,7 @@ class postPage extends GetResponsiveView<HomeController> {
                         element.post!.Description.toString(),
                         element.UserImage,
                         element.post!.Image.toString(),
-                        element.GroupName.toString(),
+                        element.GroupName,
                         element.post!.Id!,
                         element.Interaction!,
                         element.post!))
@@ -64,7 +64,7 @@ class postPage extends GetResponsiveView<HomeController> {
   }
 
   Widget post(String title, String txt, Uint8List? url, String post,
-      String GroupName, int idpost, bool interaction, Post posts) {
+      String? GroupName, int idpost, bool interaction, Post posts) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
       child: Center(
@@ -110,12 +110,14 @@ class postPage extends GetResponsiveView<HomeController> {
                     GroupName != null
                         ? Icon(Icons.arrow_forward_ios_sharp)
                         : Container(),
-                    const Padding(
+                   Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: GFAvatar(
+                      child: 
+                      GroupName != null
+                        ?  GFAvatar(
                         size: 20,
                         backgroundImage: AssetImage('assets/images/2.png'),
-                      ),
+                      ):Container(),
                     ),
                     GroupName != null ? Text(GroupName) : Text('')
                   ],

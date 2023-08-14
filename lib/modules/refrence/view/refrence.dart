@@ -125,45 +125,62 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                                                         TextDecoration.none),
                                                 contentChild: Column(
                                                   children: controller.contenst
-                                                      .map((element) =>
-                                                          Container(
-                                                              decoration: BoxDecoration(
-                                                                  border: Border.all(
-                                                                      color: const Color
-                                                                              .fromARGB(
-                                                                          255,
-                                                                          194,
-                                                                          192,
-                                                                          192)),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              10)),
-                                                              child: TextButton(
-                                                                onPressed: () {
-                                                                  controller
-                                                                          .Addrefrence
-                                                                          .value
-                                                                          .content =
-                                                                      element;
-                                                                },
-                                                                child: Text(
-                                                                  element
-                                                                      .typeName!
-                                                                      .toString(),
-                                                                  style: const TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          18,
-                                                                      color: Colors
-                                                                          .black54,
-                                                                      decoration:
-                                                                          TextDecoration
-                                                                              .none),
-                                                                ),
-                                                              )))
+                                                      .map(
+                                                        (element) => Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  8, 8, 8, 8),
+                                                          child: ElevatedButton(
+                                                            onPressed: () {
+                                                              controller
+                                                                      .Addrefrence
+                                                                      .value
+                                                                      .content =
+                                                                  element;
+                                                            },
+                                                            style: ElevatedButton.styleFrom(
+                                                                backgroundColor:
+                                                                    const Color
+                                                                            .fromARGB(
+                                                                        255,
+                                                                        42,
+                                                                        42,
+                                                                        114),
+                                                                shape: RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            30)),
+                                                                padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                    vertical:
+                                                                        20,
+                                                                    horizontal:
+                                                                        50)),
+                                                            child: Text(
+                                                              element.typeName!
+                                                                  .toString(),
+                                                              style: const TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 18,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .none),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        // child: TextButton(
+                                                        //   onPressed: () {
+
+                                                        //   },
+                                                        //   child:
+
+                                                        // )
+                                                      )
                                                       .toList(),
                                                 )),
                                           ),
@@ -487,44 +504,44 @@ class RefrencePageView extends GetResponsiveView<RerenceController> {
                     color: Color.fromARGB(255, 246, 123, 127),
                     decoration: TextDecoration.none),
                 contentChild: Column(
-                  children: controller.ListRefrenceLink.map((element) => Column(
-                    children: [
-                      Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            element.referenceName.toString(),
-                            style: const TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black54),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: InkWell(
-                        onTap: () {
-                          js.context.callMethod('open', [element.Link!]);
-                        },
-                        child: Text(
-                         element.Link.toString(),
-                          style: const TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.none,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                    ],
-                  )).toList()
-              
-                  
-                ),
+                    children:
+                        controller.ListRefrenceLink.map((element) => Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        element.referenceName.toString(),
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black54),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: InkWell(
+                                    onTap: () {
+                                      js.context
+                                          .callMethod('open', [element.Link!]);
+                                    },
+                                    child: Text(
+                                      element.Link.toString(),
+                                      style: const TextStyle(
+                                          color: Colors.blue,
+                                          decoration: TextDecoration.none,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )).toList()),
               ),
             ),
           ),

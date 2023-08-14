@@ -702,13 +702,13 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         ),
                       ),
                     ),
-                    Material(
-                      child: Tooltip(
-                        message: 'HelpAboutPage'.tr,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Align(
-                            alignment: Alignment.bottomRight,
+                    Tooltip(
+                      message: 'HelpAboutPage'.tr,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Material(
                             child: IconButton(
                                 onPressed: () {
                                   Get.dialog(Padding(
