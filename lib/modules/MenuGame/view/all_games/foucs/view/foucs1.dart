@@ -154,6 +154,7 @@ class FoucsGameView1 extends GetResponsiveView<FoucsController> {
                                 onPressed: () {
                                   controller.onReady();
                                   Get.to(FoucsGameView3());
+                                  
                                 },
                                 child: const Text('yes',
                                     style: TextStyle(color: Colors.grey))),

@@ -97,7 +97,7 @@ class Formword8PageView extends GetResponsiveView<SplashScreencontroller> {
             height: 250,
             color: Colors.white,
             child: 
-              Image.asset('assets/images/ppictuer.jpg')
+              Image.asset('assets/images/chm.png')
            ),
          ),
              Obx(() => Padding(

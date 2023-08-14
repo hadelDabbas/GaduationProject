@@ -3,15 +3,13 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/modules/profile/controller/profile_controller.dart';
 import 'package:graduationproject/modules/profile/view/editpost.dart';
-import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../../app/model/group.dart';
 import '../../../app/model/post.dart';
+import '../../../app/model/user_Group.dart';
 import '../../genereted/sheard/util.dart';
-import '../../icons/Icon.dart';
 import 'edit_profile.dart';
 
 class Profileview extends GetResponsiveView<ProfileController> {
@@ -71,7 +69,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         ElevatedButton(
                           onPressed: () {
                             ///////////////////////////////Here Update profile
-                            // Get.to(EditProfileview());
+                            Get.to(EditProfileview());
                             // Get.rootDelegate.toNamed(Routes.editProfile);
                           },
                           style: ElevatedButton.styleFrom(
@@ -110,15 +108,12 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                     TextDecoration.none),
                                           ),
                                         ),
-                                        Column(
-                                          children: controller.userfollowGroups
-                                              .map((e) => shapFolloword(
-                                                  e.groupName.toString(),
-                                                  e.Image!,
-                                                  controller.user.value,
-                                                  e))
-                                              .toList(),
-                                        )
+                                        Obx(() => Column(
+                                              children: controller
+                                                  .userfollowGroups
+                                                  .map((e) => shapFolloword(e))
+                                                  .toList(),
+                                            ))
                                       ],
                                     ),
                                   )),
@@ -173,12 +168,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                           ),
                                           Column(
                                             children: controller.UserFollow.map(
-                                                (e) => shapFolloword(
-                                                    e.Name.toString(),
-                                                    e.Image!,
-                                                    e,
-                                                    controller.currentGroup
-                                                        .value)).toList(),
+                                                (e) => shapFolloword(controller
+                                                    .currentGroup
+                                                    .value)).toList(),
                                           )
                                         ],
                                       ),
@@ -225,12 +217,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                           ),
                                           Column(
                                             children: controller.FollowUser.map(
-                                                (e) => shapFolloword(
-                                                    e.Name.toString(),
-                                                    e.Image!,
-                                                    e,
-                                                    controller.currentGroup
-                                                        .value)).toList(),
+                                                (e) => shapFolloword(controller
+                                                    .currentGroup
+                                                    .value)).toList(),
                                           )
                                           // shapFolloword('ASIA Badnjki',
                                           //     'assets/images/girl.gif'),
@@ -340,7 +329,6 @@ class Profileview extends GetResponsiveView<ProfileController> {
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Container(
-              height: 400,
               width: 500,
               margin: const EdgeInsets.only(top: 5),
               decoration: const BoxDecoration(
@@ -348,203 +336,18 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   )),
-              child: SingleChildScrollView(
-                child: Column(
-                    children:
-                        //   controller.listpost.map((element) => postprofile(
-                        //  controller.user.value.Name.toString(),element.UserImage!,element.GroupName.toString(),
-                        //  element.GroupImage!,element.post!.Description.toString(),element.post!.Image!,
-                        //  element.Interaction!,element.post!.content!.typeName.toString(),element.post!
-                        //   ) ).toList()
-                        //  [
-                        //   postprofile('asia','' , "GroupName", "imageGroup", "DescriptionGroup", "imagpost", true, 'It')
-                        // ]
-                        controller.ListuserpostForrNoww.map((element) =>
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                child: Container(
-                                  child: Column(children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(controller.user.value.Name!),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            IconButton(
-                                                onPressed: () {
-                                                  // controller.postidnew.value.Id = post.Id!;
-                                                  Get.dialog(Align(
-                                                    alignment: Alignment.center,
-                                                    child: Container(
-                                                      width: 500,
-                                                      height: 370,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                          border: Border.all(
-                                                              color: Colors
-                                                                  .blueAccent)),
-                                                      child:
-                                                          SingleChildScrollView(
-                                                        child: Column(
-                                                          children: [
-                                                            const SizedBox(
-                                                              height: 10,
-                                                            ),
-                                                            Align(
-                                                                alignment:
-                                                                    Alignment
-                                                                        .center,
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Text(
-                                                                    "Editpost"
-                                                                        .tr,
-                                                                    style: const TextStyle(
-                                                                        fontSize:
-                                                                            18,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .bold,
-                                                                        fontFamily:
-                                                                            "Pacifico",
-                                                                        color: Color.fromARGB(
-                                                                            255,
-                                                                            42,
-                                                                            42,
-                                                                            114),
-                                                                        decoration:
-                                                                            TextDecoration.none),
-                                                                  ),
-                                                                )),
-                                                            Container(
-                                                              child:
-                                                                  EditPostview(),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ));
-                                                },
-                                                icon: const Icon(
-                                                  Icons.edit,
-                                                  size: 20,
-                                                  color: Color.fromARGB(
-                                                      255, 42, 42, 114),
-                                                )),
-                                            IconButton(
-                                                onPressed: () {
-                                                  Get.dialog(Align(
-                                                    child: Container(
-                                                      height: 200,
-                                                      width: 200,
-                                                      color: Colors.white,
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(12),
-                                                          border: Border.all(
-                                                              color: const Color
-                                                                      .fromARGB(
-                                                                  255,
-                                                                  42,
-                                                                  42,
-                                                                  114),
-                                                              width: 2)),
-                                                      child: Column(
-                                                        children: [
-                                                          Center(
-                                                            child: Text(
-                                                              'AreSureToRemove?'
-                                                                  .tr,
-                                                              style: const TextStyle(
-                                                                  color: Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          42,
-                                                                          42,
-                                                                          114),
-                                                                  fontSize: 18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .none),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    // controller.DeletPost(post.Id!);
-                                                                  },
-                                                                  child: Text(
-                                                                    'Yes'.tr,
-                                                                    style: const TextStyle(
-                                                                        decoration:
-                                                                            TextDecoration.none),
-                                                                  )),
-                                                              TextButton(
-                                                                  onPressed:
-                                                                      () {
-                                                                    Get.back();
-                                                                  },
-                                                                  child: Text(
-                                                                    'No'.tr,
-                                                                    style: const TextStyle(
-                                                                        decoration:
-                                                                            TextDecoration.none),
-                                                                  ))
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ));
-                                                },
-                                                icon: const Icon(
-                                                  Icons.delete,
-                                                  color: Colors.red,
-                                                  size: 20,
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Image.asset('assets/images/2.png'),
-                                    Text(element.Description!)
-                                  ]),
-                                ),
-                              ),
-                            )).toList()
-                    // controller.Listuserpost.map((element) => postprofile(
-                    //     element.UserName.toString(),
-                    //     element.UserImage!,
-                    //     element.GroupName.toString(),
-                    //     element.GroupImage!,
-                    //     element.post!.Description.toString(),
-                    //     element.post!.Image!,
-                    //     element.Interaction!,
-                    //     element.post!.content!.typeName.toString(),
-                    //     element.post!)).toList()
-
-                    ),
-              ),
+              child: Obx(() => SingleChildScrollView(
+                    child: Column(
+                        children: controller.Listuserpost.map((element) => post(
+                            element.UserName.toString(),
+                            element.post!.Description.toString(),
+                            element.UserImage,
+                            element.post!.Image.toString(),
+                            element.GroupName,
+                            element.post!.Id!,
+                            element.Interaction!,
+                            element.post!)).toList()),
+                  )),
             ),
           ),
         ),
@@ -552,396 +355,209 @@ class Profileview extends GetResponsiveView<ProfileController> {
     );
   }
 
-  Widget postprofile(
-      String nameuser,
-      Uint8List imageuser,
-      String GroupName,
-      Uint8List imageGroup,
-      String Descriptionpost,
-      Uint8List imagpost,
-      bool interaction,
-      String postType,
-      Post post) {
+  Widget post(String title, String txt, Uint8List? url, String post,
+      String? GroupName, int idpost, bool interaction, Post posts) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+      padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
       child: Center(
         child: Container(
-          width: 500,
-          height: 210,
+          // width: 500,
+          // height: 350,
           decoration: BoxDecoration(
               border: Border.all(
-                color: Color.fromARGB(255, 42, 42, 114),
-                width: 2,
+                color: Colors.grey,
+                width: 1.3,
               ),
-              borderRadius: BorderRadius.circular(20)),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Image.asset(
-                          'assets/images/angryimg.png',
-                          width: screen.width,
-                          fit: BoxFit.fill,
-                        )
-                        //  imageuser == null
-                        //     ? Image.asset(
-                        //         'assets/images/angryimg.png',
-                        //         width: screen.width,
-                        //         fit: BoxFit.fill,
-                        //       )
-                        //     : Utility.imageFromBase64String(
-                        //         Utility.base64String(imageuser), 50, 50),
-                        ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          // 'Asia',
-                          nameuser,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 42, 42, 114)),
-                        )),
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios_sharp,
-                    size: 12,
-                    color: Colors.black87,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Image.asset(
-                          'assets/images/angryimg.png',
-                          width: screen.width,
-                          fit: BoxFit.fill,
-                        )
-                        // imageGroup == null
-                        //     ? Image.asset(
-                        //         'assets/images/angryimg.png',
-                        //         width: screen.width,
-                        //         fit: BoxFit.fill,
-                        //       )
-                        //     : Utility.imageFromBase64String(
-                        //         Utility.base64String(imageGroup), 50, 50),
-                        ),
-                  ),
-                  Text(
-                    GroupName,
-                    //  nameuser,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 42, 42, 114)),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Text("($postType)",
-                      style: const TextStyle(
-                        color: Colors.grey,
-                      )),
-                  const SizedBox(
-                    width: 100,
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              controller.postidnew.value.Id = post.Id!;
-                              Get.dialog(Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  width: 500,
-                                  height: 370,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border:
-                                          Border.all(color: Colors.blueAccent)),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Align(
-                                            child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Editpost".tr,
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: "Pacifico",
-                                                color: Color.fromARGB(
-                                                    255, 42, 42, 114),
-                                                decoration:
-                                                    TextDecoration.none),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15)),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: GFAvatar(
+                        size: 20,
+                        //  shape: GFAvatarShape.standard,
+                        backgroundImage: AssetImage('assets/images/5.png'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            title,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 42, 42, 114)),
+                          )),
+                    ),
+                    // Text("($post)",
+                    //     style: const TextStyle(
+                    //       color: Colors.grey,
+                    //     )),
+                    GroupName != null
+                        ? const Icon(Icons.arrow_forward_ios_sharp)
+                        : Container(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GroupName != null
+                          ? const GFAvatar(
+                              size: 20,
+                              backgroundImage:
+                                  AssetImage('assets/images/2.png'),
+                            )
+                          : Container(),
+                    ),
+                    GroupName != null ? Text(GroupName) : const Text(''),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                controller.postidnew.value.Id = idpost;
+                                Get.dialog(Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    width: 500,
+                                    height: 450,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.blueAccent)),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
                                           ),
-                                        )),
-                                        Container(
-                                          child: EditPostview(),
-                                        ),
-                                      ],
+                                          Align(
+                                              child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "Editpost".tr,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
+                                                  color: Color.fromARGB(
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
+                                            ),
+                                          )),
+                                          Container(
+                                            child: EditPostview(),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ));
-                            },
-                            icon: const Icon(
-                              Icons.edit,
-                              size: 20,
-                              color: Color.fromARGB(255, 42, 42, 114),
-                            )),
-                        IconButton(
-                            onPressed: () {
-                              Get.dialog(Align(
-                                child: Container(
-                                  height: 200,
-                                  width: 200,
-                                  color: Colors.white,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(
-                                          color: const Color.fromARGB(
-                                              255, 42, 42, 114),
-                                          width: 2)),
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Text(
-                                          'AreSureToRemove?'.tr,
-                                          style: const TextStyle(
+                                ));
+                              },
+                              icon: const Icon(
+                                Icons.edit,
+                                size: 20,
+                                color: Color.fromARGB(255, 42, 42, 114),
+                              )),
+                          IconButton(
+                              onPressed: () {
+                                Get.dialog(Align(
+                                  child: Container(
+                                    height: 200,
+                                    width: 200,
+                                    color: Colors.white,
+                                    // decoration: BoxDecoration(
+                                    //     borderRadius: BorderRadius.circular(12),
+                                    //     border: Border.all(
+                                    //         color: const Color.fromARGB(
+                                    //             255, 42, 42, 114),
+                                    //         width: 2)),
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            'AreSureToRemove?'.tr,
+                                            style: const TextStyle(
                                               color: Color.fromARGB(
                                                   255, 42, 42, 114),
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
-                                              decoration: TextDecoration.none),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          TextButton(
-                                              onPressed: () {
-                                                controller.DeletPost(post.Id!);
-                                              },
-                                              child: Text(
-                                                'Yes'.tr,
-                                                style: const TextStyle(
-                                                    decoration:
-                                                        TextDecoration.none),
-                                              )),
-                                          TextButton(
-                                              onPressed: () {
-                                                Get.back();
-                                              },
-                                              child: Text(
-                                                'No'.tr,
-                                                style: const TextStyle(
-                                                    decoration:
-                                                        TextDecoration.none),
-                                              ))
-                                        ],
-                                      )
-                                    ],
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  controller.DeletPost(posts);
+                                                },
+                                                child: Text(
+                                                  'Yes'.tr,
+                                                )),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text(
+                                                  'No'.tr,
+                                                ))
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ));
-                            },
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                              size: 20,
-                            )),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20), // Image border
-                child: SizedBox(
-                  width: 450,
-                  height: 120,
-                  child: SizedBox.fromSize(
-                      size: const Size.fromRadius(48), // Image radius
-                      child: imagpost == null
-                          ? Image.asset(
-                              'assets/images/1.png',
-                              width: screen.width,
-                              fit: BoxFit.fill,
-                            )
-                          : Utility.imageFromBase64String(
-                              Utility.base64String(imagpost),
-                              screen.width,
-                              null)),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Text(
-                  Descriptionpost,
-                  style: const TextStyle(fontSize: 12),
-                ),
-              ),
-              const SizedBox(
-                height: 3,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const SizedBox(
-                      width: 350,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.postidnew.value.Id = post.Id!;
-                        controller.GetAllComments(post.Id!);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 248, 150, 153),
-                        shape: const CircleBorder(),
-                      ),
-                      child: const Icon(
-                        AppIconn.chat,
-                        size: 12,
-                      ),
-                    ),
-
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.userpost.value.IdUser =
-                            controller.userprofile.value.Id;
-                        if (interaction) {
-                          controller.userpost.value.Interaction = false;
-                          controller.GetInterActionUser(post.Id!);
-                        } else {
-                          controller.userpost.value.Interaction = true;
-                          controller.GetInterActionUser(post.Id!);
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 248, 150, 153),
-                        shape: const CircleBorder(),
-                      ),
-                      child: Obx(
-                        () => Icon(
-                          AppIconn.favorite,
-                          size: 12,
-                          color: controller.click.value == true
-                              ? Colors.red
-                              : Colors.white,
-                        ),
+                                ));
+                              },
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                                size: 20,
+                              )),
+                        ],
                       ),
                     )
-                    // Icon(Icons.add_alert),
                   ],
                 ),
-              ),
-              Tooltip(
-                message: 'HelpAboutPage'.tr,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(
-                        onPressed: () {
-                          Get.dialog(Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    border:
-                                        Border.all(color: Colors.blueAccent)),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Align(
-                                            alignment: Alignment.center,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Help".tr,
-                                                style: const TextStyle(
-                                                    fontSize: 25,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: "Pacifico",
-                                                    color: Color.fromARGB(
-                                                        255, 42, 42, 114),
-                                                    decoration:
-                                                        TextDecoration.none),
-                                              ),
-                                            )),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 8, 10, 10),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Text(
-                                              controller.textprofile,
-                                              textAlign: TextAlign.left,
-                                              style: const TextStyle(
-                                                  fontSize: 18,
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black87),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ));
-                        },
-                        icon: const Icon(
-                          Icons.help_outline_outlined,
-                          size: 30,
-                          color: Color.fromARGB(255, 246, 123, 127),
-                        )),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20), // Image border
+                  child: SizedBox(
+                    width: 400,
+                    height: 150,
+                    child: SizedBox.fromSize(
+                      size: const Size.fromRadius(48), // Image radius
+                      child: url != null
+                          ? Image.memory(url, fit: BoxFit.cover)
+                          : Image.asset('assets/images/2.png'),
+                    ),
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    txt,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget shapFolloword(String name, Uint8List image, User user, Group group) {
+  Widget shapFolloword(Group group) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -955,17 +571,16 @@ class Profileview extends GetResponsiveView<ProfileController> {
             SizedBox(
               width: 80,
               height: 80,
-              child: image == null
-                  ? Image.asset(
-                      'assets/images/angryimg.png',
-                      width: screen.width,
-                      fit: BoxFit.fill,
+              child: group.Image == null
+                  ? const Icon(
+                      Icons.groups_2,
+                      size: 35,
                     )
                   : Utility.imageFromBase64String(
-                      Utility.base64String(image), 80, 80),
+                      Utility.base64String(group.Image!), 80, 80),
             ),
             const SizedBox(
-              width: 30,
+              width: 10,
             ),
             Column(
               children: [
@@ -973,9 +588,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
                   height: 27,
                 ),
                 Text(
-                  name,
+                  group.groupName ?? '',
                   style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       decoration: TextDecoration.none,
                       color: Color.fromARGB(255, 42, 42, 114)),
                 ),
@@ -985,11 +600,10 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: GFButton(
-                    onPressed: () {
-                      ////sure here
-                      // controller.followdelete.value.followId=controller.user.value.Id;
-                      // controller.followdelete.value.followedId=user.Id;
-                      controller.Delefolloewd(user.Id!);
+                    onPressed: () async {
+                      await controller.DelefolloewdGroup(UserGroup(
+                          IdUser: controller.user.value.Id, IdGroup: group.Id));
+                      await controller.GetuserGroup();
                     },
                     text: "remove".tr,
                     textStyle: const TextStyle(color: Colors.black54),

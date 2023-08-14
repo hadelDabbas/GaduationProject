@@ -280,8 +280,11 @@ class Letter7pageview extends GetResponsiveView<LetterController> {
                         ),
                         TextButton(
                             onPressed: () {
-                               Get.to(Letter8pageview());
-                              controller.onReady();
+                                        Get.back();
+                    // Get.to(Formword3PageView());
+                    controller.onReady();
+                              //  Get.to(Letter8pageview());
+                              // controller.onReady();
                             },
                             child: Text('نعم',
                                 style: TextStyle(color: Colors.blue[900]))),
