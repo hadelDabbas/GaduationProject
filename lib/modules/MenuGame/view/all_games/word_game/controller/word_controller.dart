@@ -99,7 +99,7 @@ class SplashScreencontroller extends GetxController {
 
   @override
   void onReady() {
-    _startimer(50);
+    _startimer(100);
     super.onReady();
   }
 

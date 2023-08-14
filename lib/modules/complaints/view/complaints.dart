@@ -6,9 +6,9 @@ import 'package:graduationproject/app/model/complaints.dart';
 import 'package:graduationproject/modules/complaints/controller/complaints_controller.dart';
 
 class ComplaintspageView extends GetResponsiveView<ComplaintsController> {
+  ComplaintsController controller=Get.put(ComplaintsController());
   Uint8List? image;
 
-  ComplaintspageView({super.key});
   @override
   Widget build(BuildContext context) {
     return Material(

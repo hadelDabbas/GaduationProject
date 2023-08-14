@@ -273,16 +273,16 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
   Widget getGamenow({required int id}) {
     Widget widget;
     switch (id) {
-      case 0:
+      case 1:
         widget = splashscreenLetter();
         break;
-      case 1:
+      case 2:
         widget = Splashscrren();
         break;
-      case 2:
+      case 3:
         widget = DefineMath();
         break;
-      case 3:
+      case 4:
         widget = FoucsGameView();
         break;
       default:
