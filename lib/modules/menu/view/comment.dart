@@ -42,7 +42,7 @@ class Comment extends GetResponsiveView<HomeController> {
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
-                      'Comments',
+                      'cm'.tr,
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class Comment extends GetResponsiveView<HomeController> {
                         autocorrect: false,
                         decoration: new InputDecoration(
                           // labelText: "Write Your Comment",
-                          hintText: "Write Your Comment",
+                          hintText: "wy".tr,
                           labelStyle:
                               TextStyle(fontSize: 20.0, color: Colors.white),
                           fillColor: Color.fromARGB(255, 42, 42, 114),

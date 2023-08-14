@@ -33,7 +33,7 @@ class HomeController extends GetxController
   final addcomment = Comments().obs;
   final userpost = UserPost().obs;
   final text =
-      'In this interface, all the posts of the people you have followed will appear';
+      'th'.tr;
 //  @override
 // dispose() {
 //  ancontroller.dispose(); // you need this

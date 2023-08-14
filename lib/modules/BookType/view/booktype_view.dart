@@ -34,12 +34,12 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                   ),
                 ),
               ),
-              const Align(
+              Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "  BookTypes  ",
+                      "bts".tr,
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -48,12 +48,12 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                           decoration: TextDecoration.none),
                     ),
                   )),
-              const Align(
+             Align(
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "  All BookType Here ",
+                      "albt".tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontFamily: "Pacifico",
@@ -75,7 +75,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                   Row(
                     children: [
                 Tooltip(
-                message: 'Add New BookType',
+                message: 'and'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -100,8 +100,8 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                 width: 400,
                                 height: 200,
                                 child: Column(children: [
-                                  const Text(
-                                    " Add New BookType  ",
+                                   Text(
+                                    "and".tr,
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -116,13 +116,13 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                         width: 350,
                                         height: 60,
                                         child: TextFormField(
-                                          decoration: const InputDecoration(
+                                          decoration:  InputDecoration(
                                             icon: Icon(
                                               Icons.library_books,
                                               color: Color.fromARGB(
                                                   255, 246, 123, 127),
                                             ),
-                                            labelText: 'Add BookTpe',
+                                            labelText: 'aty'.tr,
                                             labelStyle: TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 246, 123, 127),
@@ -137,7 +137,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                             if (value!.isEmpty ||
                                                 !RegExp(r'^[a-z A-Z]+$')
                                                     .hasMatch(value)) {
-                                              return "Enter Correct Name";
+                                              return "EnterCorrectName".tr;
                                             } else {
                                               return null;
                                             }
@@ -156,8 +156,8 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                               controller.addBookType.value);
                                         } else {
                                           Get.snackbar(
-                                            ' Error',
-                                            " Add New BookType ",
+                                            'Error'.tr,
+                                            "anc".tr,
                                             //  icon: Icon(Icons.person, color: Colors.white),
                                             snackPosition: SnackPosition.BOTTOM,
                                             backgroundColor:
@@ -175,7 +175,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                           );
                                         }
                                       },
-                                      text: "Added",
+                                      text: "Added".tr,
                                       color: const Color.fromARGB(
                                           255, 42, 42, 114),
                                       shape: GFButtonShape.pills,
@@ -189,7 +189,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                 ),
               ),
               Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -212,12 +212,12 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -317,9 +317,9 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                             color: Colors.blueAccent)),
                                     child: Column(
                                       children: [
-                                        const Center(
+                                         Center(
                                           child: Text(
-                                            'Are You Sure?  ',
+                                            'AreYouSureRemove'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
@@ -343,7 +343,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                               onPressed: () {
                                                 controller.delBookType(book!);
                                               },
-                                              text: "Delete",
+                                              text: "Delete".tr,
                                               shape: GFButtonShape.pills,
                                             ),
                                             const SizedBox(
@@ -355,7 +355,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                               onPressed: () {
                                                 Get.to(BookTypePageView());
                                               },
-                                              text: "Cancle",
+                                              text: "Cancle".tr,
                                               shape: GFButtonShape.pills,
                                             ),
                                           ],

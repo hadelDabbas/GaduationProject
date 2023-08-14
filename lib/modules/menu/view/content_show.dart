@@ -11,12 +11,12 @@ class ContentPage extends GetResponsiveView<HomeController> {
   Widget build(BuildContext context) {
     return Container(
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.topLeft,
             child: Text(
-              'Home Page',
+              'hp'.tr,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 25,
@@ -53,12 +53,12 @@ class ContentPage extends GetResponsiveView<HomeController> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Align(
+                               Align(
                                   alignment: Alignment.center,
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
-                                      "Contents ",
+                                      "cs".tr,
                                       style: TextStyle(
                                           fontSize: 25,
                                           fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ class ContentPage extends GetResponsiveView<HomeController> {
                       ),
                     ));
                   },
-                  text: "Contents",
+                  text: "cs".tr,
                   textStyle: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -89,7 +89,7 @@ class ContentPage extends GetResponsiveView<HomeController> {
               ),
             ),
             Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -113,12 +113,12 @@ class ContentPage extends GetResponsiveView<HomeController> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,

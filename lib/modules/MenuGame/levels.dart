@@ -14,7 +14,7 @@ MenuGameController controller =Get.put(MenuGameController());
             Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Center(
-                  child: Text('Levels',
+                  child: Text('Levels'.tr,
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -26,7 +26,7 @@ MenuGameController controller =Get.put(MenuGameController());
                Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Center(
-                  child: Text('Choose Appertaiment Level',
+                  child: Text('g3'.tr,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -36,9 +36,9 @@ MenuGameController controller =Get.put(MenuGameController());
                 ),
               ),
               SizedBox(height: 15,),
-              shap('First Level'),
-              shap('Second Level'),
-              shap('Finally Level'),
+              shap('gf'.tr),
+              shap('gs'.tr),
+              shap('g4'.tr),
         ],
       ),
     );

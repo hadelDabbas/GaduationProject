@@ -46,11 +46,11 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           width: 450,
                           child: TextField(
                               decoration: InputDecoration(
-                                  labelText: 'search',
+                                  labelText: 'search'.tr,
                                   labelStyle: const TextStyle(
                                       color: Color.fromARGB(255, 184, 183, 183),
                                       fontWeight: FontWeight.bold),
-                                  hintText: 'search',
+                                  hintText: 'search'.tr,
                                   prefixIcon: const Icon(
                                     Icons.search,
                                     color: Color.fromARGB(255, 245, 146, 149),
@@ -76,8 +76,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextCategory('Authour'),
-                  TextCategory('Category'),
+                  TextCategory('Authour'.tr),
+                  TextCategory('Category'.tr),
                 ],
               ),
               const SizedBox(
@@ -131,10 +131,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                   width: 400,
                                   height: 260,
                                   child: Column(children: [
-                                    const Padding(
+                                     Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Text(
-                                        " Input Information To Buy ",
+                                        "infobuy".tr,
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -155,15 +155,15 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               if (value!.isEmpty ||
                                                   !RegExp(r'^[a-z A-Z]+$')
                                                       .hasMatch(value)) {
-                                                return "Enter Correct Adress";
+                                                return "EnterCorrectAdress".tr;
                                               } else {
                                                 return null;
                                               }
                                             },
-                                            decoration: const InputDecoration(
+                                            decoration:  InputDecoration(
                                               prefixIcon:
                                                   Icon(Icons.location_on),
-                                              labelText: 'Input Location',
+                                              labelText: 'InputLocation'.tr,
                                               labelStyle: TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 246, 123, 127),
@@ -184,9 +184,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           width: 350,
                                           height: 60,
                                           child: TextFormField(
-                                            decoration: const InputDecoration(
+                                            decoration:  InputDecoration(
                                               prefixIcon: Icon(Icons.money),
-                                              labelText: 'Input PayBal',
+                                              labelText: 'InputPayBal'.tr,
                                               labelStyle: TextStyle(
                                                   color: Color.fromARGB(
                                                       255, 246, 123, 127),
@@ -206,7 +206,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               if (value!.isEmpty ||
                                                   !RegExp(r"^[a-zA-Z0-9.!#$%&'*+-/+?^_`{|}~]")
                                                       .hasMatch(value)) {
-                                                return "Enter Correct Paybal";
+                                                return "EnterCorrectPaybal".tr;
                                               } else {
                                                 return null;
                                               }
@@ -227,8 +227,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                               Baket();
                                             } else {
                                               Get.snackbar(
-                                                'Error ',
-                                                "Sure From PayBal",
+                                                'Error'.tr,
+                                                "SureFromPayBal".tr,
                                                 //  icon: Icon(Icons.person, color: Colors.white),
                                                 snackPosition:
                                                     SnackPosition.BOTTOM,
@@ -250,7 +250,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           }
                                           //Get.back();
                                         },
-                                        text: "Input",
+                                        text: "Input".tr,
                                         color: const Color.fromARGB(
                                             255, 42, 42, 114),
                                         shape: GFButtonShape.pills,
@@ -292,12 +292,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    const Align(
+                                     Align(
                                         alignment: Alignment.center,
                                         child: Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Text(
-                                            "Add Book  ",
+                                            "AddBook".tr,
                                             style: TextStyle(
                                                 fontSize: 25,
                                                 fontWeight: FontWeight.bold,
@@ -326,7 +326,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                 ],
               ),
               Tooltip(
-                message: 'Help About Page',
+                message: 'HelpAboutPage'.tr,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
@@ -349,14 +349,14 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      const Padding(
+                                    Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Align(
                                             alignment: Alignment.center,
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Text(
-                                                "Help",
+                                                "Help".tr,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight: FontWeight.bold,
@@ -513,8 +513,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           children: [
                             Row(
                               children: [
-                                const Text(
-                                  'Name Book:   ',
+                               Text(
+                                  'NameBook'.tr,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -535,8 +535,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                             Row(
                               children: [
-                                const Text(
-                                  'Price :   ',
+                                 Text(
+                                  'Price'.tr,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -583,9 +583,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                         )
                       ],
                     ),
-                    const Padding(
+                   Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text('How Many Pices Do You Want ?',
+                      child: Text('nu'.tr,
                           style: TextStyle(
                               fontSize: 18,
                               color: Color.fromARGB(255, 42, 42, 114),
@@ -609,7 +609,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             ),
                           )),
                         ),
-                        const Text(' pice',
+                         Text('pice'.tr,
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.black54,
@@ -687,7 +687,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                       ),
                     ),
                     Tooltip(
-                      message: 'Help About Page',
+                      message: 'HelpAboutPage'.tr,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
@@ -711,7 +711,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            const Padding(
+                                             Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: Align(
                                                   alignment: Alignment.center,
@@ -719,7 +719,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                     padding:
                                                         EdgeInsets.all(8.0),
                                                     child: Text(
-                                                      "Help",
+                                                      "Help".tr,
                                                       style: TextStyle(
                                                           fontSize: 25,
                                                           fontWeight:
@@ -867,12 +867,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           const SizedBox(
                                             height: 10,
                                           ),
-                                          const Align(
+                                           Align(
                                               alignment: Alignment.center,
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Update Book Info  ",
+                                                  "up".tr,
                                                   style: TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
@@ -910,9 +910,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                 color: Colors.blueAccent)),
                                         child: Column(
                                           children: [
-                                            const Center(
+                                             Center(
                                               child: Text(
-                                                'Are You Sure?  ',
+                                                'AreSureToRemove'.tr,
                                                 style: TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
@@ -939,7 +939,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                             .IdLibrary.value,
                                                         d.id!);
                                                   },
-                                                  text: "Delete",
+                                                  text: "Delete".tr,
                                                   shape: GFButtonShape.pills,
                                                 ),
                                                 const SizedBox(
@@ -951,7 +951,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                   onPressed: () {
                                                     Get.back();
                                                   },
-                                                  text: "Cancle",
+                                                  text: "Cancle".tr,
                                                   shape: GFButtonShape.pills,
                                                 ),
                                               ],
@@ -1034,7 +1034,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                         const SizedBox(
                                           width: 50,
                                         ),
-                                        const Text('count :',
+                                         Text('count'.tr,
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 decoration: TextDecoration.none,
@@ -1052,7 +1052,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                           children: [
                                             Material(
                                               child: Tooltip(
-                                                message: 'buy them',
+                                                message: 'buythem'.tr,
                                                 child: IconButton(
                                                     onPressed: () {
                                                       controller.sum.value +=
@@ -1071,7 +1071,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                             ),
                                             Material(
                                               child: Tooltip(
-                                                message: 'edit count',
+                                                message: 'editcount'.tr,
                                                 child: IconButton(
                                                     onPressed: () {
                                                       Get.dialog(Align(
@@ -1092,7 +1092,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           .blueAccent)),
                                                               child: Column(
                                                                 children: [
-                                                                  const Center(
+                                                                   Center(
                                                                     child:
                                                                         Padding(
                                                                       padding:
@@ -1100,7 +1100,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                               8.0),
                                                                       child:
                                                                           Text(
-                                                                        'Update Count  ',
+                                                                        'UpdateCount'.tr,
                                                                         style: TextStyle(
                                                                             fontSize:
                                                                                 18,
@@ -1123,7 +1123,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                         const EdgeInsets.all(
                                                                             8.0),
                                                                     child: Text(
-                                                                      'Previuos Count Of Book is:  $count',
+                                                                      'p'.tr +"  $count",
                                                                       style: const TextStyle(
                                                                           fontSize:
                                                                               18,
@@ -1135,12 +1135,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                               TextDecoration.none),
                                                                     ),
                                                                   ),
-                                                                  const Padding(
+                                                                   Padding(
                                                                     padding:
                                                                         EdgeInsets.all(
                                                                             8.0),
                                                                     child: Text(
-                                                                      'New Count :',
+                                                                      'NewCount'.tr,
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               18,
@@ -1236,7 +1236,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           // contrller.UpdateBuyBook(m);
                                                                         },
                                                                         text:
-                                                                            "Save",
+                                                                            "Save".tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1265,7 +1265,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                             ),
                                             Material(
                                               child: Tooltip(
-                                                message: 'delete items',
+                                                message: 'rd'.tr,
                                                 child: IconButton(
                                                     onPressed: () {
                                                       Get.dialog(Align(
@@ -1286,9 +1286,9 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           .blueAccent)),
                                                               child: Column(
                                                                 children: [
-                                                                  const Center(
+                                                                   Center(
                                                                     child: Text(
-                                                                      'Are You Sure?  ',
+                                                                      'AreYouSureRemove'.tr,
                                                                       style: TextStyle(
                                                                           fontSize:
                                                                               18,
@@ -1325,7 +1325,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                               m);
                                                                         },
                                                                         text:
-                                                                            "Del",
+                                                                            "Delete".tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1344,7 +1344,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                                           Get.back();
                                                                         },
                                                                         text:
-                                                                            "Cancle",
+                                                                            "Cancle".tr,
                                                                         shape: GFButtonShape
                                                                             .pills,
                                                                       ),
@@ -1384,10 +1384,10 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'Basket',
+                    'Basket'.tr,
                     style: TextStyle(
                         fontSize: 24,
                         fontFamily: "Pacifico",
@@ -1414,7 +1414,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                     const SizedBox(
                       width: 160,
                     ),
-                    const Text('Total : ',
+                     Text('t'.tr,
                         style: TextStyle(
                             fontSize: 18,
                             decoration: TextDecoration.none,

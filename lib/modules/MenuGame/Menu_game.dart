@@ -45,7 +45,8 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                   const SizedBox(
                     width: 8,
                   ),
-                  const Text('Menu Game',
+                  Text('g5'.tr,
+        
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -243,7 +244,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            'Number Level Is :${e.userLevel}',
+                                            'g6'.tr+' :${e.userLevel}',
                                             style: const TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 230, 219, 219),
@@ -254,7 +255,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            'Your Score In This Level :${e.Score}',
+                                            'g7'.tr+':${e.Score}',
                                             style: const TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 230, 219, 219),

@@ -10,7 +10,7 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
     return SingleChildScrollView(
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      const Row(children: [
+       Row(children: [
         Padding(
           padding: EdgeInsets.fromLTRB(85, 8, 8, 8),
           child: Center(

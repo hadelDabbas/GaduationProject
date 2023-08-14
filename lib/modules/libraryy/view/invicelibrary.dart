@@ -39,7 +39,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "  Invoce  " +
+                      "Invoce".tr +
                           controller.currentLibrary.value.libraryName
                               .toString(),
                       style: TextStyle(
@@ -56,7 +56,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                           element.user!.Name.toString(), context, element))
                       .toList()),
                         Tooltip(
-              message: 'Help About Page',
+              message: 'HelpAboutPage'.tr,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
@@ -79,12 +79,12 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: const Align(
+                                      child:  Align(
                                           alignment: Alignment.center,
                                           child: Padding(
                                             padding: EdgeInsets.all(8.0),
                                             child: Text(
-                                              "Help",
+                                              "Help".tr,
                                               style: TextStyle(
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold,
@@ -197,7 +197,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                         Align(
                           alignment: Alignment.topRight,
                           child: Tooltip(
-                            message: 'Detalies The Invoice',
+                            message: 'de'.tr,
                             child: GFButton(
                               onPressed: () {
                                 controller.getDetailsBuyBook(
@@ -224,7 +224,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  "Invoice For " +
+                                                  "Invoice".tr +
                                                       d.user!.Name.toString(),
                                                   style: TextStyle(
                                                       fontSize: 25,
@@ -251,7 +251,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                                   ),
                                 ));
                               },
-                              text: "detalies",
+                              text: "detalies".tr,
                               color: Color.fromARGB(255, 109, 157, 197),
                               shape: GFButtonShape.pills,
                             ),
@@ -267,7 +267,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'The Total Price : ',
+                      'tt'.tr,
                       style: TextStyle(
                           fontFamily: "Pacifico",
                           fontSize: 16,
@@ -310,7 +310,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                   child: Row(
                     children: [
                       Text(
-                        "  Name Book :",
+                        "BookName".tr,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
@@ -337,7 +337,7 @@ class InvoicLibraryepage extends GetResponsiveView<LibraryContrller> {
                       child: Row(
                         children: [
                           Text(
-                            "  Count :",
+                            "Count".tr,
                             style: TextStyle(
                                 fontSize: 19,
                                 fontFamily: "Pacifico",
