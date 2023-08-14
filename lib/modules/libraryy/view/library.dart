@@ -493,8 +493,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
           Get.dialog(Align(
             alignment: Alignment.center,
             child: Container(
-              width: 450,
-              height: 350,
+              width: 400,
+              height: 260,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -528,23 +528,29 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                           children: [
                             Row(
                               children: [
-                                Text(
-                                  'NameBook'.tr,
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Pacifico",
-                                      color: Color.fromARGB(255, 42, 42, 114),
-                                      decoration: TextDecoration.none),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'NameBook'.tr +'',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "Pacifico",
+                                        color: Color.fromARGB(255, 42, 42, 114),
+                                        decoration: TextDecoration.none),
+                                  ),
                                 ),
-                                Text(
-                                  d.bookName ?? '',
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Pacifico",
-                                      color: Colors.black54,
-                                      decoration: TextDecoration.none),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    d.bookName ?? '',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "Pacifico",
+                                        color: Colors.black54,
+                                        decoration: TextDecoration.none),
+                                  ),
                                 ),
                               ],
                             ),
@@ -686,6 +692,8 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                 int.parse(d.bookPrice!.toString()).toDouble();
                             controller.AddToBuyBooktempority(
                                 controller.buybook.value);
+                                ////////////
+                                 controller.valuepice.value = 0;
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:

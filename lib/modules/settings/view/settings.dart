@@ -7,6 +7,8 @@ import 'package:graduationproject/routes/app_pages.dart';
 import '../../Intro/view/intro.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give permission.dart';
+import '../../give permission/view/give_user_permission.dart';
+import '../../give permission/view/user-del-premission.dart';
 import '../../groups/view/add_group.dart';
 import '../../groups/view/post_Group.dart';
 import '../../refrence/view/refrence.dart';
@@ -74,7 +76,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                   Material(
                     child: InkWell(
                         onTap: () {
-                          Get.rootDelegate.toNamed(Routes.booktype);
+                           Get.rootDelegate.toNamed(Routes.booktype);
                         },
                         child: Tooltip(
                             message: 'bo'.tr,
