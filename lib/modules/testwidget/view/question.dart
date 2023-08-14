@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/list_tile/gf_list_tile.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:graduationproject/app/model/Answer.dart';
 
 import '../controller/test_controller.dart';
 
 class QuestionPageView extends GetResponsiveView<TestController> {
+  @override
   TestController controller = Get.put(TestController());
+
+  QuestionPageView({super.key});
 
   @override
   Widget builder() {
@@ -17,36 +17,30 @@ class QuestionPageView extends GetResponsiveView<TestController> {
       child: Container(
         child: Column(
           children: [
-               Material(
-                child: InkWell(
-                  onTap: () => Get.back(),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.arrow_back_ios,
-                          size: 20, color: Colors.grey),
-                    ),
+            Material(
+              child: InkWell(
+                onTap: () => Get.back(),
+                child: const Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(Icons.arrow_back_ios,
+                        size: 20, color: Colors.grey),
                   ),
                 ),
               ),
+            ),
             Text(controller.nowTest.value.content!.typeName.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
                     color: Color.fromARGB(255, 42, 42, 114),
                     fontFamily: "Pacifico")),
-                    Column(
-                      children: controller.ListTestByContent.map((e) => shapeQuestion(e.test!.test.toString(),
-                      e.answers!)).toList()
-                    ),
-            // Column(
-            //     children: controller.AllQustion.map((element) =>
-            //         shapeQuestion(element, element.AllChose)).toList()),
-            // Column(
-            //  children: controller.nowTest.value.test.
-            // ),
+            Column(
+                children: controller.ListTestByContent.map((e) =>
+                        shapeQuestion(e.test!.test.toString(), e.answers!))
+                    .toList()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
@@ -63,13 +57,13 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Align(
+                            const Align(
                                 alignment: Alignment.center,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: EdgeInsets.all(8.0),
                                   child: Text(
                                     "Result ",
                                     style: TextStyle(
@@ -90,21 +84,24 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          Text(
+                                          const Text(
                                             "Number Question Is ",
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black54,
-                                                decoration: TextDecoration.none),
+                                                decoration:
+                                                    TextDecoration.none),
                                           ),
                                           Text(
                                             controller.numberQustion.toString(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
-                                                color: Color.fromARGB(255, 246, 123, 127),
-                                                decoration: TextDecoration.none),
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                decoration:
+                                                    TextDecoration.none),
                                           ),
                                         ],
                                       ),
@@ -116,51 +113,59 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          Text(
+                                          const Text(
                                             "Correct Value Is : ",
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black54,
-                                                decoration: TextDecoration.none),
+                                                decoration:
+                                                    TextDecoration.none),
                                           ),
                                           Text(
                                             controller.result.toString(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
-                                                color: Color.fromARGB(255, 246, 123, 127),
-                                                decoration: TextDecoration.none),
+                                                color: Color.fromARGB(
+                                                    255, 246, 123, 127),
+                                                decoration:
+                                                    TextDecoration.none),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ),
-                       Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "The Correct Answer ",
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Pacifico",
-                                        color: Color.fromARGB(255, 42, 42, 114),
-                                        decoration: TextDecoration.none),
-                                  ),
-                                )),
-                                 Column(
-                                  children: controller.ListCorrectvalue.map((element) => Padding(
-                                    padding: const EdgeInsets.all(6),
-                                    child: Text(element.toString(),style: 
-                                     TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black54,
-                                          decoration: TextDecoration.none), ),
-                                  )).toList(),
-                                 )   
+                                  const Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "The Correct Answer ",
+                                          style: TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: "Pacifico",
+                                              color: Color.fromARGB(
+                                                  255, 42, 42, 114),
+                                              decoration: TextDecoration.none),
+                                        ),
+                                      )),
+                                  Column(
+                                    children: controller.ListCorrectvalue.map(
+                                        (element) => Padding(
+                                              padding: const EdgeInsets.all(6),
+                                              child: Text(
+                                                element.toString(),
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black54,
+                                                    decoration:
+                                                        TextDecoration.none),
+                                              ),
+                                            )).toList(),
+                                  )
                                 ],
                               ),
                             )
@@ -205,7 +210,7 @@ class QuestionPageView extends GetResponsiveView<TestController> {
               child: Padding(
                 padding: const EdgeInsets.all(5),
                 child: Text(q,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.none,
@@ -214,34 +219,38 @@ class QuestionPageView extends GetResponsiveView<TestController> {
               ),
             ),
             Column(
-                children: chose.map((e) => Row(
-                      children: [
-                        Material(
-                            child: Obx(
-                          () => Radio(
-                              activeColor: Color.fromARGB(255, 42, 42, 114),
-                              fillColor: MaterialStateProperty.all(
-                             Color.fromARGB(255, 42, 42, 114),
-                              ),
-                              value: e.answer.toString(),
-                              // groupValue: e.answer.toString(),
-                              groupValue: controller.selectedvalue.value,
-                              onChanged: (value) {
-                                controller.onChangevalue(value, e.CorrectAnswer);
-                              }),
-                        )),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          e.toString(),
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.none),
-                        ),
-                      ],
-                    )).toList()),
+                children: chose
+                    .map((e) => Row(
+                          children: [
+                            Material(
+                                child: Obx(
+                              () => Radio(
+                                  activeColor:
+                                      const Color.fromARGB(255, 42, 42, 114),
+                                  fillColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 42, 42, 114),
+                                  ),
+                                  value: e.answer.toString(),
+                                  // groupValue: e.answer.toString(),
+                                  groupValue: controller.selectedvalue.value,
+                                  onChanged: (value) {
+                                    controller.onChangevalue(
+                                        value, e.CorrectAnswer);
+                                  }),
+                            )),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              e.toString(),
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.none),
+                            ),
+                          ],
+                        ))
+                    .toList()),
           ]),
         ),
       ),
@@ -253,7 +262,7 @@ class Question {
   String? Qustion;
   List<String> AllChose = [];
   String? cor;
-  String ?selectedval;
+  String? selectedval;
   Question(String Q, String correct, String one, String two, String three) {
     Qustion = Q;
     cor = correct;
