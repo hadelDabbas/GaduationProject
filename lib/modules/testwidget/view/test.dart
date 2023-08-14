@@ -131,11 +131,14 @@ class TestPageView extends GetResponsiveView {
           const SizedBox(
             height: 40,
           ),
-          Center(
-            child: Column(
-                children: controller.ListTestContent.map(
-                    (e) => shap(e.typeName.toString(), e.Id!)).toList()),
+          Column(
+            children: controller. Listtsst.map((e) => shap(e)).toList()
           ),
+          // Center(
+          //   child: Column(
+          //       children: controller.ListTestContent.map(
+          //           (e) => shap(e.typeName.toString(), e.Id!)).toList()),
+          // ),
           Row(
             children: [
               Tooltip(
@@ -177,7 +180,7 @@ class TestPageView extends GetResponsiveView {
     );
   }
 
-  Widget shap(String title, int id
+  Widget shap(String title
       // IconData iconData
       ) {
     return Padding(
@@ -185,7 +188,7 @@ class TestPageView extends GetResponsiveView {
       child: Material(
         child: InkWell(
           onTap: () async {
-            await controller.getTestForContent(id);
+            // await controller.getTestForContent(id);
             Get.to(QuestionPageView());
           },
           child: Container(

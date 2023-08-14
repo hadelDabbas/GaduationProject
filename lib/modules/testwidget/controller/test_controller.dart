@@ -33,7 +33,7 @@ class TestController extends GetxController {
   final answer3 = Answer().obs;
   final answer4 = Answer().obs;
   final idTest = 0.obs;
-
+final Listtsst=['It Test ','Arabic Test','History Test','Sport Test'];
   @override
   void onInit() {
     super.onInit();
