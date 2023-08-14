@@ -5,9 +5,11 @@ import '../controller/test_controller.dart';
 import 'add-test.dart';
 import 'question.dart';
 
-class TestPageView extends GetResponsiveView<TestController> {
+class TestPageView extends GetResponsiveView {
   @override
   TestController controller = Get.put(TestController());
+
+  TestPageView({super.key});
   @override
   Widget builder() {
     return Container(
