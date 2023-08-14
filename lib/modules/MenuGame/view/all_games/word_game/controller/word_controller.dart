@@ -92,8 +92,10 @@ class SplashScreencontroller extends GetxController {
       _timer!.cancel();
     }
     super.onClose();
-    var guser = auth.getGameUser();
-    guser!.Score = score.value;
+    var guser =
+        auth.getGameUser()!.where((element) => element.IdGame == 2).first;
+
+    guser.Score = score.value;
     auth.updateUserGame(guser);
   }
 

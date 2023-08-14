@@ -23,16 +23,15 @@ class AuthService {
     return null;
   }
 
-  void SaveGameUser(GameUser gameUser) {
-    stroge.saveData('game', jsonEncode(gameUser.toJson()));
+  void SaveGameUser(List<GameUser> gameUser) {
+    stroge.saveData('game', encodeGame(gameUser));
   }
 
-  GameUser? getGameUser() {
+  List<GameUser>? getGameUser() {
     if (stroge.containsKey('game')) {
-      var data = jsonDecode(stroge.getData('game')!) as dynamic;
-      return GameUser.fromJson(data as Map<String, dynamic>);
+      return decodeDataGame(stroge.getData('game')!);
     }
-    return null;
+    return [];
   }
 
   bool isAdmin() => stroge.containsKey('isAdmin');
@@ -41,7 +40,7 @@ class AuthService {
     var result = await _dio.get('https://localhost:7252/api/User/SignIn',
         queryParameters: {"email": email, "password": password});
     print(result.data);
-    if (result.statusCode == 200 && !(result.data is List<dynamic>)) {
+    if (result.statusCode == 200 && result.data is! List<dynamic>) {
       var data = User.fromJson(result.data as Map<String, dynamic>);
       stroge.saveData(KeyData, jsonEncode(data.toJson()));
       var access = await userAccessibilites(data.Id!);
@@ -62,7 +61,14 @@ class AuthService {
       (json.decode(e) as List<dynamic>)
           .map<AccessiblityLogIn>((item) => AccessiblityLogIn.fromJson(item))
           .toList();
+  String encodeGame(List<GameUser> object) => json.encode(
+        object.map<Map<String, dynamic>>((e) => e.toJson()).toList(),
+      );
 
+  static List<GameUser> decodeDataGame(String e) =>
+      (json.decode(e) as List<dynamic>)
+          .map<GameUser>((item) => GameUser.fromJson(item))
+          .toList();
   Future<List<AccessiblityLogIn>?> userAccessibilites(int userId) async {
     var list = <AccessiblityLogIn>[];
     var result = await _dio.get(
@@ -100,8 +106,9 @@ class AuthService {
         'https://localhost:7252/api/GameUser/${userGame.Id}',
         data: userGame.toJson());
     if (result.statusCode == 200) {
+      var data = getGameUser();
       stroge.deleteDataByKey('game');
-      SaveGameUser(userGame);
+      SaveGameUser(data!);
       return true;
     }
     return false;

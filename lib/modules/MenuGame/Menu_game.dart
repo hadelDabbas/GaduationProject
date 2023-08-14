@@ -3,16 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/game_user.dart';
-import 'package:graduationproject/modules/MenuGame/view/all_games/foucs/view/define_foucs.dart';
-import 'package:graduationproject/modules/MenuGame/view/all_games/math/view/define_math.dart';
 import 'package:graduationproject/modules/menu/view/HomePage.dart';
 
 import '../../app/model/game.dart';
 import '../genereted/sheard/util.dart';
 import 'controller/menu_game_controller.dart';
-import 'view/all_games/letter_game/view/define_letter.dart';
-import 'view/all_games/packet/view/packet.dart';
-import 'view/all_games/word_game/view/define_word.dart';
+import 'levels.dart';
 
 class MenuGamePageView extends GetResponsiveView<MenuGameController> {
   @override
@@ -46,8 +42,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                     width: 8,
                   ),
                   Text('g5'.tr,
-        
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.none,
@@ -190,11 +185,29 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
             onTap: () {
               final id = controller.auth.getDataFromStorage()!.Id;
               if (gamesUser.any((element) => element.IdUser == id)) {
-                controller.auth.SaveGameUser(
-                    gamesUser.where((element) => element.IdUser == id).first);
+                controller.auth.SaveGameUser(gamesUser
+                    .where((element) => element.IdUser == id)
+                    .toList());
               }
-
-              Get.to(getGamenow(id: game.Id!));
+              controller.selectedgame.value = game;
+              Get.dialog(Align(
+                alignment: Alignment.center,
+                child: Container(
+                  width: 400,
+                  height: 400,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.blueAccent)),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(child: LevelPageView()),
+                      ],
+                    ),
+                  ),
+                ),
+              ));
             },
             child: SizedBox(
                 width: 800,
@@ -244,7 +257,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            'g6'.tr+' :${e.userLevel}',
+                                            '${'g6'.tr} :${e.userLevel}',
                                             style: const TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 230, 219, 219),
@@ -255,7 +268,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            'g7'.tr+':${e.Score}',
+                                            '${'g7'.tr}:${e.Score}',
                                             style: const TextStyle(
                                                 color: Color.fromARGB(
                                                     255, 230, 219, 219),
@@ -268,28 +281,5 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                 .toList(),
                           ),
                         ])))));
-  }
-
-  Widget getGamenow({required int id}) {
-    Widget widget;
-    switch (id) {
-      case 1:
-        widget = splashscreenLetter();
-        break;
-      case 2:
-        widget = Splashscrren();
-        break;
-      case 3:
-        widget = DefineMath();
-        break;
-      case 4:
-        widget = FoucsGameView();
-        break;
-      default:
-        widget = PacketPageView();
-
-        break;
-    }
-    return widget;
   }
 }
