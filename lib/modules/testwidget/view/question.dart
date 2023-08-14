@@ -139,36 +139,36 @@ class QuestionPageView extends GetResponsiveView<TestController> {
                                       ),
                                     ),
                                   ),
-                                   Align(
-                                      alignment: Alignment.center,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "TheCorrectAnswer".tr,
-                                          style: TextStyle(
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "Pacifico",
-                                              color: Color.fromARGB(
-                                                  255, 42, 42, 114),
-                                              decoration: TextDecoration.none),
-                                        ),
-                                      )),
-                                  Column(
-                                    children: controller.ListCorrectvalue.map(
-                                        (element) => Padding(
-                                              padding: const EdgeInsets.all(6),
-                                              child: Text(
-                                                element.toString(),
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black54,
-                                                    decoration:
-                                                        TextDecoration.none),
-                                              ),
-                                            )).toList(),
-                                  )
+                                  //  Align(
+                                  //     alignment: Alignment.center,
+                                  //     child: Padding(
+                                  //       padding: EdgeInsets.all(8.0),
+                                  //       child: Text(
+                                  //         "TheCorrectAnswer".tr,
+                                  //         style: TextStyle(
+                                  //             fontSize: 22,
+                                  //             fontWeight: FontWeight.bold,
+                                  //             fontFamily: "Pacifico",
+                                  //             color: Color.fromARGB(
+                                  //                 255, 42, 42, 114),
+                                  //             decoration: TextDecoration.none),
+                                  //       ),
+                                  //     )),
+                                  // Column(
+                                  //   children: controller.ListCorrectvalue.map(
+                                  //       (element) => Padding(
+                                  //             padding: const EdgeInsets.all(6),
+                                  //             child: Text(
+                                  //               element.toString(),
+                                  //               style: const TextStyle(
+                                  //                   fontSize: 20,
+                                  //                   fontWeight: FontWeight.bold,
+                                  //                   color: Colors.black54,
+                                  //                   decoration:
+                                  //                       TextDecoration.none),
+                                  //             ),
+                                  //           )).toList(),
+                                  // )
                                 ],
                               ),
                             )

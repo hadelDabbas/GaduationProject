@@ -27,7 +27,7 @@ class TestController extends GetxController {
   final ListTestByContent = <TestDto>[];
   final ListCorrectvalue = <String>[];
   final nowTest = Test().obs;
-  final numberQustion = 0.obs;
+  final numberQustion = 4.obs;
 final type=''.obs;
   final answer1 = Answer().obs;
   final answer2 = Answer().obs;
