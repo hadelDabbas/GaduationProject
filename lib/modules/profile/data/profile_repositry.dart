@@ -4,6 +4,7 @@ import 'package:graduationproject/app/model/comment.dart';
 import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/user.dart';
 import 'package:graduationproject/app/model/userPost.dart';
+import 'package:graduationproject/app/model/user_Group.dart';
 
 import '../../../app/model/content.dart';
 import '../../../app/model/post.dart';
@@ -16,7 +17,7 @@ class ProfileRepository implements IProfileRepository {
   @override
   Future<bool> UpdateProfile(User user, int iduser) async {
     var result = await _dio.put(
-      'https://localhost:7252/api/User/GetUser/$iduser',
+      'https://localhost:7252/api/User/Put/$iduser',
       data: user.toJson(),
     );
     if (result.statusCode == 200) {
@@ -115,9 +116,9 @@ class ProfileRepository implements IProfileRepository {
   }
 
   @override
-  Future<bool> DeletePost(int idpost) async {
+  Future<bool> DeletePost(Post post) async {
     var result = await _dio.delete('https://localhost:7252/api/Post/Delete',
-        queryParameters: {'id': idpost});
+        data: post.toJson());
     if (result.statusCode == 200) {
       return true;
     } else {
@@ -152,8 +153,8 @@ class ProfileRepository implements IProfileRepository {
 
   @override
   Future<List<Group>> GetUserGroups(int iduser) async {
-    var result = await _dio.get('https://localhost:7252/api/Profile/GetGroups',
-        queryParameters: {"id": iduser});
+    var result = await _dio
+        .get('https://localhost:7252/api/Profile/GetGroups?IdUser=$iduser');
     print(result);
     var list = <Group>[];
     for (var item in result.data) {
@@ -173,6 +174,15 @@ class ProfileRepository implements IProfileRepository {
     }
   }
 
+  Future<bool> DelFollowedGroup(UserGroup userGroup) async {
+    var result = await _dio.delete('https://localhost:7252/api/UserGroup',
+        data: userGroup.toJson());
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   // @override
   // Future<Post?> Getpost(int idpost)async {
   //   var result=await _dio.get('path');

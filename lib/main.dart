@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/api/storage/storge_service.dart';
 
+import 'locals.g.dart';
 import 'modules/sheard/auth_service.dart';
 import 'routes/app_pages.dart';
 
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Project',
+      key: key,
+      translations: AppTranslation(),
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),

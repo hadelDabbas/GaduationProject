@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/post.dart';
+import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:graduationproject/modules/profile/data/profile_repositry.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -25,7 +25,6 @@ class ProfileController extends GetxController {
   static const String KeyData = "AuthData";
   final userprofile = User().obs;
   final Listuserpost = <PostDto>[].obs;
-  final ListuserpostForrNoww = <Post>[].obs;
   final UpdateUser = User().obs;
   final auth = Get.find<AuthService>();
   final followdelete = Follow().obs;
@@ -44,21 +43,22 @@ class ProfileController extends GetxController {
   final FollowUser = <User>[].obs;
   final userfollowGroups = <Group>[].obs;
   final currentGroup = Group().obs;
-  final listpost=<PostDto>[];
+  final listpost = <PostDto>[];
   final texteditprofile =
       'In this interface, you can modify any information you have';
   final texteditpost =
       'In this interface, it is possible to modify the information that needs to be modified, whether an image or text';
   final textprofile =
       'In this interface, your personal information and all the posts that you have published will appear';
-
+  final interActive = [
+    {0: true}
+  ].obs;
   @override
   void onInit() {
     super.onInit();
     GetUser();
-    // Getusepost();
-    GetUserPostForrrJustNowwww();
-    //GetPostUser();
+    GetAllContent();
+    GetPostUser();
   }
 
   Future<void> GetUser() async {
@@ -82,23 +82,9 @@ class ProfileController extends GetxController {
   }
 
   Future<void> GetPostUser() async {
-    //  var data = await profileRepo.GetUserPost(user.value.Id!);
-    await GetUserPostForrrJustNowwww();
-    // Listuserpost.assignAll(data);
-  }
+    var data = await profileRepo.GetUserPost(user.value.Id!);
 
-  Future<void> GetUserPostForrrJustNowwww() async {
-    final dio = Get.find<Dio>();
-    var result = await dio.get('https://localhost:7252/api/Post/GetPosts');
-    var list = <Post>[];
-    if (result.statusCode == 200) {
-      for (var item in result.data) {
-        list.add(Post.fromJson(item));
-      }
-    }
-    var data =
-        list.where((element) => element.IdUser == user.value.Id).toList();
-    ListuserpostForrNoww.assignAll(data);
+    Listuserpost.assignAll(data);
   }
 
   // Future <void>UpduteUserInfo()async{
@@ -155,13 +141,16 @@ class ProfileController extends GetxController {
   }
 
   Future<void> UpdatePost() async {
-    postidnew.value.Image = Utility.dataFromBase64String(stringPickImage.value);
-    var data =
-        await profileRepo.UpdatePost(postidnew.value.Id!, postidnew.value);
+    await profileRepo.UpdatePost(postidnew.value.Id!, postidnew.value);
+    GetUser();
+    GetAllContent();
+    GetPostUser();
   }
 
-  Future<void> DeletPost(int idpost) async {
-    var data = await profileRepo.DeletePost(idpost);
+  Future<void> DeletPost(Post post) async {
+    var data = await profileRepo.DeletePost(post);
+    GetUser();
+    GetAllContent();
     GetPostUser();
   }
 
@@ -170,8 +159,12 @@ class ProfileController extends GetxController {
     GetUserFollow();
   }
 
+  Future<void> DelefolloewdGroup(UserGroup group) async {
+    var data = await profileRepo.DelFollowedGroup(group);
+    GetUserFollow();
+  }
+
   Future<void> Updateprofile() async {
-    user.value.Image = Utility.dataFromBase64String(stringPickImage.value);
     var data = await profileRepo.UpdateProfile(user.value, user.value.Id!);
   }
 
@@ -189,8 +182,9 @@ class ProfileController extends GetxController {
     var data = await profileRepo.GetUserGroups(user.value.Id!);
     userfollowGroups.assignAll(data);
   }
+
   Future<void> Getusepost() async {
     var data = await profileRepo.GetUserPost(user.value.Id!);
-   listpost .assignAll(data);
+    listpost.assignAll(data);
   }
 }

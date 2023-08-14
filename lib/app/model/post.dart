@@ -54,10 +54,8 @@ class Post {
         "id": Id ?? 0,
         "description": Description,
         "dateTime": dateTime == null ? null : dateTime!.toIso8601String(),
-        "IdGroup": IdGroup,
-        "content": content,
-        'group': group,
-        'user': user,
+        "idGroup": IdGroup,
+        "idContent": IdContent,
         "idUser": IdUser,
         "image": Image == null ? null : Uint8List.fromList(Image!),
       };
