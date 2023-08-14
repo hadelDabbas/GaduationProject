@@ -121,9 +121,10 @@ class MathNew7PageView extends GetResponsiveView<MathController> {
               if (controller.time.value.toString() != '00:01') {
                 if (value == '(9/9)+9') {
                   controller.score3.value += 10;
-                  correct();
+                      Get.to(MathNew8PageView());
+                  // correct();
                 } else {
-               Get.to(MathNew8PageView());;
+               Get.to(MathNew8PageView());
                 }
               } else {
                 Result('T');
