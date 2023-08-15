@@ -142,6 +142,7 @@ class ProfileController extends GetxController {
 
   Future<void> UpdatePost() async {
     await profileRepo.UpdatePost(postidnew.value.Id!, postidnew.value);
+    Get.back();
     GetUser();
     GetAllContent();
     GetPostUser();

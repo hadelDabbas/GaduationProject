@@ -169,7 +169,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                           ),
                                           Obx(() => Column(
                                                 children:
-                                                    controller.FollowUser.map(
+                                                    controller.UserFollow.map(
                                                             (e) =>
                                                                 shapFollow(e))
                                                         .toList(),
@@ -217,12 +217,14 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                       TextDecoration.none),
                                             ),
                                           ),
-                                          Column(
-                                            children: controller.FollowUser.map(
-                                                (e) => shapFolloword(controller
-                                                    .currentGroup
-                                                    .value)).toList(),
-                                          )
+                                          Obx(() => Column(
+                                                children:
+                                                    controller.FollowUser.map(
+                                                            (e) =>
+                                                                shapFollow(e))
+                                                        .toList(),
+                                              ))
+
                                           // shapFolloword('ASIA Badnjki',
                                           //     'assets/images/girl.gif'),
                                           // shapFolloword('HADEEL Dabbas',
@@ -421,7 +423,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                controller.postidnew.value.Id = idpost;
+                                controller.postidnew.value = posts;
                                 Get.dialog(Align(
                                   alignment: Alignment.center,
                                   child: Container(

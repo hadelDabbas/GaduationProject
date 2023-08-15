@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -43,14 +42,15 @@ class postPage extends GetResponsiveView<HomeController> {
             Obx(() => Column(
                 children: controller.postDto
                     .map((element) => post(
-                        element.UserName.toString(),
-                        element.post!.Description.toString(),
-                        element.UserImage,
-                        element.post!.Image.toString(),
-                        element.GroupName,
-                        element.post!.Id!,
-                        element.Interaction!,
-                        element.post!))
+                          element.UserName.toString(),
+                          element.post!.Description.toString(),
+                          element.UserImage,
+                          element.post!.Image.toString(),
+                          element.GroupName,
+                          element.post!.Id!,
+                          element.Interaction!,
+                          element.post!,
+                        ))
                     .toList())),
 
             //   post(' Hamza Hamza','Forest Is The tallest in the world   8848 mater',
@@ -108,19 +108,19 @@ class postPage extends GetResponsiveView<HomeController> {
                     //       color: Colors.grey,
                     //     )),
                     GroupName != null
-                        ? Icon(Icons.arrow_forward_ios_sharp)
+                        ? const Icon(Icons.arrow_forward_ios_sharp)
                         : Container(),
                     Padding(
-                      padding: EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: GroupName != null
-                          ? GFAvatar(
+                          ? const GFAvatar(
                               size: 20,
                               backgroundImage:
                                   AssetImage('assets/images/2.png'),
                             )
                           : Container(),
                     ),
-                    GroupName != null ? Text(GroupName) : Text('')
+                    GroupName != null ? Text(GroupName) : const Text('')
                   ],
                 ),
                 ClipRRect(
@@ -136,12 +136,23 @@ class postPage extends GetResponsiveView<HomeController> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    txt,
-                    style: const TextStyle(fontSize: 16),
-                  ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        txt,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        posts.dateTime != null ? posts.dateTime.toString() : '',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 5,

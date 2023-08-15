@@ -66,6 +66,7 @@ class HomeController extends GetxController
   Future<void> GetpostByType() async {
     var data = await homeRepo.GetByContent(idcontent.value);
     postDto.assignAll(data);
+    Get.back();
   }
 
   Future<void> AddComment() async {

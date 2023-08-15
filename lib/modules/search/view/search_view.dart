@@ -10,12 +10,12 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
     return SingleChildScrollView(
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-       Row(children: [
+      Row(children: [
         Padding(
-          padding: EdgeInsets.fromLTRB(85, 8, 8, 8),
+          padding: const EdgeInsets.fromLTRB(85, 8, 8, 8),
           child: Center(
             child: Text('Search'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.none,
@@ -80,30 +80,56 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
                 ),
               )),
           Obx(() => Column(
-                children: controller.listSearch
-                    .map((element) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 10,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(element.name ?? '', softWrap: true),
-                                      Text(element.type ?? '', softWrap: true)
-                                    ],
-                                  ),
-                                  Text(element.title ?? '', softWrap: true)
-                                ],
-                              ),
+                children: controller.listSearch.map((element) {
+                  controller.getData(element.id!, element.type!);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(element.name ?? '', softWrap: true),
+                                Text(element.type ?? '', softWrap: true)
+                              ],
                             ),
-                          ),
-                        ))
-                    .toList(),
+                            Text(element.title ?? '', softWrap: true),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextButton(
+                                  onPressed: () async {
+                                    if (element.type == 'user') {
+                                      controller.isFolllow.value
+                                          ? await controller
+                                              .deleteUserFollow(element.id!)
+                                          : await controller
+                                              .addUserFollow(element.id!);
+                                    } else if (element.type == 'group') {
+                                      controller.isFolllow.value
+                                          ? await controller
+                                              .deleteUserGroup(element.id!)
+                                          : await controller
+                                              .addUserGroup(element.id!);
+                                    }
+                                  },
+                                  child: Text(
+                                    controller.isFolllow.value
+                                        ? 'UnFollow'
+                                        : 'Follow',
+                                    style: const TextStyle(
+                                        color: Colors.pinkAccent),
+                                  )),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
               ))
         ]),
       ),

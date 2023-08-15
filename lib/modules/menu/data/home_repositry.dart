@@ -39,7 +39,9 @@ class HomeRepository implements IHomeRepository {
 
   @override
   Future<List<PostDto>> GetByContent(int idcontent) async {
-    var result = await _dio.get('https://localhost:7252/api/Post/$idcontent');
+    var id = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var result = await _dio.get(
+        'https://localhost:7252/api/Main/PostsContent?IdUser=$id&IdContent=$idcontent');
 
     var list = <PostDto>[];
     for (var item in result.data) {

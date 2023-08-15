@@ -11,10 +11,9 @@ class UserGroup {
   UserGroup({this.IdGroup, this.group, this.IdUser, this.user, this.id});
 
   UserGroup.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     IdGroup = json['idGroup'];
-    group = json['group '];
     IdUser = json['idUser'];
-    user = json[' user'];
   }
 
   Map<String, dynamic> toJson() {

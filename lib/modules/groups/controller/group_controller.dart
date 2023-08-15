@@ -174,6 +174,7 @@ class GroupController extends GetxController {
   Future<void> AddPost(bool fromGroup) async {
     if (fromGroup) {
       newpost.value.IdGroup = currentGroup.value.Id;
+      newpost.value.IdContent = currentGroup.value.IdContent;
     } else {}
 
     newpost.value.IdUser = user.value.Id;
