@@ -17,7 +17,8 @@ class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
    return Scaffold(
      body: SingleChildScrollView(
        child: Container(
-           height: MediaQuery.of(context).size.height ,
+              height: 800,
+        
                     width: MediaQuery.of(context).size.width ,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
@@ -88,7 +89,7 @@ class Formword3PageView extends GetResponsiveView<SplashScreencontroller> {
                         SizedBox(height: 10,),
                          Padding(
                    padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-                       child: Container(width: 70,height: 70,
+                       child: Container(width: 100,height: 70,
                          color: Colors.white,
                                 child: 
                                Image.asset('assets/images/group1.png')

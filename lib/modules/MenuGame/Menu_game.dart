@@ -213,7 +213,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                 width: 800,
                 child: Card(
                     margin: const EdgeInsets.all(10),
-                    color: const Color.fromARGB(255, 248, 150, 153),
+                    color: const Color.fromARGB(255, 42, 42, 114),
                     shadowColor: const Color.fromARGB(255, 42, 42, 114),
                     elevation: 30,
                     child: Column(
@@ -223,7 +223,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                             children: [
                               game.Image == null
                                   ? Image.asset(
-                                      'assets/images/1.png',
+                                      'assets/images/10.png',
                                       width: 150,
                                       height: 150,
                                       fit: BoxFit.fill,
@@ -245,6 +245,7 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                                   nameplay,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      color: Colors.white,
                                       fontSize: 20),
                                 ),
                               ),
@@ -254,28 +255,28 @@ class MenuGamePageView extends GetResponsiveView<MenuGameController> {
                             children: gamesUser
                                 .map((e) => Column(
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            '${'g6'.tr} :${e.userLevel}',
-                                            style: const TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 230, 219, 219),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            '${'g7'.tr}:${e.Score}',
-                                            style: const TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 230, 219, 219),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(8.0),
+                                        //   child: Text(
+                                        //     '${'g6'.tr} :${e.userLevel}',
+                                        //     style: const TextStyle(
+                                        //         color: Color.fromARGB(
+                                        //             255, 230, 219, 219),
+                                        //         fontSize: 18,
+                                        //         fontWeight: FontWeight.bold),
+                                        //   ),
+                                        // ),
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(8.0),
+                                        //   child: Text(
+                                        //     '${'g7'.tr}:${e.Score}',
+                                        //     style: const TextStyle(
+                                        //         color: Color.fromARGB(
+                                        //             255, 230, 219, 219),
+                                        //         fontSize: 18,
+                                        //         fontWeight: FontWeight.bold),
+                                        //   ),
+                                        // ),
                                       ],
                                     ))
                                 .toList(),

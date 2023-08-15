@@ -297,7 +297,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                         ),
                                                                       )),
                                                                 ),
-                                                                const Padding(
+                                                                Padding(
                                                                   padding: EdgeInsets
                                                                       .fromLTRB(
                                                                           10,
@@ -305,7 +305,8 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                           10,
                                                                           10),
                                                                   child: Column(
-                                                                    children: <Widget>[
+                                                                    children: <
+                                                                        Widget>[
                                                                       Text(
                                                                         ''
                                                                         // controller
