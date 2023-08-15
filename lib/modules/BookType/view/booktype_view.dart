@@ -16,6 +16,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
   //  final textfield=TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var accessLib = controller.access.first.accessibility;
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -38,10 +39,10 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
               Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "bts".tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Pacifico",
@@ -52,10 +53,10 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
               Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "albt".tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 20,
                           fontFamily: "Pacifico",
                           color: Colors.grey,
@@ -90,106 +91,133 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                     borderRadius: BorderRadius.circular(126)),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 17, horizontal: 17)),
-                            onPressed: () {
-                              Get.dialog(Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: Colors.blueAccent)),
-                                    width: 400,
-                                    height: 200,
-                                    child: Column(children: [
-                                      Text(
-                                        "and".tr,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: "Pacifico",
-                                            color: Color.fromARGB(
-                                                255, 42, 42, 114),
-                                            decoration: TextDecoration.none),
-                                      ),
-                                      Material(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: SizedBox(
-                                            width: 350,
-                                            height: 60,
-                                            child: TextFormField(
-                                              decoration: InputDecoration(
-                                                icon: Icon(
-                                                  Icons.library_books,
+                            onPressed: controller.auth.isAdmin()
+                                ? () {
+                                    Get.dialog(Align(
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                  color: Colors.blueAccent)),
+                                          width: 400,
+                                          height: 200,
+                                          child: Column(children: [
+                                            Text(
+                                              "and".tr,
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Pacifico",
                                                   color: Color.fromARGB(
-                                                      255, 246, 123, 127),
-                                                ),
-                                                labelText: 'aty'.tr,
-                                                labelStyle: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 246, 123, 127),
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              onChanged: (value) {
-                                                controller.addBookType.value
-                                                    .bookType = value;
-                                              },
-                                              validator: (value) {
-                                                // for number
-                                                if (value!.isEmpty ||
-                                                    !RegExp(r'^[a-z A-Z]+$')
-                                                        .hasMatch(value)) {
-                                                  return "EnterCorrectName".tr;
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
+                                                      255, 42, 42, 114),
+                                                  decoration:
+                                                      TextDecoration.none),
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: GFButton(
-                                          onPressed: () {
-                                            if (_formfield.currentState!
-                                                .validate()) {
-                                              print("Data Added Successfully");
-                                              controller.AddBookType(
-                                                  controller.addBookType.value);
-                                            } else {
-                                              Get.snackbar(
-                                                'Error'.tr,
-                                                "anc".tr,
-                                                //  icon: Icon(Icons.person, color: Colors.white),
-                                                snackPosition:
-                                                    SnackPosition.BOTTOM,
-                                                backgroundColor:
-                                                    const Color.fromARGB(
-                                                        255, 209, 143, 143),
-                                                borderRadius: 20,
-                                                margin:
-                                                    const EdgeInsets.all(15),
-                                                colorText: Colors.white,
-                                                duration:
-                                                    const Duration(seconds: 4),
-                                                isDismissible: true,
-                                                //  dismissDirection: SnackDismissDirection.HORIZONTAL,
-                                                forwardAnimationCurve:
-                                                    Curves.easeOutBack,
-                                              );
-                                            }
-                                          },
-                                          text: "Added".tr,
-                                          color: const Color.fromARGB(
-                                              255, 42, 42, 114),
-                                          shape: GFButtonShape.pills,
-                                        ),
-                                      ),
-                                    ]),
-                                  )));
-                            },
+                                            Material(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: SizedBox(
+                                                  width: 350,
+                                                  height: 60,
+                                                  child: TextFormField(
+                                                    decoration: InputDecoration(
+                                                      icon: const Icon(
+                                                        Icons.library_books,
+                                                        color: Color.fromARGB(
+                                                            255, 246, 123, 127),
+                                                      ),
+                                                      labelText: 'aty'.tr,
+                                                      labelStyle:
+                                                          const TextStyle(
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      246,
+                                                                      123,
+                                                                      127),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                    ),
+                                                    onChanged: (value) {
+                                                      controller
+                                                          .addBookType
+                                                          .value
+                                                          .bookType = value;
+                                                    },
+                                                    validator: (value) {
+                                                      // for number
+                                                      if (value!.isEmpty ||
+                                                          !RegExp(r'^[a-z A-Z]+$')
+                                                              .hasMatch(
+                                                                  value)) {
+                                                        return "EnterCorrectName"
+                                                            .tr;
+                                                      } else {
+                                                        return null;
+                                                      }
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Center(
+                                              child: GFButton(
+                                                onPressed: () {
+                                                  if (_formfield.currentState!
+                                                      .validate()) {
+                                                    print(
+                                                        "Data Added Successfully");
+                                                    controller.AddBookType(
+                                                        controller
+                                                            .addBookType.value);
+                                                  } else {
+                                                    Get.snackbar(
+                                                      'Error'.tr,
+                                                      "anc".tr,
+                                                      //  icon: Icon(Icons.person, color: Colors.white),
+                                                      snackPosition:
+                                                          SnackPosition.BOTTOM,
+                                                      backgroundColor:
+                                                          const Color.fromARGB(
+                                                              255,
+                                                              209,
+                                                              143,
+                                                              143),
+                                                      borderRadius: 20,
+                                                      margin:
+                                                          const EdgeInsets.all(
+                                                              15),
+                                                      colorText: Colors.white,
+                                                      duration: const Duration(
+                                                          seconds: 4),
+                                                      isDismissible: true,
+                                                      //  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                                                      forwardAnimationCurve:
+                                                          Curves.easeOutBack,
+                                                    );
+                                                  }
+                                                },
+                                                text: "Added".tr,
+                                                color: const Color.fromARGB(
+                                                    255, 42, 42, 114),
+                                                shape: GFButtonShape.pills,
+                                              ),
+                                            ),
+                                          ]),
+                                        )));
+                                  }
+                                : () {
+                                    Get.showSnackbar(const GetSnackBar(
+                                      duration: Duration(seconds: 2),
+                                      title: 'Access',
+                                      message: 'You Dont Have Permission',
+                                    ));
+                                  },
                             child: const Icon(Icons.add)),
                       ),
                     ),
@@ -223,10 +251,11 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                             child: Align(
                                                 alignment: Alignment.center,
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(8.0),
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     "Help".tr,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontSize: 25,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -244,10 +273,10 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                                 10, 8, 10, 10),
                                             child: Column(
                                               children: <Widget>[
-                                                new Text(
+                                                Text(
                                                   controller.text,
                                                   textAlign: TextAlign.left,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontSize: 18,
                                                       decoration:
                                                           TextDecoration.none,
@@ -265,7 +294,7 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                                 ),
                               ));
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.help_outline_outlined,
                               size: 30,
                               color: Color.fromARGB(255, 246, 123, 127),
@@ -321,65 +350,77 @@ class BookTypePageView extends GetResponsiveView<BookTypeController> {
                   ),
                   Material(
                       child: IconButton(
-                          onPressed: () async {
-                            Get.dialog(Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                    width: 280,
-                                    height: 120,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: Colors.blueAccent)),
-                                    child: Column(
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            'AreYouSureRemove'.tr,
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: "Pacifico",
-                                                color: Color.fromARGB(
-                                                    255, 42, 42, 114),
-                                                decoration:
-                                                    TextDecoration.none),
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            GFButton(
-                                              color: const Color.fromARGB(
-                                                  255, 246, 123, 127),
-                                              onPressed: () {
-                                                controller.delBookType(book!);
-                                              },
-                                              text: "Delete".tr,
-                                              shape: GFButtonShape.pills,
-                                            ),
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                            GFButton(
-                                              color: const Color.fromARGB(
-                                                  255, 246, 123, 127),
-                                              onPressed: () {
-                                                Get.to(BookTypePageView());
-                                              },
-                                              text: "Cancle".tr,
-                                              shape: GFButtonShape.pills,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ))));
-                          },
+                          onPressed: controller.auth.isAdmin()
+                              ? () async {
+                                  Get.dialog(Align(
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                          width: 280,
+                                          height: 120,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                  color: Colors.blueAccent)),
+                                          child: Column(
+                                            children: [
+                                              Center(
+                                                child: Text(
+                                                  'AreYouSureRemove'.tr,
+                                                  style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontFamily: "Pacifico",
+                                                      color: Color.fromARGB(
+                                                          255, 42, 42, 114),
+                                                      decoration:
+                                                          TextDecoration.none),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  GFButton(
+                                                    color: const Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    onPressed: () {
+                                                      controller
+                                                          .delBookType(book!);
+                                                    },
+                                                    text: "Delete".tr,
+                                                    shape: GFButtonShape.pills,
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 2,
+                                                  ),
+                                                  GFButton(
+                                                    color: const Color.fromARGB(
+                                                        255, 246, 123, 127),
+                                                    onPressed: () {
+                                                      Get.to(
+                                                          BookTypePageView());
+                                                    },
+                                                    text: "Cancle".tr,
+                                                    shape: GFButtonShape.pills,
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ))));
+                                }
+                              : () {
+                                  Get.showSnackbar(const GetSnackBar(
+                                    duration: Duration(seconds: 2),
+                                    title: 'Access',
+                                    message: 'You Dont Have Permission',
+                                  ));
+                                },
                           icon: const Icon(
                             Icons.delete,
                             color: Colors.red,

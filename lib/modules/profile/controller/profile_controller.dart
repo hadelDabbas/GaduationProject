@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:graduationproject/app/model/group.dart';
 import 'package:graduationproject/app/model/post.dart';
@@ -142,6 +144,7 @@ class ProfileController extends GetxController {
 
   Future<void> UpdatePost() async {
     await profileRepo.UpdatePost(postidnew.value.Id!, postidnew.value);
+    Get.back();
     GetUser();
     GetAllContent();
     GetPostUser();
@@ -166,6 +169,9 @@ class ProfileController extends GetxController {
 
   Future<void> Updateprofile() async {
     var data = await profileRepo.UpdateProfile(user.value, user.value.Id!);
+    auth.stroge.deleteDataByKey(KeyData);
+    auth.stroge.saveData(KeyData, jsonDecode(user.toJson()));
+    user.value = auth.getDataFromStorage()!;
   }
 
   Future<void> GetUserFollow() async {

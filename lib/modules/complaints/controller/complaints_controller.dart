@@ -14,8 +14,7 @@ class ComplaintsController extends GetxController {
   final user = User().obs;
   final numtype = 0.obs;
   final text = 'inthis'.tr;
-  final textcuser1 =
-      'to'.tr;
+  final textcuser1 = 'to'.tr;
   final txt = ''.obs;
   @override
   Future<void> onInit() async {
@@ -48,7 +47,7 @@ class ComplaintsController extends GetxController {
     newComplaint.value.IdUser = user.value.Id;
     var res = await comRepo.Putcomplaints(newComplaint.value);
     if (res) {
-      //for refresh
+      getRefrence();
       Get.back();
     }
   }

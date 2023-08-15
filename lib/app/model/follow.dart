@@ -17,18 +17,15 @@ class Follow {
 
   Follow.fromJson(Map<String, dynamic> json) {
     Id = json['id'];
-    follow = json['follow '];
-    followId = json['followId '];
-    followed = json['followed'];
+    followId = json['followId'];
     followedId = json['followedId'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
-    json['follow '] = follow;
-    json[' followId'] = followId;
-    json['followed'] = followed;
-    json[' followedId'] = followedId;
+    json['id'] = Id ?? 0;
+    json['followId'] = followId;
+    json['followedId'] = followedId;
     return json;
   }
 }

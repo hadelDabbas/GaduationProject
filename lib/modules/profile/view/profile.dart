@@ -169,7 +169,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                           ),
                                           Obx(() => Column(
                                                 children:
-                                                    controller.FollowUser.map(
+                                                    controller.UserFollow.map(
                                                             (e) =>
                                                                 shapFollow(e))
                                                         .toList(),
@@ -217,12 +217,14 @@ class Profileview extends GetResponsiveView<ProfileController> {
                                                       TextDecoration.none),
                                             ),
                                           ),
-                                          Column(
-                                            children: controller.FollowUser.map(
-                                                (e) => shapFolloword(controller
-                                                    .currentGroup
-                                                    .value)).toList(),
-                                          )
+                                          Obx(() => Column(
+                                                children:
+                                                    controller.FollowUser.map(
+                                                            (e) =>
+                                                                shapFollow(e))
+                                                        .toList(),
+                                              ))
+
                                           // shapFolloword('ASIA Badnjki',
                                           //     'assets/images/girl.gif'),
                                           // shapFolloword('HADEEL Dabbas',
@@ -353,6 +355,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
             ),
           ),
         ),
+        SizedBox(
+          height: 150,
+        )
       ]),
     );
   }
@@ -421,7 +426,7 @@ class Profileview extends GetResponsiveView<ProfileController> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                controller.postidnew.value.Id = idpost;
+                                controller.postidnew.value = posts;
                                 Get.dialog(Align(
                                   alignment: Alignment.center,
                                   child: Container(
@@ -598,23 +603,6 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 ),
                 const SizedBox(
                   width: 130,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: GFButton(
-                    onPressed: () async {
-                      // await controller.DelefolloewdGroup(UserGroup(
-                      //     IdUser: controller.user.value.Id, IdGroup: group.Id));
-                      // await controller.GetuserGroup();
-                    },
-                    text: "remove".tr,
-                    textStyle: const TextStyle(color: Colors.black54),
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    ),
-                    type: GFButtonType.transparent,
-                  ),
                 ),
               ],
             )

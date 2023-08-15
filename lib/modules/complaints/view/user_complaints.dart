@@ -25,12 +25,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                 child: Material(
                   child: TextFormField(
                     controller: myController,
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       labelText: ' EnterYourComplaints'.tr,
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                           color: Colors.black45, fontWeight: FontWeight.bold),
                       hintText: 'EnterYourComplaints'.tr,
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.read_more_sharp,
                         color: Color.fromARGB(255, 245, 146, 149),
                       ),
@@ -63,8 +63,7 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                     if (_formfield.currentState!.validate()) {
                       controller.newComplaint.value.IdUser =
                           controller.user.value.Id;
-                      controller.newComplaint.value.user =
-                          controller.user.value;
+                      controller.newComplaint.value.type = 0;
                       controller.addComplaint();
                       myController.clear();
                     }
@@ -76,16 +75,16 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
                           vertical: 0, horizontal: 0)),
                   child: Text(
                     'Send'.tr,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
               ),
             ),
             Column(
               children: [
-                 Text(
+                Text(
                   "PrevouisComplaints".tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Pacifico",
@@ -201,12 +200,12 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
         break;
       case 1:
         widget = Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
               'Refuses'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,
@@ -217,13 +216,13 @@ class UserComplaintspageView extends GetResponsiveView<ComplaintsController> {
         );
         break;
       default:
-        widget =  Padding(
-          padding: EdgeInsets.all(8.0),
+        widget = Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
               'NotPross'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.none,

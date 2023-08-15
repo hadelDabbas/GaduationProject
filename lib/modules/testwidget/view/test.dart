@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller/test_controller.dart';
-import 'add-test.dart';
-import 'question.dart';
 
 class TestPageView extends GetResponsiveView {
   @override
@@ -57,14 +55,15 @@ class TestPageView extends GetResponsiveView {
                                           height: 10,
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Align(
                                               alignment: Alignment.center,
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: Text(
                                                   "el".tr,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontSize: 25,
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -113,7 +112,7 @@ class TestPageView extends GetResponsiveView {
             ],
           ),
           Text('Tests'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
@@ -121,7 +120,7 @@ class TestPageView extends GetResponsiveView {
                   fontFamily: "Pacifico")),
           Center(
             child: Text('ShowYourTestsDoYouWant'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.none,
@@ -131,9 +130,7 @@ class TestPageView extends GetResponsiveView {
           const SizedBox(
             height: 40,
           ),
-          Column(
-            children: controller. Listtsst.map((e) => shap(e)).toList()
-          ),
+          Column(children: controller.Listtsst.map((e) => shap(e)).toList()),
           // Center(
           //   child: Column(
           //       children: controller.ListTestContent.map(
@@ -188,7 +185,8 @@ class TestPageView extends GetResponsiveView {
       child: Material(
         child: InkWell(
           onTap: () async {
-            controller.type.value=title;
+            controller.type.value = title;
+            controller.test();
             // await controller.getTestForContent(id);
             // Get.to(QuestionPageView());
           },
@@ -225,7 +223,7 @@ class TestPageView extends GetResponsiveView {
                   //         ),
                   //       ),
                   //  ),
-                   SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Center(

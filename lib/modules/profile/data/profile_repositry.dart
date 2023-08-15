@@ -128,8 +128,9 @@ class ProfileRepository implements IProfileRepository {
 
   @override
   Future<List<User>> GetFollow(int iduser) async {
-    var result = await _dio.get('https://localhost:7252/api/Profile/GetFollow',
-        queryParameters: {"id": iduser});
+    var result = await _dio.get(
+      'https://localhost:7252/api/Profile/GetFollow?IdUser=$iduser',
+    );
     print(result);
     var list = <User>[];
     if (result.statusCode == 200) {
@@ -143,8 +144,8 @@ class ProfileRepository implements IProfileRepository {
   @override
   Future<List<User>> GetFollowed(int iduser) async {
     var result = await _dio.get(
-        'https://localhost:7252/api/Profile/GetFollowed',
-        queryParameters: {"id": iduser});
+      ' https://localhost:7252/api/Profile/GetFollowed?IdUser=$iduser',
+    );
     print(result);
     var list = <User>[];
     for (var item in result.data) {

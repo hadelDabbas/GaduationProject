@@ -27,7 +27,7 @@ class BookTypeRepository implements IBookTypeRepository {
   @override
   Future<bool> DelBookType(BookType book) async {
     var result = await _dio.delete(
-      'https://localhost:7252/api/BookType?Id=${book.id}&bookType=${book.bookType}&IsDeleted=${book.isDel}',
+      'https://localhost:7252/api/BookType?id=${book.id}',
     );
     return result.statusCode == 200;
   }

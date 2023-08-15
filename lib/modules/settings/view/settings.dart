@@ -12,9 +12,9 @@ import '../../groups/view/post_Group.dart';
 import '../../refrence/view/refrence.dart';
 import '../../sheard/auth_service.dart';
 import '../controller/setting_controller.dart';
-import 'help.dart';
 
 class SettingPageView extends GetResponsiveView<SettingController> {
+  @override
   SettingController controller = Get.put(SettingController());
   SettingPageView({super.key});
 
@@ -61,20 +61,19 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                           child: InkWell(
                               onTap: () {
                                 Get.to(AddGrpoup());
-                                //  Get.to(ShowGroupPageView());
                               },
                               child: Tooltip(
                                   message: 'add'.tr,
                                   child: CardSetting(
-                                    "Group".tr, Icons.group_add,
-                                    // Color.fromARGB(255, 63, 201, 214))
+                                    "Group".tr,
+                                    Icons.group_add,
                                   ))),
                         )
                       : const SizedBox.shrink(),
                   Material(
                     child: InkWell(
                         onTap: () {
-                           Get.rootDelegate.toNamed(Routes.booktype);
+                          Get.rootDelegate.toNamed(Routes.booktype);
                         },
                         child: Tooltip(
                             message: 'bo'.tr,
@@ -286,15 +285,15 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                       )),
                                                                 ),
                                                                 Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .fromLTRB(
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
                                                                           10,
                                                                           8,
                                                                           10,
                                                                           10),
                                                                   child: Column(
-                                                                    children: <Widget>[
+                                                                    children: <
+                                                                        Widget>[
                                                                       Text(
                                                                         ''
                                                                         // controller
@@ -302,7 +301,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                         ,
                                                                         textAlign:
                                                                             TextAlign.left,
-                                                                        style: const TextStyle(
+                                                                        style: TextStyle(
                                                                             fontSize:
                                                                                 18,
                                                                             decoration:
@@ -357,6 +356,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                     child: InkWell(
                         onTap: () {
                           controller.DelUser();
+                          controller.auth.stroge.deleteAllKeys();
                           Get.to(IntroPageView());
                         },
                         child: CardSetting(
@@ -367,10 +367,10 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                           onTap: () {
                             if (controller.test.value == false) {
                               controller.test.value = true;
-                              Get.updateLocale(Locale("ar"));
+                              Get.updateLocale(const Locale("ar"));
                             } else {
                               controller.test.value = false;
-                              Get.updateLocale(Locale("en"));
+                              Get.updateLocale(const Locale("en"));
                             }
 
                             // Get.dialog(Container(
@@ -395,7 +395,8 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                   Material(
                     child: InkWell(
                         onTap: () {
-                          Get.to(HelpPageView());
+                          controller.auth.stroge.deleteAllKeys();
+                          Get.to(IntroPageView());
                         },
                         child: CardSetting("el".tr, Icons.question_mark)),
                   ),

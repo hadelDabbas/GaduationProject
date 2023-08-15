@@ -9,6 +9,7 @@ import '../../comment/view/comment.dart';
 import '../../genereted/sheard/util.dart';
 import '../../icons/Icon.dart';
 import '../controller/group_controller.dart';
+import 'add_group.dart';
 import 'add_post.dart';
 
 class GroupView extends GetResponsiveView<GroupController> {
@@ -27,8 +28,12 @@ class GroupView extends GetResponsiveView<GroupController> {
         .accessibility;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: accessGroup!.id == 1 || accessGroup.id == 2
-              ? () {}
+          onPressed: controller.auth.isAdmin() ||
+                  accessGroup!.id == 1 ||
+                  accessGroup.id == 2
+              ? () {
+                  Get.to(AddGrpoup());
+                }
               : () {
                   Get.showSnackbar(const GetSnackBar(
                     duration: Duration(seconds: 2),
@@ -245,7 +250,9 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'EditGroup '.tr,
                   child: ElevatedButton(
-                    onPressed: accessGroup.id == 1 || accessGroup.id == 3
+                    onPressed: controller.auth.isAdmin() ||
+                            accessGroup!.id == 1 ||
+                            accessGroup.id == 3
                         ? () {
                             controller.currentGroup.value.content = controller
                                 .contents
@@ -280,7 +287,9 @@ class GroupView extends GetResponsiveView<GroupController> {
                 child: Tooltip(
                   message: 'll '.tr,
                   child: ElevatedButton(
-                    onPressed: accessGroup.id == 1 || accessGroup.id == 2
+                    onPressed: controller.auth.isAdmin() ||
+                            accessGroup!.id == 1 ||
+                            accessGroup.id == 2
                         ? () {
                             Get.dialog(Align(
                               alignment: Alignment.center,

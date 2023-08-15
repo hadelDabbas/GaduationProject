@@ -1,11 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:graduationproject/app/model/follow.dart';
+import 'package:graduationproject/app/model/group.dart';
+import 'package:graduationproject/app/model/user_Group.dart';
 import 'package:graduationproject/modules/sheard/auth_service.dart';
+
+import '../../../app/model/user.dart';
 
 class SearchPageContrller extends GetxController {
   final _dio = Get.find<Dio>();
   final listSearch = <GetSearch>[].obs;
-
+  final isFolllow = false.obs;
   final typeSearch = [
     'All',
     'User',
@@ -55,6 +60,14 @@ class SearchPageContrller extends GetxController {
     }
   }
 
+  Future<void> getData(int id, String elemant) async {
+    if (elemant == 'user') {
+      isFolllow.value = await getUserFollow(id);
+    } else if (elemant == 'group') {
+      isFolllow.value = await getUserGroup(id);
+    }
+  }
+
   Future<void> searchAll(String text) async {
     final id = Get.find<AuthService>().getDataFromStorage()!.Id;
     var result = await _dio.get(
@@ -78,7 +91,8 @@ class SearchPageContrller extends GetxController {
 
     for (var element1 in result.data['search']) {
       list.add(GetSearch(element1['id'], element1[getName(result.data['type'])],
-          element1[gettitle(result.data['type'])], result.data['type']));
+          element1[gettitle(result.data['type'])], result.data['type'],
+          user: User.fromJson(element1)));
     }
 
     listSearch.assignAll(list);
@@ -92,7 +106,8 @@ class SearchPageContrller extends GetxController {
 
     for (var element1 in result.data['search']) {
       list.add(GetSearch(element1['id'], element1[getName(result.data['type'])],
-          element1[gettitle(result.data['type'])], result.data['type']));
+          element1[gettitle(result.data['type'])], result.data['type'],
+          group: Group.fromJson(element1)));
     }
     listSearch.assignAll(list);
   }
@@ -207,6 +222,100 @@ class SearchPageContrller extends GetxController {
     }
     return '';
   }
+
+  Future<bool> getUserGroup(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var result = await _dio.get(
+      'https://localhost:7252/api/UserGroup',
+    );
+    if (result.statusCode == 200) {
+      var list = <UserGroup>[];
+      if (result.statusCode == 200) {
+        for (var item in result.data) {
+          list.add(UserGroup.fromJson(item));
+        }
+      }
+      return list.any(
+          (element) => element.IdUser == myId && element.IdGroup == iduser);
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> addUserGroup(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var group = UserGroup(IdUser: myId, IdGroup: iduser);
+    var result = await _dio.post(
+      'https://localhost:7252/api/Follow',
+      data: group.toJson(),
+    );
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> deleteUserGroup(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var group = UserGroup(IdUser: myId, IdGroup: iduser);
+    var result = await _dio.post(
+      'https://localhost:7252/api/Follow',
+      data: group.toJson(),
+    );
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> getUserFollow(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var result = await _dio.get(
+      'https://localhost:7252/api/Follow',
+    );
+    if (result.statusCode == 200) {
+      var list = <Follow>[];
+      if (result.statusCode == 200) {
+        for (var item in result.data) {
+          list.add(Follow.fromJson(item));
+        }
+      }
+      return list.any((element) =>
+          element.followedId == myId && element.followId == iduser);
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> addUserFollow(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var follow = Follow(followedId: myId, followId: iduser);
+    var result = await _dio.post(
+      'https://localhost:7252/api/Follow',
+      data: follow.toJson(),
+    );
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> deleteUserFollow(int iduser) async {
+    var myId = Get.find<AuthService>().getDataFromStorage()!.Id;
+    var follow = Follow(followedId: myId, followId: iduser);
+    var result = await _dio.delete(
+      'https://localhost:7252/api/Follow',
+      data: follow.toJson(),
+    );
+    if (result.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 class GetSearch {
@@ -214,5 +323,7 @@ class GetSearch {
   String? name;
   String? title;
   String? type;
-  GetSearch(this.id, this.name, this.title, this.type);
+  User? user;
+  Group? group;
+  GetSearch(this.id, this.name, this.title, this.type, {this.group, this.user});
 }

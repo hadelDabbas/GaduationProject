@@ -66,7 +66,7 @@ class EditPostview extends GetResponsiveView<ProfileController> {
                           return null;
                         }
                       },
-                      dufaltText: '',
+                      dufaltText: controller.postidnew.value.Description ?? "",
                       prefIcon: Icons.text_fields,
                       onChanged: (value) {
                         controller.postidnew.value.Description = value;
@@ -79,9 +79,6 @@ class EditPostview extends GetResponsiveView<ProfileController> {
                     shadowColor: const Color.fromARGB(255, 42, 42, 114),
                     backgroundColor: const Color.fromARGB(255, 42, 42, 114)),
                 onPressed: () {
-                  if (_formfield.currentState!.validate()) {
-                    print("Data Added Successfully");
-                  }
                   controller.UpdatePost();
                 },
                 child: Text(
