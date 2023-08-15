@@ -29,8 +29,8 @@ class GroupView extends GetResponsiveView<GroupController> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           onPressed: controller.auth.isAdmin() ||
-                  accessGroup!.id == 1 ||
-                  accessGroup.id == 2
+                  accessGroup!.AccessibilityType == 'All' ||
+                  accessGroup.AccessibilityType == 'Add'
               ? () {
                   Get.to(AddGrpoup());
                 }
@@ -251,8 +251,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'EditGroup '.tr,
                   child: ElevatedButton(
                     onPressed: controller.auth.isAdmin() ||
-                            accessGroup!.id == 1 ||
-                            accessGroup.id == 3
+                            accessGroup!.AccessibilityType == 'All' ||
+                            accessGroup.AccessibilityType == 'Update'
                         ? () {
                             controller.currentGroup.value.content = controller
                                 .contents
@@ -288,8 +288,8 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'll '.tr,
                   child: ElevatedButton(
                     onPressed: controller.auth.isAdmin() ||
-                            accessGroup!.id == 1 ||
-                            accessGroup.id == 2
+                            accessGroup!.AccessibilityType == 'All' ||
+                            accessGroup.AccessibilityType == 'Add'
                         ? () {
                             Get.dialog(Align(
                               alignment: Alignment.center,

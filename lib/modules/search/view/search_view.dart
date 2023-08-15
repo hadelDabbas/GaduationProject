@@ -109,7 +109,7 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
                                           : await controller
                                               .addUserFollow(element.id!);
                                     } else if (element.type == 'group') {
-                                      controller.isFolllow.value
+                                      controller.isFolllowGroup.value
                                           ? await controller
                                               .deleteUserGroup(element.id!)
                                           : await controller
@@ -117,9 +117,15 @@ class SearchPage extends GetResponsiveView<SearchPageContrller> {
                                     }
                                   },
                                   child: Text(
-                                    controller.isFolllow.value
-                                        ? 'UnFollow'
-                                        : 'Follow',
+                                    element.type == 'user'
+                                        ? controller.isFolllow.value
+                                            ? 'UnFollow'
+                                            : 'Follow'
+                                        : element.type == 'group'
+                                            ? controller.isFolllowGroup.value
+                                                ? 'UnFollow'
+                                                : 'Follow'
+                                            : '',
                                     style: const TextStyle(
                                         color: Colors.pinkAccent),
                                   )),

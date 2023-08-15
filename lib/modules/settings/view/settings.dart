@@ -4,6 +4,7 @@ import 'package:graduationproject/modules/libraryy/view/show_librarys.dart';
 import 'package:graduationproject/modules/testwidget/view/test.dart';
 import 'package:graduationproject/routes/app_pages.dart';
 
+import '../../BookType/view/booktype_view.dart';
 import '../../Intro/view/intro.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give_user_permission.dart';
@@ -72,8 +73,20 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                       : const SizedBox.shrink(),
                   Material(
                     child: InkWell(
+                        onTap: () async {
+                          await controller.getAllInvoice();
+                        },
+                        child: Tooltip(
+                            message: 'Invoice'.tr,
+                            child: CardSetting(
+                              "Invoice".tr,
+                              Icons.group_add,
+                            ))),
+                  ),
+                  Material(
+                    child: InkWell(
                         onTap: () {
-                          Get.rootDelegate.toNamed(Routes.booktype);
+                          Get.to(BookTypePageView());
                         },
                         child: Tooltip(
                             message: 'bo'.tr,

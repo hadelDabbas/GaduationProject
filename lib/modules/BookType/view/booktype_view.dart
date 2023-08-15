@@ -11,12 +11,12 @@ import '../controller/booktype_controller.dart';
 
 class BookTypePageView extends GetResponsiveView<BookTypeController> {
   final _formfield = GlobalKey<FormState>();
-
+  @override
+  final controller = Get.find<BookTypeController>();
   BookTypePageView({super.key});
   //  final textfield=TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var accessLib = controller.access.first.accessibility;
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(

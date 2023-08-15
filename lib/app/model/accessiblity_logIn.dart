@@ -10,7 +10,9 @@ class AccessiblityLogIn {
 
   AccessiblityLogIn.fromJson(Map<String, dynamic> json) {
     accessibility = json['accessibility'] != null
-        ? Accessibility.fromJson(json['accessibility'])
+        ? Accessibility(
+            AccessibilityType: json['accessibility']['accessibilityType'],
+          )
         : null;
     object = json['object'] != null ? Object.fromJson(json['object']) : null;
     type = json['type'];

@@ -16,10 +16,6 @@ class BookTypeController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
     await getAllBookType();
-    access.value = auth
-        .getUserLogInAccess()
-        .where((element) => element.type == 'Library')
-        .toList();
   }
 
   Future<void> getAllBookType() async {

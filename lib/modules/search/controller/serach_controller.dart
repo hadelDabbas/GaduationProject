@@ -11,6 +11,7 @@ class SearchPageContrller extends GetxController {
   final _dio = Get.find<Dio>();
   final listSearch = <GetSearch>[].obs;
   final isFolllow = false.obs;
+  final isFolllowGroup = false.obs;
   final typeSearch = [
     'All',
     'User',
@@ -64,7 +65,7 @@ class SearchPageContrller extends GetxController {
     if (elemant == 'user') {
       isFolllow.value = await getUserFollow(id);
     } else if (elemant == 'group') {
-      isFolllow.value = await getUserGroup(id);
+      isFolllowGroup.value = await getUserGroup(id);
     }
   }
 
