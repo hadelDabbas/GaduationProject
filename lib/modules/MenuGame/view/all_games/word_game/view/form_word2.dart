@@ -110,7 +110,7 @@ class Formword2PageView extends GetResponsiveView<SplashScreencontroller> {
                 padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
                 child: Container(
                     color: Colors.white,
-                    child: Image.asset('assets/images/8.png')),
+                    child: Image.asset('assets/images/hidd.png')),
               ),
               Obx(() => Padding(
                     padding: const EdgeInsets.all(8.0),

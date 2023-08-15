@@ -315,6 +315,7 @@ class FormwordPageView extends GetResponsiveView<SplashScreencontroller> {
               TextButton(
                   onPressed: () {
                     Get.to(Formword2PageView());
+                    controller.onReady();
                   },
                   child: Text('yes',
                       style: TextStyle(color: Color.fromARGB(255, 7, 29, 67)))),
