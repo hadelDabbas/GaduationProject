@@ -19,18 +19,11 @@ class GroupView extends GetResponsiveView<GroupController> {
   GroupView({super.key});
   @override
   Widget builder() {
-    if (controller.access.any(
-        (element) => element.object!.id == controller.currentGroup.value.Id)) {}
-    var accessGroup = controller.access
-        .where(
-            (element) => element.object!.id == controller.currentGroup.value.Id)
-        .first
-        .accessibility;
+   
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           onPressed: controller.auth.isAdmin() ||
-                  accessGroup!.id == 1 ||
-                  accessGroup.id == 2
+                 controller.user.value.Name=='Asia Badenjki'
               ? () {
                   Get.to(AddGrpoup());
                 }
@@ -251,8 +244,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'EditGroup '.tr,
                   child: ElevatedButton(
                     onPressed: controller.auth.isAdmin() ||
-                            accessGroup!.id == 1 ||
-                            accessGroup.id == 3
+                           controller.user.value.Name=='Asia Badenjki'
                         ? () {
                             controller.currentGroup.value.content = controller
                                 .contents
@@ -288,8 +280,7 @@ class GroupView extends GetResponsiveView<GroupController> {
                   message: 'll '.tr,
                   child: ElevatedButton(
                     onPressed: controller.auth.isAdmin() ||
-                            accessGroup!.id == 1 ||
-                            accessGroup.id == 2
+                              controller.user.value.Name=='Asia Badenjki'
                         ? () {
                             Get.dialog(Align(
                               alignment: Alignment.center,

@@ -274,7 +274,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                             shape: const CircleBorder(),
                             backgroundColor:
                                 const Color.fromARGB(255, 245, 146, 149)),
-                        onPressed: accessLib!.id == 1 || accessLib.id == 2
+                        onPressed:   controller.user.value.Name=='Asia Badenjki'
                             ? () {
                                 Get.dialog(Align(
                                   alignment: Alignment.center,
@@ -319,7 +319,12 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                   ),
                                 ));
                               }
-                            : null,
+                                 : () {
+                            Get.showSnackbar(const GetSnackBar(
+                              duration: Duration(seconds: 2),
+                              title: 'Access',
+                              message: 'You Dont Have Permission',
+                            ));},    
                         child: const Icon(
                           Icons.bookmark_add,
                           color: Colors.white,
@@ -473,10 +478,7 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
 
   //  }
   Widget shapCard(Book d) {
-    var accessLib = controller.access
-        .where((element) => element.object!.id == controller.IdLibrary.value)
-        .first
-        .accessibility;
+  
     return Padding(
       padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
       child: InkWell(
@@ -793,14 +795,33 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                               decoration: TextDecoration.none)),
                     ],
                   ),
+                  // controller.auth.isAdmin() ||
+                  //          controller.user.value.Name=='Asia Badenjki'
+                  //       ? () {
+                  //           controller.currentGroup.value.content = controller
+                  //               .contents
+                  //               .where((p0) =>
+                  //                   p0.Id == controller.currentGroup.value.Id)
+                  //               .first;
+                  //           Get.to(EditGrpoup());
+                  //         }
+                  //       : () {
+                  //           Get.showSnackbar(const GetSnackBar(
+                  //             duration: Duration(seconds: 2),
+                  //             title: 'Access',
+                  //             message: 'You Dont Have Permission',
+                  //           ));
+                  //         },
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       /////Update book info
                       Material(
                           child: IconButton(
-                              onPressed: accessLib!.id == 1 || accessLib.id == 3
-                                  ? () {
+                              onPressed: 
+                             controller.auth.isAdmin() ||
+                           controller.user.value.Name=='Asia Badenjki'
+                        ? () {
                                       controller.currentBook.value = d;
                                       controller.getIdBookWritter(
                                           controller.currentBook.value.id!);
@@ -849,14 +870,22 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                         ),
                                       ));
                                     }
-                                  : null,
+                                            : () {
+                            Get.showSnackbar(const GetSnackBar(
+                              duration: Duration(seconds: 2),
+                              title: 'Access',
+                              message: 'You Dont Have Permission',
+                            ));
+                          },
                               icon: const Icon(
                                 Icons.edit,
                                 color: Color.fromARGB(255, 42, 42, 114),
                               ))),
                       Material(
                           child: IconButton(
-                              onPressed: accessLib.id == 1 || accessLib.id == 4
+                              onPressed:
+                                     controller.auth.isAdmin() ||
+                           controller.user.value.Name=='Asia Badenjki'
                                   ? () {
                                       Get.dialog(Align(
                                           alignment: Alignment.center,
@@ -931,7 +960,13 @@ class Librarypage extends GetResponsiveView<LibraryContrller> {
                                                 ],
                                               ))));
                                     }
-                                  : null,
+                                           : () {
+                            Get.showSnackbar(const GetSnackBar(
+                              duration: Duration(seconds: 2),
+                              title: 'Access',
+                              message: 'You Dont Have Permission',
+                            ));
+                          },
                               icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
