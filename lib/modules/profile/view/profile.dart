@@ -355,6 +355,9 @@ class Profileview extends GetResponsiveView<ProfileController> {
             ),
           ),
         ),
+        SizedBox(
+          height: 150,
+        )
       ]),
     );
   }
@@ -600,23 +603,6 @@ class Profileview extends GetResponsiveView<ProfileController> {
                 ),
                 const SizedBox(
                   width: 130,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: GFButton(
-                    onPressed: () async {
-                      // await controller.DelefolloewdGroup(UserGroup(
-                      //     IdUser: controller.user.value.Id, IdGroup: group.Id));
-                      // await controller.GetuserGroup();
-                    },
-                    text: "remove".tr,
-                    textStyle: const TextStyle(color: Colors.black54),
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    ),
-                    type: GFButtonType.transparent,
-                  ),
                 ),
               ],
             )
