@@ -74,10 +74,7 @@ class DefineMath extends GetResponsiveView<MenuGameController> {
                     Get.to(MathNew4PageView());
                       controller.onReady();
                     break;
-                      case 3:
-                    Get.to(MathNew7PageView());
-                      controller.onReady();
-                    break;
+                    
                    default:
                       Get.to(MathNew7PageView());
                     break;

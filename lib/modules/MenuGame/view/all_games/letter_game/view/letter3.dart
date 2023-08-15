@@ -265,7 +265,7 @@ class Letter3 extends GetResponsiveView<LetterController> {
             borderRadius: BorderRadius.circular(10),
           ),
           width: 400,
-          height: 120,
+          height: 140,
           // color: Colors.white,
           child: txt == 'T'
               ? Column(
