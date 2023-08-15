@@ -6,6 +6,7 @@ import 'package:graduationproject/routes/app_pages.dart';
 
 import '../../BookType/view/booktype_view.dart';
 import '../../Intro/view/intro.dart';
+import '../../complaints/view/complaints.dart';
 import '../../complaints/view/user_complaints.dart';
 import '../../give permission/view/give_user_permission.dart';
 import '../../groups/view/add_group.dart';
@@ -71,18 +72,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                   ))),
                         )
                       : const SizedBox.shrink(),
-                  Material(
-                    child: InkWell(
-                        onTap: () async {
-                          await controller.getAllInvoice();
-                        },
-                        child: Tooltip(
-                            message: 'Invoice'.tr,
-                            child: CardSetting(
-                              "Invoice".tr,
-                              Icons.group_add,
-                            ))),
-                  ),
+
                   Material(
                     child: InkWell(
                         onTap: () {
@@ -177,7 +167,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                       ? Material(
                           child: InkWell(
                             onTap: () {
-                              Get.rootDelegate.toNamed(Routes.complaint);
+                              Get.to(ComplaintspageView());
                             },
                             child: Tooltip(
                                 message: 'AddComplaints'.tr,
@@ -297,7 +287,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                         ),
                                                                       )),
                                                                 ),
-                                                                Padding(
+                                                                const Padding(
                                                                   padding: EdgeInsets
                                                                       .fromLTRB(
                                                                           10,
@@ -305,8 +295,7 @@ class SettingPageView extends GetResponsiveView<SettingController> {
                                                                           10,
                                                                           10),
                                                                   child: Column(
-                                                                    children: <
-                                                                        Widget>[
+                                                                    children: <Widget>[
                                                                       Text(
                                                                         ''
                                                                         // controller

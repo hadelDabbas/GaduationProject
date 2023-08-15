@@ -23,6 +23,7 @@ class ComplaintsController extends GetxController {
     getComplaints();
     GetUser();
     getRefrence();
+    getComplaints();
   }
 
   Future<void> GetUser() async {
@@ -31,6 +32,9 @@ class ComplaintsController extends GetxController {
 
   Future<void> getComplaints() async {
     var data = await comRepo.GetAllComplaint();
+    for (var element in data) {
+      element.user = user.value;
+    }
     ListComplaintsAdmain.assignAll(data);
   }
 

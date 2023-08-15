@@ -168,29 +168,6 @@ class GiveUserPermission extends GetResponsiveView {
                         },
                         icon: const Icon(Icons.arrow_back_ios)),
                     GFAccordion(
-                      title: "user".tr,
-                      textStyle: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Color.fromARGB(255, 246, 123, 127),
-                          decoration: TextDecoration.none),
-                      contentChild: Obx(() => Column(
-                            children: controller.AllUser.map((element) =>
-                                TextButton(
-                                    onPressed: () {
-                                      controller.userAccssebility.value.IdUser =
-                                          element.Id;
-                                    },
-                                    child: Text(element.Name.toString(),
-                                        style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black54,
-                                            decoration: TextDecoration
-                                                .none)))).toList(),
-                          )),
-                    ),
-                    GFAccordion(
                       title: "Premission".tr,
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
